@@ -1,0 +1,35 @@
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Prosto+One&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+
+.bigContainer {
+  width: 100%;
+  max-width: 1052px;
+  height: 100%;
+  margin: 0 auto;
+  margin-bottom: 30px;
+  padding-top: 150px;
+}
+
+.miniContainer {
+  width: 100%;
+  max-width: 874px;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.NavContainer {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  font-size: 14px;
+  font-weight: 400;
+  font-family: "Inter", sans-serif;
+}
+
+.AsosiySahifa {
+  cursor: pointer;
+}
+
+.AsosiySahifa a {
+  text-decoration: none;
+  color: gray;
+}
