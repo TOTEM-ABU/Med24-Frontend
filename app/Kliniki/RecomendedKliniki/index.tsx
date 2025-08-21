@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
 import axios from "axios";
+import Link from "next/link";
 import styles from "./RecomendedKliniki.module.css";
 import { Service } from "@/types/Service.types";
 
@@ -25,9 +26,9 @@ const RecomendedKliniki = () => {
       {isLoading && <p>Loading...</p>}
       {error && <p>Error loading services</p>}
       {data?.map((item: Service) => (
-        <div key={item.id}>
+        <Link key={item.id} href={`/Kliniki/${encodeURIComponent(item.name)}`}>
           <h3>{item.name}</h3>
-        </div>
+        </Link>
       ))}
     </div>
   );
