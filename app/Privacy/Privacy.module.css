@@ -1,0 +1,23 @@
+.container {
+  max-width: 1052px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+.title {
+  color: #333;
+  font-size: 2.5rem;
+  font-weight: bolder;
+  margin-bottom: 20px;
+}
+
+.content {
+  color: #1e1e1e;
+  cursor: default;
+  font-family: Inter, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.4;
+  white-space: pre-line;
+}

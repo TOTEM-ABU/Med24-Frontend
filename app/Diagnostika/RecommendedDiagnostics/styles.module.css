@@ -1,9 +1,9 @@
-.recomendedKliniki {
+.wrapper {
   max-width: 1400px;
   margin: 0 auto;
 }
 
-.recomendedKliniki h3 {
+.wrapper h3 {
   font-size: 24px;
   font-weight: bold;
   color: #333;
@@ -12,13 +12,9 @@
 
 .letterGroupsContainer {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 30px;
   width: 100%;
-}
-
-.letterGroup {
-  margin-bottom: 0;
 }
 
 .letterHeader {
@@ -48,13 +44,6 @@
   background: none;
   transition: none;
   width: 100%;
-}
-
-.serviceLink:hover {
-  background: none;
-  border: none;
-  transform: none;
-  box-shadow: none;
 }
 
 .serviceName {
@@ -91,7 +80,7 @@
     grid-template-columns: 1fr;
   }
 
-  .recomendedKliniki {
+  .wrapper {
     padding: 15px;
   }
 

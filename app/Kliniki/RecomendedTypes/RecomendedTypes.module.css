@@ -1,0 +1,77 @@
+.recomendedTypes {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.recomendedTypes h3 {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 40px;
+  margin-top: 40px;
+}
+
+.typesContainer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  width: 100%;
+}
+
+.typeColumn {
+  display: flex;
+  flex-direction: column;
+}
+
+.typeHeader {
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #e0e0e0;
+}
+
+.clinicsList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.clinicLink {
+  color: #2563eb;
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  text-underline-offset: 3px;
+  font-size: 16px;
+  font-weight: 400;
+  transition: color 0.2s ease;
+  line-height: 1.4;
+}
+
+.clinicLink:hover {
+  color: #1d4ed8;
+}
+
+/* Responsive design */
+@media (max-width: 1000px) {
+  .typesContainer {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+  }
+}
+
+@media (max-width: 700px) {
+  .typesContainer {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .recomendedTypes {
+    padding: 15px;
+  }
+
+  .typeHeader {
+    font-size: 18px;
+  }
+}
