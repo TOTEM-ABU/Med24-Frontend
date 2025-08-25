@@ -1,6 +1,9 @@
 "use client";
 import React from "react";
 import styles from "./Privacy.module.css";
+import Breadcrumb from "@/components/Breadcrumb";
+import Input from "@/components/SearchBar";
+import Button from "@/components/Button";
 
 const PRIVACY_TEXT = `
 1. MAZMUNI VA MAZMUNI
@@ -20,7 +23,7 @@ const PRIVACY_TEXT = `
 2. KOMPANIYa tomonidan yig'ilgan, olingan va joylashtirilgan ma'lumot
 2.1. Hisob qaydnomasi haqida ma'lumot: Foydalanuvchi saytda hisob qaydnomasini yaratganda, Kompaniya ma'lum elektron pochta manzili va parol kabi ma'lumotlarni talab qilishi mumkin. Hisob qaydnomasida ular haqida geografik joylashuvi, familiyasi, familiyasi, telefon raqami va tegishli ma'lumotlar, shu jumladan o'zlarining akkauntlariga yuklashlari mumkin bo'lgan fotosuratlar mavjud. (Hisob qaydnomasi foydalanuvchilarga o'zlarining takliflariga qiziqish bildirish uchun bir-birlari bilan bog'lanishlariga imkon beradi). Foydalanuvchilar ommaviy akkauntlarga joylashtirgan barcha ma'lumotlari uchun javobgardir. Foydalanuvchi ma'lum ma'lumotlarni, xususan, manzilni yoki uning aniq joylashgan joyi haqidagi ma'lumotni hammaga ma'lum qilish bilan bog'liq barcha xavflarni diqqat bilan ko'rib chiqishi kerak. Agar foydalanuvchi saytga uchinchi tomon operatorining autentifikatsiya qilish xizmati, masalan, Facebook ma'lumotlari yordamida kirishga qaror qilsa, Kompaniya qo'shimcha profil yoki boshqa uchinchi shaxs tomonidan kirish huquqi berilgan ma'lumotlarni olishi mumkin.
 
-2.2. E'lonlar va bitimlar: Kompaniya o'z veb-sayti faoliyatining bir qismi sifatida xaridor va sotuvchi o'rtasidagi operatsiyalarni bajarish, xabarlar yuborish va foydalanuvchilar bilan o'zaro muloqot qilish, to'lovlarni amalga oshirish uchun zarur bo'lgan ma'lumotlarni, shu jumladan shaxsiy va aloqa ma'lumotlarini joylashtirishi mumkin. . Reklama joylashtirish uchun zarur bo'lgan barcha ma'lumotlar hisob yaratishda talab qilinadi. Foydalanuvchilar saytda joylashtirilgan barcha ma'lumotlar uchun javobgardirlar. Foydalanuvchi ma'lum ma'lumotlarni - xususan, manzilni yoki boshqa shaxsiy ma'lumotlarni - hammaga ma'lum qilish bilan bog'liq barcha xavflarni diqqat bilan ko'rib chiqishi kerak.
+2.2. E'lonlar va bitimlar: Kompaniya o'z veb-sayti faoliyatining bir qismi sifatida xaridor va sotuvchi o'rtasidagi operatsiyalarni bajarish, xabarlar yuborish va foydalanuvchilar bilan o'zaro muloqot qilish, to'lovlarni amalga oshirish uchun zarur bo'lgan ma'lumotlarni, shu jumladan shaxsiy va aloqa ma'lumotlari joylashtirishi mumkin. . Reklama joylashtirish uchun zarur bo'lgan barcha ma'lumotlar hisob yaratishda talab qilinadi. Foydalanuvchilar saytda joylashtirilgan barcha ma'lumotlari uchun javobgardirlar. Foydalanuvchi ma'lum ma'lumotlarni - xususan, manzilni yoki boshqa shaxsiy ma'lumotlarni - hammaga ma'lum qilish bilan bog'liq barcha xavflarni diqqat bilan ko'rib chiqishi kerak.
 
 2.3. O'yinlar, reklama va reklama: Kompaniya o'z veb-sayt faoliyatining bir qismi sifatida foydalanuvchilar Saytda yoki Kompaniya tomonidan uchinchi tomon saytlarida tashkil qilingan o'yinlarda, viktorinalarda va boshqa marketing aktsiyalarida qatnashganda ism va aloqa ma'lumotlari kabi shaxsiy ma'lumotlarni to'plashi mumkin. Kompaniya o'z sayti faoliyatining bir qismi sifatida reklama kampaniyalarining samaradorligi bilan bog'liq ma'lumotlarni, shu jumladan Saytda va uchinchi tomon saytlarida ko'rilgan reklamalarni qayta ishlashi mumkin.
 
@@ -87,14 +90,13 @@ Ma'lumotlarni saqlash muddati bilan bog'liq savollaringiz bo'lsa, iltimos, moder
 
 Saytdagi firibgarlik va suiiste'molga qarshi kurash;
 
-da'vo qilingan qonun buzilishlarini tekshirish yoki foydalanuvchilar tomonidan med24.uz xizmatlaridan foydalanish to'g'risidagi Shartnoma buzilishining boshqa har qanday buzilishlariga qarshi kurashish.
-5.5. Kompaniya qonun hujjatlariga muvofiq rasmiylashtirilgan vakolatli organlarning talabiga binoan foydalanuvchilarning shaxsiy ma'lumotlarini taqdim etishi mumkin.
+da'vo qilingan qonun buzilishlarini tekshirish yoki foydalanuvchilar tomonidan med24.uz xizmatlaridan foydalanish to'g'risidagi Shartnoma buzilishining boshqa har qanday buzilishlariga qarshi kurashish. 5.5. Kompaniya qonun hujjatlariga muvofiq rasmiylashtirilgan vakolatli organlarning talabiga binoan foydalanuvchilarning shaxsiy ma'lumotlarini taqdim etishi mumkin.
 
 5.6. Maxfiylik siyosatiga muvofiq, Kompaniya Foydalanuvchining shaxsiy ma'lumotlarini ijaraga bermaslik yoki sotmaslik majburiyatini oladi. Agar Kompaniyaning biznesi yoki ushbu biznesning bir qismi sotilsa yoki qayta tashkil etilsa va Kompaniya o'z aktivlarining hammasini yoki deyarli barchasini yangi egasiga topshirsa, u holda foydalanuvchilarning shaxsiy ma'lumotlari xaridorga berilishi mumkin. Saytning uzluksizligi.
 
 5.7. Kompaniya foydalanuvchilarni qaysi reklama yoki xizmatlarga qiziqishi mumkinligini yaxshiroq tushunish, umumiy sifatini yaxshilash uchun ma'lum bir noma'lum ma'lumotlarni (foydalanuvchilarni individual ravishda aniqlashga imkon bermaydigan ma'lumotlar) uchinchi tomon xizmat ko'rsatuvchi provayderlarga, ishonchli sheriklarga yoki vakolatli tadqiqotchilarga uzatishi mumkin. Saytdagi yoki xizmatdagi xizmatlarning samaradorligi yoki kompaniyaning fikriga ko'ra katta ijtimoiy foyda keltirishi mumkin bo'lgan ilmiy tadqiqotlarga qo'shgan hissasini ta'minlash.
 
-5.8. Kompaniya tadqiqotlarni o'tkazish yoki foydalanuvchilarga xizmatlar ko'rsatish uchun yig'adigan ma'lumotlarini kompaniyaga xizmat ko'rsatuvchi uchinchi shaxslarga o'tkazishi mumkin, shu bilan birga uzatilayotgan ma'lumotlar ushbu Maxfiylik siyosatining predmeti hisoblanadi va üçünchi shaxslar huquqiga ega emaslar. olingan ma'lumotlardan foydalanish, aks holda Kompaniyaga xizmat ko'rsatish uchun.
+5.8. Kompaniya tadqiqotlarni o'tkazish yoki foydalanuvchilarga xizmatlar ko'rsatish uchun yig'adigan ma'lumotlarini kompaniyaga xizmat ko'rsatuvchi uchinchi shaxslarga o'tkazishi mumkin, shu bilan birga uzatilayotgan ma'lumotlar ushbu Maxfiylik siyosatining predmeti hisoblanadi va üçüncü shaxslar huquqiga ega emaslar. olingan ma'lumotlardan foydalanish, aks holda Kompaniyaga xizmat ko'rsatish uchun.
 
 5.9. Shaxsiy ma'lumotlar ushbu Maxfiylik siyosatining 5-qismida nazarda tutilgan hollarda, foydalanuvchiga uning shaxsiy ma'lumotlarining o'tkazilishi to'g'risida ma'lumot berish Kompaniyaning ixtiyorida qoladi.
 
@@ -132,7 +134,7 @@ da'vo qilingan qonun buzilishlarini tekshirish yoki foydalanuvchilar tomonidan m
 6.4.12. Sayt foydalanuvchilari uchun huquqiy oqibatlarga olib keladigan avtomatlashtirilgan echimdan himoya qilish.
 
 7. XAVFSIZLIK
-7.1. Ma'lumotlarga ruxsatsiz kirish yoki foydalanishni oldini olish uchun biz to'playdigan barcha ma'lumotlar texnik vositalar va xavfsizlik tartib-qoidalari bilan oqilona himoyalangan. Kompaniyaning filiallari, ishonchli sheriklari va üçünchi tomon xizmat ko'rsatuvchi provayderlari kompaniyadan olingan ma'lumotlardan bizning xavfsizlik talablarimiz va ushbu Maxfiylik siyosatimizga muvofiq foydalanishni o'z zimmalariga oladilar.
+7.1. Ma'lumotlarga ruxsatsiz kirish yoki foydalanishni oldini olish uchun biz to'playdigan barcha ma'lumotlar texnik vositalar va xavfsizlik tartib-qoidalari bilan oqilona himoyalangan. Kompaniyaning filiallari, ishonchli sheriklari va üçüncü tomon xizmat ko'rsatuvchi provayderlari kompaniyadan olingan ma'lumotlardan bizning xavfsizlik talablarimiz va ushbu Maxfiylik siyosatimizga muvofiq foydalanishni o'z zimmalariga oladilar.
 
 9. BU SIYOSATNI O'ZGARTIRISh
 9.1. Ushbu maxfiylik siyosati oxirgi marta 05/12/2021 yilda yangilangan. Kompaniya ushbu maxfiylik siyosatini vaqti-vaqti bilan yangilab turishi mumkin, agar Maxfiylik siyosatining yangi tahririda boshqacha tartib nazarda tutilmagan bo'lsa, ushbu bandda ko'rsatilgan manzilda Internetda joylashtirilgan paytdan boshlab Maxfiylik siyosatining yangi tahriri kuchga kiradi. . Maxfiylik siyosatining amaldagi versiyasi har doim https://med24.uz/privacy sahifasida mavjud.
@@ -142,9 +144,35 @@ da'vo qilingan qonun buzilishlarini tekshirish yoki foydalanuvchilar tomonidan m
 
 const Privacy: React.FC = () => {
   return (
-    <div className={styles.container}>
-      <h1 className={styles.title}>Maxfiylik siyosati</h1>
-      <div className={styles.content}>{PRIVACY_TEXT}</div>
+    <div className="container">
+      <Breadcrumb
+        items={[
+          { label: "Asosiy sahifa", href: "/" },
+          { label: "Политика конфиденциальности" },
+        ]}
+      />
+      
+      <div className={styles.container}>
+        <div className={styles["search-section"]}>
+          <h1 className={styles["main-title"]}>
+            Maxfiylik siyosati
+          </h1>
+          
+          <div className={styles["input-container"]}>
+            <Input
+              label="Qidiruv so'zi yoki savolni kiriting"
+              width="100%"
+            />
+            <Button
+              name="Qidirish"
+              variant="primary"
+              padding="0 38px 0 38px"
+            />
+          </div>
+        </div>
+        
+        <div className={styles.content}>{PRIVACY_TEXT}</div>
+      </div>
     </div>
   );
 };

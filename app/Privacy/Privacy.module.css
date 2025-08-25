@@ -4,6 +4,23 @@
   padding: 16px;
 }
 
+.search-section {
+  margin-bottom: 40px;
+}
+
+.main-title {
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.input-container {
+  display: flex;
+  gap: 16px;
+  align-items: flex-end;
+}
+
 .title {
   color: #333;
   font-size: 2.5rem;

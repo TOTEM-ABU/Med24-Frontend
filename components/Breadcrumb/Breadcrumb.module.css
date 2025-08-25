@@ -1,0 +1,27 @@
+.breadcrumb-container {
+  font-size: 14px;
+}
+
+.ordered-list {
+  display: flex;
+  gap: 4px;
+}
+
+.full-list {
+  display: flex;
+  gap: 4px;
+}
+
+.active {
+  color: black;
+  font-weight: 400;
+}
+
+.inactive {
+  color: gray;
+  text-decoration: none;
+}
+
+.separator {
+  color: gray;
+}

@@ -1,0 +1,303 @@
+.card {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 16px;
+  padding: 16px;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  background: #fff;
+}
+
+.left {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.right {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.header {
+  display: flex;
+  gap: 12px;
+}
+
+.logo {
+  width: 56px;
+  height: 56px;
+  border-radius: 8px;
+  object-fit: cover;
+  border: 1px solid #e5e7eb;
+}
+
+.logoFallback {
+  width: 56px;
+  height: 56px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f3f4f6;
+  color: #111827;
+  font-weight: 600;
+}
+
+.titleArea {
+  flex: 1;
+}
+
+.topRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.ratingWrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.star {
+  flex: 0 0 auto;
+}
+
+.name {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.rating {
+  background: #fffbeb;
+  color: #92400e;
+  border: 1px solid #fbbf24;
+  border-radius: 9999px;
+  padding: 2px 8px;
+  font-size: 12px;
+}
+
+.reviews {
+  color: #6b7280;
+  font-size: 12px;
+  text-decoration: none;
+}
+
+.descriptionBox {
+}
+.descClamp {
+  margin: 4px 0 0 0;
+  color: #4b5563;
+  font-size: 14px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.descFull {
+  margin: 4px 0 0 0;
+  color: #4b5563;
+  font-size: 14px;
+}
+.showMore {
+  background: none;
+  border: none;
+  color: #2563eb;
+  padding: 0;
+  cursor: pointer;
+}
+
+.region {
+  margin: 2px 0 0 0;
+  color: #6b7280;
+  font-size: 13px;
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.services {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.serviceRow {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid #f3f4f6;
+  padding-top: 6px;
+}
+.serviceName {
+  color: #111827;
+  font-size: 14px;
+}
+.servicePrice {
+  color: #111827;
+  font-size: 14px;
+}
+
+.doctors {
+  display: flex;
+  gap: 12px;
+  align-items: stretch;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+}
+.doctorsWrap {
+  display: grid;
+  grid-template-columns: 32px 1fr 32px;
+  gap: 8px;
+  align-items: center;
+}
+.doctor {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  min-width: 220px;
+  background: #f9fafb;
+  border: 1px solid #eef2f7;
+  border-radius: 12px;
+  padding: 8px;
+}
+.doctorStats {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.ratingSmall {
+  font-size: 12px;
+  color: #111827;
+}
+.reviewsSmall {
+  font-size: 12px;
+  color: #6b7280;
+}
+.doctorAvatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 9999px;
+  object-fit: cover;
+}
+.doctorAvatarStub {
+  width: 40px;
+  height: 40px;
+  border-radius: 9999px;
+  background: #e5e7eb;
+}
+.doctorMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.doctorName {
+  font-size: 14px;
+  color: #111827;
+}
+.doctorSpecialty {
+  font-size: 12px;
+  color: #6b7280;
+}
+.doctorEducation {
+  font-size: 12px;
+  color: #374151;
+}
+.doctorExperience {
+  font-size: 12px;
+  color: #374151;
+}
+
+.doctorsTail {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+}
+.arrowChip {
+  width: 36px;
+  height: 36px;
+  border-radius: 9999px;
+  background: #f3f4f6;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.arrowIcon {
+  font-size: 18px;
+  color: #6b7280;
+}
+
+.navBtn {
+  width: 32px;
+  height: 32px;
+  border-radius: 9999px;
+  border: 1px solid #e5e7eb;
+  background: #fff;
+  color: #6b7280;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.allDoctorsLink {
+  color: #2563eb;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.detailItem {
+  margin: 0;
+  color: #374151;
+  font-size: 14px;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: stretch;
+}
+
+.callBtn {
+  background: #2563eb;
+  color: #fff;
+  border-radius: 8px;
+  padding: 8px 12px;
+  text-decoration: none;
+  font-size: 14px;
+  text-align: center;
+}
+
+.secondaryBtn {
+  background: #f3f4f6;
+  color: #111827;
+  border-radius: 8px;
+  padding: 8px 12px;
+  text-decoration: none;
+  font-size: 14px;
+  text-align: center;
+}
+
+.callBtn:hover,
+.secondaryBtn:hover {
+  text-decoration: none;
+}
+
+.promotions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.promoTag {
+  background: #ecfeff;
+  color: #155e75;
+  border: 1px solid #06b6d4;
+  border-radius: 9999px;
+  padding: 2px 8px;
+  font-size: 12px;
+}

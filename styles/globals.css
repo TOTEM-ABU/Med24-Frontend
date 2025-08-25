@@ -1,10 +1,12 @@
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
-
 html,
 body {
   font-family: "Inter", sans-serif;
+}
+body {
+  font-family: "Inter", sans-serif;
+}
+
+.container {
+  max-width: 1052px;
+  margin: 0 auto;
 }

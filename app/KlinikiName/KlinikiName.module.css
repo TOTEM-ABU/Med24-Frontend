@@ -1,0 +1,91 @@
+.wrapper {
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  gap: 16px;
+}
+.media {
+  position: relative;
+}
+.cover {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  border-radius: 14px;
+}
+.overlayCard {
+  position: absolute;
+  left: 16px;
+  bottom: 16px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  background: rgba(17, 24, 39, 0.6);
+  color: #fff;
+  padding: 10px 12px;
+  border-radius: 12px;
+  backdrop-filter: blur(4px);
+}
+.logo {
+  width: 64px;
+  height: 64px;
+  border-radius: 10px;
+  object-fit: cover;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  background: #fff;
+}
+.meta {
+}
+.title {
+  font-weight: 700;
+  font-size: 18px;
+}
+.subrow {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.star {
+  color: #fbbf24;
+}
+.rating {
+  background: #fffbeb;
+  color: #92400e;
+  border: 1px solid #fbbf24;
+  border-radius: 9999px;
+  padding: 0 6px;
+}
+.reviews {
+  opacity: 0.9;
+}
+
+.infoCard {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 16px;
+}
+.address {
+  color: #111827;
+  margin-bottom: 8px;
+}
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.callBtn {
+  background: #2563eb;
+  color: #fff;
+  border-radius: 8px;
+  padding: 10px 12px;
+  text-align: center;
+  text-decoration: none;
+}
+.secondaryBtn {
+  background: #f3f4f6;
+  color: #111827;
+  border-radius: 8px;
+  padding: 10px 12px;
+  text-align: center;
+  text-decoration: none;
+}
