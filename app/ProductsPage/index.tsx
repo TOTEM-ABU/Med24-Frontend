@@ -4,8 +4,38 @@ import styles from "./ProductsPage.module.css";
 import Input from "@/components/SearchBar";
 import Button from "@/components/Button";
 import img1 from "./images/medicine.png";
+import ProductCard from "@/components/ProductCard";
+import img2 from "./images/img2.webp";
+import img3 from "./images/img3.webp";
+import img4 from "./images/img4.webp";
+import img5 from "./images/img5.webp";
+import DoctorTypeCard from "@/components/DoctorTypeCard";
+import heart from "./images/heart.png";
 
 const ProductsPage = () => {
+    const products = [
+        {
+            image: img2,
+            price: "45 000",
+            name: "No-shpa",
+        },
+        {
+            image: img1,
+            price: "45 000",
+            name: "Sinupret",
+        },
+        {
+            image: img4,
+            price: "45 000",
+            name: "Enterojermina",
+        },
+        {
+            image: img5,
+            price: "45 000",
+            name: "Zodak",
+        },
+    ];
+
     return (
         <div className="container">
             <div className={styles["products-container"]}>
@@ -13,7 +43,7 @@ const ProductsPage = () => {
                     items={[
                         { label: "Asosiy sahifa", href: "/" },
                         { label: "Dorilar" },
-                    ]}
+                    ]} className={styles['breadcrumb']}
                 />
 
                 <h1 className={styles["main-text"]}>
@@ -59,188 +89,1250 @@ const ProductsPage = () => {
                     </div>
                 </div>
 
-                <div className="sm:my-[60px] my-[40px]">
-                    <h2 className="text-[28px] font-[600]">Mavsumiy dorilar</h2>
+                <div className={styles['seasonal-products']}>
+                    <h2>Mavsumiy dorilar</h2>
+                    <div className={styles["product-cards"]}>
+                        {products.map((product) => {
+                            return (
+                                <ProductCard
+                                    image={product.image.src}
+                                    name={product.name}
+                                    price={product.price}
+                                />
+                            );
+                        })}
+                    </div>
+                </div>
 
-                    <div className="carousel__main__wrapper sm:block hidden">
-                        <div className="swiper mySwiper">
-                            <div className="swiper-wrapper">
-                                <div
-                                    className="swiper-slide"
-                                    style={{ width: 167, marginRight: 10 }}
-                                >
-                                    <a
-                                        href="https://apteka.uz/opentelegram?start=d-o_338737"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="bg-[#F6F8F9] block cursor-pointer h-[162px] w-[162px] mt-[20px] p-[13px] rounded-[20px]"
-                                    >
-                                        <img
-                                            alt="No-shpa"
-                                            loading="lazy"
-                                            src="https://main.med24.uz/uploads/partner-block/a48/5ec/a485ec3a17bc8b6420e05e9ade8ea15c.webp"
-                                            className="object-contain h-[100%] w-[100%]"
-                                        />
-                                    </a>
-                                    <p className=" font-[500] mt-[14px] mb-[6px]">
-                                        45 000 so‘m
-                                    </p>
-                                    <p className="font-[400]">No-shpa</p>
-                                </div>
+                <div className={styles['links-container']}>
+                    <h2>Qanday ta'sir qiladi?</h2>
+                    <div className={styles["grid-links"]}>
+                        <div>
+                            <ul className={styles["table-links"]}>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul className={styles["table-links"]}>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul className={styles["table-links"]}>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul className={styles["table-links"]}>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul className={styles["table-links"]}>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul className={styles["table-links"]}>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul className={styles["table-links"]}>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul className={styles["table-links"]}>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul className={styles["table-links"]}>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul className={styles["table-links"]}>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul className={styles["table-links"]}>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul className={styles["table-links"]}>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
 
-                                <div
-                                    className="swiper-slide"
-                                    style={{ width: 167, marginRight: 10 }}
-                                >
-                                    <a
-                                        href="https://apteka.uz/opentelegram?start=d-o_303242"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="bg-[#F6F8F9] block cursor-pointer h-[162px] w-[162px] mt-[20px] p-[13px] rounded-[20px]"
-                                    >
-                                        <img
-                                            alt="Sinupret"
-                                            loading="lazy"
-                                            src="https://main.med24.uz/uploads/partner-block/394/0e0/3940e01dee6259608663cc662a2ce3a8.webp"
-                                            className="object-contain h-[100%] w-[100%]"
-                                        />
-                                    </a>
-                                    <p className="font-[500] mt-[14px] mb-[6px]">
-                                        1 000 so‘m
-                                    </p>
-                                    <p className="font-[400]">Sinupret</p>
-                                </div>
+                        <div>
+                            <ul className={styles["table-links"]}>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul className={styles["table-links"]}>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul className={styles["table-links"]}>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
 
-                                <div
-                                    className="swiper-slide"
-                                    style={{ width: 167, marginRight: 10 }}
-                                >
-                                    <a
-                                        href="https://apteka.uz/opentelegram?start=d-o_326934"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="bg-[#F6F8F9] block cursor-pointer h-[162px] w-[162px] mt-[20px] p-[13px] rounded-[20px]"
-                                    >
-                                        <img
-                                            alt="Enterojermina"
-                                            loading="lazy"
-                                            src="https://main.med24.uz/uploads/partner-block/323/f41/323f4155ffd148677ddaa1c5d73f1215.webp"
-                                            className="object-contain h-[100%] w-[100%]"
-                                        />
-                                    </a>
-                                    <p className="font-[500] mt-[14px] mb-[6px]">
-                                        29 000 so‘m
-                                    </p>
-                                    <p className="font-[400]">Enterojermina</p>
-                                </div>
+                        <div>
+                            <ul className={styles["table-links"]}>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul className={styles["table-links"]}>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
 
-                                <div
-                                    className="swiper-slide"
-                                    style={{ width: 167, marginRight: 10 }}
-                                >
-                                    <a
-                                        href="https://apteka.uz/opentelegram?start=d-o_332297"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="bg-[#F6F8F9] block cursor-pointer h-[162px] w-[162px] mt-[20px] p-[13px] rounded-[20px]"
-                                    >
-                                        <img
-                                            alt="Zodak"
-                                            loading="lazy"
-                                            src="https://main.med24.uz/uploads/partner-block/f36/46c/f3646c96c1f2486271baaac360ad1362.webp"
-                                            className="object-contain h-[100%] w-[100%]"
-                                        />
-                                    </a>
-                                    <p className="font-[500] mt-[14px] mb-[6px]">
-                                        45 000 so‘m
-                                    </p>
-                                    <p className="font-[400]">Zodak</p>
-                                </div>
-                            </div>
+                        <div>
+                            <ul className={styles["table-links"]}>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul className={styles["table-links"]}>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <ul className={styles["table-links"]}>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <ul className={styles["table-links"]}>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul className={styles["table-links"]}>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <ul className={styles["table-links"]}>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul className={styles["table-links"]}>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <ul className={styles["table-links"]}>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul className={styles["table-links"]}>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <ul className={styles["table-links"]}>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul className={styles["table-links"]}>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <ul className={styles["table-links"]}>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul className={styles["table-links"]}>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
                         </div>
                     </div>
+                </div>
 
-                    {/* Mobile scroll */}
-                    <div className="flex items-center gap-[20px] overflow-x-auto sm:hidden block">
+                <div className={styles['links-container']}>
+                    <h2>Go'zallik va salomatlik</h2>
+                    <div className={styles["beauty"]}>
+                        <ProductCard
+                            image={img1.src}
+                            name="Arbidol"
+                            price="32 000"
+                        />
+                        <ProductCard
+                            image={img1.src}
+                            name="Arbidol"
+                            price="32 000"
+                        />
+                    </div>
+                </div>
+
+                <div className={styles['links-container']}>
+                    <h2>Butun oila uchun vitaminlar</h2>
+                    <div className={styles["beauty"]}>
+                        <ProductCard
+                            image={img1.src}
+                            name="Arbidol"
+                            price="32 000"
+                        />
+                        <ProductCard
+                            image={img1.src}
+                            name="Arbidol"
+                            price="32 000"
+                        />
+                    </div>
+                </div>
+
+                <div className={styles['links-container']}>
+                    <h2>Nima uchun?</h2>
+                    <div className={styles["grid-links"]}>
                         <div>
-                            <a
-                                href="https://apteka.uz/opentelegram?start=d-o_338737"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="bg-[#F6F8F9] h-[162px] block w-[162px] mt-[20px] p-[13px] rounded-[20px]"
-                            >
-                                <img
-                                    alt="No-shpa"
-                                    loading="lazy"
-                                    src="https://main.med24.uz/uploads/partner-block/a48/5ec/a485ec3a17bc8b6420e05e9ade8ea15c.webp"
-                                    className="object-contain h-[100%] w-[100%]"
-                                />
-                            </a>
-                            <h2 className="font-[500] mt-[14px] mb-[6px]">
-                                45000.00 so‘m
-                            </h2>
-                            <h2 className="font-[400]">No-shpa</h2>
+                            <ul className={styles["table-links"]}>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul className={styles["table-links"]}>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul className={styles["table-links"]}>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul className={styles["table-links"]}>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul className={styles["table-links"]}>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul className={styles["table-links"]}>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul className={styles["table-links"]}>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul className={styles["table-links"]}>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul className={styles["table-links"]}>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul className={styles["table-links"]}>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul className={styles["table-links"]}>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul className={styles["table-links"]}>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
                         </div>
 
                         <div>
-                            <a
-                                href="https://apteka.uz/opentelegram?start=d-o_303242"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="bg-[#F6F8F9] h-[162px] block w-[162px] mt-[20px] p-[13px] rounded-[20px]"
-                            >
-                                <img
-                                    alt="Sinupret"
-                                    loading="lazy"
-                                    src="https://main.med24.uz/uploads/partner-block/394/0e0/3940e01dee6259608663cc662a2ce3a8.webp"
-                                    className="object-contain h-[100%] w-[100%]"
-                                />
-                            </a>
-                            <h2 className="font-[500] mt-[14px] mb-[6px]">
-                                1000.00 so‘m
-                            </h2>
-                            <h2 className="font-[400]">Sinupret</h2>
+                            <ul className={styles["table-links"]}>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul className={styles["table-links"]}>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul className={styles["table-links"]}>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
                         </div>
 
                         <div>
-                            <a
-                                href="https://apteka.uz/opentelegram?start=d-o_326934"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="bg-[#F6F8F9] h-[162px] block w-[162px] mt-[20px] p-[13px] rounded-[20px]"
-                            >
-                                <img
-                                    alt="Enterojermina"
-                                    loading="lazy"
-                                    src="https://main.med24.uz/uploads/partner-block/323/f41/323f4155ffd148677ddaa1c5d73f1215.webp"
-                                    className="object-contain h-[100%] w-[100%]"
-                                />
-                            </a>
-                            <h2 className="font-[500] mt-[14px] mb-[6px]">
-                                29000.00 so‘m
-                            </h2>
-                            <h2 className="font-[400]">Enterojermina</h2>
+                            <ul className={styles["table-links"]}>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul className={styles["table-links"]}>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
                         </div>
 
                         <div>
-                            <a
-                                href="https://apteka.uz/opentelegram?start=d-o_332297"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="bg-[#F6F8F9] h-[162px] block w-[162px] mt-[20px] p-[13px] rounded-[20px]"
-                            >
-                                <img
-                                    alt="Zodak"
-                                    loading="lazy"
-                                    src="https://main.med24.uz/uploads/partner-block/f36/46c/f3646c96c1f2486271baaac360ad1362.webp"
-                                    className="object-contain h-[100%] w-[100%]"
-                                />
-                            </a>
-                            <h2 className="font-[500] mt-[14px] mb-[6px]">
-                                45000.00 so‘m
-                            </h2>
-                            <h2 className="font-[400]">Zodak</h2>
+                            <ul className={styles["table-links"]}>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
                         </div>
+                        <div>
+                            <ul className={styles["table-links"]}>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <ul className={styles["table-links"]}>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <ul className={styles["table-links"]}>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul className={styles["table-links"]}>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <ul className={styles["table-links"]}>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul className={styles["table-links"]}>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <ul className={styles["table-links"]}>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul className={styles["table-links"]}>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <ul className={styles["table-links"]}>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul className={styles["table-links"]}>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <ul className={styles["table-links"]}>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul className={styles["table-links"]}>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div className={styles['links-container']}>
+                    <h2>Nimadan?</h2>
+                    <div className={styles["grid-links"]}>
+                        <div>
+                            <ul className={styles["table-links"]}>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul className={styles["table-links"]}>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul className={styles["table-links"]}>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul className={styles["table-links"]}>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul className={styles["table-links"]}>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul className={styles["table-links"]}>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul className={styles["table-links"]}>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul className={styles["table-links"]}>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul className={styles["table-links"]}>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul className={styles["table-links"]}>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul className={styles["table-links"]}>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul className={styles["table-links"]}>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <ul className={styles["table-links"]}>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul className={styles["table-links"]}>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul className={styles["table-links"]}>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <ul className={styles["table-links"]}>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul className={styles["table-links"]}>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <ul className={styles["table-links"]}>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul className={styles["table-links"]}>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <ul className={styles["table-links"]}>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <ul className={styles["table-links"]}>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul className={styles["table-links"]}>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <ul className={styles["table-links"]}>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul className={styles["table-links"]}>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <ul className={styles["table-links"]}>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul className={styles["table-links"]}>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <ul className={styles["table-links"]}>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul className={styles["table-links"]}>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <ul className={styles["table-links"]}>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul className={styles["table-links"]}>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div className={styles['links-container']}>
+                    <h2>Shifokorlarning keng tarqalgan mutaxassisliklari</h2>
+                    <div className={styles["doctor-types"]}>
+                        <DoctorTypeCard
+                            image={heart.src}
+                            name="Kardiolog"
+                            className={styles["wide"]}
+                        />
+                        <DoctorTypeCard image={heart.src} name="Nevrolog" />
+                        <DoctorTypeCard image={heart.src} name="Ortoped" />
+                        <DoctorTypeCard image={heart.src} name="Terapevt" />
+                        <DoctorTypeCard image={heart.src} name="Urolog" />
+                        <DoctorTypeCard image={heart.src} name="Endokrinolog" />
+                    </div>
+                </div>
+
+                <div className={styles['links-container']}>
+                    <h2>Keng tarqalgangan tibbiy xizmatlar</h2>
+                    <div className={styles["grid-links-black"]}>
+                        <div>
+                            <ul className={styles["table-links"]}>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul className={styles["table-links"]}>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul className={styles["table-links"]}>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul className={styles["table-links"]}>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul className={styles["table-links"]}>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul className={styles["table-links"]}>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul className={styles["table-links"]}>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul className={styles["table-links"]}>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul className={styles["table-links"]}>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul className={styles["table-links"]}>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul className={styles["table-links"]}>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul className={styles["table-links"]}>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <ul className={styles["table-links"]}>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul className={styles["table-links"]}>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul className={styles["table-links"]}>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <ul className={styles["table-links"]}>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul className={styles["table-links"]}>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <ul className={styles["table-links"]}>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul className={styles["table-links"]}>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <ul className={styles["table-links"]}>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <ul className={styles["table-links"]}>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul className={styles["table-links"]}>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <ul className={styles["table-links"]}>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul className={styles["table-links"]}>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <ul className={styles["table-links"]}>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul className={styles["table-links"]}>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <ul className={styles["table-links"]}>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul className={styles["table-links"]}>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <ul className={styles["table-links"]}>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul className={styles["table-links"]}>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div className={styles['alpha-container']}>
+                    <h2>Dori vositalari alifbo ko'rsatkichi</h2>
+                    <div className={styles['alphabet']}>
+                        <span>A</span>
+                        <span>B</span>
+                        <span>C</span>
+                        <span>D</span>
+                        <span>E</span>
+                        <span>F</span>
+                        <span>G</span>
+                        <span>H</span>
+                        <span>I</span>
+                        <span>J</span>
+                        <span>K</span>
+                        <span>L</span>
+                        <span>M</span>
+                        <span>N</span>
+                        <span>O</span>
+                        <span>P</span>
+                        <span>Q</span>
+                        <span>R</span>
+                        <span>S</span>
+                        <span>T</span>
+                        <span>U</span>
+                        <span>V</span>
+                        <span>W</span>
+                        <span>X</span>
+                        <span>Y</span>
+                        <span>Z</span>
                     </div>
                 </div>
             </div>

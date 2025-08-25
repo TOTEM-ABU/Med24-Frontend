@@ -11,10 +11,22 @@ interface InputProps {
     onSearch?: (value: string) => void
     value?: string
     disabled?: boolean
+    className?: string                 // qo‘shimcha className
+    style?: React.CSSProperties        // inline style
 }
 
 const Input = (props: InputProps) => {
-    const { label, width, height, onChange, onSearch, value, disabled } = props
+    const { 
+        label, 
+        width, 
+        height, 
+        onChange, 
+        onSearch, 
+        value, 
+        disabled, 
+        className, 
+        style 
+    } = props
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         if (onChange) {
@@ -36,8 +48,8 @@ const Input = (props: InputProps) => {
 
     return (
         <div 
-            className={styles['input-container']}
-            style={{ width: width }}
+            className={`${styles['input-container']} ${className || ''}`}
+            style={{ width: width, ...style }}
         >
             <IoIosSearch 
                 className={styles['search-icon']}
