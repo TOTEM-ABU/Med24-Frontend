@@ -3,6 +3,10 @@ import { useRouter } from "next/router";
 import { useQuery } from "@tanstack/react-query";
 import api from "@/lib/api";
 import { Service } from "@/types/Service.types";
+import {
+  Clinic as ClinicType,
+  default as ClinicCard,
+} from "@/components/ClinicCard";
 
 interface ClinicServiceItem {
   id: string;
@@ -30,7 +34,7 @@ const fetchAllServices = async () => {
       const payload = data;
       if (Array.isArray(payload?.data)) return payload.data as Service[];
       if (Array.isArray(payload)) return payload as Service[];
-    } catch (e) {
+    } catch {
       // try next endpoint
     }
   }
@@ -71,6 +75,51 @@ const KlinikiByServicePage: React.FC = () => {
     enabled: Boolean(matchedService?.id),
   });
 
+  type ClinicServiceForCard = {
+    id: string;
+    price?: string | number;
+    duration_minutes?: number;
+    Services?: { id?: string; name?: string };
+  };
+
+  const clinics: ClinicType[] = useMemo(() => {
+    const source = Array.isArray(data) ? data : [];
+    const byId = new Map<string, ClinicType>();
+    for (const cs of source) {
+      const c = cs.Clinics;
+      if (!c?.id) continue;
+      const existing = byId.get(c.id);
+      const serviceEntry: ClinicServiceForCard = {
+        id: cs.id,
+        price: cs.price,
+        duration_minutes: cs.duration_minutes,
+        Services: { id: cs.Services?.id, name: cs.Services?.name },
+      };
+      if (!existing) {
+        byId.set(c.id, {
+          id: c.id,
+          name: c.name,
+          address: c.address,
+          logo_url: c.logo_url,
+          clinicservices: [
+            serviceEntry,
+          ] as unknown as ClinicType["clinicservices"],
+        } as unknown as ClinicType);
+      } else {
+        if (Array.isArray(existing.clinicservices)) {
+          (existing.clinicservices as unknown as ClinicServiceForCard[]).push(
+            serviceEntry
+          );
+        } else {
+          existing.clinicservices = [
+            serviceEntry,
+          ] as unknown as ClinicType["clinicservices"];
+        }
+      }
+    }
+    return Array.from(byId.values());
+  }, [data]);
+
   if (!matchedService && services && serviceName) {
     return <p>Xizmat topilmadi: {serviceName}</p>;
   }
@@ -78,15 +127,23 @@ const KlinikiByServicePage: React.FC = () => {
   if (isError) return <p>Xatolik yuz berdi!</p>;
 
   return (
-    <div style={{ padding: 16 }}>
-      <h2>"{serviceName}" bo'yicha klinikalar</h2>
-      <ul>
-        {data?.map((cs) => (
-          <li key={cs.id}>
-            {cs.Clinics?.name} — {cs.price} so'm
-          </li>
+    <div style={{ marginTop: 24, marginBottom: 24 }}>
+      <h2 style={{ marginBottom: 12 }}>
+        &quot;{serviceName}&quot; bo&#39;yicha klinikalar
+      </h2>
+      <div
+        style={{
+          maxWidth: 874,
+          margin: "0 auto",
+          display: "flex",
+          flexDirection: "column",
+          gap: 16,
+        }}
+      >
+        {clinics.map((c) => (
+          <ClinicCard key={c.id} clinic={c} />
         ))}
-      </ul>
+      </div>
     </div>
   );
 };

@@ -10,9 +10,10 @@
 }
 
 .title {
-  font-size: 20px;
-  font-weight: 700;
-  color: #111827;
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 30px;
 }
 
 .scrollerWrap {
@@ -45,8 +46,8 @@
 
 .badge {
   position: absolute;
-  top: -18px;
-  right: -18px;
+  top: -28px;
+  right: -1px;
   width: 80px;
   height: 80px;
   background: #ef4444;
@@ -59,27 +60,12 @@
   font-size: 14px;
 }
 
-.logoRow {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-}
-
-.logoWrap {
-  width: 48px;
-  height: 48px;
-  border-radius: 10px;
+.banner {
+  width: 54px;
+  height: 54px;
+  object-fit: cover;
+  border-radius: 50px;
   background: #f3f4f6;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-}
-
-.logo {
-  width: 32px;
-  height: 32px;
-  object-fit: contain;
 }
 
 .textWrap {

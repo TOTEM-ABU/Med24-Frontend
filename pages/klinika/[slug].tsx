@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import type { ParsedUrlQueryInput } from "querystring";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import api from "@/lib/api";
+import KlinikiNameHeader from "@/app/KlinikiName";
 
 // Clinic type removed (unused)
 
@@ -154,27 +155,21 @@ const ClinicDetailPage: React.FC = () => {
 
   return (
     <div style={{ maxWidth: 874, margin: "0 auto", padding: 16 }}>
-      <h1 style={{ marginBottom: 8 }}>{clinic?.name ?? "Klinika"}</h1>
-      {typeof clinic?.rating !== "undefined" ? (
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: 8,
-            marginBottom: 16,
+      {clinic ? (
+        <KlinikiNameHeader
+          clinic={{
+            name: clinic?.name,
+            address: clinic?.address,
+            rating: clinic?.rating,
+            reviewsCount: Array.isArray(clinic?.reviews)
+              ? clinic.reviews.length
+              : 0,
+            cover_url: clinic?.cover_url ?? null,
+            logo_url: clinic?.logo_url ?? null,
+            description: clinic?.description,
+            clinicservices: clinic?.clinicservices,
           }}
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="16"
-            height="16"
-            viewBox="0 0 20 20"
-            fill="#F59E0B"
-          >
-            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 0 0 .95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.802 2.034a1 1 0 0 0-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.802-2.034a1 1 0 0 0-.1.176 0l-2.802 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 0 0-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 0 0 .951-.69l1.07-3.292Z" />
-          </svg>
-          <span style={{ fontWeight: 600 }}>{clinic?.rating}</span>
-        </div>
+        />
       ) : null}
 
       <div id="review" ref={reviewAnchorRef} />

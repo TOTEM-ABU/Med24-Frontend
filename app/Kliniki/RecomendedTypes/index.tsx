@@ -34,7 +34,6 @@ interface GroupedClinics {
 }
 
 const RecomendedTypes = () => {
-  // Fetch all clinics
   const { data: clinics, isLoading } = useQuery({
     queryKey: ["clinics"],
     queryFn: async () => {
@@ -45,7 +44,6 @@ const RecomendedTypes = () => {
     },
   });
 
-  // Group clinics by type
   const groupedClinics = useMemo(() => {
     if (!clinics) return { PUBLIC: [], PRIVATE: [], VETERINARY: [] };
 
@@ -61,7 +59,6 @@ const RecomendedTypes = () => {
       }
     });
 
-    // Sort each group by name
     Object.keys(grouped).forEach((type) => {
       grouped[type as keyof GroupedClinics].sort((a, b) =>
         a.name.localeCompare(b.name)

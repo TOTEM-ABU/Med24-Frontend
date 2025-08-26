@@ -1,5 +1,6 @@
 "use client";
-import React, { useMemo, useRef } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
+import Link from "next/link";
 import styles from "./styles.module.css";
 
 export type Clinic = {
@@ -19,6 +20,17 @@ const ClinicsSwiper: React.FC<Props> = ({
 }) => {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const items = useMemo(() => clinics ?? [], [clinics]);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(false);
+
+  const slugify = (value: string) =>
+    value
+      .toLowerCase()
+      .trim()
+      .replace(/[\u2019'`]/g, "")
+      .replace(/[^a-z0-9\s-]/g, "")
+      .replace(/\s+/g, "-")
+      .replace(/-+/g, "-");
 
   const scrollBy = (delta: number) => {
     const el = containerRef.current;
@@ -29,11 +41,34 @@ const ClinicsSwiper: React.FC<Props> = ({
   const getScrollStep = () => {
     const el = containerRef.current;
     if (!el) return 0;
-    // Approximate one-card width: container width split into 5, including gap
-    const gap = 16; // must match CSS gap
+    const gap = 16;
     const oneCard = Math.floor((el.clientWidth - gap * 4) / 5) + gap;
     return oneCard;
   };
+
+  const updateArrows = () => {
+    const el = containerRef.current;
+    if (!el) {
+      setCanScrollLeft(false);
+      setCanScrollRight(false);
+      return;
+    }
+    const maxScroll = el.scrollWidth - el.clientWidth;
+    const left = el.scrollLeft;
+    setCanScrollLeft(left > 2);
+    setCanScrollRight(left < maxScroll - 2);
+  };
+
+  useEffect(() => {
+    updateArrows();
+    const handle = () => updateArrows();
+    window.addEventListener("resize", handle);
+    const id = setInterval(updateArrows, 400);
+    return () => {
+      window.removeEventListener("resize", handle);
+      clearInterval(id);
+    };
+  }, []);
 
   return (
     <div className={styles.wrapper}>
@@ -41,36 +76,55 @@ const ClinicsSwiper: React.FC<Props> = ({
         <h3 className={styles.title}>{title}</h3>
       </div>
       <div className={styles.scrollerWrap}>
-        <button
-          aria-label="Prev"
-          className={`${styles.arrowBtn} ${styles.arrowLeft}`}
-          onClick={() => scrollBy(-getScrollStep())}
+        {canScrollLeft ? (
+          <button
+            aria-label="Prev"
+            className={`${styles.arrowBtn} ${styles.arrowLeft}`}
+            onClick={() => {
+              scrollBy(-getScrollStep());
+              setTimeout(updateArrows, 200);
+            }}
+          >
+            <span className={styles.arrowIcon}>‹</span>
+          </button>
+        ) : null}
+        <div
+          className={styles.scroller}
+          ref={containerRef}
+          onScroll={updateArrows}
         >
-          <span className={styles.arrowIcon}>‹</span>
-        </button>
-        <div className={styles.scroller} ref={containerRef}>
-          {items.map((c) => (
-            <div className={styles.card} key={c.id}>
-              <div className={styles.logoWrap}>
-                <img
-                  className={styles.logo}
-                  src={c.logo_url || "/clinic-default.svg"}
-                  alt={c.name}
-                />
-              </div>
-              <div className={styles.textWrap}>
-                <div className={styles.cardName}>{c.name}</div>
-              </div>
-            </div>
-          ))}
+          {items.map((c) => {
+            const href = `/klinika/${slugify(c.name)}`;
+            return (
+              <Link href={href} key={c.id} className={styles.card}>
+                <div className={styles.logoWrap}>
+                  <img
+                    className={styles.logo}
+                    src={
+                      "https://main.med24.uz/uploads/clinics/group0/part3/3863/200x.webp"
+                    }
+                    alt={c.name}
+                  />
+                </div>
+                <div className={styles.textWrap}>
+                  <div className={styles.cardName}>{c.name}</div>
+                </div>
+              </Link>
+            );
+          })}
         </div>
-        <button
-          aria-label="Next"
-          className={`${styles.arrowBtn} ${styles.arrowRight}`}
-          onClick={() => scrollBy(getScrollStep())}
-        >
-          <span className={styles.arrowIcon}>›</span>
-        </button>
+        {canScrollRight ? (
+          <button
+            aria-label="Next"
+            className={`${styles.arrowBtn} ${styles.arrowRight}`}
+            onClick={() => {
+              scrollBy(getScrollStep());
+              setTimeout(updateArrows, 200);
+            }}
+          >
+            <span className={styles.arrowIcon}>›</span>
+          </button>
+        ) : null}
       </div>
     </div>
   );

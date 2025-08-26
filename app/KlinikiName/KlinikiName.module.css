@@ -47,6 +47,9 @@
 .star {
   color: #fbbf24;
 }
+.starIcon {
+  flex: 0 0 auto;
+}
 .rating {
   background: #fffbeb;
   color: #92400e;
@@ -56,6 +59,17 @@
 }
 .reviews {
   opacity: 0.9;
+  color: #fff;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.commentIcon {
+  opacity: 0.85;
+}
+.dot {
+  opacity: 0.6;
 }
 
 .infoCard {
@@ -63,6 +77,41 @@
   border: 1px solid #e5e7eb;
   border-radius: 12px;
   padding: 16px;
+}
+.map {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  background: #f3f4f6;
+}
+.content {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 16px;
+}
+.desc {
+  margin: 0 0 8px 0;
+  color: #4b5563;
+}
+.services {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.serviceRow {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid #f3f4f6;
+  padding-top: 6px;
+}
+.serviceName {
+  color: #111827;
+}
+.servicePrice {
+  color: #111827;
 }
 .address {
   color: #111827;

@@ -7,7 +7,6 @@
   font-size: 24px;
   font-weight: bold;
   color: #333;
-  margin-bottom: 30px;
 }
 
 .letterGroupsContainer {
@@ -22,8 +21,8 @@
 }
 
 .letterHeader {
-  font-size: 32px;
-  font-weight: bold;
+  font-size: 1.25rem;
+  font-weight: 600;
   color: #333;
   margin-bottom: 20px;
   padding: 0;
@@ -60,14 +59,11 @@
 .serviceName {
   font-weight: 400;
   font-size: 16px;
-  text-decoration: underline;
-  text-decoration-style: dotted;
-  text-underline-offset: 3px;
   flex: 1;
 }
 
 .clinicCount {
-  color: #333;
+  color: gray;
   font-size: 16px;
   font-weight: 400;
   text-decoration: none;
