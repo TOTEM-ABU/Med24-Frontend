@@ -1,0 +1,54 @@
+.miniContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 874px;
+  margin: 0 auto;
+  background-color: gray;
+}
+
+.searchSection input {
+  width: 100%;
+  padding: 13px;
+  outline: none;
+  border: none;
+  border-radius: 4px;
+}
+
+.searchSection button {
+  width: 80px;
+  padding: 13px;
+  outline: none;
+  border: none;
+  border-radius: 4px;
+}
+
+.searchSection {
+  font-size: 16px;
+  width: 100%;
+  display: flex;
+  gap: 20px;
+}
+
+.commonCatalogStyle {
+  width: 100%;
+  margin: 50px auto;
+}
+
+.commonCatalogStyle ul {
+  display: flex;
+  text-decoration: none;
+  list-style: none;
+  gap: 10px;
+}
+
+.catalogStyle {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.catalogStyle div {
+  width: 100px;
+}
