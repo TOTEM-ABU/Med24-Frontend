@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styles from "./Doctors.module.css";
+import { Button, Input } from "./components";
 
 const DoctorsPage = () => {
   const doctorsA = [
@@ -69,11 +70,8 @@ const DoctorsPage = () => {
   return (
     <div className={styles.miniContainer}>
       <div className={styles.searchSection}>
-        <input
-          type="text"
-          placeholder="Shifokor ismi, mutaxassislik nomini yoki dori-darmon kiriting"
-        />
-        <button>Qidirish</button>
+        <Input inputPlaceholder="Shifokor ismi, mutaxassislik nomini yoki dori-darmon kiriting" />
+        <Button>Qidirish</Button>
       </div>
       <div className={styles.commonCatalogStyle}>
         <h3>Ommabop mutaxassisliklar</h3>
