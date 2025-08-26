@@ -1,0 +1,11 @@
+.buttonStyle {
+  border: none;
+  outline: none;
+  font-size: 18px;
+  padding: 18px 38px;
+  cursor: pointer;
+  background-color: lemonchiffon;
+  color: blue;
+  line-height: 22px;
+  border-radius: 12px;
+}
