@@ -1,0 +1,21 @@
+.product-details-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.main-text {
+    margin-bottom: 25px;
+    font-size: 28px;
+    font-weight: 600;
+}
+
+.input-container {
+    display: flex;
+    gap: 20px;
+    margin: 70px 0 70px 0;
+}
+
+.details-container {
+        display: flex;
+        gap: 30px;
+}
