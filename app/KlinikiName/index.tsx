@@ -1,6 +1,8 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
+import { useRouter } from "next/navigation";
 import styles from "./KlinikiName.module.css";
+import Breadcrumb from "@/components/Breadcrumb";
 
 export type ClinicHeaderProps = {
   name?: string;
@@ -10,6 +12,7 @@ export type ClinicHeaderProps = {
   cover_url?: string | null;
   logo_url?: string | null;
   description?: string;
+  opening_hours?: Record<string, string>;
   clinicservices?: Array<{
     id: string;
     price?: string | number;
@@ -28,114 +31,370 @@ const KlinikiNameHeader: React.FC<{ clinic: ClinicHeaderProps }> = ({
     cover_url,
     logo_url,
     description,
+    opening_hours,
     clinicservices,
   } = clinic || {};
 
+  const [isExpanded, setIsExpanded] = useState(false);
+  const router = useRouter();
+
+  const createServiceSlug = (serviceName: string) => {
+    return serviceName
+      .toLowerCase()
+      .trim()
+      .replace(/[\u2019'`]/g, "")
+      .replace(/[^a-z0-9\s-]/g, "")
+      .replace(/\s+/g, "-")
+      .replace(/-+/g, "-");
+  };
+
+  const handleServiceClick = (serviceName: string) => {
+    const slug = createServiceSlug(serviceName);
+    router.push(`/Kliniki/${slug}`);
+  };
+
+  const mainServices =
+    clinicservices
+      ?.slice(0, 3)
+      .map((cs) => cs.Services?.name)
+      .filter(Boolean) || [];
+
+  const doctorCount = clinicservices?.length || 45;
+  const reviewCount = reviewsCount || 39;
+
+  const clinicInfo = `🏥 ${name || "MDS Servis"} klinikasi, ${
+    address ? address.split(",")[0] : "Toshkent"
+  }: ${doctorCount} shifokor, ${reviewCount} fikr-mulohaza. Onlayn yoki telefon orqali qabulga yozilish.`;
+
+  const dynamicDescription = `O'zbekistonda birinchi xususiy tibbiyot markazi ${
+    name || "MDS-Servis"
+  } 1996 yilda tashkil etilgan. 30 yillik tajribaga ega ko'p tarmoqli klinika aholiga sifatli tibbiy xizmat ko'rsatishda davom etmoqda. Bu yerda bemorlar ambulator va statsionar sharoitlarda davolanadi. Poliklinika ${
+    address ? address.split(",")[0] : "Toshkent shahrining Yashnobod tumanida"
+  } joylashgan.`;
+
+  const fullDescription = `${dynamicDescription} ${
+    name || "Klinika"
+  } konsultativ poliklinikasi dushanbadan shanbagacha soat 8.30 dan 17.00 gacha bemorlarni qabul qiladi, radiologiya va tez tibbiy yordam bo'limlari kechayu kunduz ishlaydi. ${
+    name || "Klinikada"
+  } ko'p yillik tajribaga ega malakali mutaxassislar ishlaydi. ${
+    mainServices.length > 0
+      ? `${mainServices.join(", ")} `
+      : "Terapevt, dermatovenerolog, kardiolog, LOR, endokrinolog, urolog, ortoped, pediatr, stomatolog, nevropatolog, oftalmolog, fizioterapevt "
+  }mutaxassisliklari bo'yicha shifokorlar faoliyat olib boradi. Yuqori toifadagi jarrohlar turli operatsiyalarni amalga oshiradilar. Bu yerda malakali shifokorlar va hamshiralar tezroq sog'ayishingizga chin dildan yordam beradi. ${
+    name || "Klinikada"
+  } sog'lig'ingizni professionallarga ishonganingizga amin bo'lishingiz mumkin.`;
+
   return (
-    <div className={styles.wrapper}>
-      <div className={styles.media}>
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          className={styles.cover}
-          src={
-            cover_url ||
-            "https://images.unsplash.com/photo-1580281780460-82d277b0e3f9?q=80&w=1800&auto=format&fit=crop"
-          }
-          alt={name || "Clinic"}
-        />
-        <div className={styles.overlayCard}>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            className={styles.logo}
-            src={
-              logo_url ||
-              "https://main.med24.uz/uploads/clinics/group0/part3/3863/200x.webp"
-            }
-            alt={name || "Clinic"}
-          />
-          <div className={styles.meta}>
-            <div className={styles.title}>{name}</div>
-            <div className={styles.subrow}>
-              {typeof rating !== "undefined" ? (
-                <>
-                  <svg
-                    className={styles.starIcon}
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="14"
-                    height="14"
-                    viewBox="0 0 20 20"
-                    fill="#F59E0B"
-                    aria-hidden
-                  >
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 0 0 .95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.802 2.034a1 1 0 0 0-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.802-2.034a1 1 0 0 0-1.176 0l-2.802 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 0 0-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 0 0 .951-.69l1.07-3.292Z" />
-                  </svg>
-                  <span className={styles.rating}>{String(rating)}</span>
-                </>
-              ) : null}
-              <span className={styles.dot}>•</span>
-              {typeof reviewsCount === "number" ? (
-                <a className={styles.reviews} href="#review">
-                  <svg
-                    className={styles.commentIcon}
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="14"
-                    height="14"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                    aria-hidden
-                  >
-                    <path d="M20 2H4a2 2 0 0 0-2 2v16l4-4h14a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2z" />
-                  </svg>{" "}
-                  {reviewsCount} Sharhlar
-                </a>
-              ) : null}
+    <div className={styles.containerWithPadding}>
+      <Breadcrumb
+        items={[
+          { label: "Asosiy sahifa", href: "/" },
+          { label: "Klinikalar", href: "/Kliniki" },
+          { label: name || "Klinika" },
+        ]}
+      />
+
+      <div className={styles.miniContainer}>
+        <div className={styles.mainLayout}>
+          <div className={styles.backgroundImageSection}>
+            <img
+              className={styles.backgroundImage}
+              src="https://main.med24.uz/uploads/clinic_images/group0/part0/591/1000x500.webp"
+              alt={name || "Clinic Background"}
+            />
+            <div className={styles.clinicInfoOverlay}>
+              <img
+                className={styles.clinicLogo}
+                src={
+                  logo_url ||
+                  "https://main.med24.uz/uploads/clinics/group0/part3/3863/200x.webp"
+                }
+                alt={name || "Clinic Logo"}
+              />
+              <div className={styles.clinicInfo}>
+                <h1 className={styles.clinicName}>{name}</h1>
+                <div className={styles.statsRow}>
+                  {typeof rating !== "undefined" && (
+                    <>
+                      <span className={styles.ratingText}>
+                        ⭐ {String(rating)}
+                      </span>
+                      {typeof reviewsCount === "number" && (
+                        <>
+                          <span className={styles.separator}>|</span>
+                          <span className={styles.reviewText}>
+                            {reviewsCount} sharhlar
+                          </span>
+                        </>
+                      )}
+                    </>
+                  )}
+                  {typeof rating === "undefined" &&
+                    typeof reviewsCount === "number" && (
+                      <span className={styles.reviewText}>
+                        {reviewsCount} sharhlar
+                      </span>
+                    )}
+                </div>
+              </div>
+            </div>
+            <p className={styles.descriptionText}>{clinicInfo}</p>
+            <p className={styles.descriptionText}>
+              {isExpanded ? fullDescription : dynamicDescription}
+            </p>
+            <button
+              className={styles.toggleButton}
+              onClick={() => setIsExpanded(!isExpanded)}
+            >
+              {isExpanded ? "yashirmoq" : "yana"}
+            </button>
+
+            <div className={styles.servicesSection}>
+              <h3 className={styles.servicesTitle}>
+                Shifokorlar mutaxassisliklari
+              </h3>
+              <div className={styles.servicesList}>
+                {clinicservices && clinicservices.length > 0 ? (
+                  clinicservices.map(
+                    (service, index) =>
+                      service.Services?.name && (
+                        <span
+                          key={service.id || index}
+                          className={styles.serviceItem}
+                          onClick={() =>
+                            service.Services?.name &&
+                            handleServiceClick(service.Services.name)
+                          }
+                        >
+                          {service.Services.name}
+                        </span>
+                      )
+                  )
+                ) : (
+                  <>
+                    <span
+                      className={styles.serviceItem}
+                      onClick={() => handleServiceClick("Akusher")}
+                    >
+                      Akusher
+                    </span>
+                    <span
+                      className={styles.serviceItem}
+                      onClick={() => handleServiceClick("Allergolog")}
+                    >
+                      Allergolog
+                    </span>
+                    <span
+                      className={styles.serviceItem}
+                      onClick={() => handleServiceClick("Androlog")}
+                    >
+                      Androlog
+                    </span>
+                    <span
+                      className={styles.serviceItem}
+                      onClick={() => handleServiceClick("Dermatovenerelog")}
+                    >
+                      Dermatovenerelog
+                    </span>
+                    <span
+                      className={styles.serviceItem}
+                      onClick={() => handleServiceClick("Endokrinolog")}
+                    >
+                      Endokrinolog
+                    </span>
+                    <span
+                      className={styles.serviceItem}
+                      onClick={() => handleServiceClick("Endoskopist")}
+                    >
+                      Endoskopist
+                    </span>
+                    <span
+                      className={styles.serviceItem}
+                      onClick={() => handleServiceClick("Gastroenterolog")}
+                    >
+                      Gastroenterolog
+                    </span>
+                    <span
+                      className={styles.serviceItem}
+                      onClick={() => handleServiceClick("Ginekolog")}
+                    >
+                      Ginekolog
+                    </span>
+                    <span
+                      className={styles.serviceItem}
+                      onClick={() => handleServiceClick("Jarroh")}
+                    >
+                      Jarroh
+                    </span>
+                    <span
+                      className={styles.serviceItem}
+                      onClick={() => handleServiceClick("Kardiolog")}
+                    >
+                      Kardiolog
+                    </span>
+                    <span
+                      className={styles.serviceItem}
+                      onClick={() => handleServiceClick("Laborant")}
+                    >
+                      Laborant
+                    </span>
+                    <span
+                      className={styles.serviceItem}
+                      onClick={() => handleServiceClick("LOR (Otolaringolog)")}
+                    >
+                      LOR (Otolaringolog)
+                    </span>
+                    <span
+                      className={styles.serviceItem}
+                      onClick={() => handleServiceClick("Nevrolog")}
+                    >
+                      Nevrolog
+                    </span>
+                    <span
+                      className={styles.serviceItem}
+                      onClick={() => handleServiceClick("Neonatolog")}
+                    >
+                      Neonatolog
+                    </span>
+                    <span
+                      className={styles.serviceItem}
+                      onClick={() => handleServiceClick("Oftalmolog")}
+                    >
+                      Oftalmolog
+                    </span>
+                    <span
+                      className={styles.serviceItem}
+                      onClick={() => handleServiceClick("Ortoped")}
+                    >
+                      Ortoped
+                    </span>
+                    <span
+                      className={styles.serviceItem}
+                      onClick={() => handleServiceClick("Pediatr")}
+                    >
+                      Pediatr
+                    </span>
+                    <span
+                      className={styles.serviceItem}
+                      onClick={() => handleServiceClick("Pulmonolog")}
+                    >
+                      Pulmonolog
+                    </span>
+                    <span
+                      className={styles.serviceItem}
+                      onClick={() => handleServiceClick("Radiolog")}
+                    >
+                      Radiolog
+                    </span>
+                    <span
+                      className={styles.serviceItem}
+                      onClick={() => handleServiceClick("Rentgenolog")}
+                    >
+                      Rentgenolog
+                    </span>
+                    <span
+                      className={styles.serviceItem}
+                      onClick={() => handleServiceClick("Revmatolog")}
+                    >
+                      Revmatolog
+                    </span>
+                    <span
+                      className={styles.serviceItem}
+                      onClick={() => handleServiceClick("Stomatolog")}
+                    >
+                      Stomatolog
+                    </span>
+                    <span
+                      className={styles.serviceItem}
+                      onClick={() => handleServiceClick("Stomatolog-terapevt")}
+                    >
+                      Stomatolog-terapevt
+                    </span>
+                    <span
+                      className={styles.serviceItem}
+                      onClick={() => handleServiceClick("Terapevt")}
+                    >
+                      Terapevt
+                    </span>
+                    <span
+                      className={styles.serviceItem}
+                      onClick={() => handleServiceClick("Tez yordam shifokori")}
+                    >
+                      Tez yordam shifokori
+                    </span>
+                    <span
+                      className={styles.serviceItem}
+                      onClick={() => handleServiceClick("Torakal jarroh")}
+                    >
+                      Torakal jarroh
+                    </span>
+                    <span
+                      className={styles.serviceItem}
+                      onClick={() => handleServiceClick("Travmatolog")}
+                    >
+                      Travmatolog
+                    </span>
+                    <span
+                      className={styles.serviceItem}
+                      onClick={() =>
+                        handleServiceClick("Ultratovush mutaxassisi")
+                      }
+                    >
+                      Ultratovush mutaxassisi
+                    </span>
+                    <span
+                      className={styles.serviceItem}
+                      onClick={() => handleServiceClick("Urolog")}
+                    >
+                      Urolog
+                    </span>
+                    <span
+                      className={styles.serviceItem}
+                      onClick={() => handleServiceClick("Vertebrolog")}
+                    >
+                      Vertebrolog
+                    </span>
+                  </>
+                )}
+              </div>
             </div>
           </div>
-        </div>
-      </div>
 
-      {description ||
-      (Array.isArray(clinicservices) && clinicservices.length) ? (
-        <div className={styles.content}>
-          {description ? <p className={styles.desc}>{description}</p> : null}
-          {Array.isArray(clinicservices) && clinicservices.length ? (
-            <div className={styles.services}>
-              {clinicservices.slice(0, 3).map((cs) => (
-                <div key={cs.id} className={styles.serviceRow}>
-                  <span className={styles.serviceName}>
-                    {cs?.Services?.name}
-                  </span>
-                  {typeof cs.price !== "undefined" ? (
-                    <span className={styles.servicePrice}>
-                      {Intl.NumberFormat("uz-UZ").format(Number(cs.price))}{" "}
-                      so&#39;m
-                    </span>
-                  ) : null}
-                </div>
-              ))}
+          <div className={styles.mapSection}>
+            <div className={styles.mapContainer}>
+              <iframe
+                className={styles.mapImage}
+                src="https://www.openstreetmap.org/export/embed.html?bbox=69.235562%2C41.306081%2C69.245562%2C41.316081&layer=mapnik&marker=41.311081%2C69.240562"
+                title="Clinic Location"
+                style={{ border: 0 }}
+              />
             </div>
-          ) : null}
-        </div>
-      ) : null}
-
-      <div className={styles.infoCard}>
-        {/* Static map placeholder image */}
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          className={styles.map}
-          src={
-            "https://maps.gstatic.com/tactile/omnibox/markers/marker_sprite.png"
-          }
-          alt="Xarita"
-        />
-        {address ? <div className={styles.address}>{address}</div> : null}
-        <div className={styles.actions}>
-          <a className={styles.callBtn} href="#">
-            Klinikaga telefon qilish
-          </a>
-          <a className={styles.secondaryBtn} href="#">
-            Qabulga yozilish
-          </a>
+            <div className={styles.mapInfo}>
+              <div className={styles.addressText}>
+                <div className={styles.locationName}>
+                  {address || "Manzil ko\u2019rsatilmagan"}
+                </div>
+                <div className={styles.locationSubtext}>
+                  {opening_hours
+                    ? Object.values(opening_hours).some(
+                        (hours) =>
+                          hours === "24/7" || hours?.includes("00:00-23:59")
+                      )
+                      ? "Har doim ochiq"
+                      : "Ish vaqti ko\u2019rsatilgan"
+                    : "Ish vaqti ma\u2019lum emas"}
+                </div>
+              </div>
+              <div className={styles.actionButtons}>
+                <button className={styles.callButton}>
+                  Klinikaga telefon qilish
+                </button>
+                <button className={styles.appointmentButton}>
+                  Qabulga yozilish
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

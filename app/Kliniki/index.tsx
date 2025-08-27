@@ -41,11 +41,13 @@ const Kliniki: React.FC = () => {
       return res.data?.data ?? [];
     },
   });
-  const { data: allClinics } = useQuery({
+
+  const { data: allClinics, isLoading: clinicsLoading } = useQuery({
     queryKey: ["clinics-total-count"],
     queryFn: async () => {
+      const include = ["Region"].join(",");
       const res = await axios.get(
-        `${process.env.NEXT_PUBLIC_API_URL}/clinics?limit=1000`
+        `${process.env.NEXT_PUBLIC_API_URL}/clinics?include=${include}&limit=1000`
       );
       return res.data?.data ?? [];
     },
@@ -56,11 +58,22 @@ const Kliniki: React.FC = () => {
   const [timeFilter, setTimeFilter] = React.useState<string>("none");
 
   const uniqueDistricts = React.useMemo(() => {
+    console.log("All clinics data:", allClinics);
+
     const set = new Set<string>();
     (allClinics as Clinic[] | undefined)?.forEach((c) => {
-      if (c?.Region?.name) set.add(c.Region.name);
+      if (c?.address) {
+        const addressParts = c.address.split(",");
+        if (addressParts.length >= 2) {
+          const district = addressParts[1].trim();
+          console.log("Found district from address:", district);
+          set.add(district);
+        }
+      }
     });
-    return Array.from(set).sort((a, b) => a.localeCompare(b));
+    const result = Array.from(set).sort((a, b) => a.localeCompare(b));
+    console.log("Extracted districts from addresses:", result);
+    return result;
   }, [allClinics]);
 
   const isOpen24x7 = React.useCallback((c: Clinic) => {
@@ -102,7 +115,16 @@ const Kliniki: React.FC = () => {
   const filteredClinics: Clinic[] = React.useMemo(() => {
     let list: Clinic[] = (allClinics as Clinic[]) ?? [];
     if (district !== "all") {
-      list = list.filter((c) => c.Region?.name === district);
+      list = list.filter((c) => {
+        if (c?.address) {
+          const addressParts = c.address.split(",");
+          if (addressParts.length >= 2) {
+            const clinicDistrict = addressParts[1].trim();
+            return clinicDistrict === district;
+          }
+        }
+        return false;
+      });
     }
     if (typeFilter !== "all") {
       list = list.filter((c) => c.type === (typeFilter as Clinic["type"]));
@@ -170,88 +192,96 @@ const Kliniki: React.FC = () => {
         <RecomendedTypes />
         <LatestReviews />
 
-        {Array.isArray(allClinics) && allClinics.length ? (
-          <div style={{ marginTop: 24, marginBottom: 24 }}>
-            <div style={{ marginBottom: 16 }}>
-              <h1
-                className={styles["main-title"]}
-                style={{ display: "flex", alignItems: "baseline", gap: 8 }}
-              >
-                Toshkentdagi klinikalar va tibbiyot markazlari
-                <span style={{ color: "#6b7280", fontSize: 14 }}>
-                  {filteredClinics.length} Klinikalar
-                </span>
-              </h1>
-              <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
-                <select
-                  value={district}
-                  onChange={(e) => setDistrict(e.target.value)}
-                  style={{
-                    padding: "10px 14px",
-                    borderRadius: 12,
-                    border: "1px solid #e5e7eb",
-                    background: "#f9fafb",
-                    color: "#374151",
-                  }}
+        <div
+          style={{ backgroundColor: "rgb(229 231 235/var(--tw-bg-opacity))" }}
+        >
+          {Array.isArray(allClinics) && allClinics.length ? (
+            <div style={{ marginTop: 24, marginBottom: 24 }}>
+              <div style={{ marginBottom: 16 }}>
+                <h1
+                  className={styles["main-title"]}
+                  style={{ display: "flex", alignItems: "baseline", gap: 8 }}
                 >
-                  <option value="all">Tuman (hammasi)</option>
-                  {uniqueDistricts.map((d) => (
-                    <option key={d} value={d}>
-                      {d}
+                  Toshkentdagi klinikalar va tibbiyot markazlari
+                  <span style={{ color: "#6b7280", fontSize: 14 }}>
+                    {filteredClinics.length} Klinikalar
+                  </span>
+                </h1>
+                <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
+                  <select
+                    value={district}
+                    onChange={(e) => setDistrict(e.target.value)}
+                    disabled={clinicsLoading}
+                    style={{
+                      padding: "10px 14px",
+                      borderRadius: 12,
+                      border: "1px solid #e5e7eb",
+                      background: clinicsLoading ? "#f3f4f6" : "#f9fafb",
+                      color: "#374151",
+                      cursor: clinicsLoading ? "wait" : "pointer",
+                    }}
+                  >
+                    <option value="all">
+                      {clinicsLoading ? "Yuklanmoqda..." : "Tuman (hammasi)"}
                     </option>
-                  ))}
-                </select>
-                <select
-                  value={typeFilter}
-                  onChange={(e) => setTypeFilter(e.target.value)}
-                  style={{
-                    padding: "10px 14px",
-                    borderRadius: 12,
-                    border: "1px solid #e5e7eb",
-                    background: "#f9fafb",
-                    color: "#374151",
-                  }}
-                >
-                  <option value="all">Tibbiy muassasa turi (hammasi)</option>
-                  <option value="PUBLIC">Davlat</option>
-                  <option value="PRIVATE">Xususiy</option>
-                  <option value="VETERINARY">Veterinariya</option>
-                </select>
-                <select
-                  value={timeFilter}
-                  onChange={(e) => setTimeFilter(e.target.value)}
-                  style={{
-                    padding: "10px 14px",
-                    borderRadius: 12,
-                    border: "1px solid #e5e7eb",
-                    background: "#f9fafb",
-                    color: "#374151",
-                  }}
-                >
-                  <option value="none">Ish vaqti (hammasi)</option>
-                  <option value="TUESDAY">Seshanba</option>
-                  <option value="SUNDAY">Yakshanba</option>
-                  <option value="OPEN_NOW">Hozir ochiq</option>
-                  <option value="TWENTY_FOUR_SEVEN">24/7 ishlaydi</option>
-                </select>
+                    {uniqueDistricts.map((d) => (
+                      <option key={d} value={d}>
+                        {d}
+                      </option>
+                    ))}
+                  </select>
+                  <select
+                    value={typeFilter}
+                    onChange={(e) => setTypeFilter(e.target.value)}
+                    style={{
+                      padding: "10px 14px",
+                      borderRadius: 12,
+                      border: "1px solid #e5e7eb",
+                      background: "#f9fafb",
+                      color: "#374151",
+                    }}
+                  >
+                    <option value="all">Tibbiy muassasa turi (hammasi)</option>
+                    <option value="PUBLIC">Davlat</option>
+                    <option value="PRIVATE">Xususiy</option>
+                    <option value="VETERINARY">Veterinariya</option>
+                  </select>
+                  <select
+                    value={timeFilter}
+                    onChange={(e) => setTimeFilter(e.target.value)}
+                    style={{
+                      padding: "10px 14px",
+                      borderRadius: 12,
+                      border: "1px solid #e5e7eb",
+                      background: "#f9fafb",
+                      color: "#374151",
+                    }}
+                  >
+                    <option value="none">Ish vaqti (hammasi)</option>
+                    <option value="TUESDAY">Seshanba</option>
+                    <option value="SUNDAY">Yakshanba</option>
+                    <option value="OPEN_NOW">Hozir ochiq</option>
+                    <option value="TWENTY_FOUR_SEVEN">24/7 ishlaydi</option>
+                  </select>
+                </div>
+              </div>
+              <div
+                style={{
+                  maxWidth: 874,
+                  margin: "0 auto",
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: 16,
+                }}
+              >
+                {filteredClinics.map((c: Clinic) => (
+                  <ClinicCard key={c.id} clinic={c} />
+                ))}
               </div>
             </div>
-            <div
-              style={{
-                maxWidth: 874,
-                margin: "0 auto",
-                display: "flex",
-                flexDirection: "column",
-                gap: 16,
-              }}
-            >
-              {filteredClinics.map((c: Clinic) => (
-                <ClinicCard key={c.id} clinic={c} />
-              ))}
-            </div>
-          </div>
-        ) : null}
-        <AskTelegram />
+          ) : null}
+          <AskTelegram />
+        </div>
         <Districts />
 
         <div style={{ marginTop: 24, marginBottom: 24 }}>

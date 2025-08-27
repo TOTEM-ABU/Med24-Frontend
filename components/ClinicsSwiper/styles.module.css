@@ -50,10 +50,13 @@
   scroll-behavior: smooth;
   padding-bottom: 8px;
   scroll-snap-type: x mandatory;
+  /* Hide scrollbar for all browsers */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
 }
 
 .scroller::-webkit-scrollbar {
-  height: 0;
+  display: none; /* WebKit */
 }
 
 .card {

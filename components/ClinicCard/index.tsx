@@ -30,6 +30,7 @@ export type Clinic = {
     name?: string;
     surname?: string;
     specialty?: string;
+    specialtiesId?: string;
     image_url?: string;
     rating?: number;
     reviews_count?: number;
@@ -51,11 +52,9 @@ type Props = {
 };
 
 const ClinicCard: React.FC<Props> = ({ clinic }) => {
-  const DEFAULT_DOCTOR_IMG =
-    "data:image/jpeg;base64,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";
+  const DEFAULT_DOCTOR_IMG = "/doctor.jpg";
   const {
     name,
-    // type,
     description,
     address,
     phone,
@@ -79,6 +78,9 @@ const ClinicCard: React.FC<Props> = ({ clinic }) => {
     return values.some((v) => /24\s*\/\s*7|24x7|24-7/i.test(String(v)));
   }, [opening_hours]);
   const [expanded, setExpanded] = React.useState(false);
+  const [canScrollLeftDoctors, setCanScrollLeftDoctors] = React.useState(false);
+  const [canScrollRightDoctors, setCanScrollRightDoctors] =
+    React.useState(false);
   const reviewsCount = Array.isArray(reviews) ? reviews.length : undefined;
   const slugify = (value: string) =>
     value
@@ -91,11 +93,47 @@ const ClinicCard: React.FC<Props> = ({ clinic }) => {
   const reviewsUrl = name ? `/klinika/${slugify(name)}#review` : undefined;
 
   const doctorsScrollerRef = React.useRef<HTMLDivElement | null>(null);
+
+  const updateDoctorArrows = () => {
+    const el = doctorsScrollerRef.current;
+    if (!el) {
+      setCanScrollLeftDoctors(false);
+      setCanScrollRightDoctors(false);
+      return;
+    }
+    const maxScroll = el.scrollWidth - el.clientWidth;
+    const left = el.scrollLeft;
+    setCanScrollLeftDoctors(left > 2);
+    setCanScrollRightDoctors(left < maxScroll - 2);
+  };
+
   const scrollDoctors = (delta: number) => {
     if (doctorsScrollerRef.current) {
       doctorsScrollerRef.current.scrollBy({ left: delta, behavior: "smooth" });
+      setTimeout(updateDoctorArrows, 200);
     }
   };
+
+  const specialtiesById = React.useMemo(() => {
+    const map: Record<string, string> = {};
+    (clinic.doctors ?? []).forEach((doc) => {
+      const sid = doc?.Specialties?.id;
+      const sname = doc?.Specialties?.name;
+      if (sid && sname && !map[sid]) map[sid] = String(sname);
+    });
+    return map;
+  }, [clinic.doctors]);
+
+  React.useEffect(() => {
+    updateDoctorArrows();
+    const handle = () => updateDoctorArrows();
+    window.addEventListener("resize", handle);
+    const id = setInterval(updateDoctorArrows, 400);
+    return () => {
+      window.removeEventListener("resize", handle);
+      clearInterval(id);
+    };
+  }, []);
 
   return (
     <div className={styles.card}>
@@ -107,9 +145,7 @@ const ClinicCard: React.FC<Props> = ({ clinic }) => {
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src={
-                "https://main.med24.uz/uploads/clinics/group0/part3/3863/200x.webp"
-              }
+              src={clinic.logo_url || "/placeholder-logo.png"}
               alt={name}
               className={styles.logo}
             />
@@ -201,7 +237,6 @@ const ClinicCard: React.FC<Props> = ({ clinic }) => {
             </button>
             <div className={styles.doctors} ref={doctorsScrollerRef}>
               {doctors.map((d, idx) => {
-                // Prefer per-doctor reviews_count; fallback to count reviews linked to doctor from clinic.reviews if provided
                 const docReviewsCount =
                   typeof d.reviews_count === "number"
                     ? d.reviews_count
@@ -210,51 +245,37 @@ const ClinicCard: React.FC<Props> = ({ clinic }) => {
                     : undefined;
                 const ratingValue =
                   typeof d.rating === "string" ? Number(d.rating) : d.rating;
+                const specialtyName =
+                  d?.Specialties?.name ||
+                  d?.specialty ||
+                  (d?.specialtiesId
+                    ? specialtiesById[d.specialtiesId] || ""
+                    : "");
                 return (
                   <div
                     key={(d.id as string) ?? String(idx)}
                     className={styles.doctor}
                   >
+                    {/* Image on the left */}
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={DEFAULT_DOCTOR_IMG}
-                      alt={`${d.first_name ?? ""}`}
+                      alt={`${d.first_name || d.name || ""}`}
                       className={styles.doctorAvatar}
                     />
+                    {/* Text on the right */}
                     <div className={styles.doctorMeta}>
                       <div className={styles.doctorName}>
                         {`${d.first_name || d.name || ""} ${
                           d.last_name || d.surname || ""
                         }`.trim()}
                       </div>
-                      {d.specialty || d?.Specialties?.name ? (
+                      {specialtyName ? (
                         <div className={styles.doctorSpecialty}>
-                          {d.specialty || d?.Specialties?.name}
+                          {specialtyName}
                         </div>
                       ) : null}
-                      {d.bio ? (
-                        <div className={styles.doctorEducation}>{d.bio}</div>
-                      ) : null}
-                      {d.title || d.degree || d.qualification ? (
-                        <div className={styles.doctorSpecialty}>
-                          {(d.title || d.degree || d.qualification) as string}
-                        </div>
-                      ) : null}
-                      {d.education ? (
-                        <div className={styles.doctorEducation}>
-                          {d.education}
-                        </div>
-                      ) : null}
-                      {typeof d.experience_years === "number" ? (
-                        <div className={styles.doctorExperience}>
-                          {d.experience_years} yil tajriba
-                        </div>
-                      ) : d.experience ? (
-                        <div className={styles.doctorExperience}>
-                          {d.experience}
-                        </div>
-                      ) : null}
-                      {(typeof d.rating === "number" ||
+                      {(typeof ratingValue === "number" ||
                         typeof docReviewsCount === "number") && (
                         <div className={styles.doctorStats}>
                           {typeof ratingValue === "number" ? (
@@ -275,6 +296,10 @@ const ClinicCard: React.FC<Props> = ({ clinic }) => {
                               </span>
                             </>
                           ) : null}
+                          {typeof ratingValue === "number" &&
+                            typeof docReviewsCount === "number" && (
+                              <span className={styles.separator}>|</span>
+                            )}
                           {typeof docReviewsCount === "number" ? (
                             <span className={styles.reviewsSmall}>
                               {docReviewsCount} sharhlar

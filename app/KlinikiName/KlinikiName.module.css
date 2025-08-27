@@ -1,140 +1,266 @@
-.wrapper {
-  display: grid;
-  grid-template-columns: 1fr 360px;
-  gap: 16px;
-}
-.media {
-  position: relative;
-}
-.cover {
-  width: 100%;
-  height: 260px;
-  object-fit: cover;
-  border-radius: 14px;
-}
-.overlayCard {
-  position: absolute;
-  left: 16px;
-  bottom: 16px;
-  display: flex;
-  gap: 12px;
-  align-items: center;
-  background: rgba(17, 24, 39, 0.6);
-  color: #fff;
-  padding: 10px 12px;
-  border-radius: 12px;
-  backdrop-filter: blur(4px);
-}
-.logo {
-  width: 64px;
-  height: 64px;
-  border-radius: 10px;
-  object-fit: cover;
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  background: #fff;
-}
-.meta {
-}
-.title {
-  font-weight: 700;
-  font-size: 18px;
-}
-.subrow {
-  display: flex;
-  gap: 10px;
-  align-items: center;
-}
-.star {
-  color: #fbbf24;
-}
-.starIcon {
-  flex: 0 0 auto;
-}
-.rating {
-  background: #fffbeb;
-  color: #92400e;
-  border: 1px solid #fbbf24;
-  border-radius: 9999px;
-  padding: 0 6px;
-}
-.reviews {
-  opacity: 0.9;
-  color: #fff;
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-}
-.commentIcon {
-  opacity: 0.85;
-}
-.dot {
-  opacity: 0.6;
+.containerWithPadding {
+  max-width: 1052px;
+  margin: 0 auto;
 }
 
-.infoCard {
-  background: #fff;
-  border: 1px solid #e5e7eb;
-  border-radius: 12px;
-  padding: 16px;
-}
-.map {
+.miniContainer {
   width: 100%;
-  height: 180px;
-  object-fit: cover;
-  border-radius: 10px;
-  margin-bottom: 10px;
-  background: #f3f4f6;
+  max-width: 874px;
+  height: 100%;
+  margin: 0 89px;
 }
-.content {
+
+.mainLayout {
+  display: flex;
+  gap: 17px;
+  width: 100%;
+}
+
+.mapSection {
+  width: 340px;
+  height: 412px;
   background: #fff;
-  border: 1px solid #e5e7eb;
   border-radius: 12px;
-  padding: 16px;
-}
-.desc {
-  margin: 0 0 8px 0;
-  color: #4b5563;
-}
-.services {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
   display: flex;
   flex-direction: column;
-  gap: 6px;
 }
-.serviceRow {
+
+.mapContainer {
+  height: 196px;
+  position: relative;
+}
+
+.mapImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border: 0;
+}
+
+.mapImage iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.mapInfo {
+  padding: 20px;
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
-  border-top: 1px solid #f3f4f6;
-  padding-top: 6px;
+  height: 216px;
+  box-sizing: border-box;
 }
-.serviceName {
-  color: #111827;
+
+.addressText {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 24px;
 }
-.servicePrice {
-  color: #111827;
+
+.locationName {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1f2937;
+  line-height: 1.25;
 }
-.address {
-  color: #111827;
-  margin-bottom: 8px;
+
+.locationSubtext {
+  font-size: 14px;
+  color: #6b7280;
+  line-height: 1.4;
 }
-.actions {
+
+.actionButtons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.callButton {
+  background: #3b82f6;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 14px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  text-align: center;
+}
+
+.callButton:hover {
+  background: #2563eb;
+}
+
+.appointmentButton {
+  background: transparent;
+  color: #3b82f6;
+  border: none;
+  border-radius: 8px;
+  padding: 14px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  transition: color 0.2s;
+}
+
+.appointmentButton:hover {
+  color: #2563eb;
+}
+
+.backgroundImageSection {
+  position: relative;
+  width: 517px;
+  height: 251px;
+  margin-bottom: 40px;
+}
+
+.backgroundImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 16px;
+}
+
+.clinicInfoOverlay {
+  position: absolute;
+  bottom: 5px;
+  left: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 16px;
+  border-radius: 12px;
+}
+
+.clinicLogo {
+  width: 60px;
+  height: 60px;
+  border-radius: 8px;
+  object-fit: cover;
+  background: #fff;
+  border: 2px solid rgba(255, 255, 255, 0.8);
+}
+
+.clinicInfo {
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
-.callBtn {
-  background: #2563eb;
+
+.clinicName {
   color: #fff;
-  border-radius: 8px;
-  padding: 10px 12px;
-  text-align: center;
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.statsRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ratingText {
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.separator {
+  color: #d1d5db;
+  margin: 0 6px;
+  font-weight: 300;
+}
+
+.reviewText {
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.descriptionSection {
+  margin-top: 10px;
+  padding: 16px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+}
+
+.descriptionText {
+  color: #374151;
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 0 0 12px 0;
+}
+
+.toggleButton {
+  background: transparent;
+  color: #3b82f6;
+  border: none;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.2s;
+}
+
+.toggleButton:hover {
+  color: #2563eb;
+}
+
+.servicesSection {
+  margin-top: 20px;
+  padding: 20px 0;
+}
+
+.servicesTitle {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1f2937;
+  margin: 0 0 16px 0;
+  line-height: 1.3;
+}
+
+.servicesList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.serviceItem {
+  background: transparent;
+  color: #3b82f6;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.4;
+  cursor: pointer;
+  transition: color 0.2s;
   text-decoration: none;
 }
-.secondaryBtn {
-  background: #f3f4f6;
-  color: #111827;
-  border-radius: 8px;
-  padding: 10px 12px;
-  text-align: center;
-  text-decoration: none;
+
+.serviceItem:hover {
+  color: #2563eb;
+  text-decoration: underline;
+}
+
+.serviceItem:not(:last-child)::after {
+  content: ",";
+  color: #6b7280;
+  margin-right: 8px;
+}
+
+.oldReviewText {
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
 }
