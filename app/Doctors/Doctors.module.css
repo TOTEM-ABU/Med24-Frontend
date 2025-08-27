@@ -1,0 +1,39 @@
+.miniContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 874px;
+  margin: 100px auto;
+  background-color: #ffffff;
+}
+
+.searchSection {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+}
+
+.commonCatalogStyle {
+  width: 100%;
+  margin: 50px auto;
+}
+
+.commonCatalogStyle ul {
+  display: flex;
+  text-decoration: none;
+  list-style: none;
+  gap: 10px;
+}
+
+.catalogStyle {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.catalogStyle div {
+  width: 100px;
+}
