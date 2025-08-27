@@ -1,0 +1,41 @@
+.promotions-container {
+    h1 {
+        margin-bottom: 30px;
+    }
+}
+
+.header-container {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.cards-container {
+    background-color: #F3F5F6;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin: 0 auto;
+}
+
+.card-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+/* Responsive design */
+@media (max-width: 1024px) {
+    .cards-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        padding: 30px 16px;
+    }
+}
+
+@media (max-width: 768px) {
+    .cards-container {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 24px 16px;
+    }
+}
