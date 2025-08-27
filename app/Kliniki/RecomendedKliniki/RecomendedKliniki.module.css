@@ -1,0 +1,97 @@
+.recomendedKliniki {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.recomendedKliniki h3 {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+}
+
+.letterGroupsContainer {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+  width: 100%;
+}
+
+.letterGroup {
+  margin-bottom: 0;
+}
+
+.letterHeader {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 20px;
+  padding: 0;
+}
+
+.servicesList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-left: 0;
+  width: 100%;
+}
+
+.serviceLink {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  text-decoration: none;
+  color: #2563eb;
+  border: none;
+  background: none;
+  transition: none;
+  width: 100%;
+}
+
+.serviceLink:hover {
+  background: none;
+  border: none;
+  transform: none;
+  box-shadow: none;
+}
+
+.serviceName {
+  font-weight: 400;
+  font-size: 16px;
+  flex: 1;
+}
+
+.clinicCount {
+  color: gray;
+  font-size: 16px;
+  font-weight: 400;
+  text-decoration: none;
+  margin-left: 10px;
+}
+
+@media (max-width: 1200px) {
+  .letterGroupsContainer {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .letterGroupsContainer {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .letterGroupsContainer {
+    grid-template-columns: 1fr;
+  }
+
+  .recomendedKliniki {
+    padding: 15px;
+  }
+
+  .letterHeader {
+    font-size: 28px;
+  }
+}

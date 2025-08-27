@@ -1,0 +1,15 @@
+.bigContainer {
+  width: 100%;
+  max-width: 1052px;
+  height: 100%;
+  margin: 0 auto;
+  margin-bottom: 30px;
+  padding-top: 150px;
+}
+
+.miniContainer {
+  width: 100%;
+  max-width: 874px;
+  height: 100%;
+  margin: 0 auto;
+}
