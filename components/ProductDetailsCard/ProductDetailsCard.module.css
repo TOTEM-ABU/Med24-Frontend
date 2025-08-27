@@ -32,6 +32,11 @@
     max-height: 100%;
     max-width: 100%;
     object-fit: contain;
+    transition: ease 0.3s;
+}
+
+.product-image:hover {
+    transform: scale(1.03);
 }
 
 .product-name {
