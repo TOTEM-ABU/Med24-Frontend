@@ -1,28 +1,31 @@
 .breadcrumb-container {
-  font-size: 14px;
-      margin-top: 16px;
-}
-
-.ordered-list {
-  display: flex;
-  gap: 4px;
+    font-size: 14px;
+    margin-top: 16px;
+  }
+  
+  .ordered-list {
+    display: flex;
+    gap: 4px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
 .full-list {
-  display: flex;
-  gap: 4px;
+    display: flex;
+    gap: 4px;
 }
 
 .active {
-  color: black;
-  font-weight: 400;
+    color: black;
+    font-weight: 400;
 }
 
 .inactive {
-  color: gray;
-  text-decoration: none;
+    color: gray;
+    text-decoration: none;
 }
 
 .separator {
-  color: gray;
+    color: gray;
 }

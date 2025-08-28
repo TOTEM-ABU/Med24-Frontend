@@ -63,25 +63,24 @@ const ProductsPage = () => {
                 </div>
 
                 <div className={styles["promotion-banner"]}>
-                    <div className="bg-[#F6F8F9] cursor-pointer gap-[20px] sm:gap-[64px] items-start overflow-hidden flex sm:flex-row mx-[2px] pt-[39px] pb-[30px] pl-[50px] sm:pl-[55px] rounded-[24px]">
-                        <div className="">
-                            <h2 className="font-[700] text-[34px]">
+                    <div className={styles["promotion-banner-content"]}>
+                        <div className={styles["promotion-banner-text"]}>
+                            <h2 className={styles["promotion-banner-title"]}>
                                 Арбидол – защита
                                 <br /> иммунитета!
                             </h2>
-                            <p className="mb-[19px] mt-[14px] font-[600]">
+                            <p className={styles["promotion-banner-description"]}>
                                 Помогает укрепить иммунную систему и бороться с
                                 вирусами.
                                 <br />
                                 Будьте защищены в любое время!
                             </p>
-                            <button className="bg-[#007AFF] text-[#fff] text-[16px] py-[14px] rounded-[14px] min-w-[220px] border-none">
+                            <button className={styles["promotion-banner-button"]}>
                                 В магазин
                             </button>
                         </div>
-                        <div className="translate-y-[0] sm:translate-y-[-40px] flex flex-col items-center">
+                        <div className={styles["promotion-banner-image"]}>
                             <img
-                                className="max-w-[350px]"
                                 src={img1.src}
                                 alt="Arbidol product"
                             />
@@ -254,7 +253,6 @@ const ProductsPage = () => {
                                 </li>
                             </ul>
                         </div>
-
                         <div>
                             <ul className={styles["table-links"]}>
                                 <li>
@@ -291,6 +289,28 @@ const ProductsPage = () => {
                                 </li>
                             </ul>
                         </div>
+                        <div>
+                            <ul className={styles["table-links"]}>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <ul className={styles["table-links"]}>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul className={styles["table-links"]}>
+                                <li>
+                                    <a href="#">Anestetik vositalar</a>
+                                </li>
+                            </ul>
+                        </div>
 
                         <div>
                             <ul className={styles["table-links"]}>
@@ -307,21 +327,6 @@ const ProductsPage = () => {
                             </ul>
                         </div>
 
-                        <div>
-                            <ul className={styles["table-links"]}>
-                                <li>
-                                    <a href="#">Anestetik vositalar</a>
-                                </li>
-                            </ul>
-                        </div>
-
-                        <div>
-                            <ul className={styles["table-links"]}>
-                                <li>
-                                    <a href="#">Anestetik vositalar</a>
-                                </li>
-                            </ul>
-                        </div>
                         <div>
                             <ul className={styles["table-links"]}>
                                 <li>

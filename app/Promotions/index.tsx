@@ -4,6 +4,7 @@ import styles from "./Promotions.module.css";
 import clinicImg from "./images/clinicImg.webp";
 import PromotionCard from "@/components/PromotionCard";
 import clinicLogo from "./images/clinicLogo.webp";
+import Button from "@/components/Button";
 
 const PromotionsPage = () => {
     const promotions = [
@@ -76,6 +77,9 @@ const PromotionsPage = () => {
                             />
                         </div>
                     ))}
+                    <div className={styles['btn-container']}>
+                    <Button variant="primary" name="Yana ko'rsatish" className={styles['btn']}/>
+                    </div>
                 </div>
             </div>
         </div>
