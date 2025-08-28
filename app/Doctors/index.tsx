@@ -1,6 +1,13 @@
 import React, { useState } from "react";
 import styles from "./Doctors.module.css";
-import { Button, CatalogCard, Input, Typography } from "./components";
+import {
+  Button,
+  CatalogCard,
+  DoctorCard,
+  Input,
+  Select,
+  Typography,
+} from "./components";
 import Link from "next/link";
 
 const DoctorsPage = () => {
@@ -19,6 +26,10 @@ const DoctorsPage = () => {
     "Diyetolog",
     "Embriolog",
     "Endikrionolog",
+    "Fizioterapevt",
+    "Flebolog",
+    "Foniatr",
+    "Ftiziatr",
   ];
   const districts = [
     "Mirobod tumani",
@@ -38,7 +49,7 @@ const DoctorsPage = () => {
     {
       fullName: "Xankeldiyev Nariman Zuxriddinovich",
       type: "Neyrojarroh",
-      patiens: 12,
+      patients: 12,
       firstPrice: "narx so'rov bo'yicha",
       consistentPrice: "narx so'rov bo'yicha",
       clinic: "M-Clinic",
@@ -52,10 +63,6 @@ const DoctorsPage = () => {
   const medicalCenters = ["Davlat tibbiyot markazlari", "Xususiy klinikalar"];
   const doctorGender = ["Erkak", "Ayol"];
 
-  // showAll uchun tur aniqlash
-  const [showAll, setShowAll] = useState<{ [key: string]: boolean }>({});
-
-  // Harf bo‘yicha guruhlash
   const groupedDoctors = doctorsType.reduce(
     (acc: { [key: string]: string[] }, doctor) => {
       const firstLetter = doctor[0].toUpperCase();
@@ -68,11 +75,23 @@ const DoctorsPage = () => {
     {}
   );
 
+  const initialShowAll: { [key: string]: boolean } = {};
+  Object.keys(groupedDoctors).forEach((letter) => {
+    initialShowAll[letter] = false;
+  });
+
+  const [showAll, setShowAll] = useState<{ [key: string]: boolean }>(
+    initialShowAll
+  );
+
   const toggleShowAll = (letter: string) => {
-    setShowAll((prev) => ({
-      ...prev,
-      [letter]: !prev[letter],
-    }));
+    setShowAll((prev) => {
+      console.log("Letter", letter, "New state:", !prev[letter] || false);
+      return {
+        ...prev,
+        [letter]: !prev[letter] || false,
+      };
+    });
   };
 
   return (
@@ -82,7 +101,7 @@ const DoctorsPage = () => {
         <Button>Qidirish</Button>
       </div>
       <div className={styles.commonCatalogStyle}>
-        <Typography size="28" weight="800" bottom="30">
+        <Typography size="28" weight="600" bottom="30">
           Ommabop Mutaxassislar
         </Typography>
         <ul>
@@ -107,7 +126,7 @@ const DoctorsPage = () => {
         </ul>
       </div>
       <div className={styles.catalogStyle}>
-        <Typography size="28" weight="800" bottom="30">
+        <Typography size="28" weight="600" bottom="30">
           Shifokorlar mutaxassisligi bo‘yicha
         </Typography>
         <div className={styles.catalogListStyle}>
@@ -126,8 +145,11 @@ const DoctorsPage = () => {
                   </div>
                 ))}
               {groupedDoctors["A"]?.length > 5 && (
-                <button onClick={() => toggleShowAll("A")}>
-                  {showAll["A"] ? "Yashirish" : "Barchasini ko‘rsatish"}
+                <button
+                  className={styles.activeButton}
+                  onClick={() => toggleShowAll("A")}
+                >
+                  {showAll["A"] ? "Yashirish" : "Hammasi"}
                 </button>
               )}
             </div>
@@ -533,48 +555,62 @@ const DoctorsPage = () => {
           </div>
         </div>
       </div>
-      <h3>Toshkentda shifokorlar mutaxassisligi bo‘yicha</h3>
-      <div className={styles.SelectionStyle}>
-        <select name="doctorsType" id="doctorsType">
-          <option value="1">Mutaxassisliklar bo‘yicha qidiring</option>
-          {doctorsType.map((val, idx) => (
-            <option value={idx} key={idx}>
-              {val}
-            </option>
-          ))}
-        </select>
-        <select name="districts" id="districts">
-          <option value="1">Tuman</option>
-          {districts.map((val, idx) => (
-            <option value={idx} key={idx}>
-              {val}
-            </option>
-          ))}
-        </select>
-        <select name="medicalCenters" id="medicalCenters">
-          <option value="1">Tibbiy muassasa turi</option>
-          {medicalCenters.map((val, idx) => (
-            <option value={idx} key={idx}>
-              {val}
-            </option>
-          ))}
-        </select>
-        <select name="doctorGender" id="doctorGender">
-          <option value="1">Shifokor jinsi</option>
-          {doctorGender.map((val, idx) => (
-            <option value={idx} key={idx}>
-              {val}
-            </option>
-          ))}
-        </select>
+      <div className={styles.selectionsStyle}>
+        <Typography size="28" weight="600" bottom="30">
+          Toshkentda shifokolar mutaxassisligi bo`yicha
+        </Typography>
+        <div className={styles.selections}>
+          <Select
+            options={doctorsType}
+            placeholder="Mutaxassisligi bo'yicha"
+            name="doctorsType"
+            id="doctorsType"
+          />
+          <Select
+            options={districts}
+            placeholder="Tuman"
+            name="districts"
+            id="districts"
+          />
+          <Select
+            options={medicalCenters}
+            placeholder="Tibbiyot muassas turi"
+            name="medicalCenter"
+            id="medicalCenter"
+          />
+          <Select
+            options={doctorGender}
+            placeholder="Shifokor jinsi"
+            name="doctorGender"
+            id="doctorGender"
+          />
+        </div>
       </div>
       <div className={styles.popularDoctors}>
-        {popularDoctors.map((val, idx) => (
-          <div key={idx}>
-            <p>{val.type}</p>
-            <h4>{val.fullName}</h4>
-          </div>
+        {popularDoctors.map((doctor, index) => (
+          <DoctorCard
+            key={index}
+            fullname={doctor.fullName}
+            type={doctor.type}
+            patients={doctor.patients}
+            clinicName={doctor.clinic}
+            location={doctor.location}
+            clinicNumber={doctor.clinicNumber}
+            telegramBotLink={doctor.telegram}
+            photo="xankeldiyevnarimanzuhritdinovich"
+            clinicPhoto="m-clinic"
+            priceOne={doctor.firstPrice}
+            priceTwo={doctor.consistentPrice}
+          />
         ))}
+      </div>
+      <div className={styles.throwTelegram}>
+        <Typography>Kerakli ma`lumot topmadingizmi?</Typography>
+        <Typography>
+          Bizga Telegramda yozing, biz sizga shifokor topib, qabuliga yozib
+          beramiz
+        </Typography>
+        <button>Telegramda yozish</button>
       </div>
     </div>
   );

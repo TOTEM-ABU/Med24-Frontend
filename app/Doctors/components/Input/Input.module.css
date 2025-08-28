@@ -7,18 +7,14 @@
   border: 1px solid #00000020;
   border-radius: 14px;
   gap: 10px;
-  min-width: 713px;
 }
 
 .searchInputStyle input {
   background: none;
   width: 100%;
+  min-width: 650px;
   border: none;
   outline: none;
   font-size: 16px;
   padding: 0;
-  margin: 0;
 }
-
-/* .searchInputStyle image {
-} */

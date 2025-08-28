@@ -1,0 +1,15 @@
+.selectContainer {
+  background-color: #f3f5f6;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+.selectContainer .select {
+  font-size: 16px;
+  background: none;
+  outline: none;
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  cursor: pointer;
+}
