@@ -12,39 +12,44 @@
 
 .popularClinicsGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(132px, 1fr));
   gap: 16px;
 }
 
 .clinicCard {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  justify-content: space-between;
   text-decoration: none;
   padding: 16px;
-  border-radius: 12px;
-  background-color: white;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s, box-shadow 0.2s;
+  border-radius: 20px;
+  background-color: #f9fafb;
+  max-height: 112px;
+  transition: transform 0.2s;
+  position: relative;
+  overflow: hidden;
+  margin-top: 20px;
 }
 
 .clinicCard:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .clinicLogo {
-  width: 60px;
-  height: 60px;
+  width: 34px;
+  height: 34px;
   object-fit: contain;
-  margin-bottom: 12px;
-  border-radius: 8px;
+  align-self: flex-start;
+  margin-bottom: 26px;
 }
 
 .clinicName {
-  font-size: 14px;
-  font-weight: 500;
-  color: #111827;
-  text-align: center;
+  font-size: 16px;
+  color: #0f172a;
+  margin-top: auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
   margin: 0;
 }

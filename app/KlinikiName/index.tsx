@@ -1070,7 +1070,6 @@ const KlinikiNameHeader: React.FC<{ clinic: ClinicHeaderProps }> = ({
           )}
         </div>
 
-        {/* Doctor Cards Section */}
         <div className={styles.doctorCardsSection}>
           <h3 className={styles.sectionTitle}>
             {name || "Klinika"} klinikasi shifokorlari
@@ -1111,7 +1110,6 @@ const KlinikiNameHeader: React.FC<{ clinic: ClinicHeaderProps }> = ({
           </div>
 
           <div className={styles.doctorCardsContainer}>
-            {/* Filter doctors based on selected specialty */}
             {doctors && doctors.length > 0
               ? doctors
                   .filter(
@@ -1161,7 +1159,6 @@ const KlinikiNameHeader: React.FC<{ clinic: ClinicHeaderProps }> = ({
           </div>
         </div>
 
-        {/* Reviews Section */}
         <div className={styles.reviewsSection}>
           <h3 className={styles.sectionTitle}>
             {name || "Klinika"} {allReviews?.length || reviewsCount || 0}{" "}
@@ -1244,7 +1241,6 @@ const KlinikiNameHeader: React.FC<{ clinic: ClinicHeaderProps }> = ({
           )}
         </div>
 
-        {/* Shifokorlarning keng tarqalgan mutaxassisliklari section */}
         <div className={styles.doctorTypesSection}>
           <h3 className={styles.sectionTitle}>
             Shifokorlarning keng tarqalgan mutaxassisliklari
@@ -1298,7 +1294,6 @@ const KlinikiNameHeader: React.FC<{ clinic: ClinicHeaderProps }> = ({
           </div>
         </div>
 
-        {/* Keng tarqalgan tibbiy xizmatlar section */}
         <div className={styles.commonServicesSection}>
           <h3 className={styles.sectionTitle}>
             Keng tarqalgan tibbiy xizmatlar
@@ -1317,8 +1312,7 @@ const KlinikiNameHeader: React.FC<{ clinic: ClinicHeaderProps }> = ({
                       </a>
                     )
                 )
-              : // Fallback services if no clinic services are available
-                [
+              : [
                   "Laboratoriya tekshiruvlari",
                   "Rentgenologiya",
                   "Ultratovush tekshiruvlari",
