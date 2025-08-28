@@ -990,3 +990,58 @@
   font-weight: 500;
   color: #111827;
 }
+
+.doctorCardsSection {
+  width: 100%;
+  max-width: 874px;
+  margin: 30px 0;
+  box-sizing: border-box;
+}
+
+.doctorCardsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Override DoctorCard styles for KlinikiName page */
+.doctorCardsContainer :global(.doctorCardContainer) {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+}
+
+.specialtyFilterContainer {
+  margin-bottom: 20px;
+}
+
+.filterDropdown {
+  position: relative;
+  width: 300px;
+}
+
+.specialtySelect {
+  width: 100%;
+  padding: 12px 16px;
+  appearance: none;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  background-color: #f9fafb;
+  font-size: 14px;
+  color: #374151;
+  cursor: pointer;
+  outline: none;
+}
+
+.specialtySelect:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.5);
+}
+
+.dropdownArrow {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}

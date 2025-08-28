@@ -6,6 +6,8 @@ import Breadcrumb from "@/components/Breadcrumb";
 import toast, { Toaster } from "react-hot-toast";
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
+import { DoctorCard } from "@/app/Doctors/components";
+import { PopularClinics } from "@/components";
 
 export type ClinicHeaderProps = {
   id?: string;
@@ -26,6 +28,7 @@ export type ClinicHeaderProps = {
     id?: string;
     name?: string;
     surname?: string;
+    experience_years?: number;
     Specialties?: { id: string; name?: string } | null;
   }>;
   reviews?: Array<{
@@ -176,6 +179,7 @@ const KlinikiNameHeader: React.FC<{ clinic: ClinicHeaderProps }> = ({
   const [isExpanded, setIsExpanded] = useState(false);
   const [showAllServices, setShowAllServices] = useState(false);
   const [isReviewModalOpen, setIsReviewModalOpen] = useState(false);
+  const [selectedSpecialty, setSelectedSpecialty] = useState("");
   const router = useRouter();
 
   // Fetch popular clinics data from the backend
@@ -280,23 +284,23 @@ const KlinikiNameHeader: React.FC<{ clinic: ClinicHeaderProps }> = ({
     address ? address.split(",")[0] : "Toshkent"
   }: ${doctorCount} shifokor, ${reviewCount} fikr-mulohaza. Onlayn yoki telefon orqali qabulga yozilish.`;
 
-  const dynamicDescription = `O&apos;zbekistonda birinchi xususiy tibbiyot markazi ${
+  const dynamicDescription = `O'zbekistonda birinchi xususiy tibbiyot markazi ${
     name || "bu klinika"
-  } 1996 yilda tashkil etilgan. 30 yillik tajribaga ega ko&apos;p tarmoqli klinika aholiga sifatli tibbiy xizmat ko&apos;rsatishda davom etmoqda. Bu yerda bemorlar ambulator va statsionar sharoitlarda davolanadi. Poliklinika ${
+  } 1996 yilda tashkil etilgan. 30 yillik tajribaga ega ko'p tarmoqli klinika aholiga sifatli tibbiy xizmat ko'rsatishda davom etmoqda. Bu yerda bemorlar ambulator va statsionar sharoitlarda davolanadi. Poliklinika ${
     address ? address.split(",")[0] : "Toshkent shahrining Yashnobod tumanida"
   } joylashgan.`;
 
   const fullDescription = `${dynamicDescription} ${
     name || "Klinikada"
-  } konsultativ poliklinikasi dushanbadan shanbagacha soat 8.30 dan 17.00 gacha bemorlarni qabul qiladi, radiologiya va tez tibbiy yordam bo&apos;limlari kechayu kunduz ishlaydi. ${
+  } konsultativ poliklinikasi dushanbadan shanbagacha soat 8.30 dan 17.00 gacha bemorlarni qabul qiladi, radiologiya va tez tibbiy yordam bo'limlari kechayu kunduz ishlaydi. ${
     name || "Klinikada"
-  } ko&apos;p yillik tajribaga ega malakali mutaxassislar ishlaydi. ${
+  } ko'p yillik tajribaga ega malakali mutaxassislar ishlaydi. ${
     mainServices.length > 0
       ? `${mainServices.join(", ")} `
       : "Terapevt, dermatovenerolog, kardiolog, LOR, endokrinolog, urolog, ortoped, pediatr, stomatolog, nevropatolog, oftalmolog, fizioterapevt "
-  }mutaxassisliklari bo&apos;yicha shifokorlar faoliyat olib boradi. Yuqori toifadagi jarrohlar turli operatsiyalarni amalga oshiradilar. Bu yerda malakali shifokorlar va hamshiralar tezroq sog&apos;ayishingizga chin dildan yordam beradi. ${
+  }mutaxassisliklari bo'yicha shifokorlar faoliyat olib boradi. Yuqori toifadagi jarrohlar turli operatsiyalarni amalga oshiradilar. Bu yerda malakali shifokorlar va hamshiralar tezroq sog'ayishingizga chin dildan yordam beradi. ${
     name || "Klinikada"
-  } sog&apos;lig&apos;ingizni professionallarga ishonganingizga amin bo&apos;lishingiz mumkin.`;
+  } sog'lig'ingizni professionallarga ishonganingizga amin bo'lishingiz mumkin.`;
 
   // Group services by category
   const servicesByCategory = React.useMemo(() => {
@@ -885,9 +889,7 @@ const KlinikiNameHeader: React.FC<{ clinic: ClinicHeaderProps }> = ({
                               {service.Services.name}
                             </span>
                             <span className={styles.servicePrice}>
-                              {service.price
-                                ? `${service.price} so'm`
-                                : "330 000 so'm"}
+                              {service.price} so&apos;m
                             </span>
                           </div>
                         )
@@ -943,8 +945,8 @@ const KlinikiNameHeader: React.FC<{ clinic: ClinicHeaderProps }> = ({
                 onClick={() => setShowAllServices(!showAllServices)}
               >
                 {showAllServices
-                  ? "Kamroq ko'rsatish"
-                  : "To'liq praysni ko'rsatish >"}
+                  ? "Kamroq ko&apos;rsatish"
+                  : "To&apos;liq praysni ko&apos;rsatish >"}
               </button>
             </div>
           </div>
@@ -1066,6 +1068,97 @@ const KlinikiNameHeader: React.FC<{ clinic: ClinicHeaderProps }> = ({
               </div>
             </div>
           )}
+        </div>
+
+        {/* Doctor Cards Section */}
+        <div className={styles.doctorCardsSection}>
+          <h3 className={styles.sectionTitle}>
+            {name || "Klinika"} klinikasi shifokorlari
+          </h3>
+
+          <div className={styles.specialtyFilterContainer}>
+            <div className={styles.filterDropdown}>
+              <select
+                className={styles.specialtySelect}
+                value={selectedSpecialty}
+                onChange={(e) => setSelectedSpecialty(e.target.value)}
+              >
+                <option value="">Mutaxasislkni tanlang</option>
+                {specialtiesToShow.map((specialty, index) => (
+                  <option key={`specialty-option-${index}`} value={specialty}>
+                    {specialty}
+                  </option>
+                ))}
+              </select>
+              <div className={styles.dropdownArrow}>
+                <svg
+                  width="12"
+                  height="6"
+                  viewBox="0 0 12 6"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M1 0.5L6 5.5L11 0.5"
+                    stroke="#6B7280"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          <div className={styles.doctorCardsContainer}>
+            {/* Filter doctors based on selected specialty */}
+            {doctors && doctors.length > 0
+              ? doctors
+                  .filter(
+                    (doctor) =>
+                      !selectedSpecialty ||
+                      doctor.Specialties?.name === selectedSpecialty
+                  )
+                  .map((doctor, index) => (
+                    <DoctorCard
+                      key={doctor.id || `doctor-${index}`}
+                      fullname={`${doctor.name} ${doctor.surname}`}
+                      type={
+                        doctor.Specialties?.name ||
+                        "Mutaxassislik ko&apos;rsatilmagan"
+                      }
+                      patients={Math.floor(Math.random() * 100) + 50}
+                      experience={doctor.experience_years || 4}
+                      qualification="Ikkinchitofali shifokor"
+                      priceOne="narx so'rov bo'yicha"
+                      priceTwo="narx so'rov bo'yicha"
+                      clinicName={name}
+                      clinicNumber="+998901234567"
+                      clinicPhoto="clinic-logo"
+                      telegramBotLink="#"
+                      location={address || "Manzil ko&apos;rsatilmagan"}
+                      photo={`doctor-${(index % 5) + 1}`}
+                    />
+                  ))
+              : [1, 2, 3].map((index) => (
+                  <DoctorCard
+                    key={`fallback-doctor-${index}`}
+                    fullname={`Abdumutalova Gulzoda Qaxxarovna`}
+                    type="Allergolog"
+                    patients={5}
+                    experience={4}
+                    qualification="Ikkinchitofali shifokor"
+                    priceOne="narx so'rov bo'yicha"
+                    priceTwo="narx so'rov bo'yicha"
+                    clinicName={name || "MDS Servis"}
+                    clinicNumber="+998901234567"
+                    clinicPhoto="clinic-logo"
+                    telegramBotLink="#"
+                    location={address || "Botkin ko'chasi, 110/3"}
+                    photo={`doctor-${index}`}
+                  />
+                ))}
+          </div>
         </div>
 
         {/* Reviews Section */}
@@ -1246,89 +1339,42 @@ const KlinikiNameHeader: React.FC<{ clinic: ClinicHeaderProps }> = ({
           </div>
         </div>
 
-        <div className={styles.popularClinicsSection}>
-          <h3 className={styles.sectionTitle}>
-            Toshkentdagi mashhur klinikalar va tibbiyot markazlari
-          </h3>
-          <div className={styles.popularClinicsGrid}>
-            {popularClinics && popularClinics.length > 0
-              ? popularClinics
-                  .slice(0, 10)
-                  .map(
-                    (clinic: {
-                      id: string;
-                      name: string;
-                      logo_url?: string;
-                    }) => {
-                      const clinicSlug = clinic.name
-                        ? clinic.name
-                            .toLowerCase()
-                            .trim()
-                            .replace(/[\u2019'`]/g, "")
-                            .replace(/[^a-z0-9\s-]/g, "")
-                            .replace(/\s+/g, "-")
-                            .replace(/-+/g, "-")
-                        : "";
-
-                      return (
-                        <a
-                          key={clinic.id}
-                          href={`/klinika/${clinicSlug}`}
-                          className={styles.clinicCard}
-                        >
-                          <img
-                            src={clinic.logo_url || "/placeholder-logo.png"}
-                            alt={clinic.name}
-                            className={styles.clinicLogo}
-                          />
-                          <p className={styles.clinicName}>{clinic.name}</p>
-                        </a>
-                      );
-                    }
-                  )
-              : [
-                  {
-                    id: "1",
-                    name: "MDS Servis",
-                    logo_url:
-                      "https://main.med24.uz/uploads/clinics/group0/part3/3863/200x.webp",
-                  },
-                  {
-                    id: "2",
-                    name: "Shox Med Center",
-                    logo_url:
-                      "https://main.med24.uz/uploads/clinics/group0/part3/3863/200x.webp",
-                  },
-                  {
-                    id: "3",
-                    name: "Doctor D",
-                    logo_url:
-                      "https://main.med24.uz/uploads/clinics/group0/part3/3863/200x.webp",
-                  },
-                  {
-                    id: "4",
-                    name: "Horev Medical",
-                    logo_url:
-                      "https://main.med24.uz/uploads/clinics/group0/part3/3863/200x.webp",
-                  },
-                  {
-                    id: "5",
-                    name: "M-Clinic",
-                    logo_url:
-                      "https://main.med24.uz/uploads/clinics/group0/part3/3863/200x.webp",
-                  },
-                ].map((clinic) => (
-                  <a key={clinic.id} href="#" className={styles.clinicCard}>
-                    <img
-                      src={clinic.logo_url || "/placeholder-logo.png"}
-                      alt={clinic.name}
-                      className={styles.clinicLogo}
-                    />
-                    <p className={styles.clinicName}>{clinic.name}</p>
-                  </a>
-                ))}
-          </div>
-        </div>
+        <PopularClinics
+          clinics={
+            popularClinics || [
+              {
+                id: "1",
+                name: "MDS Servis",
+                logo_url:
+                  "https://main.med24.uz/uploads/clinics/group0/part3/3863/200x.webp",
+              },
+              {
+                id: "2",
+                name: "Shox Med Center",
+                logo_url:
+                  "https://main.med24.uz/uploads/clinics/group0/part3/3863/200x.webp",
+              },
+              {
+                id: "3",
+                name: "Doctor D",
+                logo_url:
+                  "https://main.med24.uz/uploads/clinics/group0/part3/3863/200x.webp",
+              },
+              {
+                id: "4",
+                name: "Horev Medical",
+                logo_url:
+                  "https://main.med24.uz/uploads/clinics/group0/part3/3863/200x.webp",
+              },
+              {
+                id: "5",
+                name: "M-Clinic",
+                logo_url:
+                  "https://main.med24.uz/uploads/clinics/group0/part3/3863/200x.webp",
+              },
+            ]
+          }
+        />
       </div>
 
       <ReviewModal

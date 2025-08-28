@@ -80,18 +80,15 @@ const DoctorsPage = () => {
     initialShowAll[letter] = false;
   });
 
-  const [showAll, setShowAll] = useState<{ [key: string]: boolean }>(
+  const [expandedLetters, setExpandedLetters] = useState<{ [key: string]: boolean }>(
     initialShowAll
   );
 
-  const toggleShowAll = (letter: string) => {
-    setShowAll((prev) => {
-      console.log("Letter", letter, "New state:", !prev[letter] || false);
-      return {
-        ...prev,
-        [letter]: !prev[letter] || false,
-      };
-    });
+  const toggleLetter = (letter: string) => {
+    setExpandedLetters((prev) => ({
+      ...prev,
+      [letter]: !prev[letter] || false,
+    }));
   };
 
   return (
@@ -136,7 +133,7 @@ const DoctorsPage = () => {
             </Typography>
             <div className={styles.linkStyle}>
               {groupedDoctors["A"]
-                ?.slice(0, showAll["A"] ? groupedDoctors["A"].length : 5)
+                ?.slice(0, expandedLetters["A"] ? groupedDoctors["A"].length : 5)
                 .map((doctor: string, idx: number) => (
                   <div key={idx}>
                     <Link href="/" className={styles.link}>
@@ -147,9 +144,9 @@ const DoctorsPage = () => {
               {groupedDoctors["A"]?.length > 5 && (
                 <button
                   className={styles.activeButton}
-                  onClick={() => toggleShowAll("A")}
+                  onClick={() => toggleLetter("A")}
                 >
-                  {showAll["A"] ? "Yashirish" : "Hammasi"}
+                  {expandedLetters["A"] ? "Yashirish" : "Hammasi"}
                 </button>
               )}
             </div>
@@ -160,7 +157,7 @@ const DoctorsPage = () => {
             </Typography>
             <div className={styles.linkStyle}>
               {groupedDoctors["D"]
-                ?.slice(0, showAll["D"] ? groupedDoctors["D"].length : 5)
+                ?.slice(0, expandedLetters["D"] ? groupedDoctors["D"].length : 5)
                 .map((doctor: string, idx: number) => (
                   <div key={idx}>
                     <Link href="/" className={styles.link}>
@@ -169,8 +166,8 @@ const DoctorsPage = () => {
                   </div>
                 ))}
               {groupedDoctors["D"]?.length > 5 && (
-                <button onClick={() => toggleShowAll("D")}>
-                  {showAll["D"] ? "Yashirish" : "Barchasini ko‘rsatish"}
+                <button onClick={() => toggleLetter("D")}>
+                  {expandedLetters["D"] ? "Yashirish" : "Barchasini ko‘rsatish"}
                 </button>
               )}
             </div>
@@ -181,7 +178,7 @@ const DoctorsPage = () => {
             </Typography>
             <div className={styles.linkStyle}>
               {groupedDoctors["E"]
-                ?.slice(0, showAll["E"] ? groupedDoctors["E"].length : 5)
+                ?.slice(0, expandedLetters["E"] ? groupedDoctors["E"].length : 5)
                 .map((doctor: string, idx: number) => (
                   <div key={idx}>
                     <Link href="/" className={styles.link}>
@@ -190,8 +187,8 @@ const DoctorsPage = () => {
                   </div>
                 ))}
               {groupedDoctors["E"]?.length > 5 && (
-                <button onClick={() => toggleShowAll("E")}>
-                  {showAll["E"] ? "Yashirish" : "Barchasini ko‘rsatish"}
+                <button onClick={() => toggleLetter("E")}>
+                  {expandedLetters["E"] ? "Yashirish" : "Barchasini ko‘rsatish"}
                 </button>
               )}
             </div>
@@ -202,7 +199,7 @@ const DoctorsPage = () => {
             </Typography>
             <div className={styles.linkStyle}>
               {groupedDoctors["F"]
-                ?.slice(0, showAll["F"] ? groupedDoctors["F"].length : 5)
+                ?.slice(0, expandedLetters["F"] ? groupedDoctors["F"].length : 5)
                 .map((doctor: string, idx: number) => (
                   <div key={idx}>
                     <Link href="/" className={styles.link}>
@@ -211,8 +208,8 @@ const DoctorsPage = () => {
                   </div>
                 ))}
               {groupedDoctors["F"]?.length > 5 && (
-                <button onClick={() => toggleShowAll("F")}>
-                  {showAll["F"] ? "Yashirish" : "Barchasini ko‘rsatish"}
+                <button onClick={() => toggleLetter("F")}>
+                  {expandedLetters["F"] ? "Yashirish" : "Barchasini ko‘rsatish"}
                 </button>
               )}
             </div>
@@ -223,7 +220,7 @@ const DoctorsPage = () => {
             </Typography>
             <div className={styles.linkStyle}>
               {groupedDoctors["G"]
-                ?.slice(0, showAll["G"] ? groupedDoctors["G"].length : 5)
+                ?.slice(0, expandedLetters["G"] ? groupedDoctors["G"].length : 5)
                 .map((doctor: string, idx: number) => (
                   <div key={idx}>
                     <Link href="/" className={styles.link}>
@@ -232,8 +229,8 @@ const DoctorsPage = () => {
                   </div>
                 ))}
               {groupedDoctors["G"]?.length > 5 && (
-                <button onClick={() => toggleShowAll("G")}>
-                  {showAll["G"] ? "Yashirish" : "Barchasini ko‘rsatish"}
+                <button onClick={() => toggleLetter("G")}>
+                  {expandedLetters["G"] ? "Yashirish" : "Barchasini ko‘rsatish"}
                 </button>
               )}
             </div>
@@ -244,7 +241,7 @@ const DoctorsPage = () => {
             </Typography>
             <div className={styles.linkStyle}>
               {groupedDoctors["I"]
-                ?.slice(0, showAll["I"] ? groupedDoctors["I"].length : 5)
+                ?.slice(0, expandedLetters["I"] ? groupedDoctors["I"].length : 5)
                 .map((doctor: string, idx: number) => (
                   <div key={idx}>
                     <Link href="/" className={styles.link}>
@@ -253,8 +250,8 @@ const DoctorsPage = () => {
                   </div>
                 ))}
               {groupedDoctors["I"]?.length > 5 && (
-                <button onClick={() => toggleShowAll("I")}>
-                  {showAll["I"] ? "Yashirish" : "Barchasini ko‘rsatish"}
+                <button onClick={() => toggleLetter("I")}>
+                  {expandedLetters["I"] ? "Yashirish" : "Barchasini ko‘rsatish"}
                 </button>
               )}
             </div>
@@ -265,7 +262,7 @@ const DoctorsPage = () => {
             </Typography>
             <div className={styles.linkStyle}>
               {groupedDoctors["J"]
-                ?.slice(0, showAll["J"] ? groupedDoctors["J"].length : 5)
+                ?.slice(0, expandedLetters["J"] ? groupedDoctors["J"].length : 5)
                 .map((doctor: string, idx: number) => (
                   <div key={idx}>
                     <Link href="/" className={styles.link}>
@@ -274,8 +271,8 @@ const DoctorsPage = () => {
                   </div>
                 ))}
               {groupedDoctors["J"]?.length > 5 && (
-                <button onClick={() => toggleShowAll("J")}>
-                  {showAll["J"] ? "Yashirish" : "Barchasini ko‘rsatish"}
+                <button onClick={() => toggleLetter("J")}>
+                  {expandedLetters["J"] ? "Yashirish" : "Barchasini ko‘rsatish"}
                 </button>
               )}
             </div>
@@ -286,7 +283,7 @@ const DoctorsPage = () => {
             </Typography>
             <div className={styles.linkStyle}>
               {groupedDoctors["K"]
-                ?.slice(0, showAll["K"] ? groupedDoctors["K"].length : 5)
+                ?.slice(0, expandedLetters["K"] ? groupedDoctors["K"].length : 5)
                 .map((doctor: string, idx: number) => (
                   <div key={idx}>
                     <Link href="/" className={styles.link}>
@@ -295,8 +292,8 @@ const DoctorsPage = () => {
                   </div>
                 ))}
               {groupedDoctors["K"]?.length > 5 && (
-                <button onClick={() => toggleShowAll("K")}>
-                  {showAll["K"] ? "Yashirish" : "Barchasini ko‘rsatish"}
+                <button onClick={() => toggleLetter("K")}>
+                  {expandedLetters["K"] ? "Yashirish" : "Barchasini ko‘rsatish"}
                 </button>
               )}
             </div>
@@ -307,7 +304,7 @@ const DoctorsPage = () => {
             </Typography>
             <div className={styles.linkStyle}>
               {groupedDoctors["L"]
-                ?.slice(0, showAll["L"] ? groupedDoctors["L"].length : 5)
+                ?.slice(0, expandedLetters["L"] ? groupedDoctors["L"].length : 5)
                 .map((doctor: string, idx: number) => (
                   <div key={idx}>
                     <Link href="/" className={styles.link}>
@@ -316,8 +313,8 @@ const DoctorsPage = () => {
                   </div>
                 ))}
               {groupedDoctors["L"]?.length > 5 && (
-                <button onClick={() => toggleShowAll("L")}>
-                  {showAll["L"] ? "Yashirish" : "Barchasini ko‘rsatish"}
+                <button onClick={() => toggleLetter("L")}>
+                  {expandedLetters["L"] ? "Yashirish" : "Barchasini ko‘rsatish"}
                 </button>
               )}
             </div>
@@ -328,7 +325,7 @@ const DoctorsPage = () => {
             </Typography>
             <div className={styles.linkStyle}>
               {groupedDoctors["M"]
-                ?.slice(0, showAll["M"] ? groupedDoctors["M"].length : 5)
+                ?.slice(0, expandedLetters["M"] ? groupedDoctors["M"].length : 5)
                 .map((doctor: string, idx: number) => (
                   <div key={idx}>
                     <Link href="/" className={styles.link}>
@@ -337,8 +334,8 @@ const DoctorsPage = () => {
                   </div>
                 ))}
               {groupedDoctors["M"]?.length > 5 && (
-                <button onClick={() => toggleShowAll("M")}>
-                  {showAll["M"] ? "Yashirish" : "Barchasini ko‘rsatish"}
+                <button onClick={() => toggleLetter("M")}>
+                  {expandedLetters["M"] ? "Yashirish" : "Barchasini ko‘rsatish"}
                 </button>
               )}
             </div>
@@ -349,7 +346,7 @@ const DoctorsPage = () => {
             </Typography>
             <div className={styles.linkStyle}>
               {groupedDoctors["N"]
-                ?.slice(0, showAll["N"] ? groupedDoctors["N"].length : 5)
+                ?.slice(0, expandedLetters["N"] ? groupedDoctors["N"].length : 5)
                 .map((doctor: string, idx: number) => (
                   <div key={idx}>
                     <Link href="/" className={styles.link}>
@@ -358,8 +355,8 @@ const DoctorsPage = () => {
                   </div>
                 ))}
               {groupedDoctors["N"]?.length > 5 && (
-                <button onClick={() => toggleShowAll("N")}>
-                  {showAll["N"] ? "Yashirish" : "Barchasini ko‘rsatish"}
+                <button onClick={() => toggleLetter("N")}>
+                  {expandedLetters["N"] ? "Yashirish" : "Barchasini ko‘rsatish"}
                 </button>
               )}
             </div>
@@ -370,7 +367,7 @@ const DoctorsPage = () => {
             </Typography>
             <div className={styles.linkStyle}>
               {groupedDoctors["O"]
-                ?.slice(0, showAll["O"] ? groupedDoctors["O"].length : 5)
+                ?.slice(0, expandedLetters["O"] ? groupedDoctors["O"].length : 5)
                 .map((doctor: string, idx: number) => (
                   <div key={idx}>
                     <Link href="/" className={styles.link}>
@@ -379,8 +376,8 @@ const DoctorsPage = () => {
                   </div>
                 ))}
               {groupedDoctors["O"]?.length > 5 && (
-                <button onClick={() => toggleShowAll("O")}>
-                  {showAll["O"] ? "Yashirish" : "Barchasini ko‘rsatish"}
+                <button onClick={() => toggleLetter("O")}>
+                  {expandedLetters["O"] ? "Yashirish" : "Barchasini ko‘rsatish"}
                 </button>
               )}
             </div>
@@ -391,7 +388,7 @@ const DoctorsPage = () => {
             </Typography>
             <div className={styles.linkStyle}>
               {groupedDoctors["P"]
-                ?.slice(0, showAll["P"] ? groupedDoctors["P"].length : 5)
+                ?.slice(0, expandedLetters["P"] ? groupedDoctors["P"].length : 5)
                 .map((doctor: string, idx: number) => (
                   <div key={idx}>
                     <Link href="/" className={styles.link}>
@@ -400,8 +397,8 @@ const DoctorsPage = () => {
                   </div>
                 ))}
               {groupedDoctors["P"]?.length > 5 && (
-                <button onClick={() => toggleShowAll("P")}>
-                  {showAll["P"] ? "Yashirish" : "Barchasini ko‘rsatish"}
+                <button onClick={() => toggleLetter("P")}>
+                  {expandedLetters["P"] ? "Yashirish" : "Barchasini ko‘rsatish"}
                 </button>
               )}
             </div>
@@ -412,7 +409,7 @@ const DoctorsPage = () => {
             </Typography>
             <div className={styles.linkStyle}>
               {groupedDoctors["Q"]
-                ?.slice(0, showAll["Q"] ? groupedDoctors["Q"].length : 5)
+                ?.slice(0, expandedLetters["Q"] ? groupedDoctors["Q"].length : 5)
                 .map((doctor: string, idx: number) => (
                   <div key={idx}>
                     <Link href="/" className={styles.link}>
@@ -421,8 +418,8 @@ const DoctorsPage = () => {
                   </div>
                 ))}
               {groupedDoctors["Q"]?.length > 5 && (
-                <button onClick={() => toggleShowAll("Q")}>
-                  {showAll["Q"] ? "Yashirish" : "Barchasini ko‘rsatish"}
+                <button onClick={() => toggleLetter("Q")}>
+                  {expandedLetters["Q"] ? "Yashirish" : "Barchasini ko‘rsatish"}
                 </button>
               )}
             </div>
@@ -433,7 +430,7 @@ const DoctorsPage = () => {
             </Typography>
             <div className={styles.linkStyle}>
               {groupedDoctors["R"]
-                ?.slice(0, showAll["R"] ? groupedDoctors["R"].length : 5)
+                ?.slice(0, expandedLetters["R"] ? groupedDoctors["R"].length : 5)
                 .map((doctor: string, idx: number) => (
                   <div key={idx}>
                     <Link href="/" className={styles.link}>
@@ -442,8 +439,8 @@ const DoctorsPage = () => {
                   </div>
                 ))}
               {groupedDoctors["R"]?.length > 5 && (
-                <button onClick={() => toggleShowAll("R")}>
-                  {showAll["R"] ? "Yashirish" : "Barchasini ko‘rsatish"}
+                <button onClick={() => toggleLetter("R")}>
+                  {expandedLetters["R"] ? "Yashirish" : "Barchasini ko‘rsatish"}
                 </button>
               )}
             </div>
@@ -454,7 +451,7 @@ const DoctorsPage = () => {
             </Typography>
             <div className={styles.linkStyle}>
               {groupedDoctors["S"]
-                ?.slice(0, showAll["S"] ? groupedDoctors["S"].length : 5)
+                ?.slice(0, expandedLetters["S"] ? groupedDoctors["S"].length : 5)
                 .map((doctor: string, idx: number) => (
                   <div key={idx}>
                     <Link href="/" className={styles.link}>
@@ -463,8 +460,8 @@ const DoctorsPage = () => {
                   </div>
                 ))}
               {groupedDoctors["S"]?.length > 5 && (
-                <button onClick={() => toggleShowAll("S")}>
-                  {showAll["S"] ? "Yashirish" : "Barchasini ko‘rsatish"}
+                <button onClick={() => toggleLetter("S")}>
+                  {expandedLetters["S"] ? "Yashirish" : "Barchasini ko‘rsatish"}
                 </button>
               )}
             </div>
@@ -475,7 +472,7 @@ const DoctorsPage = () => {
             </Typography>
             <div className={styles.linkStyle}>
               {groupedDoctors["T"]
-                ?.slice(0, showAll["T"] ? groupedDoctors["T"].length : 5)
+                ?.slice(0, expandedLetters["T"] ? groupedDoctors["T"].length : 5)
                 .map((doctor: string, idx: number) => (
                   <div key={idx}>
                     <Link href="/" className={styles.link}>
@@ -484,8 +481,8 @@ const DoctorsPage = () => {
                   </div>
                 ))}
               {groupedDoctors["T"]?.length > 5 && (
-                <button onClick={() => toggleShowAll("T")}>
-                  {showAll["T"] ? "Yashirish" : "Barchasini ko‘rsatish"}
+                <button onClick={() => toggleLetter("T")}>
+                  {expandedLetters["T"] ? "Yashirish" : "Barchasini ko‘rsatish"}
                 </button>
               )}
             </div>
@@ -496,7 +493,7 @@ const DoctorsPage = () => {
             </Typography>
             <div className={styles.linkStyle}>
               {groupedDoctors["U"]
-                ?.slice(0, showAll["U"] ? groupedDoctors["U"].length : 5)
+                ?.slice(0, expandedLetters["U"] ? groupedDoctors["U"].length : 5)
                 .map((doctor: string, idx: number) => (
                   <div key={idx}>
                     <Link href="/" className={styles.link}>
@@ -505,8 +502,8 @@ const DoctorsPage = () => {
                   </div>
                 ))}
               {groupedDoctors["U"]?.length > 5 && (
-                <button onClick={() => toggleShowAll("U")}>
-                  {showAll["U"] ? "Yashirish" : "Barchasini ko‘rsatish"}
+                <button onClick={() => toggleLetter("U")}>
+                  {expandedLetters["U"] ? "Yashirish" : "Barchasini ko‘rsatish"}
                 </button>
               )}
             </div>
@@ -517,7 +514,7 @@ const DoctorsPage = () => {
             </Typography>
             <div className={styles.linkStyle}>
               {groupedDoctors["V"]
-                ?.slice(0, showAll["V"] ? groupedDoctors["V"].length : 5)
+                ?.slice(0, expandedLetters["V"] ? groupedDoctors["V"].length : 5)
                 .map((doctor: string, idx: number) => (
                   <div key={idx}>
                     <Link href="/" className={styles.link}>
@@ -526,8 +523,8 @@ const DoctorsPage = () => {
                   </div>
                 ))}
               {groupedDoctors["V"]?.length > 5 && (
-                <button onClick={() => toggleShowAll("V")}>
-                  {showAll["V"] ? "Yashirish" : "Barchasini ko‘rsatish"}
+                <button onClick={() => toggleLetter("V")}>
+                  {expandedLetters["V"] ? "Yashirish" : "Barchasini ko‘rsatish"}
                 </button>
               )}
             </div>
@@ -538,7 +535,7 @@ const DoctorsPage = () => {
             </Typography>
             <div className={styles.linkStyle}>
               {groupedDoctors["Y"]
-                ?.slice(0, showAll["Y"] ? groupedDoctors["Y"].length : 5)
+                ?.slice(0, expandedLetters["Y"] ? groupedDoctors["Y"].length : 5)
                 .map((doctor: string, idx: number) => (
                   <div key={idx}>
                     <Link href="/" className={styles.link}>
@@ -547,8 +544,8 @@ const DoctorsPage = () => {
                   </div>
                 ))}
               {groupedDoctors["Y"]?.length > 5 && (
-                <button onClick={() => toggleShowAll("Y")}>
-                  {showAll["Y"] ? "Yashirish" : "Barchasini ko‘rsatish"}
+                <button onClick={() => toggleLetter("Y")}>
+                  {expandedLetters["Y"] ? "Yashirish" : "Barchasini ko‘rsatish"}
                 </button>
               )}
             </div>
