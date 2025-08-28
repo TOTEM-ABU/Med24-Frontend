@@ -17,6 +17,20 @@ type BasicClinic = {
     price?: string | number;
     Services?: { id?: string; name?: string };
   }>;
+  doctors?: Array<{
+    id?: string;
+    name?: string;
+    surname?: string;
+    Specialties?: { id: string; name?: string } | null;
+  }>;
+  reviews?: Array<{
+    id: string;
+    comment?: string;
+    rating?: number;
+    userId?: string;
+    user?: { name?: string; surname?: string };
+    createdAt?: string;
+  }>;
 };
 
 const slugify = (value: string) =>
@@ -99,13 +113,17 @@ const ClinicDetailPage: React.FC = () => {
       {clinic ? (
         <KlinikiNameHeader
           clinic={{
+            id: clinic?.id,
             name: clinic?.name,
             address: clinic?.address,
             rating: clinic?.rating,
+            reviewsCount: clinic?.reviews?.length,
             cover_url: clinic?.cover_url ?? null,
             logo_url: clinic?.logo_url ?? null,
             description: clinic?.description,
             clinicservices: clinic?.clinicservices,
+            doctors: clinic?.doctors,
+            reviews: clinic?.reviews,
           }}
         />
       ) : null}
