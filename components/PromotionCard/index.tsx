@@ -1,31 +1,30 @@
-import React from "react";
-import styles from "./ClinicCard.module.css";
+import React from 'react'
+import styles from "./PromotionCard.module.css"
 
-interface ClinicCardProps {
-  image: string;
-  discount: string;
-  title: string;
-  description: string;
+interface PromotionCardProps {
+  discount: string
+  image: string
+  clinicLogo: string
+  clinicName: string
+  clinicDescription: string
 }
 
-const ClinicCard: React.FC<ClinicCardProps> = ({
-  image,
-  discount,
-  title,
-  description,
-}) => {
+const PromotionCard = (props: PromotionCardProps) => {
   return (
-    <div className={styles.card}>
-      <div className={styles.imageWrapper}>
-        <img src={image} alt={title} className={styles.image} />
-        {discount && <span className={styles.discount}>{discount}</span>}
+    <div className={styles['promotion-card']}>
+      <div className={styles['image-section']}>
+        <span className={styles['discount-badge']}>{props.discount}</span>
+        <img src={props.image} alt="clinic-image" className={styles['clinic-image']} />
       </div>
-      <div className={styles.content}>
-        <h3 className={styles.title}>{title}</h3>
-        <p className={styles.description}>{description}</p>
+      <div className={styles['content-section']}>
+        <div className={styles['clinic-header']}>
+          <img src={props.clinicLogo} alt="clinic logo" className={styles['clinic-logo']} />
+          <h3 className={styles['clinic-name']}>{props.clinicName}</h3>
+        </div>
+        <p className={styles['clinic-description']}>{props.clinicDescription}</p>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default ClinicCard;
+export default PromotionCard

@@ -1,0 +1,116 @@
+import React, { useEffect, useMemo } from "react";
+import { useRouter } from "next/router";
+import { useQuery } from "@tanstack/react-query";
+import api from "@/lib/api";
+import KlinikiNameHeader from "@/app/KlinikiName";
+
+type BasicClinic = {
+  id: string;
+  name: string;
+  address?: string;
+  rating?: number;
+  logo_url?: string;
+  cover_url?: string;
+  description?: string;
+  clinicservices?: Array<{
+    id: string;
+    price?: string | number;
+    Services?: { id?: string; name?: string };
+  }>;
+};
+
+const slugify = (value: string) =>
+  value
+    .toLowerCase()
+    .trim()
+    .replace(/[\u2019'`]/g, "")
+    .replace(/[^a-z0-9\s-]/g, "")
+    .replace(/\s+/g, "-")
+    .replace(/-+/g, "-");
+
+const fetchClinicBySlug = async (slug: string) => {
+  if (!slug) return null;
+  const include = [
+    "reviews.User",
+    "doctors.Specialties",
+    "clinicservices.Services",
+    "Region",
+    "promotions",
+  ].join(",");
+
+  // 1) Try dedicated by-slug endpoint if backend supports it
+  try {
+    const { data } = await api.get(
+      `/clinics/by-slug/${slug}?include=${include}`
+    );
+    const direct = data?.data ?? data;
+    if (direct && typeof direct === "object" && direct.id) return direct;
+  } catch (e) {}
+
+  // 2) Fetch a list and match using the same slug strategy used in cards
+  try {
+    const { data } = await api.get(`/clinics`, {
+      params: { include, limit: 1000 },
+    });
+    const list: BasicClinic[] = data?.data ?? [];
+    const matched = list.find(
+      (c) => c?.name && slugify(String(c.name)) === slug
+    );
+    if (matched) return matched;
+  } catch (e) {}
+
+  // 3) Last resort: search by decoded name token
+  try {
+    const token = decodeURIComponent(String(slug).replace(/-/g, " "));
+    const { data } = await api.get(`/clinics`, {
+      params: { search: token, include, limit: 5 },
+    });
+    const list: BasicClinic[] = data?.data ?? [];
+    if (Array.isArray(list) && list.length) return list[0];
+  } catch (e) {}
+
+  return null;
+};
+
+const ClinicDetailPage: React.FC = () => {
+  const router = useRouter();
+  const { slug } = router.query as { slug?: string };
+
+  const {
+    data: clinic,
+    isLoading,
+    isError,
+  } = useQuery({
+    queryKey: ["clinic", slug],
+    queryFn: () => fetchClinicBySlug(slug as string),
+    enabled: Boolean(slug),
+  });
+
+  const clinicId = useMemo(() => clinic?.id as string | undefined, [clinic]);
+
+  useEffect(() => {
+    if (clinic) {
+      console.log("Full clinic data:", clinic);
+    }
+  }, [clinic]);
+
+  return (
+    <>
+      {clinic ? (
+        <KlinikiNameHeader
+          clinic={{
+            name: clinic?.name,
+            address: clinic?.address,
+            rating: clinic?.rating,
+            cover_url: clinic?.cover_url ?? null,
+            logo_url: clinic?.logo_url ?? null,
+            description: clinic?.description,
+            clinicservices: clinic?.clinicservices,
+          }}
+        />
+      ) : null}
+    </>
+  );
+};
+
+export default ClinicDetailPage;

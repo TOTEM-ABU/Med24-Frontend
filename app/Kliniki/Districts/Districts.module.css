@@ -1,0 +1,26 @@
+.districts {
+  padding-top: 30px;
+  margin-top: 90px;
+  margin-bottom: 10px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.link {
+  width: fit-content;
+  border-bottom: 1px dashed #999;
+  cursor: pointer;
+  color: #000;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.districtsHeader {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}

@@ -1,0 +1,32 @@
+.card {
+  min-width: 150px;
+  height: 120px;
+  background-color: rgb(246 248 249);
+  border-radius: 20px;
+  padding: 16px;
+  position: relative;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  overflow: hidden;
+  transition: 0.3s ease-in-out;
+}
+
+.card:hover {
+  transform: translateX(0.375rem);
+}
+
+.name {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 500;
+  color: #333;
+}
+
+.image {
+  position: absolute;
+  top: 40px;
+  right: -20px;
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+}

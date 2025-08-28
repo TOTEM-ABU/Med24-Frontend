@@ -1,0 +1,404 @@
+.product-type-container {
+        display: flex;
+        flex-direction: column;
+        /* gap: 20px; */
+            h2 {
+        font-size: 28px;
+        font-weight: 600;
+    }
+}
+
+.main-link {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 50px;
+}
+
+.main-image {
+    width: 100%;
+    height: auto;
+    border: 0px;
+    vertical-align: middle;
+    max-width: 980px;
+    border-radius: 6px;
+    margin-top: 50px;
+}
+
+.main-text {
+    font-size: 28px;
+    font-weight: 600;
+    margin: 20px 0 20px 0;
+}
+
+.input-container {
+    display: flex;
+    gap: 20px;
+}
+
+.brands {
+        margin-top: 40px;
+}
+
+.brand-container {
+        margin-bottom: 40px;
+}
+
+.brand-image-container {
+        display: flex;
+        gap: 30px;
+        justify-content: space-between;
+        margin-top: 30px;
+        overflow: hidden;
+
+        img {
+                width: 100px;
+                height: 50px;
+                object-fit: contain;
+                cursor: pointer;
+                transition: transform 0.4s ease;
+        }
+
+        img:hover {
+                transform: scale(1.1);
+        }
+}
+
+.products-container {
+        margin-top: 30px;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 24px;
+}
+
+.button-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 40px;
+        margin-bottom: 40px;
+}
+
+.btn {
+        border-radius: 10px;
+        background-color: #f5f5f5;
+        color: black;
+        font-weight: 400;
+        font-size: 14px;
+}
+
+.links-container {
+    margin-bottom: 50px;
+}
+
+.doctor-types {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin-top: 40px;
+}
+
+.wide {
+    grid-column: span 2;
+}
+
+.grid-links-black {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+    margin-top: 40px;
+    list-style-type: none;
+
+    ul {
+        list-style-type: none;
+
+        a {
+            text-decoration-style: dotted;
+            text-decoration-color: gray;
+            color: #000;
+            font-size: 16px;
+            font-weight: 400;
+        }
+    }
+}
+
+.alphabet {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 20px;
+    font-size: 14px;
+
+    span {
+        cursor: pointer;
+        padding-left: 12px;
+        padding-right: 12px;
+        padding-top: 4px;
+        padding-bottom: 4px;
+          color: #4B5563;
+          border-radius: 6px;
+    }
+}
+
+.alpha-container {
+    margin-bottom: 90px;
+    margin-top: 90px;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .main-image {
+        max-width: 900px;
+        margin-top: 40px;
+    }
+    
+    .products-container {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+    }
+    
+    .brand-image-container {
+        gap: 25px;
+    }
+}
+
+@media (max-width: 992px) {
+    .main-text {
+        font-size: 24px;
+    }
+    
+    .product-type-container h2 {
+        font-size: 24px;
+    }
+    
+    .input-container {
+        gap: 15px;
+    }
+    
+    .main-image {
+        max-width: 800px;
+        margin-top: 35px;
+    }
+    
+    .brand-image-container {
+        gap: 20px;
+        margin-top: 25px;
+        
+        img {
+            width: 90px;
+            height: 45px;
+        }
+    }
+    
+    .products-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 18px;
+        margin-top: 25px;
+    }
+    
+    .doctor-types {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+    }
+    
+    .wide {
+        grid-column: span 1;
+    }
+    
+    .grid-links-black {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+    
+    .main-link {
+        margin-bottom: 40px;
+    }
+    
+    .brands {
+        margin-top: 30px;
+    }
+    
+    .brand-container {
+        margin-bottom: 30px;
+    }
+    
+    .button-container {
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+    
+    .links-container {
+        margin-bottom: 40px;
+    }
+    
+    .alpha-container {
+        margin-bottom: 60px;
+        margin-top: 60px;
+    }
+}
+
+@media (max-width: 768px) {
+    .main-text {
+        font-size: 20px;
+        margin: 15px 0 15px 0;
+    }
+    
+    .product-type-container h2 {
+        font-size: 20px;
+    }
+    
+    .input-container {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .main-image {
+        max-width: 100%;
+        margin-top: 25px;
+    }
+    
+    .brand-image-container {
+        flex-wrap: wrap;
+        gap: 15px;
+        margin-top: 20px;
+        justify-content: center;
+        
+        img {
+            width: 80px;
+            height: 40px;
+        }
+    }
+    
+    .products-container {
+        grid-template-columns: 1fr;
+        gap: 15px;
+        margin-top: 20px;
+    }
+    
+    .doctor-types {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+        margin-top: 30px;
+    }
+    
+    .grid-links-black {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+    
+    .alphabet {
+        gap: 6px;
+        margin-top: 15px;
+        font-size: 13px;
+        
+        span {
+            padding-left: 10px;
+            padding-right: 10px;
+            padding-top: 3px;
+            padding-bottom: 3px;
+        }
+    }
+    
+    .main-link {
+        margin-bottom: 30px;
+    }
+    
+    .brands {
+        margin-top: 25px;
+    }
+    
+    .brand-container {
+        margin-bottom: 25px;
+    }
+    
+    .button-container {
+        margin-top: 25px;
+        margin-bottom: 25px;
+    }
+    
+    .links-container {
+        margin-bottom: 30px;
+    }
+    
+    .alpha-container {
+        margin-bottom: 40px;
+        margin-top: 40px;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-text {
+        font-size: 18px;
+        margin: 12px 0 12px 0;
+    }
+    
+    .product-type-container h2 {
+        font-size: 18px;
+    }
+    
+    .input-container {
+        gap: 12px;
+    }
+    
+    .main-image {
+        margin-top: 20px;
+    }
+    
+    .brand-image-container {
+        gap: 12px;
+        margin-top: 15px;
+        
+        img {
+            width: 70px;
+            height: 35px;
+        }
+    }
+    
+    .products-container {
+        gap: 12px;
+        margin-top: 15px;
+    }
+    
+    .doctor-types {
+        grid-template-columns: 1fr;
+        gap: 10px;
+        margin-top: 25px;
+    }
+    
+    .alphabet {
+        gap: 5px;
+        margin-top: 12px;
+        font-size: 12px;
+        
+        span {
+            padding-left: 8px;
+            padding-right: 8px;
+            padding-top: 2px;
+            padding-bottom: 2px;
+        }
+    }
+    
+    .main-link {
+        margin-bottom: 25px;
+    }
+    
+    .brands {
+        margin-top: 20px;
+    }
+    
+    .brand-container {
+        margin-bottom: 20px;
+    }
+    
+    .button-container {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    
+    .links-container {
+        margin-bottom: 25px;
+    }
+    
+    .alpha-container {
+        margin-bottom: 30px;
+        margin-top: 30px;
+    }
+}

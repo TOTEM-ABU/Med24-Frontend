@@ -1,0 +1,45 @@
+.wrapper {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.card {
+  margin-top: 50px;
+  background: #f6f8fb;
+  border: 1px solid #eef2f7;
+  border-radius: 16px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.texts h3 {
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0 0 6px 0;
+  color: #111827;
+}
+
+.texts p {
+  margin: 0;
+  color: #6b7280;
+}
+
+.button {
+  background: #000000;
+  color: #ffffff;
+  padding: 10px 16px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+@media (max-width: 700px) {
+  .card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

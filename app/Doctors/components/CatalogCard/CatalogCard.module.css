@@ -1,0 +1,14 @@
+.catalogCardStyle {
+  display: flex;
+  padding: 20px;
+  border-radius: 20px;
+  background-color: gainsboro;
+  max-height: 120px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.catalogCardStyle img {
+  position: relative;
+  left: 40px;
+}

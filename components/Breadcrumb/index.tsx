@@ -11,11 +11,16 @@ interface Crumb {
 
 interface BreadcrumbProps {
   items: Crumb[];
+  className?: string;                // qo‘shimcha className
+  style?: React.CSSProperties;       // inline style
 }
 
-const Breadcrumb: React.FC<BreadcrumbProps> = ({ items }) => {
+const Breadcrumb: React.FC<BreadcrumbProps> = ({ items, className, style }) => {
   return (
-    <nav className={styles["breadcrumb-container"]}>
+    <nav 
+      className={`${styles["breadcrumb-container"]} ${className || ""}`} 
+      style={style}
+    >
       <ol className={styles["ordered-list"]}>
         {items.map((item, idx) => {
           const isLast = idx === items.length - 1;
