@@ -20,17 +20,12 @@ const Cards = () => {
 
         <ClinicCard
           logoSrc="/next.svg"
-        //   ="Chegirma 30%"
           title="Biolife - birinchi osteopad klinikasi"
-        //   description="To‘liq diagnostika uchun 30% chegirma beriladi"
         />
 
-        {/* Shu joyda yana boshqa klinikalarni qo‘shishingiz mumkin */}
         <ClinicCard
           logoSrc="/shoxmed.jpg"
-        //   discount="Chegirma 20%"
           title="Shox Med - zamonaviy diagnostika markazi"
-        //   description="Birinchi tashrif uchun 20% chegirma"
         />
    
     </>
