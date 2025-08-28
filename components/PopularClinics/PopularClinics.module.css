@@ -1,0 +1,55 @@
+.popularClinicsSection {
+  margin-top: 24px;
+  margin-bottom: 24px;
+}
+
+.sectionTitle {
+  font-size: 24px;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 16px;
+}
+
+.popularClinicsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(132px, 1fr));
+  gap: 16px;
+}
+
+.clinicCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-decoration: none;
+  padding: 16px;
+  border-radius: 20px;
+  background-color: #f9fafb;
+  max-height: 112px;
+  transition: transform 0.2s;
+  position: relative;
+  overflow: hidden;
+  margin-top: 20px;
+}
+
+.clinicCard:hover {
+  transform: translateY(-2px);
+}
+
+.clinicLogo {
+  width: 34px;
+  height: 34px;
+  object-fit: contain;
+  align-self: flex-start;
+  margin-bottom: 26px;
+}
+
+.clinicName {
+  font-size: 16px;
+  color: #0f172a;
+  margin-top: auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
+  margin: 0;
+}

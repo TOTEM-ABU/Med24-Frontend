@@ -98,13 +98,7 @@ const ClinicsSwiper: React.FC<Props> = ({
             return (
               <Link href={href} key={c.id} className={styles.card}>
                 <div className={styles.logoWrap}>
-                  <img
-                    className={styles.logo}
-                    src={
-                      "https://main.med24.uz/uploads/clinics/group0/part3/3863/200x.webp"
-                    }
-                    alt={c.name}
-                  />
+                  <img className={styles.logo} src={c.logo_url} alt={c.name} />
                 </div>
                 <div className={styles.textWrap}>
                   <div className={styles.cardName}>{c.name}</div>

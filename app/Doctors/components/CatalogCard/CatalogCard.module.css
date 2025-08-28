@@ -1,0 +1,15 @@
+.catalogCardStyle {
+  display: flex;
+  padding: 20px;
+  border-radius: 20px;
+  background-color: #f6f8f9;
+  height: 80px;
+  width: 97px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.catalogCardStyle img {
+  position: relative;
+  left: 30%;
+}

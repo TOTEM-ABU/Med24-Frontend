@@ -1,17 +1,16 @@
 import React, { useState } from "react";
 import styles from "./Doctors.module.css";
-import { Button, Input } from "./components";
+import {
+  Button,
+  CatalogCard,
+  DoctorCard,
+  Input,
+  Select,
+  Typography,
+} from "./components";
+import Link from "next/link";
 
 const DoctorsPage = () => {
-  const doctorsA = [
-    "Akusher",
-    "Allergolog",
-    "Androlog",
-    "Anesteziolog",
-    "Aritmolog",
-    "Artirolog",
-    "Audiolog",
-  ];
   const doctorsType = [
     "Akusher",
     "Allergolog",
@@ -27,6 +26,10 @@ const DoctorsPage = () => {
     "Diyetolog",
     "Embriolog",
     "Endikrionolog",
+    "Fizioterapevt",
+    "Flebolog",
+    "Foniatr",
+    "Ftiziatr",
   ];
   const districts = [
     "Mirobod tumani",
@@ -46,7 +49,7 @@ const DoctorsPage = () => {
     {
       fullName: "Xankeldiyev Nariman Zuxriddinovich",
       type: "Neyrojarroh",
-      patiens: 12,
+      patients: 12,
       firstPrice: "narx so'rov bo'yicha",
       consistentPrice: "narx so'rov bo'yicha",
       clinic: "M-Clinic",
@@ -57,14 +60,35 @@ const DoctorsPage = () => {
       telegram: "t.me/something",
     },
   ];
-
   const medicalCenters = ["Davlat tibbiyot markazlari", "Xususiy klinikalar"];
   const doctorGender = ["Erkak", "Ayol"];
 
-  const [showAll, setShowAll] = useState(false);
+  const groupedDoctors = doctorsType.reduce(
+    (acc: { [key: string]: string[] }, doctor) => {
+      const firstLetter = doctor[0].toUpperCase();
+      if (!acc[firstLetter]) {
+        acc[firstLetter] = [];
+      }
+      acc[firstLetter].push(doctor);
+      return acc;
+    },
+    {}
+  );
 
-  const toggleShowAll = () => {
-    setShowAll(!showAll);
+  const initialShowAll: { [key: string]: boolean } = {};
+  Object.keys(groupedDoctors).forEach((letter) => {
+    initialShowAll[letter] = false;
+  });
+
+  const [expandedLetters, setExpandedLetters] = useState<{ [key: string]: boolean }>(
+    initialShowAll
+  );
+
+  const toggleLetter = (letter: string) => {
+    setExpandedLetters((prev) => ({
+      ...prev,
+      [letter]: !prev[letter] || false,
+    }));
   };
 
   return (
@@ -74,143 +98,516 @@ const DoctorsPage = () => {
         <Button>Qidirish</Button>
       </div>
       <div className={styles.commonCatalogStyle}>
-        <h3>Ommabop mutaxassisliklar</h3>
+        <Typography size="28" weight="600" bottom="30">
+          Ommabop Mutaxassislar
+        </Typography>
         <ul>
           <li>
-            <p>Kardiolog</p>
+            <CatalogCard title="kardiolog">Kardiolog</CatalogCard>
           </li>
           <li>
-            <p>Ortoped</p>
+            <CatalogCard title="ortoped">Ortoped</CatalogCard>
           </li>
           <li>
-            <p>Pulmonolog</p>
+            <CatalogCard title="pulmonolog">Pulmonolog</CatalogCard>
           </li>
           <li>
-            <p>Stomatolog</p>
+            <CatalogCard title="stomotolog">Stomotolog</CatalogCard>
           </li>
           <li>
-            <p>Terapevt</p>
+            <CatalogCard title="terapevt">Terapevt</CatalogCard>
           </li>
           <li>
-            <p>Travmatolog</p>
+            <CatalogCard title="travmatolog">Travmatolog</CatalogCard>
           </li>
         </ul>
       </div>
-      <h3>Shifokorlar mutaxassisligi boyicha</h3>
       <div className={styles.catalogStyle}>
-        <div>
-          <h5>A</h5>
+        <Typography size="28" weight="600" bottom="30">
+          Shifokorlar mutaxassisligi bo‘yicha
+        </Typography>
+        <div className={styles.catalogListStyle}>
           <div>
-            {doctorsA.slice(0, showAll ? doctorsA.length : 5).map((a, idx) => (
-              <div key={idx}>{a}</div>
-            ))}
-            {doctorsA.length > 5 && (
-              <button onClick={toggleShowAll}>
-                {showAll ? "Yashirish" : "Barchasini ko'rsatish"}
-              </button>
-            )}
+            <Typography size="24" weight="500" bottom="20">
+              A
+            </Typography>
+            <div className={styles.linkStyle}>
+              {groupedDoctors["A"]
+                ?.slice(0, expandedLetters["A"] ? groupedDoctors["A"].length : 5)
+                .map((doctor: string, idx: number) => (
+                  <div key={idx}>
+                    <Link href="/" className={styles.link}>
+                      {doctor}
+                    </Link>
+                  </div>
+                ))}
+              {groupedDoctors["A"]?.length > 5 && (
+                <button
+                  className={styles.activeButton}
+                  onClick={() => toggleLetter("A")}
+                >
+                  {expandedLetters["A"] ? "Yashirish" : "Hammasi"}
+                </button>
+              )}
+            </div>
+          </div>
+          <div>
+            <Typography size="24" weight="500" bottom="20">
+              D
+            </Typography>
+            <div className={styles.linkStyle}>
+              {groupedDoctors["D"]
+                ?.slice(0, expandedLetters["D"] ? groupedDoctors["D"].length : 5)
+                .map((doctor: string, idx: number) => (
+                  <div key={idx}>
+                    <Link href="/" className={styles.link}>
+                      {doctor}
+                    </Link>
+                  </div>
+                ))}
+              {groupedDoctors["D"]?.length > 5 && (
+                <button onClick={() => toggleLetter("D")}>
+                  {expandedLetters["D"] ? "Yashirish" : "Barchasini ko‘rsatish"}
+                </button>
+              )}
+            </div>
+          </div>
+          <div>
+            <Typography size="24" weight="500" bottom="20">
+              E
+            </Typography>
+            <div className={styles.linkStyle}>
+              {groupedDoctors["E"]
+                ?.slice(0, expandedLetters["E"] ? groupedDoctors["E"].length : 5)
+                .map((doctor: string, idx: number) => (
+                  <div key={idx}>
+                    <Link href="/" className={styles.link}>
+                      {doctor}
+                    </Link>
+                  </div>
+                ))}
+              {groupedDoctors["E"]?.length > 5 && (
+                <button onClick={() => toggleLetter("E")}>
+                  {expandedLetters["E"] ? "Yashirish" : "Barchasini ko‘rsatish"}
+                </button>
+              )}
+            </div>
+          </div>
+          <div>
+            <Typography size="24" weight="500" bottom="20">
+              F
+            </Typography>
+            <div className={styles.linkStyle}>
+              {groupedDoctors["F"]
+                ?.slice(0, expandedLetters["F"] ? groupedDoctors["F"].length : 5)
+                .map((doctor: string, idx: number) => (
+                  <div key={idx}>
+                    <Link href="/" className={styles.link}>
+                      {doctor}
+                    </Link>
+                  </div>
+                ))}
+              {groupedDoctors["F"]?.length > 5 && (
+                <button onClick={() => toggleLetter("F")}>
+                  {expandedLetters["F"] ? "Yashirish" : "Barchasini ko‘rsatish"}
+                </button>
+              )}
+            </div>
+          </div>
+          <div>
+            <Typography size="24" weight="500" bottom="20">
+              G
+            </Typography>
+            <div className={styles.linkStyle}>
+              {groupedDoctors["G"]
+                ?.slice(0, expandedLetters["G"] ? groupedDoctors["G"].length : 5)
+                .map((doctor: string, idx: number) => (
+                  <div key={idx}>
+                    <Link href="/" className={styles.link}>
+                      {doctor}
+                    </Link>
+                  </div>
+                ))}
+              {groupedDoctors["G"]?.length > 5 && (
+                <button onClick={() => toggleLetter("G")}>
+                  {expandedLetters["G"] ? "Yashirish" : "Barchasini ko‘rsatish"}
+                </button>
+              )}
+            </div>
+          </div>
+          <div>
+            <Typography size="24" weight="500" bottom="20">
+              I
+            </Typography>
+            <div className={styles.linkStyle}>
+              {groupedDoctors["I"]
+                ?.slice(0, expandedLetters["I"] ? groupedDoctors["I"].length : 5)
+                .map((doctor: string, idx: number) => (
+                  <div key={idx}>
+                    <Link href="/" className={styles.link}>
+                      {doctor}
+                    </Link>
+                  </div>
+                ))}
+              {groupedDoctors["I"]?.length > 5 && (
+                <button onClick={() => toggleLetter("I")}>
+                  {expandedLetters["I"] ? "Yashirish" : "Barchasini ko‘rsatish"}
+                </button>
+              )}
+            </div>
+          </div>
+          <div>
+            <Typography size="24" weight="500" bottom="20">
+              J
+            </Typography>
+            <div className={styles.linkStyle}>
+              {groupedDoctors["J"]
+                ?.slice(0, expandedLetters["J"] ? groupedDoctors["J"].length : 5)
+                .map((doctor: string, idx: number) => (
+                  <div key={idx}>
+                    <Link href="/" className={styles.link}>
+                      {doctor}
+                    </Link>
+                  </div>
+                ))}
+              {groupedDoctors["J"]?.length > 5 && (
+                <button onClick={() => toggleLetter("J")}>
+                  {expandedLetters["J"] ? "Yashirish" : "Barchasini ko‘rsatish"}
+                </button>
+              )}
+            </div>
+          </div>
+          <div>
+            <Typography size="24" weight="500" bottom="20">
+              K
+            </Typography>
+            <div className={styles.linkStyle}>
+              {groupedDoctors["K"]
+                ?.slice(0, expandedLetters["K"] ? groupedDoctors["K"].length : 5)
+                .map((doctor: string, idx: number) => (
+                  <div key={idx}>
+                    <Link href="/" className={styles.link}>
+                      {doctor}
+                    </Link>
+                  </div>
+                ))}
+              {groupedDoctors["K"]?.length > 5 && (
+                <button onClick={() => toggleLetter("K")}>
+                  {expandedLetters["K"] ? "Yashirish" : "Barchasini ko‘rsatish"}
+                </button>
+              )}
+            </div>
+          </div>
+          <div>
+            <Typography size="24" weight="500" bottom="20">
+              L
+            </Typography>
+            <div className={styles.linkStyle}>
+              {groupedDoctors["L"]
+                ?.slice(0, expandedLetters["L"] ? groupedDoctors["L"].length : 5)
+                .map((doctor: string, idx: number) => (
+                  <div key={idx}>
+                    <Link href="/" className={styles.link}>
+                      {doctor}
+                    </Link>
+                  </div>
+                ))}
+              {groupedDoctors["L"]?.length > 5 && (
+                <button onClick={() => toggleLetter("L")}>
+                  {expandedLetters["L"] ? "Yashirish" : "Barchasini ko‘rsatish"}
+                </button>
+              )}
+            </div>
+          </div>
+          <div>
+            <Typography size="24" weight="500" bottom="20">
+              M
+            </Typography>
+            <div className={styles.linkStyle}>
+              {groupedDoctors["M"]
+                ?.slice(0, expandedLetters["M"] ? groupedDoctors["M"].length : 5)
+                .map((doctor: string, idx: number) => (
+                  <div key={idx}>
+                    <Link href="/" className={styles.link}>
+                      {doctor}
+                    </Link>
+                  </div>
+                ))}
+              {groupedDoctors["M"]?.length > 5 && (
+                <button onClick={() => toggleLetter("M")}>
+                  {expandedLetters["M"] ? "Yashirish" : "Barchasini ko‘rsatish"}
+                </button>
+              )}
+            </div>
+          </div>
+          <div>
+            <Typography size="24" weight="500" bottom="20">
+              N
+            </Typography>
+            <div className={styles.linkStyle}>
+              {groupedDoctors["N"]
+                ?.slice(0, expandedLetters["N"] ? groupedDoctors["N"].length : 5)
+                .map((doctor: string, idx: number) => (
+                  <div key={idx}>
+                    <Link href="/" className={styles.link}>
+                      {doctor}
+                    </Link>
+                  </div>
+                ))}
+              {groupedDoctors["N"]?.length > 5 && (
+                <button onClick={() => toggleLetter("N")}>
+                  {expandedLetters["N"] ? "Yashirish" : "Barchasini ko‘rsatish"}
+                </button>
+              )}
+            </div>
+          </div>
+          <div>
+            <Typography size="24" weight="500" bottom="20">
+              O
+            </Typography>
+            <div className={styles.linkStyle}>
+              {groupedDoctors["O"]
+                ?.slice(0, expandedLetters["O"] ? groupedDoctors["O"].length : 5)
+                .map((doctor: string, idx: number) => (
+                  <div key={idx}>
+                    <Link href="/" className={styles.link}>
+                      {doctor}
+                    </Link>
+                  </div>
+                ))}
+              {groupedDoctors["O"]?.length > 5 && (
+                <button onClick={() => toggleLetter("O")}>
+                  {expandedLetters["O"] ? "Yashirish" : "Barchasini ko‘rsatish"}
+                </button>
+              )}
+            </div>
+          </div>
+          <div>
+            <Typography size="24" weight="500" bottom="20">
+              P
+            </Typography>
+            <div className={styles.linkStyle}>
+              {groupedDoctors["P"]
+                ?.slice(0, expandedLetters["P"] ? groupedDoctors["P"].length : 5)
+                .map((doctor: string, idx: number) => (
+                  <div key={idx}>
+                    <Link href="/" className={styles.link}>
+                      {doctor}
+                    </Link>
+                  </div>
+                ))}
+              {groupedDoctors["P"]?.length > 5 && (
+                <button onClick={() => toggleLetter("P")}>
+                  {expandedLetters["P"] ? "Yashirish" : "Barchasini ko‘rsatish"}
+                </button>
+              )}
+            </div>
+          </div>
+          <div>
+            <Typography size="24" weight="500" bottom="20">
+              Q
+            </Typography>
+            <div className={styles.linkStyle}>
+              {groupedDoctors["Q"]
+                ?.slice(0, expandedLetters["Q"] ? groupedDoctors["Q"].length : 5)
+                .map((doctor: string, idx: number) => (
+                  <div key={idx}>
+                    <Link href="/" className={styles.link}>
+                      {doctor}
+                    </Link>
+                  </div>
+                ))}
+              {groupedDoctors["Q"]?.length > 5 && (
+                <button onClick={() => toggleLetter("Q")}>
+                  {expandedLetters["Q"] ? "Yashirish" : "Barchasini ko‘rsatish"}
+                </button>
+              )}
+            </div>
+          </div>
+          <div>
+            <Typography size="24" weight="500" bottom="20">
+              R
+            </Typography>
+            <div className={styles.linkStyle}>
+              {groupedDoctors["R"]
+                ?.slice(0, expandedLetters["R"] ? groupedDoctors["R"].length : 5)
+                .map((doctor: string, idx: number) => (
+                  <div key={idx}>
+                    <Link href="/" className={styles.link}>
+                      {doctor}
+                    </Link>
+                  </div>
+                ))}
+              {groupedDoctors["R"]?.length > 5 && (
+                <button onClick={() => toggleLetter("R")}>
+                  {expandedLetters["R"] ? "Yashirish" : "Barchasini ko‘rsatish"}
+                </button>
+              )}
+            </div>
+          </div>
+          <div>
+            <Typography size="24" weight="500" bottom="20">
+              S
+            </Typography>
+            <div className={styles.linkStyle}>
+              {groupedDoctors["S"]
+                ?.slice(0, expandedLetters["S"] ? groupedDoctors["S"].length : 5)
+                .map((doctor: string, idx: number) => (
+                  <div key={idx}>
+                    <Link href="/" className={styles.link}>
+                      {doctor}
+                    </Link>
+                  </div>
+                ))}
+              {groupedDoctors["S"]?.length > 5 && (
+                <button onClick={() => toggleLetter("S")}>
+                  {expandedLetters["S"] ? "Yashirish" : "Barchasini ko‘rsatish"}
+                </button>
+              )}
+            </div>
+          </div>
+          <div>
+            <Typography size="24" weight="500" bottom="20">
+              T
+            </Typography>
+            <div className={styles.linkStyle}>
+              {groupedDoctors["T"]
+                ?.slice(0, expandedLetters["T"] ? groupedDoctors["T"].length : 5)
+                .map((doctor: string, idx: number) => (
+                  <div key={idx}>
+                    <Link href="/" className={styles.link}>
+                      {doctor}
+                    </Link>
+                  </div>
+                ))}
+              {groupedDoctors["T"]?.length > 5 && (
+                <button onClick={() => toggleLetter("T")}>
+                  {expandedLetters["T"] ? "Yashirish" : "Barchasini ko‘rsatish"}
+                </button>
+              )}
+            </div>
+          </div>
+          <div>
+            <Typography size="24" weight="500" bottom="20">
+              U
+            </Typography>
+            <div className={styles.linkStyle}>
+              {groupedDoctors["U"]
+                ?.slice(0, expandedLetters["U"] ? groupedDoctors["U"].length : 5)
+                .map((doctor: string, idx: number) => (
+                  <div key={idx}>
+                    <Link href="/" className={styles.link}>
+                      {doctor}
+                    </Link>
+                  </div>
+                ))}
+              {groupedDoctors["U"]?.length > 5 && (
+                <button onClick={() => toggleLetter("U")}>
+                  {expandedLetters["U"] ? "Yashirish" : "Barchasini ko‘rsatish"}
+                </button>
+              )}
+            </div>
+          </div>
+          <div>
+            <Typography size="24" weight="500" bottom="20">
+              V
+            </Typography>
+            <div className={styles.linkStyle}>
+              {groupedDoctors["V"]
+                ?.slice(0, expandedLetters["V"] ? groupedDoctors["V"].length : 5)
+                .map((doctor: string, idx: number) => (
+                  <div key={idx}>
+                    <Link href="/" className={styles.link}>
+                      {doctor}
+                    </Link>
+                  </div>
+                ))}
+              {groupedDoctors["V"]?.length > 5 && (
+                <button onClick={() => toggleLetter("V")}>
+                  {expandedLetters["V"] ? "Yashirish" : "Barchasini ko‘rsatish"}
+                </button>
+              )}
+            </div>
+          </div>
+          <div>
+            <Typography size="24" weight="500" bottom="20">
+              Y
+            </Typography>
+            <div className={styles.linkStyle}>
+              {groupedDoctors["Y"]
+                ?.slice(0, expandedLetters["Y"] ? groupedDoctors["Y"].length : 5)
+                .map((doctor: string, idx: number) => (
+                  <div key={idx}>
+                    <Link href="/" className={styles.link}>
+                      {doctor}
+                    </Link>
+                  </div>
+                ))}
+              {groupedDoctors["Y"]?.length > 5 && (
+                <button onClick={() => toggleLetter("Y")}>
+                  {expandedLetters["Y"] ? "Yashirish" : "Barchasini ko‘rsatish"}
+                </button>
+              )}
+            </div>
           </div>
         </div>
-        <div>
-          <h5>D</h5>
-        </div>
-        <div>
-          <h5>E</h5>
-        </div>
-        <div>
-          <h5>F</h5>
-        </div>
-        <div>
-          <h5>G</h5>
-        </div>
-        <div>
-          <h5>I</h5>
-        </div>
-        <div>
-          <h5>J</h5>
-        </div>
-        <div>
-          <h5>K</h5>
-        </div>
-        <div>
-          <h5>L</h5>
-        </div>
-        <div>
-          <h5>M</h5>
-        </div>
-        <div>
-          <h5>N</h5>
-        </div>
-        <div>
-          <h5>O</h5>
-        </div>
-        <div>
-          <h5>P</h5>
-        </div>
-        <div>
-          <h5>Q</h5>
-        </div>
-        <div>
-          <h5>R</h5>
-        </div>
-        <div>
-          <h5>S</h5>
-        </div>
-        <div>
-          <h5>T</h5>
-        </div>
-        <div>
-          <h5>U</h5>
-        </div>
-        <div>
-          <h5>V</h5>
-        </div>
-        <div>
-          <h5>Y</h5>
-        </div>
       </div>
-      <h3>Toshkentda shifokorlar mutaxassisligi boyicha</h3>
-      <div className={styles.SelectionStyle}>
-        <select name="doctorsType" id="doctorsType">
-          <option value="1">Mutaxassisliklar bo`yicha qidiring</option>
-          {doctorsType.map((val, idx) => (
-            <option value={idx} key={idx}>
-              {val}
-            </option>
-          ))}
-        </select>
-        <select name="districts" id="districts">
-          <option value="1">Tuman</option>
-          {districts.map((val, idx) => (
-            <option value={idx} key={idx}>
-              {val}
-            </option>
-          ))}
-        </select>
-        <select name="medicalCenters" id="medicalCenters">
-          <option value="1">Tibbiy muassasa turi</option>
-          {medicalCenters.map((val, idx) => (
-            <option value={idx} key={idx}>
-              {val}
-            </option>
-          ))}
-        </select>
-        <select name="doctorGender" id="doctorGender">
-          <option value="1">Shifokor jinsi</option>
-          {doctorGender.map((val, idx) => (
-            <option value={idx} key={idx}>
-              {val}
-            </option>
-          ))}
-        </select>
+      <div className={styles.selectionsStyle}>
+        <Typography size="28" weight="600" bottom="30">
+          Toshkentda shifokolar mutaxassisligi bo`yicha
+        </Typography>
+        <div className={styles.selections}>
+          <Select
+            options={doctorsType}
+            placeholder="Mutaxassisligi bo'yicha"
+            name="doctorsType"
+            id="doctorsType"
+          />
+          <Select
+            options={districts}
+            placeholder="Tuman"
+            name="districts"
+            id="districts"
+          />
+          <Select
+            options={medicalCenters}
+            placeholder="Tibbiyot muassas turi"
+            name="medicalCenter"
+            id="medicalCenter"
+          />
+          <Select
+            options={doctorGender}
+            placeholder="Shifokor jinsi"
+            name="doctorGender"
+            id="doctorGender"
+          />
+        </div>
       </div>
       <div className={styles.popularDoctors}>
-        {popularDoctors.map((val, idx) => (
-          <div key={idx}>
-            <p>{val.type}</p>
-            <h4>{val.fullName}</h4>
-          </div>
+        {popularDoctors.map((doctor, index) => (
+          <DoctorCard
+            key={index}
+            fullname={doctor.fullName}
+            type={doctor.type}
+            patients={doctor.patients}
+            clinicName={doctor.clinic}
+            location={doctor.location}
+            clinicNumber={doctor.clinicNumber}
+            telegramBotLink={doctor.telegram}
+            photo="xankeldiyevnarimanzuhritdinovich"
+            clinicPhoto="m-clinic"
+            priceOne={doctor.firstPrice}
+            priceTwo={doctor.consistentPrice}
+          />
         ))}
+      </div>
+      <div className={styles.throwTelegram}>
+        <Typography>Kerakli ma`lumot topmadingizmi?</Typography>
+        <Typography>
+          Bizga Telegramda yozing, biz sizga shifokor topib, qabuliga yozib
+          beramiz
+        </Typography>
+        <button>Telegramda yozish</button>
       </div>
     </div>
   );
