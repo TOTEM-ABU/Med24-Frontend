@@ -1,4 +1,3 @@
-// components/Navbar/index.tsx
 'use client'
 
 import React, { useState } from 'react';
@@ -19,17 +18,19 @@ const Navbar = () => {
       <div className={styles.topBar}>
         <div className={styles.topBarContent}>
           <div className={styles.topBarLeft}>
-            <div className={styles.contactItem}>
-              <Phone className={styles.contactIcon} />
-              <span>+998 71 123 45 67</span>
+            <div className={styles.infoItem}>
+              <span>Klinika qo'shish</span>
             </div>
-            <div className={styles.contactItem}>
-              <MapPin className={styles.contactIcon} />
-              <span>Toshkent, O'zbekiston</span>
+            <div className={styles.infoItem}>
+              <img src="/uzb-flag.svg" alt="O'zbekiston" className={styles.flagIcon} />
+              <span>O'z</span>
+              <ChevronDown className={styles.langIcon} />
             </div>
-          </div>
-          <div className={styles.topBarRight}>
-            24/7 onlayn konsultatsiya
+            <div className={styles.infoItem}>
+              <MapPin className={styles.locationIcon} />
+              <span>Toshkent</span>
+              <ChevronDown className={styles.locationIcon} />
+            </div>
           </div>
         </div>
       </div>
@@ -39,74 +40,46 @@ const Navbar = () => {
         <div className={styles.navContent}>
           {/* Logo */}
           <Link href="/" className={styles.logo}>
-            <div className={styles.logoText}>
-              Med<span className={styles.logoAccent}>24</span>
+            <div className={styles.logoBox}>
+              <div className={styles.logoIconBackground}>
+                <img src="/med24-logo.svg" alt="Med24 Logo" className={styles.logoIcon} />
+              </div>
+              <span className={styles.logoText}>med24</span>
             </div>
-            <span className={styles.logoSuffix}>.uz</span>
           </Link>
 
           {/* Desktop Navigation */}
           <nav className={styles.desktopNav}>
-            <Link href="/" className={styles.navLink}>
-              Bosh sahifa
+            <Link href="/doctors" className={styles.navLink}>
+              Shifokor qabuli
             </Link>
-            
-            <div className={styles.dropdown}>
-              <button
-                onClick={toggleDropdown}
-                className={styles.dropdownButton}
-              >
-                Klinikalar
-                <ChevronDown className={styles.dropdownIcon} />
-              </button>
-              
-              {isDropdownOpen && (
-                <div className={styles.dropdownMenu}>
-                  <Link href="/klinikalar" className={styles.dropdownLink}>
-                    Barcha klinikalar
-                  </Link>
-                  <Link href="/klinikalar/davlat" className={styles.dropdownLink}>
-                    Davlat klinikalari
-                  </Link>
-                  <Link href="/klinikalar/xususiy" className={styles.dropdownLink}>
-                    Xususiy klinikalar
-                  </Link>
-                  <Link href="/laboratoryalar" className={styles.dropdownLink}>
-                    Laboratoriyalar
-                  </Link>
-                </div>
-              )}
-            </div>
-
-            <Link href="/shifokorlar" className={styles.navLink}>
-              Shifokorlar
+            <Link href="/analizlar" className={styles.navLink}>
+              Analizlar
             </Link>
-            <Link href="/xizmatlar" className={styles.navLink}>
-              Xizmatlar
+            <Link href="/diagnostics" className={styles.navLink}>
+              Diagnostika
             </Link>
-            <Link href="/sharhlar" className={styles.navLink}>
-              Sharhlar
+            <Link href="/services" className={styles.navLink}>
+              Tibbiy xizmatlar
             </Link>
-            <Link href="/yangiliklar" className={styles.navLink}>
-              Yangiliklar
+            <Link href="/clinics" className={styles.navLink}>
+              Klinikalar
             </Link>
-            <Link href="/aloqa" className={styles.navLink}>
-              Aloqa
+            <Link href="/apteka" className={styles.navLink}>
+              Dorilar
+            </Link>
+            <Link href="/promotions" className={styles.navLink}>
+              Aksiya
             </Link>
           </nav>
 
-          {/* Search and CTA */}
+          {/* Right Section */}
           <div className={styles.rightSection}>
-            <div className={styles.searchContainer}>
-              <input
-                type="text"
-                placeholder="Qidiruv..."
-                className={styles.searchInput}
-              />
-              <Search className={styles.searchIcon} />
-            </div>
-            <Link href="/qabul" className={styles.ctaButton}>
-              Qabul yozilish
+            <Link href="/download-app" className={styles.ctaButton}>
+              <span className={styles.downloadText}>Ilovani yuklab olish</span>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className={styles.downloadIcon}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+              </svg>
             </Link>
           </div>
 
@@ -123,40 +96,29 @@ const Navbar = () => {
         {isMenuOpen && (
           <div className={styles.mobileNav}>
             <div className={styles.mobileNavContent}>
-              <Link href="/" className={styles.mobileNavLink}>
-                Bosh sahifa
+              <Link href="/doctors" className={styles.mobileNavLink}>
+                Shifokor qabuli
               </Link>
-              <Link href="/klinikalar" className={styles.mobileNavLink}>
+              <Link href="/analizlar" className={styles.mobileNavLink}>
+                Analizlar
+              </Link>
+              <Link href="/diagnostics" className={styles.mobileNavLink}>
+                Diagnostika
+              </Link>
+              <Link href="/services" className={styles.mobileNavLink}>
+                Tibbiy xizmatlar
+              </Link>
+              <Link href="/clinics" className={styles.mobileNavLink}>
                 Klinikalar
               </Link>
-              <Link href="/shifokorlar" className={styles.mobileNavLink}>
-                Shifokorlar
+              <Link href="/apteka" className={styles.mobileNavLink}>
+                Dorilar
               </Link>
-              <Link href="/xizmatlar" className={styles.mobileNavLink}>
-                Xizmatlar
+              <Link href="/promotions" className={styles.mobileNavLink}>
+                Aksiya
               </Link>
-              <Link href="/sharhlar" className={styles.mobileNavLink}>
-                Sharhlar
-              </Link>
-              <Link href="/yangiliklar" className={styles.mobileNavLink}>
-                Yangiliklar
-              </Link>
-              <Link href="/aloqa" className={styles.mobileNavLink}>
-                Aloqa
-              </Link>
-              
-              {/* Mobile Search */}
-              <div className={styles.mobileSearch}>
-                <input
-                  type="text"
-                  placeholder="Qidiruv..."
-                  className={styles.mobileSearchInput}
-                />
-                <Search className={styles.mobileSearchIcon} />
-              </div>
-              
-              <Link href="/qabul" className={styles.mobileCtaButton}>
-                Qabul yozilish
+              <Link href="/download-app" className={styles.mobileCtaButton}>
+                Ilovani yuklab olish
               </Link>
             </div>
           </div>
