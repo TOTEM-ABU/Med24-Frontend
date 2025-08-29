@@ -1,0 +1,208 @@
+.navbar {
+  background-color: white;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+}
+
+/* Top Info Bar */
+.topBar {
+  background-color: #f3f4f6;
+  padding: 0.5rem 1rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.topBarContent {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+.topBarLeft {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.infoItem {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.flagIcon {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.locationIcon, .langIcon {
+  width: 1rem;
+  height: 1rem;
+}
+
+/* Main Navigation */
+.navContainer {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.navContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 4.5rem;
+}
+
+/* Logo */
+.logo {
+  text-decoration: none;
+}
+
+.logoBox {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Mana to'g'rilangan logotip uchun CSS */
+.logoIconBackground {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem; /* Rasmga mos o'lcham */
+  height: 2.25rem; /* Rasmga mos o'lcham */
+  background-color: #008cff;
+  border-radius: 0.25rem;
+}
+
+.logoIcon {
+  width: 1.5rem; /* Ikonka uchun o'lcham */
+  height: 1.5rem; /* Ikonka uchun o'lcham */
+}
+
+.logoText {
+  font-size: 1.75rem;
+  font-weight: bold;
+  color: #1f2937;
+}
+
+/* Desktop Navigation */
+.desktopNav {
+  display: none;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+@media (min-width: 1024px) {
+  .desktopNav {
+    display: flex;
+  }
+}
+
+.navLink {
+  color: #374151;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.5rem 0.25rem;
+  border-bottom: 2px solid transparent;
+  transition: color 0.3s ease, border-bottom-color 0.3s ease;
+}
+
+.navLink:hover {
+  color: #2563eb;
+  border-bottom-color: #2563eb;
+}
+
+/* Right Section */
+.rightSection {
+  display: none;
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .rightSection {
+    display: flex;
+  }
+}
+
+.ctaButton {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: #2563eb;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.ctaButton:hover {
+  background-color: #1d4ed8;
+}
+
+.downloadIcon {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+/* Mobile Menu Button */
+.mobileMenuButton {
+  display: block;
+  color: #4b5563;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+@media (min-width: 1024px) {
+  .mobileMenuButton {
+    display: none;
+  }
+}
+
+.menuIcon {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+/* Mobile Navigation */
+.mobileNav {
+  display: block;
+  padding: 1rem 0;
+  border-top: 1px solid #e5e7eb;
+}
+
+@media (min-width: 1024px) {
+  .mobileNav {
+    display: none;
+  }
+}
+
+.mobileNavContent {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 0 1rem;
+}
+
+.mobileNavLink {
+  color: #374151;
+  text-decoration: none;
+  padding: 0.5rem 0;
+}
+
+.mobileCtaButton {
+  background-color: #2563eb;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  text-align: center;
+  font-weight: 500;
+  margin-top: 1rem;
+  text-decoration: none;
+}

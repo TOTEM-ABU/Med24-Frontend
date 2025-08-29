@@ -1,0 +1,36 @@
+.wrapper {
+  position: relative;
+}
+
+.scroller {
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+}
+
+.row {
+  display: flex;
+  gap: 24px;
+  padding: 8px 8px 8px 0;
+}
+
+.nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  border: none;
+  background: #ffffff;
+  box-shadow: 0 10px 24px rgba(16, 24, 40, 0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.left { left: -10px; }
+.right { right: -10px; } 
