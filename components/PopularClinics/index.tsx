@@ -59,7 +59,6 @@ const PopularClinics: React.FC<PopularClinicsProps> = ({
     },
   ];
 
-  // Use the provided clinics or fallback to the default ones
   const clinicsToShow =
     clinics.length > 0 ? clinics.slice(0, 10) : defaultClinics;
 
