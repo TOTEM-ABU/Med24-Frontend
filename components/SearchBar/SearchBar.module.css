@@ -1,49 +1,50 @@
 /* SearchBar.module.css */
 
 .input-container {
-    position: relative;
-    display: inline-block;
+  position: relative;
+  display: inline-block;
+  flex-grow: 1;
 }
 
 .input-container input {
-    border: 1px solid #e5e7eb;
-    width: 100%;
-    padding: 13px 13px 13px 45px;
-    border-radius: 14px;
-    font-size: 16px;
-    font-weight: 300;
-    box-sizing: border-box;
-
+  border: 1px solid #e5e7eb;
+  width: 100%;
+  padding: 13px 13px 13px 45px;
+  border-radius: 14px;
+  font-size: 16px;
+  font-weight: 300;
+  box-sizing: border-box;
+  height: 52px;
 }
 
 .input-container input:focus {
-    outline: none;
+  outline: none;
 }
 
 .input-container input::placeholder {
-    font-weight: 500;
-    color: #9ca3af;
+  font-weight: 500;
+  color: #9ca3af;
 }
 
 .input-container input:disabled {
-    background-color: #f9fafb;
-    color: #6b7280;
-    cursor: not-allowed;
+  background-color: #f9fafb;
+  color: #6b7280;
+  cursor: not-allowed;
 }
 
 .search-icon {
-    position: absolute;
-    left: 15px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 20px;
-    height: 20px;
-    cursor: pointer;
-    color: #6b7280;
-    display: block;
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  color: #6b7280;
+  display: block;
 }
 
 .input-container input:disabled + .search-icon {
-    color: #d1d5db;
-    cursor: not-allowed;
+  color: #d1d5db;
+  cursor: not-allowed;
 }

@@ -19,6 +19,7 @@
 .leftContainer {
   flex: 1;
   width: 517px;
+  padding-bottom: 100px;
 }
 
 .rightContainer {
@@ -59,7 +60,7 @@
 }
 
 .mapInfo {
-  padding: 20px;
+  padding: 16px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -75,14 +76,15 @@
 }
 
 .locationName {
-  font-size: 16px;
-  font-weight: 600;
+  font-size: 14px;
+  font-weight: 400;
   color: #1f2937;
   line-height: 1.25;
 }
 
 .locationSubtext {
   font-size: 14px;
+  font-size: 400;
   color: #6b7280;
   line-height: 1.4;
 }
@@ -98,9 +100,8 @@
   color: #fff;
   border: none;
   border-radius: 8px;
-  padding: 14px 16px;
-  font-size: 14px;
-  font-weight: 600;
+  padding: 16px 0;
+  font-size: 16px;
   cursor: pointer;
   transition: background-color 0.2s;
   text-align: center;
@@ -116,8 +117,7 @@
   border: none;
   border-radius: 8px;
   padding: 14px 16px;
-  font-size: 14px;
-  font-weight: 500;
+  font-size: 16px;
   cursor: pointer;
   text-decoration: none;
   text-align: center;
@@ -132,7 +132,6 @@
   position: relative;
   width: 517px;
   height: 251px;
-  margin-bottom: 40px;
 }
 
 .backgroundImage {
@@ -149,14 +148,14 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 10px;
   padding: 16px;
   border-radius: 12px;
 }
 
 .clinicLogo {
-  width: 60px;
-  height: 60px;
+  width: 70px;
+  height: 70px;
+  padding: 5px;
   border-radius: 8px;
   object-fit: cover;
   background: #fff;
@@ -201,16 +200,11 @@
   font-weight: 500;
 }
 
-.servicesSection {
-  margin: 30px 0;
-  padding: 20px 0;
-}
-
 .servicesTitle {
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 600;
   color: #1f2937;
-  margin: 0 0 16px 0;
+  margin: 26px 0 10px 0;
   line-height: 1.3;
 }
 
@@ -246,14 +240,13 @@
   display: flex;
   flex-direction: column;
   gap: 12px;
+  margin-top: 26px;
 }
 
 .priceItem {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 8px 0;
-  border-bottom: 1px solid #f3f4f6;
 }
 
 .priceItem:last-child {
@@ -261,16 +254,16 @@
 }
 
 .serviceName {
-  color: #374151;
+  color: rgb(117 117 117);
   font-size: 14px;
   font-weight: 400;
   flex: 1;
 }
 
 .servicePrice {
-  color: #1f2937;
+  color: #1e1e1e;
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 400;
   margin-left: 16px;
 }
 
@@ -279,7 +272,7 @@
   color: #3b82f6;
   border: none;
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 400;
   cursor: pointer;
   padding: 12px 0 0 0;
   transition: color 0.2s;
@@ -360,7 +353,7 @@
   background-color: #f9fafb;
   border-radius: 12px;
   margin: 30px 0;
-  padding: 18px;
+  padding: 18px 16px;
   box-sizing: border-box;
 }
 
@@ -403,19 +396,21 @@
 .servicesListSection {
   width: 100%;
   max-width: 874px;
-  margin: 80px 0 20px 0;
+  margin: 80px 0 24px 0;
   box-sizing: border-box;
 }
 
 .serviceCategory {
-  font-size: 18px;
-  font-weight: 600;
+  font-size: 20px;
+  font-weight: 500;
   color: #111827;
   margin: 20px 0 15px 0;
 }
 
 .serviceItemsList {
   width: 100%;
+  font-size: 20px;
+  font-weight: 500;
 }
 
 .serviceListItem {
@@ -433,9 +428,9 @@
 }
 
 .serviceListItemPrice {
-  font-size: 14px;
-  color: #111827;
-  font-weight: 600;
+  font-size: 16px;
+  color: rgb(117 117 117);
+  font-weight: 400;
   text-align: right;
 }
 
@@ -466,7 +461,6 @@
   background-color: #2563eb;
 }
 
-/* Modal Styles */
 .modalOverlay {
   position: fixed;
   top: 0;
@@ -661,13 +655,13 @@
 .reviewsSection {
   width: 100%;
   max-width: 874px;
-  margin-top: 20px;
+  margin-top: 80px;
   box-sizing: border-box;
 }
 
 .sectionTitle {
   font-size: 24px;
-  font-weight: 700;
+  font-weight: 600;
   color: #111827;
   margin: 0 0 16px 0;
 }
@@ -693,8 +687,9 @@
 }
 
 .ratingText {
-  color: #4b5563;
-  font-size: 16px;
+  color: rgb(117 117 117);
+  font-size: 12px;
+  font-weight: 400;
 }
 
 .leaveReviewButtonTop {
@@ -852,7 +847,6 @@
   cursor: not-allowed;
 }
 
-/* Doctor Types Section */
 .doctorTypesSection {
   width: 100%;
   max-width: 874px;
@@ -864,7 +858,7 @@
   font-size: 24px;
   font-weight: 700;
   color: #111827;
-  margin: 0 0 16px 0;
+  margin: 80px 0 20px 0;
 }
 
 .doctorTypesGrid {
@@ -984,17 +978,10 @@
   margin-bottom: 12px;
 }
 
-.clinicName {
-  margin: 0;
-  font-size: 14px;
-  font-weight: 500;
-  color: #111827;
-}
-
 .doctorCardsSection {
   width: 100%;
   max-width: 874px;
-  margin: 30px 0;
+  padding-top: 60px;
   box-sizing: border-box;
 }
 
@@ -1004,7 +991,6 @@
   gap: 20px;
 }
 
-/* Override DoctorCard styles for KlinikiName page */
 .doctorCardsContainer :global(.doctorCardContainer) {
   width: 100%;
   max-width: 100%;
@@ -1044,4 +1030,43 @@
   top: 50%;
   transform: translateY(-50%);
   pointer-events: none;
+}
+
+.descriptionText1 {
+  margin-top: 10px;
+  margin-bottom: 16px;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.descriptionText {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.descriptionText2 {
+  margin-top: 26px;
+  margin-bottom: 8px;
+  color: rgb(117 117 117);
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.toggleButton {
+  background: transparent;
+  border: none;
+  color: #3b82f6;
+  font-size: 15px;
+  font-weight: 500;
+  padding: 0;
+  margin-top: 8px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.toggleButton:hover {
+  color: #2563eb;
 }

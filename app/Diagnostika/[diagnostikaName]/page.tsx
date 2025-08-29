@@ -1,7 +1,9 @@
-import { useRouter } from "next/router";
+"use client";
+
 import React, { useMemo } from "react";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
+import styles from "./DiagnostikaName.module.css";
 import Breadcrumb from "@/components/Breadcrumb";
 import ClinicCard from "@/components/ClinicCard";
 
@@ -39,12 +41,15 @@ type Clinic = {
   clinicservices?: ClinicService[];
 };
 
-const DiagnostikaTypePage = () => {
-  const router = useRouter();
-  const { diagnostikaType } = router.query;
-  const decodedDiagnostikaName = diagnostikaType
-    ? decodeURIComponent(diagnostikaType as string)
-    : "";
+interface DiagnostikaNameProps {
+  params: {
+    diagnostikaName: string;
+  };
+}
+
+export default function DiagnostikaName({ params }: DiagnostikaNameProps) {
+  const diagnostikaName = params.diagnostikaName;
+  const decodedDiagnostikaName = decodeURIComponent(diagnostikaName || "");
 
   const { data: services } = useQuery({
     queryKey: ["services-all"],
@@ -62,11 +67,11 @@ const DiagnostikaTypePage = () => {
   });
 
   const matchedService = useMemo(() => {
-    if (!services || !diagnostikaType) return undefined;
+    if (!services || !diagnostikaName) return undefined;
     return services.find(
       (s) => s.name.toLowerCase() === decodedDiagnostikaName.toLowerCase()
     );
-  }, [services, diagnostikaType, decodedDiagnostikaName]);
+  }, [services, diagnostikaName, decodedDiagnostikaName]);
 
   const { data: clinicServices, isLoading } = useQuery({
     queryKey: ["clinicservices", { servicesId: matchedService?.id }],
@@ -120,16 +125,9 @@ const DiagnostikaTypePage = () => {
     return Array.from(byId.values());
   }, [clinicServices]);
 
-  if (!diagnostikaType || isLoading) {
+  if (isLoading) {
     return (
-      <div
-        style={{
-          width: "100%",
-          maxWidth: "1052px",
-          margin: "0 auto",
-          padding: "30px 0",
-        }}
-      >
+      <div className={styles.bigContainer}>
         <Breadcrumb
           items={[
             { label: "Asosiy sahifa", href: "/" },
@@ -137,13 +135,7 @@ const DiagnostikaTypePage = () => {
             { label: "Yuklanmoqda..." },
           ]}
         />
-        <div
-          style={{
-            width: "100%",
-            maxWidth: "874px",
-            margin: "0 auto",
-          }}
-        >
+        <div className={styles.miniContainer}>
           <p>Yuklanmoqda...</p>
         </div>
       </div>
@@ -152,14 +144,7 @@ const DiagnostikaTypePage = () => {
 
   if (!matchedService && services) {
     return (
-      <div
-        style={{
-          width: "100%",
-          maxWidth: "1052px",
-          margin: "0 auto",
-          padding: "30px 0",
-        }}
-      >
+      <div className={styles.bigContainer}>
         <Breadcrumb
           items={[
             { label: "Asosiy sahifa", href: "/" },
@@ -167,13 +152,7 @@ const DiagnostikaTypePage = () => {
             { label: decodedDiagnostikaName },
           ]}
         />
-        <div
-          style={{
-            width: "100%",
-            maxWidth: "874px",
-            margin: "0 auto",
-          }}
-        >
+        <div className={styles.miniContainer}>
           <p>Xizmat topilmadi: {decodedDiagnostikaName}</p>
         </div>
       </div>
@@ -181,14 +160,7 @@ const DiagnostikaTypePage = () => {
   }
 
   return (
-    <div
-      style={{
-        width: "100%",
-        maxWidth: "1052px",
-        margin: "0 auto",
-        padding: "30px 0",
-      }}
-    >
+    <div className={styles.bigContainer}>
       <Breadcrumb
         items={[
           { label: "Asosiy sahifa", href: "/" },
@@ -197,34 +169,14 @@ const DiagnostikaTypePage = () => {
         ]}
       />
 
-      <div
-        style={{
-          width: "100%",
-          maxWidth: "874px",
-          margin: "0 auto",
-        }}
-      >
-        <div style={{ marginTop: "24px", marginBottom: "24px" }}>
-          <h1
-            style={{
-              fontSize: "28px",
-              fontWeight: "600",
-              marginBottom: "20px",
-              color: "#333",
-            }}
-          >
+      <div className={styles.miniContainer}>
+        <div className={styles.serviceInfo}>
+          <h1 className={styles.mainTitle}>
             {matchedService?.name || decodedDiagnostikaName} bo&apos;yicha
             klinikalar
           </h1>
 
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              gap: "16px",
-              marginTop: "24px",
-            }}
-          >
+          <div className={styles.clinicsContainer}>
             {clinics.length > 0 ? (
               clinics.map((clinic) => (
                 <ClinicCard key={clinic.id} clinic={clinic} />
@@ -237,6 +189,4 @@ const DiagnostikaTypePage = () => {
       </div>
     </div>
   );
-};
-
-export default DiagnostikaTypePage;
+}

@@ -6,19 +6,19 @@ import Link from "next/link";
 
 interface Crumb {
   label: string;
-  href?: string; 
+  href?: string;
 }
 
 interface BreadcrumbProps {
   items: Crumb[];
-  className?: string;                // qo‘shimcha className
-  style?: React.CSSProperties;       // inline style
+  className?: string;
+  style?: React.CSSProperties;
 }
 
 const Breadcrumb: React.FC<BreadcrumbProps> = ({ items, className, style }) => {
   return (
-    <nav 
-      className={`${styles["breadcrumb-container"]} ${className || ""}`} 
+    <nav
+      className={`${styles["breadcrumb-container"]} ${className || ""}`}
       style={style}
     >
       <ol className={styles["ordered-list"]}>
@@ -27,7 +27,7 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({ items, className, style }) => {
 
           return (
             <li key={idx} className={styles["full-list"]}>
-              {idx > 0 && <span className={styles['separator']}>/</span>}
+              {idx > 0 && <span className={styles["separator"]}>/</span>}
               {isLast || !item.href ? (
                 <span className={styles["active"]}>{item.label}</span>
               ) : (

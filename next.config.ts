@@ -9,6 +9,10 @@ const nextConfig: NextConfig = {
         source: "/api/:path*",
         destination: "http://45.76.94.219:3132/api/:path*",
       },
+      {
+        source: "/diagnostika/:diagnostikaname*",
+        destination: "/Diagnostika/:diagnostikaname*",
+      },
     ];
   },
 };
