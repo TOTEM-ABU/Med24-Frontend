@@ -10,7 +10,6 @@ const DiagnostikaType = () => {
 
   useEffect(() => {
     if (diagnostikaName) {
-      // Redirect to the new URL structure
       router.replace(`/diagnostika/${encodeURIComponent(diagnostikaName)}`);
     } else {
       router.replace("/Diagnostika");

@@ -27,7 +27,7 @@
 }
 
 .input-container input:disabled {
-  background-color: #f9fafb;
+  /* background-color: #f9fafb; */
   color: #6b7280;
   cursor: not-allowed;
 }
