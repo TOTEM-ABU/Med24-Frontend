@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import styles from "./Diagnostika.module.css";
 import Breadcrumb from "@/components/Breadcrumb";
 import Input from "@/components/SearchBar";
@@ -6,10 +6,70 @@ import Button from "@/components/Button";
 import RecommendedDiagnostics from "./RecommendedDiagnostics";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import { PopularClinics } from "@/components";
 import PromotionsSwiper from "@/components/PromotionsSwiper";
 import DoctorTypeCard from "@/components/DoctorTypeCard";
-import CommonServices from "@/app/Kliniki/CommonServices";
+import PopularClinics from "@/components/PopularClinics";
+import Link from "next/link";
+
+type Clinic = {
+  id: string;
+  name: string;
+  type?: "PUBLIC" | "PRIVATE" | "VETERINARY";
+  description?: string;
+  address?: string;
+  phone?: string;
+  website?: string;
+  opening_hours?: Record<string, string>;
+  logo_url?: string;
+  rating?: string | number;
+  Region?: { id: string; name: string } | null;
+  promotions?: Array<{ id: string; title: string; discount_percent?: number }>;
+  clinicservices?: Array<{
+    id: string;
+    price?: string | number;
+    duration_minutes?: number;
+    Services?: { id: string; name: string };
+  }>;
+  doctors?: Array<{
+    id?: string;
+    first_name?: string;
+    last_name?: string;
+    name?: string;
+    surname?: string;
+    specialty?: string;
+    specialtiesId?: string;
+    image_url?: string;
+    rating?: number;
+    reviews_count?: number;
+    reviews?: Array<{ id: string; rating?: number }>;
+    education?: string;
+    qualification?: string;
+    title?: string;
+    degree?: string;
+    experience_years?: number;
+    experience?: string;
+    bio?: string;
+    Specialties?: { id: string; name?: string } | null;
+  }>;
+  reviews?: Array<unknown>;
+};
+
+type Service = {
+  id: string;
+  name: string;
+  description?: string;
+  category?: string;
+  image_url?: string;
+  createdAt?: string;
+  clinicservices?: Array<{
+    id: string;
+    price?: string;
+    duration_minutes?: number;
+    clinicsId?: string;
+    servicesId?: string;
+    createdAt?: string;
+  }>;
+};
 
 const Diagnostika: React.FC = () => {
   const { data: clinics } = useQuery({
@@ -20,6 +80,7 @@ const Diagnostika: React.FC = () => {
         "doctors.Specialties",
         "clinicservices.Services",
         "reviews",
+        "opening_hours",
       ].join(",");
       try {
         const res = await axios.get(
@@ -43,26 +104,22 @@ const Diagnostika: React.FC = () => {
     },
   });
 
-  const { data: recentClinics } = useQuery({
-    queryKey: ["clinics-recent"],
+  const { data: diagnosticServices } = useQuery({
+    queryKey: ["diagnostic-services"],
     queryFn: async () => {
-      const include = [
-        "Region",
-        "doctors.Specialties",
-        "clinicservices.Services",
-        "reviews",
-      ].join(",");
-      try {
-        const res = await axios.get(
-          `${process.env.NEXT_PUBLIC_API_URL}/clinics?include=${include}&limit=20`
-        );
-        return res.data?.data ?? [];
-      } catch (error) {
-        console.error("Error fetching recent clinics:", error);
-        return [];
-      }
+      const res = await axios.get(
+        `${process.env.NEXT_PUBLIC_API_URL}/services?limit=1000`
+      );
+      return res.data?.data ?? [];
     },
   });
+
+  const diagnosticServicesFiltered = useMemo(() => {
+    if (!diagnosticServices) return [];
+    return diagnosticServices.filter(
+      (service: Service) => service.category === "DIAGNOSTICS"
+    );
+  }, [diagnosticServices]);
 
   return (
     <div className={styles.bigContainer}>
@@ -87,17 +144,13 @@ const Diagnostika: React.FC = () => {
         <RecommendedDiagnostics />
 
         {clinics?.length > 0 && (
-          <div style={{ marginTop: 80, marginBottom: 20 }}>
-            <PopularClinics
-              clinics={clinics}
-              customStyles={{
-                grid: {
-                  gridTemplateColumns: "repeat(5, 1fr)",
-                  gap: "16px",
-                },
-              }}
-            />
-          </div>
+          <PopularClinics
+            clinics={clinics}
+            title="Mashhur klinikalar"
+            customStyles={{
+              grid: { gridTemplateColumns: "repeat(5, 1fr)" },
+            }}
+          />
         )}
 
         {promotions?.length ? (
@@ -109,19 +162,14 @@ const Diagnostika: React.FC = () => {
           </div>
         ) : null}
 
-        {recentClinics?.length > 0 && (
-          <div style={{ marginTop: 80, marginBottom: 20 }}>
-            <PopularClinics
-              title="Yaqinda kiritilgan klinikalar"
-              clinics={recentClinics}
-              customStyles={{
-                grid: {
-                  gridTemplateColumns: "repeat(5, 1fr)",
-                  gap: "16px",
-                },
-              }}
-            />
-          </div>
+        {clinics?.length > 0 && (
+          <PopularClinics
+            clinics={clinics}
+            title="Yaqinda kiritilgan klinikalar"
+            customStyles={{
+              grid: { gridTemplateColumns: "repeat(5, 1fr)" },
+            }}
+          />
         )}
 
         <div style={{ marginTop: 80, marginBottom: 20 }}>
@@ -186,7 +234,47 @@ const Diagnostika: React.FC = () => {
           </div>
         </div>
 
-        <CommonServices filterCategory="DIAGNOSTICS" />
+        {diagnosticServicesFiltered.length > 0 && (
+          <div
+            style={{
+              padding: "16px 0",
+              marginTop: "40px",
+              marginBottom: "40px",
+            }}
+          >
+            <h2
+              style={{
+                fontSize: "24px",
+                fontWeight: "700",
+                marginBottom: "20px",
+              }}
+            >
+              Keng tarqalgan tibbiy xizmatlar
+            </h2>
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(3, minmax(0, 1fr))",
+                gap: "16px 32px",
+              }}
+            >
+              {diagnosticServicesFiltered.map((service: Service) => (
+                <Link
+                  key={service.id}
+                  href={`/uslugi/${encodeURIComponent(service.name)}`}
+                  style={{
+                    color: "#000",
+                    textDecoration: "none",
+                    borderBottom: "1px dashed #999",
+                    width: "fit-content",
+                  }}
+                >
+                  {service.name}
+                </Link>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

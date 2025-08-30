@@ -1,5 +1,3 @@
-/* SearchBar.module.css */
-
 .input-container {
   position: relative;
   display: inline-block;
@@ -27,7 +25,6 @@
 }
 
 .input-container input:disabled {
-  /* background-color: #f9fafb; */
   color: #6b7280;
   cursor: not-allowed;
 }
