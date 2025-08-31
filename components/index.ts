@@ -1,6 +1,5 @@
 export { default as Breadcrumb } from "./Breadcrumb";
 export { default as Button } from "./Button";
-// export { default as DoctorCard } from "./DoctorCard"; // Empty component, commented out
 export { default as DoctorTypeCard } from "./DoctorTypeCard";
 export { default as PopularClinics } from "./PopularClinics";
 export { default as ProductCard } from "./ProductCard";

@@ -18,10 +18,14 @@
 }
 
 .card {
-  background: #ffffff;
-  border: 1px solid #e5e7eb;
+  background: rgb(246 248 249);
   border-radius: 16px;
-  padding: 16px;
+  padding: 20px;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 600;
 }
 
 .header {
@@ -34,7 +38,7 @@
 .avatar {
   width: 40px;
   height: 40px;
-  border-radius: 9999px;
+  border-radius: 50px;
   background: #d1fae5;
   color: #065f46;
   display: flex;

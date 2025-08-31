@@ -1,0 +1,59 @@
+.wrapper h3 {
+  margin: 0;
+  margin-top: 30px;
+  font-size: 28px;
+  font-weight: 600;
+  color: #333;
+}
+
+.categoriesContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 30px;
+}
+
+.categoryGroup {
+  margin-bottom: 40px;
+}
+
+.categoryTitle {
+  margin-top: 30px;
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 16px;
+  color: #333;
+}
+
+.servicesList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.serviceLink {
+  display: inline;
+  color: #2563eb;
+  text-decoration: none;
+  font-size: 15px;
+  line-height: 1.5;
+  border-bottom: 1px dotted rgb(117, 117, 117);
+  padding-bottom: 2px;
+  width: fit-content;
+}
+
+.showMoreButton {
+  background: none;
+  border: none;
+  color: #2563eb;
+  cursor: pointer;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.showMoreButton:hover {
+  background-color: #f3f4f6;
+}

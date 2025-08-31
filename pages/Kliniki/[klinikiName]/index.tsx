@@ -34,9 +34,7 @@ const fetchAllServices = async () => {
       const payload = data;
       if (Array.isArray(payload?.data)) return payload.data as Service[];
       if (Array.isArray(payload)) return payload as Service[];
-    } catch {
-      // try next endpoint
-    }
+    } catch {}
   }
   return [];
 };

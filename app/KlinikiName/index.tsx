@@ -1,13 +1,12 @@
-"use client";
+import axios from "axios";
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
+import { PopularClinics } from "@/components";
 import styles from "./KlinikiName.module.css";
 import Breadcrumb from "@/components/Breadcrumb";
 import toast, { Toaster } from "react-hot-toast";
-import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 import { DoctorCard } from "@/app/Doctors/components";
-import { PopularClinics } from "@/components";
 
 export type ClinicHeaderProps = {
   id?: string;
@@ -41,7 +40,6 @@ export type ClinicHeaderProps = {
   }>;
 };
 
-// Review modal component
 const ReviewModal = ({
   isOpen,
   onClose,
@@ -162,14 +160,11 @@ const KlinikiNameHeader: React.FC<{ clinic: ClinicHeaderProps }> = ({
   clinic,
 }) => {
   const {
-    id,
     name,
     address,
     rating,
     reviewsCount,
-    cover_url,
     logo_url,
-    description,
     opening_hours,
     clinicservices,
     doctors,
@@ -182,7 +177,6 @@ const KlinikiNameHeader: React.FC<{ clinic: ClinicHeaderProps }> = ({
   const [selectedSpecialty, setSelectedSpecialty] = useState("");
   const router = useRouter();
 
-  // Fetch popular clinics data from the backend
   const { data: popularClinics } = useQuery({
     queryKey: ["clinics-popular"],
     queryFn: async () => {
@@ -219,7 +213,6 @@ const KlinikiNameHeader: React.FC<{ clinic: ClinicHeaderProps }> = ({
     router.push(`/Kliniki/${slug}`);
   };
 
-  // Extract unique specialties from doctors
   const uniqueSpecialties = React.useMemo(() => {
     if (!doctors || doctors.length === 0) return [];
 
@@ -233,7 +226,6 @@ const KlinikiNameHeader: React.FC<{ clinic: ClinicHeaderProps }> = ({
     return Array.from(specialtiesMap.values());
   }, [doctors]);
 
-  // Fallback specialties to use if no doctor data is available
   const fallbackSpecialties = [
     "Akusher",
     "Allergolog",
@@ -302,7 +294,6 @@ const KlinikiNameHeader: React.FC<{ clinic: ClinicHeaderProps }> = ({
     name || "Klinikada"
   } sog'lig'ingizni professionallarga ishonganingizga amin bo'lishingiz mumkin.`;
 
-  // Group services by category
   const servicesByCategory = React.useMemo(() => {
     if (!clinicservices || clinicservices.length === 0) return {};
 
@@ -310,9 +301,6 @@ const KlinikiNameHeader: React.FC<{ clinic: ClinicHeaderProps }> = ({
 
     clinicservices.forEach((service) => {
       if (!service.Services?.name) return;
-
-      // Use the first word of the service name as category
-      // or "Other Services" if can't determine
       const nameParts = service.Services.name.split(" ");
       const category =
         nameParts.length > 1
@@ -336,12 +324,9 @@ const KlinikiNameHeader: React.FC<{ clinic: ClinicHeaderProps }> = ({
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmitReview = () => {
-    // This function is intentionally empty as we're not saving the review
-    // The toast is shown directly in the modal component
     console.log("Review submitted (not saved to database)");
   };
 
-  // Format date for reviews
   const formatDate = (dateString: string | undefined) => {
     if (!dateString) return "";
     const date = new Date(dateString);
@@ -439,29 +424,20 @@ const KlinikiNameHeader: React.FC<{ clinic: ClinicHeaderProps }> = ({
                 </div>
               </div>
             </div>
-
-            {/* Add button to open review modal */}
-            <div className={styles.reviewButtonContainer}>
+            <p className={styles.descriptionText1}>{clinicInfo}</p>
+            <p className={styles.descriptionText2}>Klinikalar</p>
+            <div style={{ margin: "12px 0" }}>
+              <p className={styles.descriptionText}>
+                {isExpanded ? fullDescription : dynamicDescription}
+              </p>
               <button
-                className={styles.leaveReviewButton}
-                onClick={() => setIsReviewModalOpen(true)}
+                className={styles.toggleButton}
+                onClick={() => setIsExpanded(!isExpanded)}
               >
-                Sharh qoldirish
+                {isExpanded ? "yashirmoq" : "yana"}
               </button>
             </div>
 
-            <p className={styles.descriptionText}>{clinicInfo}</p>
-            <p className={styles.descriptionText}>
-              {isExpanded ? fullDescription : dynamicDescription}
-            </p>
-            <button
-              className={styles.toggleButton}
-              onClick={() => setIsExpanded(!isExpanded)}
-            >
-              {isExpanded ? "yashirmoq" : "yana"}
-            </button>
-
-            {/* 1. Shifokorlar mutaxassisliklari - separate section */}
             <div className={styles.servicesSection}>
               <h3 className={styles.servicesTitle}>
                 Shifokorlar mutaxassisliklari
@@ -872,7 +848,6 @@ const KlinikiNameHeader: React.FC<{ clinic: ClinicHeaderProps }> = ({
                 )}
               </div>
 
-              {/* Pricing section */}
               <div className={styles.pricesList}>
                 {clinicservices && clinicservices.length > 0
                   ? (showAllServices
@@ -886,10 +861,10 @@ const KlinikiNameHeader: React.FC<{ clinic: ClinicHeaderProps }> = ({
                             className={styles.priceItem}
                           >
                             <span className={styles.serviceName}>
-                              {service.Services.name}
+                              {service.Services.name} -
                             </span>
                             <span className={styles.servicePrice}>
-                              {service.price} so&apos;m
+                              {service.price} som
                             </span>
                           </div>
                         )
@@ -935,7 +910,7 @@ const KlinikiNameHeader: React.FC<{ clinic: ClinicHeaderProps }> = ({
                           {service.name}
                         </span>
                         <span className={styles.servicePrice}>
-                          {service.price} so&apos;m
+                          {service.price} som
                         </span>
                       </div>
                     ))}
@@ -945,8 +920,8 @@ const KlinikiNameHeader: React.FC<{ clinic: ClinicHeaderProps }> = ({
                 onClick={() => setShowAllServices(!showAllServices)}
               >
                 {showAllServices
-                  ? "Kamroq ko&apos;rsatish"
-                  : "To&apos;liq praysni ko&apos;rsatish >"}
+                  ? "Kamroq ko'rsatish"
+                  : "To'liq praysni ko'rsatish >"}
               </button>
             </div>
           </div>
@@ -964,7 +939,7 @@ const KlinikiNameHeader: React.FC<{ clinic: ClinicHeaderProps }> = ({
               <div className={styles.mapInfo}>
                 <div className={styles.addressText}>
                   <div className={styles.locationName}>
-                    {address || "Manzil ko&apos;rsatilmagan"}
+                    {address || "Manzil ko'rsatilmagan"}
                   </div>
                   <div className={styles.locationSubtext}>
                     {opening_hours
@@ -973,8 +948,8 @@ const KlinikiNameHeader: React.FC<{ clinic: ClinicHeaderProps }> = ({
                             hours === "24/7" || hours?.includes("00:00-23:59")
                         )
                         ? "Har doim ochiq"
-                        : "Ish vaqti ko&apos;rsatilgan"
-                      : "Ish vaqti ma&apos;lum emas"}
+                        : "Ish vaqti ko'rsatilgan"
+                      : "Ish vaqti ma'lum emas"}
                   </div>
                 </div>
                 <div className={styles.actionButtons}>
@@ -989,87 +964,6 @@ const KlinikiNameHeader: React.FC<{ clinic: ClinicHeaderProps }> = ({
             </div>
           </div>
         </div>
-        <div className={styles.fullWidthDoctorSpecialtiesSection}>
-          <h3 className={styles.sectionTitle}>Klinikadagi shifokorlar</h3>
-          <div className={styles.specialtiesList}>
-            {specialtiesToShow.map((specialty, index) => (
-              <span
-                key={`doctor-specialty-${index}`}
-                className={styles.specialtyLink}
-                onClick={() => handleServiceClick(specialty)}
-              >
-                {specialty}
-                {index < specialtiesToShow.length - 1 && (
-                  <span className={styles.specialtySeparator}>,</span>
-                )}
-              </span>
-            ))}
-          </div>
-        </div>
-
-        <div className={styles.servicesListSection}>
-          <h3 className={styles.sectionTitle}>Xizmatlar</h3>
-
-          {Object.keys(servicesByCategory).length > 0 ? (
-            Object.entries(servicesByCategory).map(
-              ([category, services], categoryIndex) => (
-                <div key={`category-${categoryIndex}`}>
-                  <h4 className={styles.serviceCategory}>{category}</h4>
-
-                  <div className={styles.serviceItemsList}>
-                    {services.map((service, serviceIndex) => (
-                      <div
-                        key={`service-${categoryIndex}-${serviceIndex}`}
-                        className={styles.serviceListItem}
-                      >
-                        <span className={styles.serviceListItemName}>
-                          {service.name}
-                        </span>
-                        <span className={styles.serviceListItemPrice}>
-                          {service.price} so&apos;m
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )
-            )
-          ) : (
-            <div>
-              <h4 className={styles.serviceCategory}>
-                Massaj va manual terapiya
-              </h4>
-
-              <div className={styles.serviceItemsList}>
-                <div className={styles.serviceListItem}>
-                  <span className={styles.serviceListItemName}>
-                    Umumiy massaj (60 daqiqa)
-                  </span>
-                  <span className={styles.serviceListItemPrice}>
-                    245 000 so&apos;m
-                  </span>
-                </div>
-                <div className={styles.serviceListItem}>
-                  <span className={styles.serviceListItemName}>
-                    Bosh massaji (15 daqiqa)
-                  </span>
-                  <span className={styles.serviceListItemPrice}>
-                    50 000 so&apos;m
-                  </span>
-                </div>
-                <div className={styles.serviceListItem}>
-                  <span className={styles.serviceListItemName}>
-                    Butun orqa massaj (20 daqiqa)
-                  </span>
-                  <span className={styles.serviceListItemPrice}>
-                    75 000 so&apos;m
-                  </span>
-                </div>
-              </div>
-            </div>
-          )}
-        </div>
-
         <div className={styles.doctorCardsSection}>
           <h3 className={styles.sectionTitle}>
             {name || "Klinika"} klinikasi shifokorlari
@@ -1123,7 +1017,7 @@ const KlinikiNameHeader: React.FC<{ clinic: ClinicHeaderProps }> = ({
                       fullname={`${doctor.name} ${doctor.surname}`}
                       type={
                         doctor.Specialties?.name ||
-                        "Mutaxassislik ko&apos;rsatilmagan"
+                        "Mutaxassislik ko'rsatilmagan"
                       }
                       patients={Math.floor(Math.random() * 100) + 50}
                       experience={doctor.experience_years || 4}
@@ -1134,7 +1028,7 @@ const KlinikiNameHeader: React.FC<{ clinic: ClinicHeaderProps }> = ({
                       clinicNumber="+998901234567"
                       clinicPhoto="clinic-logo"
                       telegramBotLink="#"
-                      location={address || "Manzil ko&apos;rsatilmagan"}
+                      location={address || "Manzil ko'rsatilmagan"}
                       photo={`doctor-${(index % 5) + 1}`}
                     />
                   ))
@@ -1158,6 +1052,96 @@ const KlinikiNameHeader: React.FC<{ clinic: ClinicHeaderProps }> = ({
                 ))}
           </div>
         </div>
+        <div className={styles.fullWidthDoctorSpecialtiesSection}>
+          <h3 className={styles.sectionTitle}>Klinikadagi shifokorlar</h3>
+          <div className={styles.specialtiesList}>
+            {specialtiesToShow.map((specialty, index) => (
+              <span
+                key={`doctor-specialty-${index}`}
+                className={styles.specialtyLink}
+                onClick={() => handleServiceClick(specialty)}
+              >
+                {specialty}
+                {index < specialtiesToShow.length - 1 && (
+                  <span className={styles.specialtySeparator}>,</span>
+                )}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        <div className={styles.servicesListSection}>
+          <h3
+            className={styles.sectionTitle}
+            style={{
+              marginTop: "80",
+              marginBottom: "20",
+              fontSize: "24px",
+              fontWeight: "500",
+            }}
+          >
+            Xizmatlar
+          </h3>
+
+          {Object.keys(servicesByCategory).length > 0 ? (
+            Object.entries(servicesByCategory).map(
+              ([category, services], categoryIndex) => (
+                <div key={`category-${categoryIndex}`}>
+                  <h4 className={styles.serviceCategory}>{category}</h4>
+
+                  <div className={styles.serviceItemsList}>
+                    {services.map((service, serviceIndex) => (
+                      <div
+                        key={`service-${categoryIndex}-${serviceIndex}`}
+                        className={styles.serviceListItem}
+                      >
+                        <span className={styles.serviceListItemName}>
+                          {service.name}
+                        </span>
+                        <span className={styles.serviceListItemPrice}>
+                          {service.price} som
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )
+            )
+          ) : (
+            <div>
+              <h4 className={styles.serviceCategory}>
+                Massaj va manual terapiya
+              </h4>
+
+              <div className={styles.serviceItemsList}>
+                <div className={styles.serviceListItem}>
+                  <span className={styles.serviceListItemName}>
+                    Umumiy massaj (60 daqiqa)
+                  </span>
+                  <span className={styles.serviceListItemPrice}>
+                    245 000 som
+                  </span>
+                </div>
+                <div className={styles.serviceListItem}>
+                  <span className={styles.serviceListItemName}>
+                    Bosh massaji (15 daqiqa)
+                  </span>
+                  <span className={styles.serviceListItemPrice}>
+                    50 000 som
+                  </span>
+                </div>
+                <div className={styles.serviceListItem}>
+                  <span className={styles.serviceListItemName}>
+                    Butun orqa massaj (20 daqiqa)
+                  </span>
+                  <span className={styles.serviceListItemPrice}>
+                    75 000 som
+                  </span>
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
 
         <div className={styles.reviewsSection}>
           <h3 className={styles.sectionTitle}>
@@ -1169,8 +1153,8 @@ const KlinikiNameHeader: React.FC<{ clinic: ClinicHeaderProps }> = ({
             <span className={styles.ratingValue}>⭐ {rating || 0}</span>
             <span className={styles.ratingSeparator}>|</span>
             <span className={styles.ratingText}>
-              Reyting va sharhlarga ko&apos;ra, bemorlar ushbu mutaxassisni
-              tavsiya qilishadi
+              Reyting va sharhlarga kora, bemorlar ushbu mutaxassisni tavsiya
+              qilishadi
             </span>
           </div>
 
@@ -1227,16 +1211,7 @@ const KlinikiNameHeader: React.FC<{ clinic: ClinicHeaderProps }> = ({
             </div>
           ) : (
             <div className={styles.noReviews}>
-              <p>
-                Hozircha sharhlar yo&apos;q. Birinchi bo&apos;lib sharh
-                qoldiring!
-              </p>
-              <button
-                className={styles.leaveReviewButton}
-                onClick={() => setIsReviewModalOpen(true)}
-              >
-                Sharh qoldirish
-              </button>
+              <p>Hozircha sharhlar yoq. Birinchi bolib sharh qoldiring!</p>
             </div>
           )}
         </div>

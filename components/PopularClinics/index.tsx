@@ -8,11 +8,16 @@ interface PopularClinicsProps {
     logo_url?: string;
   }>;
   title?: string;
+  customStyles?: {
+    grid?: React.CSSProperties;
+    card?: React.CSSProperties;
+  };
 }
 
 const PopularClinics: React.FC<PopularClinicsProps> = ({
   clinics = [],
   title = "Toshkentdagi mashhur klinikalar va tibbiyot markazlari",
+  customStyles = {},
 }) => {
   const createClinicSlug = (name: string) => {
     return name
@@ -65,7 +70,7 @@ const PopularClinics: React.FC<PopularClinicsProps> = ({
   return (
     <div className={styles.popularClinicsSection}>
       <h3 className={styles.sectionTitle}>{title}</h3>
-      <div className={styles.popularClinicsGrid}>
+      <div className={styles.popularClinicsGrid} style={customStyles.grid}>
         {clinicsToShow.map((clinic) => {
           const clinicSlug = createClinicSlug(clinic.name);
           return (
@@ -73,6 +78,7 @@ const PopularClinics: React.FC<PopularClinicsProps> = ({
               key={clinic.id}
               href={`/klinika/${clinicSlug}`}
               className={styles.clinicCard}
+              style={customStyles.card}
             >
               <img
                 src={clinic.logo_url || "/placeholder-logo.png"}
