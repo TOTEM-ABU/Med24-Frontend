@@ -54,18 +54,23 @@ const PromotionsPage = () => {
     ];
 
     return (
-        <div className="container">
-            <div className="promotions-container">
-                <div className={styles["header-container"]}>
-                    <Breadcrumb
-                        items={[
-                            { label: "Asosiy sahifa", href: "/" },
-                            { label: "Aksiyalar va chegirmalar" },
-                        ]}
-                    />
-                    <h1>Aksiya va chegirmalar</h1>
+        <>
+            <div className="container">
+                <div className="promotions-container">
+                    <div className={styles["header-container"]}>
+                        <Breadcrumb
+                            items={[
+                                { label: "Asosiy sahifa", href: "/" },
+                                { label: "Aksiyalar va chegirmalar" },
+                            ]}
+                        />
+                        <h1>Aksiya va chegirmalar</h1>
+                    </div>
                 </div>
-                <div className={styles["cards-container"]}>
+            </div>
+            <div className={styles['card-back']}>
+                            <div className="container">
+                                                <div className={styles["cards-container"]}>
                     {promotions.map((promotion, index) => (
                         <div key={index} className={styles["card-wrapper"]}>
                             <PromotionCard
@@ -81,8 +86,9 @@ const PromotionsPage = () => {
                     <Button variant="primary" name="Yana ko'rsatish" className={styles['btn']}/>
                     </div>
                 </div>
+                            </div>
             </div>
-        </div>
+        </>
     );
 };
 
