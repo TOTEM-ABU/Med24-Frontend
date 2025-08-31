@@ -23,18 +23,34 @@ const DISTRICTS: District[] = [
   { slug: "yashnobod", title: "Yashnobod tumani" },
 ];
 
-const Districts: React.FC = () => {
+interface DistrictsProps {
+  serviceName?: string;
+}
+
+const Districts: React.FC<DistrictsProps> = ({ serviceName }) => {
+  const title = serviceName
+    ? `${serviceName} Toshkent bo'yicha`
+    : "Toshkent shahridagi klinikalar";
+
   return (
     <div className={styles.districts}>
-      <h3 className={styles.districtsHeader}>Toshkent shahridagi klinikalar</h3>
+      <h3 className={styles.districtsHeader}>{title}</h3>
       <div className={styles.grid}>
         {DISTRICTS.map((d) => (
           <Link
             key={d.slug}
-            href={`/Kliniki/district/${d.slug}`}
+            href={
+              serviceName
+                ? `/kliniki/${encodeURIComponent(serviceName)}?district=${
+                    d.slug
+                  }`
+                : `/Kliniki/district/${d.slug}`
+            }
             className={styles.link}
           >
-            {d.title}
+            {serviceName
+              ? `${serviceName} ${d.title.replace(" tumani", " tumanida")}`
+              : d.title}
           </Link>
         ))}
       </div>
