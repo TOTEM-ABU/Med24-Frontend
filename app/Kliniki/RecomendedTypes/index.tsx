@@ -92,7 +92,7 @@ const RecomendedTypes = () => {
 
   return (
     <div className={styles.recomendedTypes}>
-      <h3>Tibbiyot muassasalarining turlari</h3>
+      <h3 className={styles.title}>Tibbiyot muassasalarining turlari</h3>
 
       <div className={styles.typesContainer}>
         {Object.entries(groupedClinics).map(([type, clinicsList]) => (

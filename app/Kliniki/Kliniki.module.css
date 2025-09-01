@@ -1,4 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Prosto+One&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+.option {
+  font-size: 18px;
+  font-weight: 600;
+}
 
 .bigContainer {
   width: 100%;
@@ -30,7 +34,9 @@
 .input-container {
   display: flex;
   gap: 16px;
-  align-items: flex-end;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 8px;
 }
 
 .NavContainer {

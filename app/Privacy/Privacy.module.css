@@ -1,7 +1,29 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+
 .container {
+  width: 100%;
+  max-width: 1052px;
+  height: 100%;
+  margin: 0 auto;
+  margin-bottom: 30px;
+  font-family: "Inter", sans-serif;
+}
+
+.breadcrumbContainer {
+  width: 100%;
   max-width: 1052px;
   margin: 0 auto;
-  padding: 16px;
+  padding: 0 20px;
+  margin-bottom: 16px;
+  font-family: "Inter", sans-serif;
+}
+
+.miniContainer {
+  width: 100%;
+  max-width: 874px;
+  height: 100%;
+  margin: 0 auto;
+  font-family: "Inter", sans-serif;
 }
 
 .search-section {

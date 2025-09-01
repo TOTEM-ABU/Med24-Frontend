@@ -50,13 +50,12 @@
   scroll-behavior: smooth;
   padding-bottom: 8px;
   scroll-snap-type: x mandatory;
-  /* Hide scrollbar for all browsers */
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
 .scroller::-webkit-scrollbar {
-  display: none; /* WebKit */
+  display: none;
 }
 
 .card {
@@ -88,7 +87,7 @@
 .cardName {
   color: #111827;
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 400;
   text-decoration: none;
 }
 

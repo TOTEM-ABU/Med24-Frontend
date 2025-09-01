@@ -1,102 +1,103 @@
 .button {
-    border: none;
-    border-radius: 12px;
-    font-weight: 500;
-    cursor: pointer;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s ease;
-    font-family: inherit;
-    text-decoration: none;
-    box-sizing: border-box;
-    position: relative;
-    overflow: hidden;
-    line-height: 22px;
-    font-size: 18px;
-    padding-bottom: 15px;
-  padding-top: 15px;
+  border: none;
+  border-radius: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  font-family: inherit;
+  text-decoration: none;
+  box-sizing: border-box;
+  position: relative;
+  overflow: hidden;
+  line-height: 1;
+  font-size: 18px;
 }
 
 .small {
-    padding: 8px 16px;
-    font-size: 14px;
-    min-height: 36px;
+  padding: 8px 16px;
+  font-size: 14px;
+  min-height: 36px;
 }
 
 .medium {
-    padding: 12px 24px;
-    font-size: 16px;
-    min-height: 44px;
+  padding: 12px 24px;
+  font-size: 16px;
+  min-height: 60px;
 }
 
 .large {
-    padding: 16px 32px;
-    font-size: 18px;
-    min-height: 52px;
+  padding: 16px 32px;
+  font-size: 18px;
+  min-height: 52px;
 }
 
 .primary {
-    background-color: rgb(239 245 255);
-    color: rgb(1 102 255);
-    border: 1px solid transparent;
+  background-color: rgb(239 245 255);
+  color: rgb(1 102 255);
+  border: 1px solid transparent;
 }
 
 .secondary {
-    background: #f8f9fa;
-    color: #495057;
-    border: 1px solid #dee2e6;
+  background: #f8f9fa;
+  color: #495057;
+  border: 1px solid #dee2e6;
 }
 
 .danger {
-    background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
-    color: white;
-    border: 1px solid transparent;
+  background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+  color: white;
+  border: 1px solid transparent;
 }
 
 .success {
-    background: linear-gradient(135deg, #51cf66 0%, #40c057 100%);
-    color: white;
-    border: 1px solid transparent;
+  background: linear-gradient(135deg, #51cf66 0%, #40c057 100%);
+  color: white;
+  border: 1px solid transparent;
 }
 
 .disabled {
-    background: #e9ecef !important;
-    color: #6c757d !important;
-    cursor: not-allowed !important;
-    border: 1px solid #dee2e6 !important;
-    transform: none !important;
-    box-shadow: none !important;
+  background: #e9ecef !important;
+  color: #6c757d !important;
+  cursor: not-allowed !important;
+  border: 1px solid #dee2e6 !important;
+  transform: none !important;
+  box-shadow: none !important;
 }
 
-
 .loading {
-    position: relative;
-    color: transparent;
+  position: relative;
+  color: transparent;
 }
 
 @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 @media (max-width: 768px) {
-    .button {
-        width: 100%;
-    }
-    
-    .large {
-        padding: 14px 24px;
-        font-size: 16px;
-    }
-    
-    .medium {
-        padding: 10px 20px;
-        font-size: 15px;
-    }
-    
-    .small {
-        padding: 6px 14px;
-        font-size: 13px;
-    }
+  .button {
+    width: 100%;
+  }
+
+  .large {
+    padding: 14px 24px;
+    font-size: 16px;
+  }
+
+  .medium {
+    padding: 10px 20px;
+    font-size: 15px;
+  }
+
+  .small {
+    padding: 6px 14px;
+    font-size: 13px;
+  }
 }

@@ -1,8 +1,12 @@
 import { NextPage } from "next";
-import Diagnostika from "../../app/Diagnostika";
+import Diagnostika from "@/app/Diagnostika";
 
 const DiagnostikaPage: NextPage = () => {
-  return <Diagnostika />;
+  return (
+    <>
+      <Diagnostika />
+    </>
+  );
 };
 
-export default DiagnostikaPage;
+export default Diagnostika;

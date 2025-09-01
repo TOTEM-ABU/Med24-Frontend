@@ -8,4 +8,6 @@
   color: #007aff;
   line-height: 22px;
   border-radius: 12px;
+  height: fit-content;
+  white-space: nowrap;
 }

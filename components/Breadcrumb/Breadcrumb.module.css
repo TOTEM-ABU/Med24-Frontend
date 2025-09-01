@@ -1,6 +1,7 @@
 .breadcrumb-container {
   font-size: 14px;
-      margin-top: 16px;
+  margin: 16px 0 30px 0;
+  font-family: "Inter", sans-serif;
 }
 
 .ordered-list {
@@ -16,11 +17,13 @@
 .active {
   color: black;
   font-weight: 400;
+  font-family: "Inter", sans-serif;
 }
 
 .inactive {
   color: gray;
   text-decoration: none;
+  font-family: "Inter", sans-serif;
 }
 
 .separator {
