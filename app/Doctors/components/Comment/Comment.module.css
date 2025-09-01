@@ -1,0 +1,51 @@
+.commentContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 20px;
+  border-radius: 20px;
+  background-color: #f6f8f9;
+  max-width: 260px;
+}
+
+.topStyle {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 20px;
+}
+
+.commentContainer .topStyle .clientPhoto {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  outline: none;
+  border: none;
+  color: #086952;
+  font-weight: 200;
+  font-size: 18px;
+  background-color: #9dead8;
+}
+
+.commentContainer .topStyle .topWrapper {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+}
+
+.starRating {
+  margin-top: 8px;
+  display: flex;
+  gap: 5px; /* Yulduzlar orasidagi masofa */
+}
+
+.yellowStar {
+  color: #f1c40f; /* Sariq yulduz rangi */
+  font-size: 24px; /* Yulduz o'lchami */
+}
+
+.greyStar {
+  color: #ccc; /* Kulrang yulduz rangi */
+  font-size: 24px; /* Yulduz o'lchami */
+}
