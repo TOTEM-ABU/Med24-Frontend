@@ -11,7 +11,7 @@
 }
 
 .topBarContent {
-  max-width: 1280px;
+  max-width: 1052px;
   margin: 0 auto;
   display: flex;
   justify-content: flex-end;
@@ -44,7 +44,7 @@
 
 /* Main Navigation */
 .navContainer {
-  max-width: 1280px;
+  max-width: 1052px;
   margin: 0 auto;
   padding: 0 1rem;
 }
