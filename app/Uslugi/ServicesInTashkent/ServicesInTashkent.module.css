@@ -1,0 +1,26 @@
+.servicesInTashkent {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.servicesBlock {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  width: 100%;
+}
+
+.servicesBlock .oneColumn {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.servicesBlock .oneColumn .links {
+  color: #007aff;
+  text-decoration: 1.8px underline dotted gray;
+  text-underline-offset: 2px;
+}

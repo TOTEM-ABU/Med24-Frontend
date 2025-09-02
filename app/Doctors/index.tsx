@@ -9,6 +9,7 @@ import {
   Typography,
 } from "./components";
 import Link from "next/link";
+import CommentsList from "./sections/comments";
 
 const DoctorsPage = () => {
   const doctorsType = [
@@ -80,9 +81,9 @@ const DoctorsPage = () => {
     initialShowAll[letter] = false;
   });
 
-  const [expandedLetters, setExpandedLetters] = useState<{ [key: string]: boolean }>(
-    initialShowAll
-  );
+  const [expandedLetters, setExpandedLetters] = useState<{
+    [key: string]: boolean;
+  }>(initialShowAll);
 
   const toggleLetter = (letter: string) => {
     setExpandedLetters((prev) => ({
@@ -133,7 +134,10 @@ const DoctorsPage = () => {
             </Typography>
             <div className={styles.linkStyle}>
               {groupedDoctors["A"]
-                ?.slice(0, expandedLetters["A"] ? groupedDoctors["A"].length : 5)
+                ?.slice(
+                  0,
+                  expandedLetters["A"] ? groupedDoctors["A"].length : 5
+                )
                 .map((doctor: string, idx: number) => (
                   <div key={idx}>
                     <Link href="/" className={styles.link}>
@@ -157,7 +161,10 @@ const DoctorsPage = () => {
             </Typography>
             <div className={styles.linkStyle}>
               {groupedDoctors["D"]
-                ?.slice(0, expandedLetters["D"] ? groupedDoctors["D"].length : 5)
+                ?.slice(
+                  0,
+                  expandedLetters["D"] ? groupedDoctors["D"].length : 5
+                )
                 .map((doctor: string, idx: number) => (
                   <div key={idx}>
                     <Link href="/" className={styles.link}>
@@ -178,7 +185,10 @@ const DoctorsPage = () => {
             </Typography>
             <div className={styles.linkStyle}>
               {groupedDoctors["E"]
-                ?.slice(0, expandedLetters["E"] ? groupedDoctors["E"].length : 5)
+                ?.slice(
+                  0,
+                  expandedLetters["E"] ? groupedDoctors["E"].length : 5
+                )
                 .map((doctor: string, idx: number) => (
                   <div key={idx}>
                     <Link href="/" className={styles.link}>
@@ -199,7 +209,10 @@ const DoctorsPage = () => {
             </Typography>
             <div className={styles.linkStyle}>
               {groupedDoctors["F"]
-                ?.slice(0, expandedLetters["F"] ? groupedDoctors["F"].length : 5)
+                ?.slice(
+                  0,
+                  expandedLetters["F"] ? groupedDoctors["F"].length : 5
+                )
                 .map((doctor: string, idx: number) => (
                   <div key={idx}>
                     <Link href="/" className={styles.link}>
@@ -220,7 +233,10 @@ const DoctorsPage = () => {
             </Typography>
             <div className={styles.linkStyle}>
               {groupedDoctors["G"]
-                ?.slice(0, expandedLetters["G"] ? groupedDoctors["G"].length : 5)
+                ?.slice(
+                  0,
+                  expandedLetters["G"] ? groupedDoctors["G"].length : 5
+                )
                 .map((doctor: string, idx: number) => (
                   <div key={idx}>
                     <Link href="/" className={styles.link}>
@@ -241,7 +257,10 @@ const DoctorsPage = () => {
             </Typography>
             <div className={styles.linkStyle}>
               {groupedDoctors["I"]
-                ?.slice(0, expandedLetters["I"] ? groupedDoctors["I"].length : 5)
+                ?.slice(
+                  0,
+                  expandedLetters["I"] ? groupedDoctors["I"].length : 5
+                )
                 .map((doctor: string, idx: number) => (
                   <div key={idx}>
                     <Link href="/" className={styles.link}>
@@ -262,7 +281,10 @@ const DoctorsPage = () => {
             </Typography>
             <div className={styles.linkStyle}>
               {groupedDoctors["J"]
-                ?.slice(0, expandedLetters["J"] ? groupedDoctors["J"].length : 5)
+                ?.slice(
+                  0,
+                  expandedLetters["J"] ? groupedDoctors["J"].length : 5
+                )
                 .map((doctor: string, idx: number) => (
                   <div key={idx}>
                     <Link href="/" className={styles.link}>
@@ -283,7 +305,10 @@ const DoctorsPage = () => {
             </Typography>
             <div className={styles.linkStyle}>
               {groupedDoctors["K"]
-                ?.slice(0, expandedLetters["K"] ? groupedDoctors["K"].length : 5)
+                ?.slice(
+                  0,
+                  expandedLetters["K"] ? groupedDoctors["K"].length : 5
+                )
                 .map((doctor: string, idx: number) => (
                   <div key={idx}>
                     <Link href="/" className={styles.link}>
@@ -304,7 +329,10 @@ const DoctorsPage = () => {
             </Typography>
             <div className={styles.linkStyle}>
               {groupedDoctors["L"]
-                ?.slice(0, expandedLetters["L"] ? groupedDoctors["L"].length : 5)
+                ?.slice(
+                  0,
+                  expandedLetters["L"] ? groupedDoctors["L"].length : 5
+                )
                 .map((doctor: string, idx: number) => (
                   <div key={idx}>
                     <Link href="/" className={styles.link}>
@@ -325,7 +353,10 @@ const DoctorsPage = () => {
             </Typography>
             <div className={styles.linkStyle}>
               {groupedDoctors["M"]
-                ?.slice(0, expandedLetters["M"] ? groupedDoctors["M"].length : 5)
+                ?.slice(
+                  0,
+                  expandedLetters["M"] ? groupedDoctors["M"].length : 5
+                )
                 .map((doctor: string, idx: number) => (
                   <div key={idx}>
                     <Link href="/" className={styles.link}>
@@ -346,7 +377,10 @@ const DoctorsPage = () => {
             </Typography>
             <div className={styles.linkStyle}>
               {groupedDoctors["N"]
-                ?.slice(0, expandedLetters["N"] ? groupedDoctors["N"].length : 5)
+                ?.slice(
+                  0,
+                  expandedLetters["N"] ? groupedDoctors["N"].length : 5
+                )
                 .map((doctor: string, idx: number) => (
                   <div key={idx}>
                     <Link href="/" className={styles.link}>
@@ -367,7 +401,10 @@ const DoctorsPage = () => {
             </Typography>
             <div className={styles.linkStyle}>
               {groupedDoctors["O"]
-                ?.slice(0, expandedLetters["O"] ? groupedDoctors["O"].length : 5)
+                ?.slice(
+                  0,
+                  expandedLetters["O"] ? groupedDoctors["O"].length : 5
+                )
                 .map((doctor: string, idx: number) => (
                   <div key={idx}>
                     <Link href="/" className={styles.link}>
@@ -388,7 +425,10 @@ const DoctorsPage = () => {
             </Typography>
             <div className={styles.linkStyle}>
               {groupedDoctors["P"]
-                ?.slice(0, expandedLetters["P"] ? groupedDoctors["P"].length : 5)
+                ?.slice(
+                  0,
+                  expandedLetters["P"] ? groupedDoctors["P"].length : 5
+                )
                 .map((doctor: string, idx: number) => (
                   <div key={idx}>
                     <Link href="/" className={styles.link}>
@@ -409,7 +449,10 @@ const DoctorsPage = () => {
             </Typography>
             <div className={styles.linkStyle}>
               {groupedDoctors["Q"]
-                ?.slice(0, expandedLetters["Q"] ? groupedDoctors["Q"].length : 5)
+                ?.slice(
+                  0,
+                  expandedLetters["Q"] ? groupedDoctors["Q"].length : 5
+                )
                 .map((doctor: string, idx: number) => (
                   <div key={idx}>
                     <Link href="/" className={styles.link}>
@@ -430,7 +473,10 @@ const DoctorsPage = () => {
             </Typography>
             <div className={styles.linkStyle}>
               {groupedDoctors["R"]
-                ?.slice(0, expandedLetters["R"] ? groupedDoctors["R"].length : 5)
+                ?.slice(
+                  0,
+                  expandedLetters["R"] ? groupedDoctors["R"].length : 5
+                )
                 .map((doctor: string, idx: number) => (
                   <div key={idx}>
                     <Link href="/" className={styles.link}>
@@ -451,7 +497,10 @@ const DoctorsPage = () => {
             </Typography>
             <div className={styles.linkStyle}>
               {groupedDoctors["S"]
-                ?.slice(0, expandedLetters["S"] ? groupedDoctors["S"].length : 5)
+                ?.slice(
+                  0,
+                  expandedLetters["S"] ? groupedDoctors["S"].length : 5
+                )
                 .map((doctor: string, idx: number) => (
                   <div key={idx}>
                     <Link href="/" className={styles.link}>
@@ -472,7 +521,10 @@ const DoctorsPage = () => {
             </Typography>
             <div className={styles.linkStyle}>
               {groupedDoctors["T"]
-                ?.slice(0, expandedLetters["T"] ? groupedDoctors["T"].length : 5)
+                ?.slice(
+                  0,
+                  expandedLetters["T"] ? groupedDoctors["T"].length : 5
+                )
                 .map((doctor: string, idx: number) => (
                   <div key={idx}>
                     <Link href="/" className={styles.link}>
@@ -493,7 +545,10 @@ const DoctorsPage = () => {
             </Typography>
             <div className={styles.linkStyle}>
               {groupedDoctors["U"]
-                ?.slice(0, expandedLetters["U"] ? groupedDoctors["U"].length : 5)
+                ?.slice(
+                  0,
+                  expandedLetters["U"] ? groupedDoctors["U"].length : 5
+                )
                 .map((doctor: string, idx: number) => (
                   <div key={idx}>
                     <Link href="/" className={styles.link}>
@@ -514,7 +569,10 @@ const DoctorsPage = () => {
             </Typography>
             <div className={styles.linkStyle}>
               {groupedDoctors["V"]
-                ?.slice(0, expandedLetters["V"] ? groupedDoctors["V"].length : 5)
+                ?.slice(
+                  0,
+                  expandedLetters["V"] ? groupedDoctors["V"].length : 5
+                )
                 .map((doctor: string, idx: number) => (
                   <div key={idx}>
                     <Link href="/" className={styles.link}>
@@ -535,7 +593,10 @@ const DoctorsPage = () => {
             </Typography>
             <div className={styles.linkStyle}>
               {groupedDoctors["Y"]
-                ?.slice(0, expandedLetters["Y"] ? groupedDoctors["Y"].length : 5)
+                ?.slice(
+                  0,
+                  expandedLetters["Y"] ? groupedDoctors["Y"].length : 5
+                )
                 .map((doctor: string, idx: number) => (
                   <div key={idx}>
                     <Link href="/" className={styles.link}>
@@ -600,14 +661,116 @@ const DoctorsPage = () => {
             priceTwo={doctor.consistentPrice}
           />
         ))}
+        <div className={styles.throwTelegram}>
+          <Typography size="20" weight="500" bottom="8px" top="0">
+            Kerakli ma`lumot topmadingizmi?
+          </Typography>
+          <Typography size="14" color="#1e1e1e70" bottom="26" top="8">
+            Bizga Telegramda yozing, biz sizga shifokor topib, qabuliga yozib
+            beramiz
+          </Typography>
+          <button className={styles.telegramLinkButton}>
+            <Link className={styles.telegramLink} href="https://t.me/telegram">
+              Telegramda yozish
+            </Link>
+          </button>
+        </div>
       </div>
-      <div className={styles.throwTelegram}>
-        <Typography>Kerakli ma`lumot topmadingizmi?</Typography>
-        <Typography>
-          Bizga Telegramda yozing, biz sizga shifokor topib, qabuliga yozib
-          beramiz
+      <div className={styles.commentSection}>
+        <Typography size="24" weight="500" bottom="20">
+          So`nggi sharhlar
         </Typography>
-        <button>Telegramda yozish</button>
+        <div className={styles.commentBlocks}>
+          <CommentsList />
+        </div>
+      </div>
+      <div className={styles.commonServices}>
+        <Typography size="22" bottom="24" weight="600">
+          Keng tarqalgan tibbiy xizmatlar
+        </Typography>
+        <div className={styles.commonServicesLinks}>
+          <Link href="/" className={styles.navLink}>
+            Breket o`rnatish
+          </Link>
+          <Link href="/" className={styles.navLink}>
+            Buyrakdagi toshlarni olib tashlash
+          </Link>
+          <Link href="/" className={styles.navLink}>
+            Doppler (ultratovushli doppler)
+          </Link>
+          <Link href="/" className={styles.navLink}>
+            Elektroansefalografika (EEG)
+          </Link>
+          <Link href="/" className={styles.navLink}>
+            Exokardiyografiya (EXOKG)
+          </Link>
+          <Link href="/" className={styles.navLink}>
+            Gastroskopiya
+          </Link>
+          <Link href="/" className={styles.navLink}>
+            Gemoroyni lazer yordamida olib tashlash
+          </Link>
+          <Link href="/" className={styles.navLink}>
+            Hollarni olib tashlash
+          </Link>
+          <Link href="/" className={styles.navLink}>
+            Ko`z lazer operatsiyasi
+          </Link>
+        </div>
+      </div>
+      <div className={styles.details}>
+        <Typography size="28" bottom="20">
+          Shifokor qabuliga onlayn yozilish
+        </Typography>
+        <div className={styles.content}>
+          ed24.uz - bu Toshkent aholisi uchun shifokor yoki klinikani izlash
+          hamda tanlashni osonlashtiruvchi onlayn-servis. Servis yordamida
+          shifokor qabuliga yozilish esa bir necha barobar osonroq va
+          samaraliroq bo`ladi! Endilikda Toshkent shahrida shifokor qabuliga
+          yozilish onlayn tarzda amalga oshirilmoqda. Med24.uz sayti sizga
+          malakali shifokorlar va birinchi darajali klinikalarning nihoyatda
+          katta onlayn ma`lumotlar bazasini taqdim etadi. <br /> <br /> Onlayn
+          portalimizda siz bir nechta tugmani bosish orqali shifokor qabuliga
+          yozilishingiz mumkin. Shuningdek, saytda bizning xizmatlarimizdan
+          foydalanib shifokor ko`rigidan o`tgan foydalanuvchilarning sharhlarini
+          o`qing. <br /> <br /> Biz sizni mutaxassislar va klinikalarning
+          telefon raqamlarini uzoq izlashdan xalos qilamiz. Shuningdek, biz
+          o`qimagan mutaxassis qo’liga tushib qolishingiz xavfidan himoya
+          qilamiz. Shifokor qabuliga yozilishingiz kerakmi? Bu bir zumda amalga
+          oshiriladi! Shifokorni toping, mutaxassislikni tanlang, o’zingizga
+          qulay bo’lgan shahrimiz tumanini yoki metro bekatini belgilang. Boshqa
+          foydalanuvchilarning sharhlarini o’qib chiqing va sizga eng yoqqan
+          shifokorni tanlang. Murojaatnoma qoldirganingizdan so`ng, ma`lumotni
+          aniqlashtirish va savollaringizni muhokama qilish uchun sizga
+          qo`ng`iroq qilamiz.
+        </div>
+        <Typography size="28" bottom="20">
+          Saytimizning afzalliklari:
+        </Typography>
+        <ul className={styles.listDetails}>
+          <li>
+            Uyda yuqori malakali shifokorga qo`ng`iroq qilish yoki siz uchun
+            qulay bo`lgan shifoxonaga yozilish bizning saytimizda mutlaqo bepul
+            va kunning istalgan vaqtida, bir necha daqiqada amalga oshiriladi.
+          </li>
+          <li>
+            Med24.uz sayti bilan siz poliklinikalardagi uzoq va charchoqli
+            navbatlarni unutasiz. Boshqa hech qachon qabulxona bilan bog’lanish
+            uchun uzoq urinishlar qilmaysiz. Endi muammolarsiz Toshkentdagi
+            shifokor qabuliga yozilishingiz mumkin.
+          </li>
+          <li>
+            Hamkor klinikalarimiz tufayli siz narx va sifat jihatidan yaxshi
+            takliflarni topa olasiz. Takliflarning to’liq katalogi bizning
+            onlayn portalimizda, ``Aksiyalar`` sahifasida joylashgan. Bizning
+            maxsus takliflarimiz bilan siz qulay narxda sifatli tibbiy xizmatdan
+            bahramand bo`lishingiz mumkin!
+          </li>
+          <li>
+            Klinikani va kerakli mutaxassisni tanlash uchun bizning saytimizdan
+            foydalaning, sog`ligingizni asrang!
+          </li>
+        </ul>
       </div>
     </div>
   );
