@@ -172,10 +172,18 @@ const Diagnostika: React.FC = () => {
           />
         )}
 
-        <div style={{ marginTop: 80, marginBottom: 20 }}>
+        <div
+          style={{
+            marginTop: 80,
+            marginBottom: 20,
+            borderTop: "1px solid rgb(117, 117, 117)",
+            borderBottom: "1px solid rgb(117, 117, 117)",
+          }}
+        >
           <h2
             style={{
-              marginTop: 100,
+              paddingTop: 10,
+              paddingBottom: 10,
               fontSize: "24px",
               fontWeight: "700",
               color: "#333",
@@ -261,7 +269,7 @@ const Diagnostika: React.FC = () => {
               {diagnosticServicesFiltered.map((service: Service) => (
                 <Link
                   key={service.id}
-                  href={`/uslugi/${encodeURIComponent(service.name)}`}
+                  href={`/kliniki/${encodeURIComponent(service.name)}`}
                   style={{
                     color: "#000",
                     textDecoration: "none",

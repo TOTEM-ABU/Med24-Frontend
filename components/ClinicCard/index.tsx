@@ -49,9 +49,10 @@ export type Clinic = {
 
 type Props = {
   clinic: Clinic;
+  filterService?: string;
 };
 
-const ClinicCard: React.FC<Props> = ({ clinic }) => {
+const ClinicCard: React.FC<Props> = ({ clinic, filterService }) => {
   const DEFAULT_DOCTOR_IMG = "/doctor.jpg";
   const {
     name,
@@ -203,17 +204,23 @@ const ClinicCard: React.FC<Props> = ({ clinic }) => {
 
         {Array.isArray(clinicservices) && clinicservices.length ? (
           <div className={styles.services}>
-            {clinicservices.slice(0, 3).map((cs) => (
-              <div key={cs.id} className={styles.serviceRow}>
-                <span className={styles.serviceName}>{cs?.Services?.name}</span>
-                {cs.price ? (
-                  <span className={styles.servicePrice}>
-                    {Intl.NumberFormat("uz-UZ").format(Number(cs.price))}{" "}
-                    so&#39;m
-                  </span>
-                ) : null}
-              </div>
-            ))}
+            {clinicservices
+              .filter((cs) => 
+                !filterService || 
+                cs?.Services?.name?.toLowerCase().includes(filterService.toLowerCase())
+              )
+              .slice(0, 3)
+              .map((cs) => (
+                <div key={cs.id} className={styles.serviceRow}>
+                  <span className={styles.serviceName}>{cs?.Services?.name}</span>
+                  {cs.price ? (
+                    <span className={styles.servicePrice}>
+                      {Intl.NumberFormat("uz-UZ").format(Number(cs.price))}{" "}
+                      so&#39;m
+                    </span>
+                  ) : null}
+                </div>
+              ))}
             {reviewsUrl ? (
               <a
                 href={reviewsUrl.replace("#review", "#prices")}

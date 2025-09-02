@@ -647,7 +647,7 @@ const DiagnostikaTypePage: React.FC = () => {
                 color: "#374151",
               }}
             >
-              <option value="all">Tuman (hammasi)</option>
+              <option value="all">Tuman</option>
               {uniqueDistricts.map((districtName) => (
                 <option key={districtName} value={districtName}>
                   {districtName}
@@ -665,7 +665,7 @@ const DiagnostikaTypePage: React.FC = () => {
                 color: "#374151",
               }}
             >
-              <option value="all">Tibbiy muassasa turi (hammasi)</option>
+              <option value="all">Tibbiy muassasa turi</option>
               <option value="PUBLIC">Davlat</option>
               <option value="PRIVATE">Xususiy</option>
               <option value="VETERINARY">Veterinariya</option>
@@ -681,7 +681,7 @@ const DiagnostikaTypePage: React.FC = () => {
                 color: "#374151",
               }}
             >
-              <option value="none">Ish vaqti (hammasi)</option>
+              <option value="none">Ish vaqti</option>
               <option value="TUESDAY">Seshanba</option>
               <option value="SUNDAY">Yakshanba</option>
               <option value="OPEN_NOW">Hozir ochiq</option>

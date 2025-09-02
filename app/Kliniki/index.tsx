@@ -224,7 +224,7 @@ const Kliniki: React.FC = () => {
                     }}
                   >
                     <option value="all">
-                      {clinicsLoading ? "Yuklanmoqda..." : "Tuman (hammasi)"}
+                      {clinicsLoading ? "Yuklanmoqda..." : "Tuman"}
                     </option>
                     {uniqueDistricts.map((d) => (
                       <option key={d} value={d}>
@@ -243,7 +243,7 @@ const Kliniki: React.FC = () => {
                       color: "#374151",
                     }}
                   >
-                    <option value="all">Tibbiy muassasa turi (hammasi)</option>
+                    <option value="all">Tibbiy muassasa turi</option>
                     <option value="PUBLIC">Davlat</option>
                     <option value="PRIVATE">Xususiy</option>
                     <option value="VETERINARY">Veterinariya</option>
@@ -259,7 +259,7 @@ const Kliniki: React.FC = () => {
                       color: "#374151",
                     }}
                   >
-                    <option value="none">Ish vaqti (hammasi)</option>
+                    <option value="none">Ish vaqti</option>
                     <option value="TUESDAY">Seshanba</option>
                     <option value="SUNDAY">Yakshanba</option>
                     <option value="OPEN_NOW">Hozir ochiq</option>
