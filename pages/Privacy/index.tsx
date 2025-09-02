@@ -1,3 +1,4 @@
+"use client";
 import { NextPage } from "next";
 import Privacy from "../../app/Privacy";
 
