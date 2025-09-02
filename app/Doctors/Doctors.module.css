@@ -152,3 +152,12 @@
   text-decoration: 1.5px underline dotted black;
   text-underline-offset: 2px;
 }
+
+.details ul {
+  margin: 0;
+  padding: 20px;
+}
+
+.details ul li {
+  margin-bottom: 20px;
+}
