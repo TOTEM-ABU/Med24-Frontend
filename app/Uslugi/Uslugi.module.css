@@ -1,0 +1,17 @@
+.Container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 874px;
+  margin: 100px auto;
+  background-color: #ffffff;
+}
+
+.searchSection {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 100%;
+  gap: 20px;
+}

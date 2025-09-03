@@ -1,3 +1,4 @@
+"use client";
 import { NextPage } from "next";
 import Diagnostika from "@/app/Diagnostika";
 
@@ -9,4 +10,4 @@ const DiagnostikaPage: NextPage = () => {
   );
 };
 
-export default Diagnostika;
+export default DiagnostikaPage;

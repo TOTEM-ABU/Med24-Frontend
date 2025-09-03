@@ -34,7 +34,7 @@
 }
 
 .card {
-  flex: 0 0 calc((100% - 32px) / 3);
+  flex: 0 0 calc((100% - 48px) / 4);
   box-sizing: border-box;
   background: #ffffff;
   border-radius: 16px;
