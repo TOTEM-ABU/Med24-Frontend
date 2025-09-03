@@ -6,6 +6,7 @@ import ServicesSection from "@/components/ServicesSection";
 import PopularClinics from "@/components/PopularClinics";
 import ClinicFilters from "@/components/ClinicFilters";
 import PromotionsSwiper from "@/components/PromotionsSwiper";
+import UsefulArticles from "@/components/UsefulArticles";
 import styles from "@/app/Kliniki/Kliniki.module.css";
 import { DOCTOR_SPECIALTIES } from "@/lib/constants";
 import { useQuery } from "@tanstack/react-query";
@@ -236,10 +237,9 @@ const HomePage = () => {
     if (!services || services.length === 0) return [];
     return services
       .filter((service: Service) => service.category === "DIAGNOSTICS")
-      .slice(0, 24); // Limit to 24 services for display
+      .slice(0, 24);
   }, [services]);
 
-  // Group diagnostic services by type
   const categorizedServices = useMemo(() => {
     if (!diagnosticServices.length) return {};
 
@@ -269,8 +269,6 @@ const HomePage = () => {
         categories["Boshqa"].push(service);
       }
     });
-
-    // Remove empty categories
     return Object.fromEntries(
       Object.entries(categories).filter(([_, services]) => services.length > 0)
     );
@@ -466,7 +464,6 @@ const HomePage = () => {
           </div>
         )}
 
-        {/* Davlat tibbiyot muassasalari section */}
         <div
           style={{
             padding: "16px 0",
@@ -520,7 +517,6 @@ const HomePage = () => {
           </div>
         </div>
 
-        {/* Klinikalar mutaxassisliklari section */}
         <div
           style={{
             padding: "16px 0",
@@ -711,6 +707,8 @@ const HomePage = () => {
             ))}
           </div>
         </div>
+
+        <UsefulArticles />
       </div>
     </div>
   );

@@ -194,7 +194,6 @@ const Kliniki: React.FC = () => {
         <RecomendedKliniki />
         <RecomendedTypes />
         <LatestReviews />
-
         <div
           style={{ backgroundColor: "rgb(229 231 235/var(--tw-bg-opacity))" }}
         >

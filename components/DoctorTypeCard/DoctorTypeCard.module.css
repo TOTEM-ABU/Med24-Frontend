@@ -1,8 +1,8 @@
 .card {
-  width: 158px;
-  height: 155px;
+  min-width: 150px;
+  height: 120px;
   background-color: rgb(246 248 249);
-  border-radius: 16px;
+  border-radius: 20px;
   padding: 16px;
   position: relative;
   cursor: pointer;
@@ -24,8 +24,8 @@
 
 .image {
   position: absolute;
-  bottom: 0;
-  right: -10px;
+  top: 40px;
+  right: -20px;
   width: 100px;
   height: 100px;
   object-fit: contain;
