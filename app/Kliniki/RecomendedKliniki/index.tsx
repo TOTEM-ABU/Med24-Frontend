@@ -120,7 +120,7 @@ const RecomendedKliniki = () => {
                 {groupedServices[letter].map(({ service, clinicCount }) => (
                   <Link
                     key={service.id}
-                    href={`/Kliniki/${encodeURIComponent(service.name)}`}
+                    href={`/kliniki/${encodeURIComponent(service.name)}`}
                     className={styles.serviceLink}
                   >
                     <span className={styles.serviceName}>{service.name}</span>

@@ -144,34 +144,33 @@ da'vo qilingan qonun buzilishlarini tekshirish yoki foydalanuvchilar tomonidan m
 
 const Privacy: React.FC = () => {
   return (
-    <div className="container">
-      <Breadcrumb
-        items={[
-          { label: "Asosiy sahifa", href: "/" },
-          { label: "Политика конфиденциальности" },
-        ]}
-      />
-      
+    <div>
+      <div className={styles.breadcrumbContainer}>
+        <Breadcrumb
+          items={[
+            { label: "Asosiy sahifa", href: "/" },
+            { label: "Maxfiylik siyosati" },
+          ]}
+        />
+      </div>
+
       <div className={styles.container}>
-        <div className={styles["search-section"]}>
-          <h1 className={styles["main-title"]}>
-            Maxfiylik siyosati
-          </h1>
-          
-          <div className={styles["input-container"]}>
-            <Input
-              label="Qidiruv so'zi yoki savolni kiriting"
-              width="100%"
-            />
-            <Button
-              name="Qidirish"
-              variant="primary"
-              padding="0 38px 0 38px"
-            />
+        <div className={styles.miniContainer}>
+          <div className={styles["search-section"]}>
+            <h1 className={styles["main-title"]}>Maxfiylik siyosati</h1>
+
+            <div className={styles["input-container"]}>
+              <Input label="Qidiruv so'zi yoki savolni kiriting" width="100%" />
+              <Button
+                name="Qidirish"
+                variant="primary"
+                padding="0 38px 0 38px"
+              />
+            </div>
           </div>
+
+          <div className={styles.content}>{PRIVACY_TEXT}</div>
         </div>
-        
-        <div className={styles.content}>{PRIVACY_TEXT}</div>
       </div>
     </div>
   );

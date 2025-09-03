@@ -52,7 +52,7 @@ const CommonServices: React.FC<Props> = ({ filterCategory }) => {
         {sortedServices.map((s) => (
           <Link
             key={s.id}
-            href={`/uslugi/${encodeURIComponent(s.name)}`}
+            href={`/kliniki/${encodeURIComponent(s.name)}`}
             className={styles.link}
           >
             {s.name}

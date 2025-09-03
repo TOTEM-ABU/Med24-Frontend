@@ -1,3 +1,4 @@
+"use client";
 import { useRouter } from "next/router";
 import React, { useMemo, useState, useCallback } from "react";
 import { useQuery } from "@tanstack/react-query";
@@ -120,33 +121,27 @@ const DISTRICTS: District[] = [
 const DOCTOR_SPECIALTIES: DoctorSpecialty[] = [
   {
     name: "Kardiolog",
-    image:
-      "https://main.med24.uz/uploads/doctors_specialties/852/01c/85201ccd5086addac3154451ce472ff3.png",
+    image: "/images/kardiolog.png",
   },
   {
     name: "Ortoped",
-    image:
-      "https://main.med24.uz/uploads/doctors_specialties/b9b/591/b9b591e3a36a1251d9a473707709e038.png",
+    image: "/images/ortoped.png",
   },
   {
     name: "Pulmonolog",
-    image:
-      "https://main.med24.uz/uploads/doctors_specialties/f8d/801/f8d8017705ba4af951f9b21eba3a601e.png",
+    image: "/images/pulmonolog.png",
   },
   {
     name: "Stomatolog",
-    image:
-      "https://main.med24.uz/uploads/doctors_specialties/a16/489/a16489385a3232c436d6db7453ebeb41.png",
+    image: "/images/stomotolog.png",
   },
   {
     name: "Terapevt",
-    image:
-      "https://main.med24.uz/uploads/doctors_specialties/acb/81e/acb81ec8aa7fb9d0ca171e77bffe08a4.png",
+    image: "/images/terapevt.png",
   },
   {
     name: "Travmatolog",
-    image:
-      "https://main.med24.uz/uploads/doctors_specialties/9ba/808/9ba80882f5f169f8d66814f09a1a2fa2.png",
+    image: "/images/travmatolog.png",
   },
 ];
 
@@ -647,7 +642,7 @@ const DiagnostikaTypePage: React.FC = () => {
                 color: "#374151",
               }}
             >
-              <option value="all">Tuman (hammasi)</option>
+              <option value="all">Tuman</option>
               {uniqueDistricts.map((districtName) => (
                 <option key={districtName} value={districtName}>
                   {districtName}
@@ -665,7 +660,7 @@ const DiagnostikaTypePage: React.FC = () => {
                 color: "#374151",
               }}
             >
-              <option value="all">Tibbiy muassasa turi (hammasi)</option>
+              <option value="all">Tibbiy muassasa turi</option>
               <option value="PUBLIC">Davlat</option>
               <option value="PRIVATE">Xususiy</option>
               <option value="VETERINARY">Veterinariya</option>
@@ -681,7 +676,7 @@ const DiagnostikaTypePage: React.FC = () => {
                 color: "#374151",
               }}
             >
-              <option value="none">Ish vaqti (hammasi)</option>
+              <option value="none">Ish vaqti</option>
               <option value="TUESDAY">Seshanba</option>
               <option value="SUNDAY">Yakshanba</option>
               <option value="OPEN_NOW">Hozir ochiq</option>

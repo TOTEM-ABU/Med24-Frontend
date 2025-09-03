@@ -1,10 +1,13 @@
-import ProductsType from '@/app/ProductsType'
-import React from 'react'
+"use client";
+import ProductsType from "@/app/ProductsType";
+import React from "react";
 
 const ProductType = () => {
   return (
-    <div><ProductsType/></div>
-  )
-}
+    <div>
+      <ProductsType />
+    </div>
+  );
+};
 
-export default ProductType
+export default ProductType;

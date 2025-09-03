@@ -1,10 +1,13 @@
-import Product from '@/app/ProductDetails'
-import React from 'react'
+"use client";
+import Product from "@/app/ProductDetails";
+import React from "react";
 
 const ProductDetails = () => {
   return (
-    <div><Product/></div>
-  )
-}
+    <div>
+      <Product />
+    </div>
+  );
+};
 
-export default ProductDetails
+export default ProductDetails;

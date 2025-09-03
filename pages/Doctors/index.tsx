@@ -1,3 +1,4 @@
+"use client";
 import DoctorsPage from "@/app/Doctors";
 import React from "react";
 

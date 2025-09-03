@@ -2,129 +2,180 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { ChevronDown, Menu, X, Phone, MapPin, Search } from 'lucide-react';
+import { ChevronDown, Menu, X, MapPin } from 'lucide-react';
 import styles from './Navbar.module.css';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isLangDropdownOpen, setIsLangDropdownOpen] = useState(false);
+  const [isLocationDropdownOpen, setIsLocationDropdownOpen] = useState(false);
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
-  const toggleDropdown = () => setIsDropdownOpen(!isDropdownOpen);
+  const toggleLangDropdown = () => setIsLangDropdownOpen(!isLangDropdownOpen);
+  const toggleLocationDropdown = () => setIsLocationDropdownOpen(!isLocationDropdownOpen);
 
   return (
-    <header className={styles.navbar}>
+    <div className='container'>
+      <header className={styles.navbar}>
       {/* Top Info Bar */}
       <div className={styles.topBar}>
         <div className={styles.topBarContent}>
           <div className={styles.topBarLeft}>
-            <div className={styles.infoItem}>
-              <span>Klinika qo'shish</span>
+            <span className={styles.addClinicText}>Klinika qo'shish</span>
+          </div>
+          <div className={styles.topBarRight}>
+            {/* Language Selector */}
+            <div className={styles.dropdown}>
+              <button
+                onClick={toggleLangDropdown}
+                className={styles.dropdownButton}
+              >
+                <div className={styles.flagIcon}></div>
+                <span>O'z</span>
+                <ChevronDown className={`${styles.chevronIcon} ${isLangDropdownOpen ? styles.chevronOpen : ''}`} />
+              </button>
+              {isLangDropdownOpen && (
+                <div className={styles.dropdownMenu}>
+                  <Link href="/?lang=uz" className={styles.dropdownItem}>
+                    <div className={styles.flagIcon}></div>
+                    <span>O'zbek</span>
+                  </Link>
+                  <Link href="/?lang=ru" className={styles.dropdownItem}>
+                    <div className={styles.flagIconRu}></div>
+                    <span>Русский</span>
+                  </Link>
+                </div>
+              )}
             </div>
-            <div className={styles.infoItem}>
-              <img src="/uzb-flag.svg" alt="O'zbekiston" className={styles.flagIcon} />
-              <span>O'z</span>
-              <ChevronDown className={styles.langIcon} />
-            </div>
-            <div className={styles.infoItem}>
-              <MapPin className={styles.locationIcon} />
-              <span>Toshkent</span>
-              <ChevronDown className={styles.locationIcon} />
+
+            {/* Location Selector */}
+            <div className={styles.dropdown}>
+              <button
+                onClick={toggleLocationDropdown}
+                className={styles.dropdownButton}
+              >
+                <MapPin className={styles.locationIcon} />
+                <span>Toshkent</span>
+                <ChevronDown className={`${styles.chevronIcon} ${isLocationDropdownOpen ? styles.chevronOpen : ''}`} />
+              </button>
+              {isLocationDropdownOpen && (
+                <div className={styles.dropdownMenu}>
+                  <Link href="/?city=tashkent" className={styles.dropdownItem}>
+                    <MapPin className={styles.locationIcon} />
+                    <span>Toshkent</span>
+                  </Link>
+                  <Link href="/?city=samarkand" className={styles.dropdownItem}>
+                    <MapPin className={styles.locationIcon} />
+                    <span>Samarqand</span>
+                  </Link>
+                  <Link href="/?city=bukhara" className={styles.dropdownItem}>
+                    <MapPin className={styles.locationIcon} />
+                    <span>Buxoro</span>
+                  </Link>
+                </div>
+              )}
             </div>
           </div>
         </div>
       </div>
 
-      {/* Main Navigation */}
-      <div className={styles.navContainer}>
-        <div className={styles.navContent}>
-          {/* Logo */}
-          <Link href="/" className={styles.logo}>
-            <div className={styles.logoBox}>
-              <div className={styles.logoIconBackground}>
-                <img src="/med24-logo.svg" alt="Med24 Logo" className={styles.logoIcon} />
+      <div>
+        <div className={styles.flex}>
+          <Link href="/" >
+            <div>
+              <div className={styles["logo-med"]}>
+                <img className={styles["logo-img"]} src="/Images/clinics/med24.webp" alt="Med24 Logo" />
+                <p className={styles["logoText"]}>med24</p>
               </div>
-              <span className={styles.logoText}>med24</span>
             </div>
           </Link>
 
+          <div className={styles.rightSection}>
+            <Link href="/#download-app" className={styles.ctaButton}>
+              <span className={styles.downloadText}>
+                Ilovani yuklab olish &gt;
+              </span>
+            </Link>
+          </div>
+        </div>
+        <div className={styles.navContent}>
+
+
           {/* Desktop Navigation */}
           <nav className={styles.desktopNav}>
-            <Link href="/doctors" className={styles.navLink}>
+            <Link href="/Doctors" className={styles.navLink}>
               Shifokor qabuli
             </Link>
-            <Link href="/analizlar" className={styles.navLink}>
+            <Link href="/uslugi" className={styles.navLink}>
               Analizlar
             </Link>
-            <Link href="/diagnostics" className={styles.navLink}>
+            <Link href="/Diagnostika" className={styles.navLink}>
               Diagnostika
             </Link>
-            <Link href="/services" className={styles.navLink}>
+            <Link href="/uslugi" className={styles.navLink}>
               Tibbiy xizmatlar
             </Link>
-            <Link href="/clinics" className={styles.navLink}>
+            <Link href="/Kliniki" className={styles.navLink}>
               Klinikalar
             </Link>
-            <Link href="/apteka" className={styles.navLink}>
+            <Link href="/products" className={styles.navLink}>
               Dorilar
             </Link>
-            <Link href="/promotions" className={styles.navLink}>
+            <Link href="/Promotions" className={styles.navLink}>
               Aksiya
             </Link>
           </nav>
 
           {/* Right Section */}
-          <div className={styles.rightSection}>
-            <Link href="/download-app" className={styles.ctaButton}>
-              <span className={styles.downloadText}>Ilovani yuklab olish</span>
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className={styles.downloadIcon}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
-              </svg>
-            </Link>
-          </div>
+
+
 
           {/* Mobile menu button */}
           <button
             onClick={toggleMenu}
             className={styles.mobileMenuButton}
+            aria-label="Menu"
           >
             {isMenuOpen ? <X className={styles.menuIcon} /> : <Menu className={styles.menuIcon} />}
           </button>
         </div>
 
-        {/* Mobile Navigation */}
-        {isMenuOpen && (
+
+
+        {/* {isMenuOpen && (
           <div className={styles.mobileNav}>
             <div className={styles.mobileNavContent}>
-              <Link href="/doctors" className={styles.mobileNavLink}>
+              <Link href="/shifokor-qabuli" className={styles.mobileNavLink}>
                 Shifokor qabuli
               </Link>
               <Link href="/analizlar" className={styles.mobileNavLink}>
                 Analizlar
               </Link>
-              <Link href="/diagnostics" className={styles.mobileNavLink}>
+              <Link href="/diagnostika" className={styles.mobileNavLink}>
                 Diagnostika
               </Link>
-              <Link href="/services" className={styles.mobileNavLink}>
+              <Link href="/tibbiy-xizmatlar" className={styles.mobileNavLink}>
                 Tibbiy xizmatlar
               </Link>
-              <Link href="/clinics" className={styles.mobileNavLink}>
+              <Link href="/klinikalar" className={styles.mobileNavLink}>
                 Klinikalar
               </Link>
-              <Link href="/apteka" className={styles.mobileNavLink}>
+              <Link href="/dorilar" className={styles.mobileNavLink}>
                 Dorilar
               </Link>
-              <Link href="/promotions" className={styles.mobileNavLink}>
+              <Link href="/aksiya" className={styles.mobileNavLink}>
                 Aksiya
               </Link>
-              <Link href="/download-app" className={styles.mobileCtaButton}>
-                Ilovani yuklab olish
-              </Link>
+
             </div>
           </div>
-        )}
+        )} */}
       </div>
+
+
+
     </header>
+    </div>
   );
 };
 
