@@ -18,11 +18,7 @@
     "react-hot-toast": "^2.6.0",
     "react-icons": "^5.5.0",
     "react-router": "^7.8.2",
-<<<<<<< HEAD
     "react-yandex-maps": "^4.6.0"
-=======
-    "tailwind": "^4.0.0"
->>>>>>> a7feb88e5ceb5f0e2704fac5d9b696c39cef1bd9
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

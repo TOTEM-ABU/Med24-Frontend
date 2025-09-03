@@ -1,16 +1,5 @@
 .breadcrumb-container {
-<<<<<<< HEAD
-    font-size: 14px;
-    margin-top: 16px;
-  }
-  
-  .ordered-list {
-    display: flex;
-    gap: 4px;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-=======
+
   font-size: 14px;
   margin-top: 16px 0 30px 0;
 }
@@ -18,7 +7,6 @@
 .ordered-list {
   display: flex;
   gap: 4px;
->>>>>>> a7feb88e5ceb5f0e2704fac5d9b696c39cef1bd9
 }
 
 .full-list {

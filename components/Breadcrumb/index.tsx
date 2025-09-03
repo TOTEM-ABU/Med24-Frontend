@@ -11,13 +11,8 @@ interface Crumb {
 
 interface BreadcrumbProps {
   items: Crumb[];
-<<<<<<< HEAD
-  className?: string;              
-  style?: React.CSSProperties;       
-=======
   className?: string;
   style?: React.CSSProperties;
->>>>>>> a7feb88e5ceb5f0e2704fac5d9b696c39cef1bd9
 }
 
 const Breadcrumb: React.FC<BreadcrumbProps> = ({ items, className, style }) => {
