@@ -11,6 +11,7 @@ import img4 from "./images/img4.webp";
 import img5 from "./images/img5.webp";
 import DoctorTypeCard from "@/components/DoctorTypeCard";
 import { DOCTOR_SPECIALTIES } from "@/lib/constants";
+import heart from "./images/heart.png"
 
 const ProductsPage = () => {
   const products = [
@@ -48,7 +49,6 @@ const ProductsPage = () => {
           Toshkentdagi dorixonalarda qidirish
         </h1>
 
-<<<<<<< HEAD
                 <div className={styles["input-container"]}>
                     <Input
                         label="Shifokor ismi, mutaxassislik nomini yoki dor-darmon kiriting"
@@ -1340,15 +1340,7 @@ const ProductsPage = () => {
                     </div>
                 </div>
             </div>
-=======
-        <div className={styles["input-container"]}>
-          <Input
-            label="Shifokor ismi, mutaxassislik nomini yoki dor-darmon kiriting"
-            width="100%"
-          />
-          <Button name="Qidirish" variant="primary" padding="0 38px 0 38px" />
->>>>>>> 5a1bb0ffb760daf3d426ef9cf6a84e69a3ad6115
-        </div>
+
 
         <div className={styles["promotion-banner"]}>
           <div className="bg-[#F6F8F9] cursor-pointer gap-[20px] sm:gap-[64px] items-start overflow-hidden flex sm:flex-row mx-[2px] pt-[39px] pb-[30px] pl-[50px] sm:pl-[55px] rounded-[24px]">
@@ -2658,7 +2650,6 @@ const ProductsPage = () => {
           </div>
         </div>
       </div>
-    </div>
   );
 };
 

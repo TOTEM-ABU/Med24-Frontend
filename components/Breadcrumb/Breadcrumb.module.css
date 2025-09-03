@@ -16,15 +16,6 @@
 }
 
 .active {
-<<<<<<< HEAD
-    color: black;
-    font-weight: 400;
-}
-
-.inactive {
-    color: gray;
-    text-decoration: none;
-=======
   color: black;
   font-weight: 400;
   font-family: "Inter", sans-serif;
@@ -34,7 +25,6 @@
   color: gray;
   text-decoration: none;
   font-family: "Inter", sans-serif;
->>>>>>> 5a1bb0ffb760daf3d426ef9cf6a84e69a3ad6115
 }
 
 .separator {
