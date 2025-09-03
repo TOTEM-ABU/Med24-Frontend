@@ -14,9 +14,14 @@ const Footer = () => {
           
           {/* Company Info */}
           <div className={styles.logoSection}>
-            <Link href="/" className={styles.logo}>
-              <img src="/med24-logo.svg" alt="Med24 Logo" className={styles.logoImage} />
-            </Link>
+         < Link href="/" >
+            <div>
+              <div className={styles["logo-med"]}>
+                <img className={styles["logo-img"]} src="/Images/clinics/med24.webp" alt="Med24 Logo" />
+                <p className={styles["logoText"]}>med24</p>
+              </div>
+            </div>
+          </Link>
             <p className={styles.description}>
               Toshkentdagi barcha klinikalar va shifokorlar. Tibbiyot markazlari, 
               kasalxonalar va klinikalarning sharhlari.
@@ -32,15 +37,15 @@ const Footer = () => {
           <div className={styles.footerSection}>
             <h3>Bemorlarga</h3>
             <ul className={styles.linksList}>
-              <li><Link href="/klinikalar">Klinikalar</Link></li>
-              <li><Link href="/promotions">Aksiya</Link></li>
-              <li><Link href="/doctors">Shifokorlar</Link></li>
-              <li><Link href="/diagnostics">Diagnostika markazlari</Link></li>
-              <li><Link href="/laboratories">Laboratoriyalar</Link></li>
-              <li><Link href="/categories">Tug‘ruqxonalar</Link></li>
-              <li><Link href="/diseases">Kasalliklar ro‘yxati</Link></li>
-              <li><Link href="/symptoms">Kasallik belgilari</Link></li>
-              <li><Link href="/privacy">Maxfiylik siyosati</Link></li>
+              <li><Link href="/Kliniki">Klinikalar</Link></li>
+              <li><Link href="/Promotions">Aksiya</Link></li>
+              <li><Link href="/Doctors">Shifokorlar</Link></li>
+              <li><Link href="/Diagnostika">Diagnostika markazlari</Link></li>
+              <li><Link href="/uslugi">Laboratoriyalar</Link></li>
+              <li><Link href="/#categories">Tug‘ruqxonalar</Link></li>
+              <li><Link href="/#diseases">Kasalliklar ro‘yxati</Link></li>
+              <li><Link href="/#symptoms">Kasallik belgilari</Link></li>
+              <li><Link href="/Privacy">Maxfiylik siyosati</Link></li>
             </ul>
           </div>
 
@@ -48,11 +53,11 @@ const Footer = () => {
           <div className={styles.footerSection}>
             <h3>Ma'lumotnoma</h3>
             <ul className={styles.linksList}>
-              <li><Link href="/about">Biz haqimizda</Link></li>
-              <li><Link href="/press">Biz haqimizda matbuot</Link></li>
-              <li><Link href="/contacts">Kontaktlar</Link></li>
-              <li><Link href="/faq">Tez-tez beriladigan savollar</Link></li>
-              <li><Link href="/terms">Foydalanuvchi shartnomasi</Link></li>
+              <li><Link href="/About">Biz haqimizda</Link></li>
+              <li><Link href="/News">Biz haqimizda matbuot</Link></li>
+              <li><Link href="/Contact">Kontaktlar</Link></li>
+              <li><Link href="/FAQ">Tez-tez beriladigan savollar</Link></li>
+              <li><Link href="/#terms">Foydalanuvchi shartnomasi</Link></li>
             </ul>
           </div>
 
@@ -60,11 +65,11 @@ const Footer = () => {
           <div className={styles.footerSection}>
             <h3>Xizmatlar</h3>
             <ul className={styles.linksList}>
-              <li><Link href="/clinics">Klinikalar</Link></li>
-              <li><Link href="/news">Yangiliklar</Link></li>
-              <li><Link href="/articles">Maqolalar</Link></li>
-              <li><Link href="/apteka">Apteka.uz</Link></li>
-              <li><Link href="/avitsenna">Avitsenna.uz</Link></li>
+              <li><Link href="/Kliniki">Klinikalar</Link></li>
+              <li><Link href="/News">Yangiliklar</Link></li>
+              <li><Link href="/#articles">Maqolalar</Link></li>
+              <li><Link href="/products">Apteka.uz</Link></li>
+              <li><Link href="/#avitsenna">Avitsenna.uz</Link></li>
             </ul>
           </div>
         </div>
