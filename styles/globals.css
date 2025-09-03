@@ -9,4 +9,8 @@ body {
 .container {
   max-width: 1052px;
   margin: 0 auto;
+
+}
+a{
+  text-decoration: none;
 }

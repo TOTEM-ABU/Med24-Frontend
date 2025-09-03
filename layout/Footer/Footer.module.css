@@ -5,7 +5,7 @@
 }
 
 .footerContent {
-  max-width: 1280px;
+  max-width: 1052px;
   margin: 0 auto;
   padding: 3rem 1rem;
 }
@@ -30,14 +30,25 @@
   }
 }
 
-.logoSection {
-  margin-bottom: 2rem;
+.logoText {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1e293b;
+  letter-spacing: -0.025em;
+  text-decoration: none;
 }
 
-.logoImage {
-  width: auto;
-  height: 2.25rem;
-  margin-bottom: 1rem;
+.logo-med{
+  display: flex;
+  align-items: center;
+  gap: 5px;
+ 
+}
+
+.logo-img{
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
 }
 
 .description {
@@ -150,7 +161,7 @@
 }
 
 .bottomContent {
-  max-width: 1280px;
+  max-width: 1052px;
   margin: 0 auto;
   padding: 1.5rem 1rem;
   display: flex;
