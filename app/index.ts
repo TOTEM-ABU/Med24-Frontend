@@ -9,3 +9,4 @@ export { default as Doctors } from "./Doctors";
 // export { default as News } from './News';
 export { default as Privacy } from "./Privacy";
 export { default as Promotions } from "./Promotions";
+export { default as Articles } from "./Articles";

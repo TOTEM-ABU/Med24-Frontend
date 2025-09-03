@@ -1,9 +1,9 @@
-'use client'
+"use client";
 
-import React, { useState } from 'react';
-import Link from 'next/link';
-import { ChevronDown, Menu, X, MapPin } from 'lucide-react';
-import styles from './Navbar.module.css';
+import React, { useState } from "react";
+import Link from "next/link";
+import { ChevronDown, Menu, X, MapPin } from "lucide-react";
+import styles from "./Navbar.module.css";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -12,137 +12,157 @@ const Navbar = () => {
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
   const toggleLangDropdown = () => setIsLangDropdownOpen(!isLangDropdownOpen);
-  const toggleLocationDropdown = () => setIsLocationDropdownOpen(!isLocationDropdownOpen);
+  const toggleLocationDropdown = () =>
+    setIsLocationDropdownOpen(!isLocationDropdownOpen);
 
   return (
-    <div className='container'>
+    <div className="container">
       <header className={styles.navbar}>
-      {/* Top Info Bar */}
-      <div className={styles.topBar}>
-        <div className={styles.topBarContent}>
-          <div className={styles.topBarLeft}>
-            <span className={styles.addClinicText}>Klinika qo'shish</span>
-          </div>
-          <div className={styles.topBarRight}>
-            {/* Language Selector */}
-            <div className={styles.dropdown}>
-              <button
-                onClick={toggleLangDropdown}
-                className={styles.dropdownButton}
-              >
-                <div className={styles.flagIcon}></div>
-                <span>O'z</span>
-                <ChevronDown className={`${styles.chevronIcon} ${isLangDropdownOpen ? styles.chevronOpen : ''}`} />
-              </button>
-              {isLangDropdownOpen && (
-                <div className={styles.dropdownMenu}>
-                  <Link href="/?lang=uz" className={styles.dropdownItem}>
-                    <div className={styles.flagIcon}></div>
-                    <span>O'zbek</span>
-                  </Link>
-                  <Link href="/?lang=ru" className={styles.dropdownItem}>
-                    <div className={styles.flagIconRu}></div>
-                    <span>Русский</span>
-                  </Link>
-                </div>
-              )}
+        {/* Top Info Bar */}
+        <div className={styles.topBar}>
+          <div className={styles.topBarContent}>
+            <div className={styles.topBarLeft}>
+              <span className={styles.addClinicText}>Klinika qo'shish</span>
             </div>
+            <div className={styles.topBarRight}>
+              {/* Language Selector */}
+              <div className={styles.dropdown}>
+                <button
+                  onClick={toggleLangDropdown}
+                  className={styles.dropdownButton}
+                >
+                  <div className={styles.flagIcon}></div>
+                  <span>O'z</span>
+                  <ChevronDown
+                    className={`${styles.chevronIcon} ${
+                      isLangDropdownOpen ? styles.chevronOpen : ""
+                    }`}
+                  />
+                </button>
+                {isLangDropdownOpen && (
+                  <div className={styles.dropdownMenu}>
+                    <Link href="/?lang=uz" className={styles.dropdownItem}>
+                      <div className={styles.flagIcon}></div>
+                      <span>O'zbek</span>
+                    </Link>
+                    <Link href="/?lang=ru" className={styles.dropdownItem}>
+                      <div className={styles.flagIconRu}></div>
+                      <span>Русский</span>
+                    </Link>
+                  </div>
+                )}
+              </div>
 
-            {/* Location Selector */}
-            <div className={styles.dropdown}>
-              <button
-                onClick={toggleLocationDropdown}
-                className={styles.dropdownButton}
-              >
-                <MapPin className={styles.locationIcon} />
-                <span>Toshkent</span>
-                <ChevronDown className={`${styles.chevronIcon} ${isLocationDropdownOpen ? styles.chevronOpen : ''}`} />
-              </button>
-              {isLocationDropdownOpen && (
-                <div className={styles.dropdownMenu}>
-                  <Link href="/?city=tashkent" className={styles.dropdownItem}>
-                    <MapPin className={styles.locationIcon} />
-                    <span>Toshkent</span>
-                  </Link>
-                  <Link href="/?city=samarkand" className={styles.dropdownItem}>
-                    <MapPin className={styles.locationIcon} />
-                    <span>Samarqand</span>
-                  </Link>
-                  <Link href="/?city=bukhara" className={styles.dropdownItem}>
-                    <MapPin className={styles.locationIcon} />
-                    <span>Buxoro</span>
-                  </Link>
-                </div>
-              )}
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div>
-        <div className={styles.flex}>
-          <Link href="/" >
-            <div>
-              <div className={styles["logo-med"]}>
-                <img className={styles["logo-img"]} src="/Images/clinics/med24.webp" alt="Med24 Logo" />
-                <p className={styles["logoText"]}>med24</p>
+              {/* Location Selector */}
+              <div className={styles.dropdown}>
+                <button
+                  onClick={toggleLocationDropdown}
+                  className={styles.dropdownButton}
+                >
+                  <MapPin className={styles.locationIcon} />
+                  <span>Toshkent</span>
+                  <ChevronDown
+                    className={`${styles.chevronIcon} ${
+                      isLocationDropdownOpen ? styles.chevronOpen : ""
+                    }`}
+                  />
+                </button>
+                {isLocationDropdownOpen && (
+                  <div className={styles.dropdownMenu}>
+                    <Link
+                      href="/?city=tashkent"
+                      className={styles.dropdownItem}
+                    >
+                      <MapPin className={styles.locationIcon} />
+                      <span>Toshkent</span>
+                    </Link>
+                    <Link
+                      href="/?city=samarkand"
+                      className={styles.dropdownItem}
+                    >
+                      <MapPin className={styles.locationIcon} />
+                      <span>Samarqand</span>
+                    </Link>
+                    <Link href="/?city=bukhara" className={styles.dropdownItem}>
+                      <MapPin className={styles.locationIcon} />
+                      <span>Buxoro</span>
+                    </Link>
+                  </div>
+                )}
               </div>
             </div>
-          </Link>
-
-          <div className={styles.rightSection}>
-            <Link href="/#download-app" className={styles.ctaButton}>
-              <span className={styles.downloadText}>
-                Ilovani yuklab olish &gt;
-              </span>
-            </Link>
           </div>
         </div>
-        <div className={styles.navContent}>
 
-
-          {/* Desktop Navigation */}
-          <nav className={styles.desktopNav}>
-            <Link href="/Doctors" className={styles.navLink}>
-              Shifokor qabuli
+        <div>
+          <div className={styles.flex}>
+            <Link href="/">
+              <div>
+                <div className={styles["logo-med"]}>
+                  <img
+                    className={styles["logo-img"]}
+                    src="/Images/clinics/med24.webp"
+                    alt="Med24 Logo"
+                  />
+                  <p className={styles["logoText"]}>med24</p>
+                </div>
+              </div>
             </Link>
-            <Link href="/uslugi" className={styles.navLink}>
-              Analizlar
-            </Link>
-            <Link href="/Diagnostika" className={styles.navLink}>
-              Diagnostika
-            </Link>
-            <Link href="/uslugi" className={styles.navLink}>
-              Tibbiy xizmatlar
-            </Link>
-            <Link href="/Kliniki" className={styles.navLink}>
-              Klinikalar
-            </Link>
-            <Link href="/products" className={styles.navLink}>
-              Dorilar
-            </Link>
-            <Link href="/Promotions" className={styles.navLink}>
-              Aksiya
-            </Link>
-          </nav>
 
-          {/* Right Section */}
+            <div className={styles.rightSection}>
+              <Link href="/#download-app" className={styles.ctaButton}>
+                <span className={styles.downloadText}>
+                  Ilovani yuklab olish &gt;
+                </span>
+              </Link>
+            </div>
+          </div>
+          <div className={styles.navContent}>
+            {/* Desktop Navigation */}
+            <nav className={styles.desktopNav}>
+              <Link href="/Doctors" className={styles.navLink}>
+                Shifokor qabuli
+              </Link>
+              <Link href="/uslugi" className={styles.navLink}>
+                Analizlar
+              </Link>
+              <Link href="/Diagnostika" className={styles.navLink}>
+                Diagnostika
+              </Link>
+              <Link href="/uslugi" className={styles.navLink}>
+                Tibbiy xizmatlar
+              </Link>
+              <Link href="/Kliniki" className={styles.navLink}>
+                Klinikalar
+              </Link>
+              <Link href="/articles" className={styles.navLink}>
+                Maqolalar
+              </Link>
+              <Link href="/products" className={styles.navLink}>
+                Dorilar
+              </Link>
+              <Link href="/Promotions" className={styles.navLink}>
+                Aksiya
+              </Link>
+            </nav>
 
+            {/* Right Section */}
 
+            {/* Mobile menu button */}
+            <button
+              onClick={toggleMenu}
+              className={styles.mobileMenuButton}
+              aria-label="Menu"
+            >
+              {isMenuOpen ? (
+                <X className={styles.menuIcon} />
+              ) : (
+                <Menu className={styles.menuIcon} />
+              )}
+            </button>
+          </div>
 
-          {/* Mobile menu button */}
-          <button
-            onClick={toggleMenu}
-            className={styles.mobileMenuButton}
-            aria-label="Menu"
-          >
-            {isMenuOpen ? <X className={styles.menuIcon} /> : <Menu className={styles.menuIcon} />}
-          </button>
-        </div>
-
-
-
-        {/* {isMenuOpen && (
+          {/* {isMenuOpen && (
           <div className={styles.mobileNav}>
             <div className={styles.mobileNavContent}>
               <Link href="/shifokor-qabuli" className={styles.mobileNavLink}>
@@ -160,6 +180,9 @@ const Navbar = () => {
               <Link href="/klinikalar" className={styles.mobileNavLink}>
                 Klinikalar
               </Link>
+              <Link href="/articles" className={styles.mobileNavLink}>
+                Maqolalar
+              </Link>
               <Link href="/dorilar" className={styles.mobileNavLink}>
                 Dorilar
               </Link>
@@ -170,11 +193,8 @@ const Navbar = () => {
             </div>
           </div>
         )} */}
-      </div>
-
-
-
-    </header>
+        </div>
+      </header>
     </div>
   );
 };

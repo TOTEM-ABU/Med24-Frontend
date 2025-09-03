@@ -24,14 +24,6 @@ export const DOCTOR_SPECIALTIES = [
     name: "Travmatolog",
     image: "/images/travmatolog.png",
   },
-  {
-    name: "Nevropatolog",
-    image: "/images/kardiolog.png", // Fallback to kardiolog.png if specific image not available
-  },
-  {
-    name: "Ginekolog",
-    image: "/images/terapevt.png", // Fallback to terapevt.png if specific image not available
-  },
 ];
 
 export default DOCTOR_SPECIALTIES;
