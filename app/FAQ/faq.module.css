@@ -1,0 +1,93 @@
+.faqContainer {
+    margin: 40px auto;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+  }
+  
+  .faqHeader {
+    margin-bottom: 20px;
+  }
+  
+  .faqTitle {
+    font-size: 32px;
+    font-weight: 400;
+    color: #1f2937;
+    margin-bottom: 5px;
+  }
+  
+  .sectionTitle {
+    font-size: 24px;
+    font-weight: 400;
+    color: #1f2937;
+    margin-bottom: 15px;
+  }
+  
+  .faqItem {
+    border-bottom: 1px solid #e5e7eb;
+    padding-bottom: 5px;
+  }
+  
+  .faqButton {
+    width: 100%;
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 12px 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    outline: none;
+  }
+  
+  .faqQuestion {
+    font-size: 18px;
+    font-weight: 500;
+    color: #040c1b;
+    padding-right: 32px;
+    line-height: 1.6;
+  }
+  
+  .faqAnswer {
+    color: #4b5563;
+    line-height: 1.6;
+    font-size: 16px;
+    padding-bottom: 16px;
+  }
+  
+  .chevronIcon {
+    flex-shrink: 0;
+    margin-top: 4px;
+    font-size: 20px;
+  }
+  
+  .chevronOpen {
+    color: #2563eb;
+  }
+  
+  .chevronClosed {
+    color: #9ca3af;
+  }
+  
+  .faqButton:hover .chevronClosed {
+    color: #6b7280;
+  }
+  
+  .faqSection {
+    margin-bottom: 64px;
+  }
+  
+  .faqList {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .faqAnswerVisible {
+    display: block;
+  }
+  
+  .faqAnswerHidden {
+    display: none;
+  }
+  
