@@ -1,0 +1,120 @@
+.container {
+  padding: 20px 0 40px;
+  max-width: 1052px;
+  margin: 0 auto;
+  font-family: "Inter" sans-serif;
+}
+
+.searchSection {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  margin: 24px 0;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 24px;
+}
+
+.grid {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.card {
+  border-radius: 16px;
+  overflow: hidden;
+  background: white;
+  display: flex;
+  text-decoration: none;
+  color: inherit;
+}
+
+.imageContainer {
+  width: 300px;
+  min-width: 300px;
+  height: 200px;
+  overflow: hidden;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.content {
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.articleTitle {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0 0 12px 0;
+  color: #333;
+  line-height: 1.4;
+}
+
+.description {
+  font-size: 14px;
+  color: #666;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.date {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.noArticles {
+  text-align: center;
+  color: #666;
+  font-size: 18px;
+  margin-top: 40px;
+}
+
+.doctorTypes {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.wide {
+  grid-column: span 2;
+}
+
+@media (max-width: 768px) {
+  .card {
+    flex-direction: column;
+  }
+
+  .imageContainer {
+    width: 100%;
+    height: 200px;
+  }
+
+  .title {
+    font-size: 24px;
+  }
+
+  .articleTitle {
+    font-size: 18px;
+  }
+
+  .doctorTypes {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

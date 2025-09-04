@@ -1,0 +1,102 @@
+.container {
+  width: 100%;
+  margin: 50px 0;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 24px;
+}
+
+.cardsContainer {
+  display: grid;
+  grid-template-columns: repeat(3, 340px);
+  gap: 24px;
+  justify-content: space-between;
+}
+
+.card {
+  border-radius: 16px;
+  padding: 20px;
+  min-height: 246px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  max-width: 340px;
+}
+
+.contentWrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  z-index: 1;
+}
+
+.cardTitle {
+  font-size: 20px;
+  font-weight: 600;
+  color: #111827;
+  margin: 0 0 10px 0;
+}
+
+.description {
+  font-size: 15px;
+  color: #4b5563;
+  margin: 0 0 auto 0;
+  line-height: 1.5;
+  max-width: 70%;
+}
+
+.link {
+  margin-top: 16px;
+  display: inline-flex;
+  align-items: center;
+  font-size: 15px;
+  font-weight: 500;
+  color: #333;
+  text-decoration: none;
+  cursor: pointer;
+  max-width: fit-content;
+  background-color: white;
+  padding: 10px 16px;
+  border-radius: 100px;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+.arrow {
+  margin-left: 6px;
+  font-size: 18px;
+}
+
+.imageContainer {
+  position: absolute;
+  right: -15px;
+  bottom: -15px;
+  z-index: 0;
+}
+
+.image {
+  object-fit: contain;
+}
+
+@media (max-width: 1100px) {
+  .cardsContainer {
+    grid-template-columns: repeat(2, 340px);
+    justify-content: center;
+    gap: 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .cardsContainer {
+    grid-template-columns: 340px;
+    justify-content: center;
+    gap: 24px;
+  }
+}

@@ -1,6 +1,10 @@
 .popularClinicsSection {
   margin-top: 24px;
   margin-bottom: 24px;
+  max-width: 1052px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
 }
 
 .sectionTitle {
@@ -12,8 +16,8 @@
 
 .popularClinicsGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(132px, 1fr));
-  gap: 16px;
+  grid-template-columns: repeat(6, 1fr);
+  width: 100%;
 }
 
 .clinicCard {
@@ -52,4 +56,22 @@
   white-space: nowrap;
   width: 100%;
   margin: 0;
+}
+
+@media (max-width: 1024px) {
+  .popularClinicsGrid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .popularClinicsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .popularClinicsGrid {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }
