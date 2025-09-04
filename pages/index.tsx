@@ -8,6 +8,7 @@ import ClinicFilters from "@/components/ClinicFilters";
 import PromotionsSwiper from "@/components/PromotionsSwiper";
 import UsefulArticles from "@/components/UsefulArticles";
 import styles from "@/app/Kliniki/Kliniki.module.css";
+import pageStyles from "./index.module.css"; // Yangi qo'shilgan CSS modul
 import { DOCTOR_SPECIALTIES } from "@/lib/constants";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
@@ -612,7 +613,6 @@ const HomePage = () => {
           </div>
         </div>
 
-        {/* So'nggi sharhlar section */}
         <div
           style={{
             padding: "16px 0",
@@ -709,6 +709,135 @@ const HomePage = () => {
         </div>
 
         <UsefulArticles />
+
+        <div className={pageStyles.clinicLogosSection}>
+          <h2 className={pageStyles.sectionTitle}>
+            Biz bilan - ishlaydigan klinikalar
+          </h2>
+          <div className={pageStyles.clinicLogosGrid}>
+            {clinics.slice(0, 10).map((clinic: Clinic) => {
+              const clinicSlug = clinic.name
+                ? clinic.name
+                    .toLowerCase()
+                    .trim()
+                    .replace(/[\u2019'`]/g, "")
+                    .replace(/[^a-z0-9\s-]/g, "")
+                    .replace(/\s+/g, "-")
+                    .replace(/-+/g, "-")
+                : "";
+
+              return (
+                <Link
+                  key={clinic.id}
+                  href={`/klinika/${clinicSlug}`}
+                  className={pageStyles.clinicLogoItem}
+                >
+                  <img
+                    src={clinic.logo_url || "/placeholder-logo.png"}
+                    alt={clinic.name}
+                    className={pageStyles.clinicLogo}
+                  />
+                </Link>
+              );
+            })}
+          </div>
+        </div>
+
+        <div className={pageStyles.pressSection}>
+          <div className={pageStyles.header}>
+            <h2 className={pageStyles.title}>Biz haqimizda</h2>
+          </div>
+
+          <div className={pageStyles.grid}>
+            <a
+              href="https://repost.uz/health/nervi-uje-ne-te"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={pageStyles.card}
+            >
+              <div className={pageStyles.imageContainer}>
+                <img
+                  src="https://med24.uz/_ipx/f_webp&q_80/images/ef99a5769f4c3c70c465fd8179b4cf25.webp"
+                  alt="Nervi uje ne te"
+                  className={pageStyles.image}
+                />
+              </div>
+              <div className={pageStyles.content}>
+                <span className={pageStyles.date}>2025-09-04</span>
+                <h3 className={pageStyles.articleTitle}>Nervi uje ne te</h3>
+              </div>
+            </a>
+
+            <a
+              href="https://review.uz/post/vbiraem-gde-sdelat-mrt-v-tashkente"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={pageStyles.card}
+            >
+              <div className={pageStyles.imageContainer}>
+                <img
+                  src="https://med24.uz/_ipx/f_webp&q_80/images/2679743ce9bb0db2957a2e93dcce7e8b.webp"
+                  alt="Vbiraem gde sdelat mrt v Tashkente"
+                  className={pageStyles.image}
+                />
+              </div>
+              <div className={pageStyles.content}>
+                <span className={pageStyles.date}>2025-09-04</span>
+                <h3 className={pageStyles.articleTitle}>
+                  Vbiraem gde sdelat mrt v Tashkente
+                </h3>
+              </div>
+            </a>
+
+            <a
+              href="https://zarnews.uz/post/tibbiy-xizmat-kompyuterlashmoqda-zarur-shifokorlarni-topishning-oson-va-tez-usuli"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={pageStyles.card}
+            >
+              <div className={pageStyles.imageContainer}>
+                <img
+                  src="https://med24.uz/_ipx/f_webp&q_80/images/73b83c83a355fc527bdd3f93692393bc.webp"
+                  alt="Tibbiy xizmat kompyuterlashmoqda"
+                  className={pageStyles.image}
+                />
+              </div>
+              <div className={pageStyles.content}>
+                <span className={pageStyles.date}>2025-09-04</span>
+                <h3 className={pageStyles.articleTitle}>
+                  Tibbiy xizmat kompyuterlashmoqda
+                </h3>
+              </div>
+            </a>
+
+            <a
+              href="https://www.thevista.ru/page30489-udobnyy_poisk_klinik_onlayn_s_pomoshchyu_kliniki24uz"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={pageStyles.card}
+            >
+              <div className={pageStyles.imageContainer}>
+                <img
+                  src="https://med24.uz/_ipx/f_webp&q_80/images/c8f4c0d5ea0a33a8192be02a5ee73e59.webp"
+                  alt="Udobnyy poisk klinik"
+                  className={pageStyles.image}
+                />
+              </div>
+              <div className={pageStyles.content}>
+                <span className={pageStyles.date}>2025-09-04</span>
+                <h3 className={pageStyles.articleTitle}>
+                  Udobnyy poisk klinik
+                </h3>
+              </div>
+            </a>
+          </div>
+
+          <div className={pageStyles.viewAllContainer}>
+            <Link href="/press" className={pageStyles.viewAll}>
+              Barchasini ko&apos;rish
+            </Link>
+          </div>
+        </div>
       </div>
     </div>
   );

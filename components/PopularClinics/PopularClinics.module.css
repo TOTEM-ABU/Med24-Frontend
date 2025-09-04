@@ -23,7 +23,6 @@
 .clinicCard {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   text-decoration: none;
   padding: 16px;
   border-radius: 20px;

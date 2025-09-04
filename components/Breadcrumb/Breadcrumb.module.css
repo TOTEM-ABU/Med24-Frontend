@@ -1,5 +1,4 @@
 .breadcrumb-container {
-
   font-size: 14px;
   margin: 16px 0 30px 0;
   padding: 0;
@@ -8,12 +7,17 @@
 
 .ordered-list {
   display: flex;
+  flex-direction: row;
+  align-items: center;
   gap: 4px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 .full-list {
-    display: flex;
-    gap: 4px;
+  display: flex;
+  gap: 4px;
 }
 
 .active {
@@ -29,5 +33,5 @@
 }
 
 .separator {
-    color: gray;
+  color: gray;
 }
