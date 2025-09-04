@@ -1,6 +1,6 @@
 .card {
   min-width: 150px;
-  height: 120px;
+  height: 100px;
   background-color: rgb(246 248 249);
   border-radius: 20px;
   padding: 16px;
@@ -9,6 +9,7 @@
   transition: background-color 0.2s ease;
   overflow: hidden;
   transition: 0.3s ease-in-out;
+  margin: 0;
 }
 
 .card:hover {
@@ -17,15 +18,15 @@
 
 .name {
   margin: 0;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 500;
   color: #333;
 }
 
 .image {
   position: absolute;
-  top: 40px;
-  right: -20px;
+  bottom: -20px;
+  right: -15px;
   width: 100px;
   height: 100px;
   object-fit: contain;
