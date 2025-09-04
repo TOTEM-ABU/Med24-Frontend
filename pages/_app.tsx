@@ -6,6 +6,12 @@ import Head from "next/head";
 import Navbar from "@/layout/Navbar";
 import Footer from "@/layout/Footer";
 
+import Router from "next/router";
+import NProgress from "nprogress";
+
+Router.events.on("routeChangeStart", () => NProgress.start());
+Router.events.on("routeChangeComplete", () => NProgress.done());
+Router.events.on("routeChangeError", () => NProgress.done());
 
 export default function App({ Component, pageProps }: AppProps) {
   const [queryClient] = useState(() => new QueryClient());
@@ -14,11 +20,14 @@ export default function App({ Component, pageProps }: AppProps) {
     <QueryClientProvider client={queryClient}>
       <Head>
         <title>Med24.uz | Shifokor qabuli va klinikalar</title>
-        <meta name="description" content="Med24.uz — Toshkent shahridagi eng yaxshi klinikalar va shifokorlar haqida ma'lumot. Shifokor qabuliga onlayn yoziling." />
+        <meta
+          name="description"
+          content="Med24.uz — Toshkent shahridagi eng yaxshi klinikalar va shifokorlar haqida ma'lumot. Shifokor qabuliga onlayn yoziling."
+        />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      
+
       <div className="app-container">
         <Navbar />
         <main className="main-content">

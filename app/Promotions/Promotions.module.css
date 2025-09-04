@@ -11,16 +11,35 @@
 }
 
 .cards-container {
-    background-color: #F3F5F6;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 24px;
-    margin: 0 auto;
+    /* margin: 0 auto; */
+    margin-bottom: 20px;
+    padding-top: 30px;
+    width: 100vh;
+}
+
+.card-back {
+    background-color: #F3F5F6;
 }
 
 .card-wrapper {
     display: flex;
     justify-content: center;
+}
+
+.btn-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-column: 1 / -1;
+    margin-bottom: 40px;
+}
+
+.btn {
+    background-color: white;
+    color: #000;
 }
 
 /* Responsive design */

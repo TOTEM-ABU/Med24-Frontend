@@ -73,9 +73,6 @@ const UsefulArticles: React.FC = () => {
     <div className={styles.container}>
       <div className={styles.header}>
         <h2 className={styles.title}>Foydali maqolalar</h2>
-        <Link href="/articles" className={styles.viewAll}>
-          Barchasini ko'rish
-        </Link>
       </div>
 
       <div className={styles.grid}>
@@ -97,23 +94,18 @@ const UsefulArticles: React.FC = () => {
               />
             </div>
             <div className={styles.content}>
+              <span className={styles.date}>
+                {formatDate(article.createdAt)}
+              </span>
               <h3 className={styles.articleTitle}>{article.title}</h3>
-              <p className={styles.description}>
-                {article.content.length > 100
-                  ? `${article.content.substring(0, 100)}...`
-                  : article.content}
-              </p>
-              <div className={styles.footer}>
-                <span className={styles.author}>
-                  {article.User.name} {article.User.surname}
-                </span>
-                <span className={styles.date}>
-                  {formatDate(article.createdAt)}
-                </span>
-              </div>
             </div>
           </Link>
         ))}
+      </div>
+      <div className={styles.viewAllContainer}>
+        <Link href="/articles" className={styles.viewAll}>
+          Barchasini ko'rish
+        </Link>
       </div>
     </div>
   );

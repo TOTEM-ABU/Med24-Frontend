@@ -6,6 +6,7 @@ interface DoctorTypeCardProps {
   image: string;
   className?: string;
   style?: React.CSSProperties;
+  onClick?: () => void
 }
 
 const DoctorTypeCard = ({
@@ -13,9 +14,10 @@ const DoctorTypeCard = ({
   image,
   className,
   style,
+  onClick
 }: DoctorTypeCardProps) => {
   return (
-    <div className={`${styles["card"]} ${className || ""}`} style={style}>
+    <div className={`${styles["card"]} ${className || ""}`} style={style} onClick={onClick}>
       <p className={styles["name"]}>{name}</p>
       <img src={image} alt={`${name} icon`} className={styles["image"]} />
     </div>
