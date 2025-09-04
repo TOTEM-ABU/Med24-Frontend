@@ -9,6 +9,7 @@
 .ordered-list {
   display: flex;
   gap: 4px;
+  padding: 0;
 }
 
 .full-list {

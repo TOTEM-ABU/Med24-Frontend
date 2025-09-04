@@ -8,13 +8,15 @@ import mapImg from "../Promotions/images/mapImg.webp";
 import { FaStar } from "react-icons/fa";
 import { FaRegCommentDots } from "react-icons/fa";
 import { MdKeyboardArrowRight } from "react-icons/md";
-import { Button, DoctorTypeCard, PromotionsSwiper } from "@/components";
+import { Button, DoctorTypeCard, PopularClinics, PromotionsSwiper } from "@/components";
 import {
     useGetAllPromotions,
+    useGetAllServices,
     useGetPromotionById,
 } from "@/hooks/usePromotions";
 import { useRouter } from "next/router";
 import DOCTOR_SPECIALTIES from "@/lib/constants";
+import { useGetAllClinics } from "@/hooks/useClinics";
 
 const PromotionDetail = (param: { id: string }) => {
     const router = useRouter();
@@ -22,6 +24,10 @@ const PromotionDetail = (param: { id: string }) => {
     const { data } = useGetPromotionById(param.id);
 
     const { data: promotions } = useGetAllPromotions();
+
+    const { data: serData } = useGetAllServices();
+
+    const {data: cln} = useGetAllClinics()
 
     const promotion = data?.data;
 
@@ -31,6 +37,10 @@ const PromotionDetail = (param: { id: string }) => {
             router.push(`/promotion/clinic/${p.id}`);
         },
     }));
+
+    const services = serData?.data;
+
+    const clinics = cln?.data
 
     return (
         <div className="container">
@@ -176,6 +186,27 @@ const PromotionDetail = (param: { id: string }) => {
                             )
                         )}
                     </div>
+                </div>
+
+                <div className={styles["links-container"]}>
+                    <h2>Keng tarqalgangan tibbiy xizmatlar</h2>
+                    <div className={styles["grid-links-black"]}>
+                        {services?.map((service: any) => {
+                            return (
+                                <div>
+                                    <ul className={styles["table-links"]}>
+                                        <li>
+                                            <a href="#">{service.name}</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            );
+                        })}
+                    </div>
+                </div>
+
+                <div className={styles['links-container']}>
+                        <PopularClinics clinics={clinics}/>
                 </div>
             </div>
         </div>
