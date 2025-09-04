@@ -81,7 +81,7 @@ const UsefulArticles: React.FC = () => {
       <div className={styles.grid}>
         {displayedArticles.map((article) => (
           <Link
-            href={`/articles/${article.id}`}
+            href={`/articles/${encodeURIComponent(article.title)}`}
             key={article.id}
             className={styles.card}
           >
