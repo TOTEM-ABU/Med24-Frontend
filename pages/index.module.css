@@ -1,0 +1,130 @@
+.clinicLogosSection {
+  padding: 16px 0;
+  margin: 60px auto 40px;
+  max-width: 1400px;
+}
+
+.sectionTitle {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 40px;
+}
+
+.clinicLogosGrid {
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+}
+
+.clinicLogoItem {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+}
+
+.clinicLogo {
+  max-width: 60px;
+  max-height: 60px;
+  object-fit: contain;
+}
+
+.pressSection {
+  padding: 16px 0;
+  margin: 60px auto 40px;
+  max-width: 1400px;
+}
+
+.pressSection .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.pressSection .title {
+  font-size: 28px;
+  font-weight: 600;
+  margin: 0;
+  color: #333;
+}
+
+.pressSection .viewAll {
+  color: #0070f3;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 400;
+  text-align: end;
+  background-color: rgb(239 245 255/1);
+  padding: 10px 16px;
+  border-radius: 10px;
+}
+
+.pressSection .viewAllContainer {
+  margin-top: 50px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: end;
+}
+
+.pressSection .grid {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.pressSection .card {
+  border-radius: 16px;
+  overflow: hidden;
+  display: flex;
+  text-decoration: none;
+  color: inherit;
+  flex-direction: row;
+}
+
+.pressSection .imageContainer {
+  min-width: 227px;
+  min-width: 150px;
+  height: auto;
+}
+
+.pressSection .image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.pressSection .content {
+  padding: 20px;
+  width: 60%;
+}
+
+.pressSection .articleTitle {
+  font-size: 18px;
+  font-weight: 400;
+  margin: 0 0 12px 0;
+  color: #111827;
+  line-height: 1.4;
+}
+
+.pressSection .date {
+  font-size: 12px;
+  font-weight: 400;
+  color: rgb(107 114 128);
+}
+
+@media (max-width: 768px) {
+  .pressSection .card {
+    flex-direction: column;
+  }
+
+  .pressSection .imageContainer {
+    width: 100%;
+    height: 225px;
+  }
+
+  .pressSection .content {
+    width: 100%;
+  }
+}

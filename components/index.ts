@@ -9,3 +9,4 @@ export { default as PromotionsSwiper } from "./PromotionsSwiper";
 export { default as SearchBar } from "./SearchBar";
 export { default as ClinicCard } from "./ClinicCard";
 export { default as ClinicsSwiper } from "./ClinicsSwiper";
+export { default as ClinicCarousel } from "./ClinicCarousel";

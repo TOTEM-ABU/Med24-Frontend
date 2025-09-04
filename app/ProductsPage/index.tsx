@@ -6,7 +6,6 @@ import Button from "@/components/Button";
 import img1 from "./images/medicine.png";
 import ProductCard from "@/components/ProductCard";
 import img2 from "./images/img2.webp";
-import img3 from "./images/img3.webp";
 import img4 from "./images/img4.webp";
 import img5 from "./images/img5.webp";
 import DoctorTypeCard from "@/components/DoctorTypeCard";
