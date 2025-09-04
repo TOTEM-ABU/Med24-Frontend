@@ -29,7 +29,7 @@ const PromotionsPage = () => {
                                 { label: "Aksiyalar va chegirmalar" },
                             ]}
                         />
-                        <h1>Aksiya va chegirmalar</h1>
+                        <h1 className={styles['header-text']}>Aksiya va chegirmalar</h1>
                     </div>
                 </div>
             </div>
