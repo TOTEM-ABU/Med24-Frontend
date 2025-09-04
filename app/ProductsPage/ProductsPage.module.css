@@ -25,6 +25,78 @@
     margin-bottom: 50px;
 }
 
+.promotion-banner-content {
+    background-color: #F6F8F9;
+    cursor: pointer;
+    gap: 20px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    margin: 2px;
+    padding: 39px 0 30px 50px;
+    border-radius: 24px;
+}
+
+.promotion-banner-text {
+    flex: 1;
+}
+
+.promotion-banner-title {
+    font-weight: 700;
+    font-size: 34px;
+    line-height: 1.2;
+    margin: 0;
+}
+
+.promotion-banner-description {
+    margin: 14px 0 19px 0;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 1.4;
+}
+
+.promotion-banner-button {
+    background-color: #007AFF;
+    color: #fff;
+    font-size: 16px;
+    padding: 14px 0;
+    border-radius: 14px;
+    min-width: 220px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.promotion-banner-button:hover {
+    background-color: #0056CC;
+}
+
+.promotion-banner-image {
+    transform: translateY(0);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 350px;
+}
+
+.promotion-banner-image img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Responsive styles for promotion banner */
+@media (min-width: 640px) {
+    .promotion-banner-content {
+        flex-direction: row;
+        gap: 64px;
+        padding-left: 55px;
+    }
+    
+    .promotion-banner-image {
+        transform: translateY(-40px);
+    }
+}
+
 .seasonal-products {
     margin-bottom: 50px;
 }

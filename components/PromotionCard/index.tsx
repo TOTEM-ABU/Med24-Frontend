@@ -7,13 +7,14 @@ interface PromotionCardProps {
   clinicLogo: string
   clinicName: string
   clinicDescription: string
+  onClick?: React.MouseEventHandler<HTMLDivElement>
 }
 
 const PromotionCard = (props: PromotionCardProps) => {
   return (
-    <div className={styles['promotion-card']}>
+    <div className={styles['promotion-card']} onClick={props.onClick}>
       <div className={styles['image-section']}>
-        <span className={styles['discount-badge']}>{props.discount}</span>
+        <span className={styles['discount-badge']}>Chegirma {props.discount}%</span>
         <img src={props.image} alt="clinic-image" className={styles['clinic-image']} />
       </div>
       <div className={styles['content-section']}>
