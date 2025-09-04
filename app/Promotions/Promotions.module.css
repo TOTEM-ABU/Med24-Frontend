@@ -7,7 +7,6 @@
 .header-container {
     display: flex;
     flex-direction: column;
-    gap: 40px;
 }
 
 .cards-container {
@@ -22,6 +21,13 @@
 
 .card-back {
     background-color: #F3F5F6;
+}
+
+.header-text {
+    padding: 0;
+    margin-top: 0;
+    font-size: 28px;
+    font-weight: 600;
 }
 
 .card-wrapper {

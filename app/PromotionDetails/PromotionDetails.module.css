@@ -202,3 +202,24 @@
 .wide {
     grid-column: span 2;
 }
+
+.grid-links-black {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+    margin-top: 40px;
+    list-style-type: none;
+
+    ul {
+        list-style-type: none;
+        padding: 0;     
+
+        a {
+            text-decoration-style: dotted;
+            text-decoration-color: gray;
+            color: #000;
+            font-size: 16px;
+            font-weight: 400;
+        }
+    }
+}
