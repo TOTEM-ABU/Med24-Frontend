@@ -5,6 +5,7 @@ import ServicesInTashkent from "./ServicesInTashkent";
 import styles from "./Uslugi.module.css";
 import CommonServices from "./CommonServices";
 import { PopularClinics } from "@/components";
+import ClinicsPage from "./Backend";
 
 const UslugiPage = () => {
   return (
@@ -48,6 +49,7 @@ const UslugiPage = () => {
           },
         ]}
       />
+      <ClinicsPage />
 
       <CommonServices />
     </div>

@@ -1,0 +1,60 @@
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.clinicList {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.clinicItem {
+  border: 1px solid #e0e0e0;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.clinicItem h2 {
+  margin: 0 0 10px;
+  color: #333;
+}
+
+.hoursList,
+.doctorList,
+.serviceList,
+.promotionList {
+  list-style-type: none;
+  padding: 0;
+  margin: 10px 0;
+}
+
+.hoursList li,
+.doctorList li,
+.serviceList li,
+.promotionList li {
+  margin-bottom: 5px;
+}
+
+.loading,
+.error {
+  text-align: center;
+  font-size: 1.2em;
+  margin-top: 20px;
+}
+
+.error {
+  color: red;
+}
+
+.clinicItem a {
+  color: #0070f3;
+  text-decoration: none;
+}
+
+.clinicItem a:hover {
+  text-decoration: underline;
+}

@@ -10,7 +10,7 @@ import {
 } from "./components";
 import Link from "next/link";
 import CommentsList from "./sections/comments";
-import PopularDoctors from "./sections/doctors";
+// import PopularDoctors from "./sections/doctors";
 
 const DoctorsPage = () => {
   const doctorsType = [
@@ -774,7 +774,7 @@ const DoctorsPage = () => {
           </li>
         </ul>
       </div>
-      <PopularDoctors />
+      {/* <PopularDoctors /> */}
     </div>
   );
 };
