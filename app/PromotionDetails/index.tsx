@@ -8,23 +8,44 @@ import mapImg from "../Promotions/images/mapImg.webp";
 import { FaStar } from "react-icons/fa";
 import { FaRegCommentDots } from "react-icons/fa";
 import { MdKeyboardArrowRight } from "react-icons/md";
-import { Button, PromotionsSwiper } from "@/components";
+import { Button, DoctorTypeCard, PromotionsSwiper } from "@/components";
+import {
+    useGetAllPromotions,
+    useGetPromotionById,
+} from "@/hooks/usePromotions";
+import { useRouter } from "next/router";
+import DOCTOR_SPECIALTIES from "@/lib/constants";
 
-const PromotionDetail = () => {
+const PromotionDetail = (param: { id: string }) => {
+    const router = useRouter();
+
+    const { data } = useGetPromotionById(param.id);
+
+    const { data: promotions } = useGetAllPromotions();
+
+    const promotion = data?.data;
+
+    const promotionWithClick = promotions?.map((p) => ({
+        ...p,
+        onClick: () => {
+            router.push(`/promotion/clinic/${p.id}`);
+        },
+    }));
+
     return (
         <div className="container">
             <Breadcrumb
                 items={[
                     { label: "Asosiy", href: "/" },
                     { label: "Aksiya va chegirmalar", href: "/products" },
-                    { label: "To'liq diagnostika uchun 30% chegirma beriladi" },
+                    { label: `${promotion?.title}` },
                 ]}
             />
             <div className={styles["promotion-detail-container"]}>
                 <div className={styles["header-container"]}>
                     <div className={styles["image-container"]}>
                         <img
-                            src={promoImg.src}
+                            src={promotion?.Clinics.image_url}
                             alt="promotion-clinic-image"
                             className={styles["image"]}
                         />
@@ -32,13 +53,13 @@ const PromotionDetail = () => {
                             <div className={styles["logo"]}>
                                 <a href="">
                                     <img
-                                        src={promoLogo.src}
+                                        src={promotion?.Clinics.logo_url}
                                         alt="clinic-logo"
                                     />
                                 </a>
                             </div>
                             <h1 className={styles["h1"]}>
-                                Biolife - birinchi osteopad klinikasi
+                                {promotion?.Clinics.name}
                             </h1>
                             <div className={styles["in-detail"]}>
                                 <FaStar className={styles["star"]} />
@@ -55,17 +76,17 @@ const PromotionDetail = () => {
                         </div>
                     </div>
                     <div className={styles["map-container"]}>
-                        <a href="https://yandex.uz/maps/10335/tashkent/house/YkAYdQVkTEMEQFprfX9zeXllbQ==/?ll=69.324562%2C41.328570&z=17.04">
+                        <a href={promotion?.Clinics.yandex_map_url}>
                             <img src={mapImg.src} alt="map-img" />
                         </a>
                         <div className={styles["text"]}>
-                            <p>Sayram ko'ch., 3A 1-qavat</p>
+                            <p>{promotion?.Clinics.address}</p>
                         </div>
                     </div>
                 </div>
 
                 <div className={styles["certificate"]}>
-                    <h3>To'liq diagnostika uchun 30% chegirma beriladi</h3>
+                    <h3>{promotion?.title}</h3>
                     <Button
                         variant="primary"
                         name="Sertifikat olish"
@@ -123,15 +144,38 @@ const PromotionDetail = () => {
                 <div className={styles["use-certificate"]}>
                     <h3>Sertifikatdan qanday foydalanish mumkin?</h3>
                     <div>
-                      <p>Sertifikat raqamli formatda (mobil qurilma ekranida) yoki bosma ko‘rinishda taqdim etilishi mumkin.</p>
+                        <p>
+                            Sertifikat raqamli formatda (mobil qurilma ekranida)
+                            yoki bosma ko‘rinishda taqdim etilishi mumkin.
+                        </p>
                     </div>
                 </div>
 
-                <div className={styles['swiper-container']}>
-                      <h2>Aksiya va chegirmalar</h2>
-                      <div>
-                        {/* <PromotionsSwiper promotions={}/> */}
-                      </div>
+                <div className={styles["swiper-container"]}>
+                    <h2>Aksiya va chegirmalar</h2>
+                    <div>
+                        <PromotionsSwiper
+                            promotions={promotionWithClick as []}
+                        />
+                    </div>
+                </div>
+
+                <div className={styles["links-container"]}>
+                    <h2>Shifokorlarning keng tarqalgan mutaxassisliklari</h2>
+                    <div className={styles["doctor-types"]}>
+                        {DOCTOR_SPECIALTIES.slice(0, 6).map(
+                            (specialty, index) => (
+                                <DoctorTypeCard
+                                    key={specialty.name}
+                                    image={specialty.image}
+                                    name={specialty.name}
+                                    className={
+                                        index === 0 ? styles["wide"] : ""
+                                    }
+                                />
+                            )
+                        )}
+                    </div>
                 </div>
             </div>
         </div>

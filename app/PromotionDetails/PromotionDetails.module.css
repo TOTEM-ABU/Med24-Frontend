@@ -38,6 +38,7 @@
         max-width: 340px;
         border-radius: 12px;
         box-shadow: 0 2px 5px #32326926,0 1px 1px #0000000d;
+        cursor: pointer;
 }
 
 .text {
@@ -185,4 +186,19 @@
                 font-weight: 600;
                 font-size: 28px;
         }
+}
+
+.links-container {
+    margin-bottom: 50px;
+}
+
+.doctor-types {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-top: 40px;
+}
+
+.wide {
+    grid-column: span 2;
 }

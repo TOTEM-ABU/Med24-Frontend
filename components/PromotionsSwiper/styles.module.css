@@ -46,6 +46,7 @@
   border: 1px solid #f0f0f0;
   position: relative;
   scroll-snap-align: start;
+  cursor: pointer;
 }
 
 .badge {

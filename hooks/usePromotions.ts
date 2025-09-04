@@ -1,4 +1,4 @@
-import { getAllPromotions } from "@/api/promotions/promotions.api";
+import { getAllPromotions, getPromotionById } from "@/api/promotions/promotions.api";
 import { Promotion, PromotionResponse } from "@/types/promotions/Promotion.type";
 import { useQuery } from "@tanstack/react-query";
 
@@ -7,5 +7,12 @@ export function useGetAllPromotions () {
                 queryKey: ['promotions'],
                 queryFn: getAllPromotions,
                 select: (response) => response.data,
+        })
+}
+
+export function useGetPromotionById (id: string) {
+        return useQuery({
+                queryKey: ['promotion'],
+                queryFn: () => getPromotionById(id)
         })
 }
