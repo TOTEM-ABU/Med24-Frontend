@@ -1,8 +1,9 @@
 import React from "react";
 import styles from "./ClinicCarousel.module.css";
-import ClinicCard, { ClinicCardProps } from "../ClinicCard";
+import ClinicCard from "../ClinicCard";
+import { Clinic } from "../ClinicCard";
 
-export type ClinicItem = Pick<ClinicCardProps, "title" | "logoSrc" | "href"> & {
+export type ClinicItem = Clinic & {
   id?: string | number;
 };
 
@@ -70,12 +71,7 @@ const ClinicCarousel: React.FC<ClinicCarouselProps> = ({
       <div className={styles.scroller} ref={listRef}>
         <div className={styles.row}>
           {items.map((item, idx) => (
-            <ClinicCard
-              key={item.id ?? idx}
-              title={item.title}
-              logoSrc={item.logoSrc}
-              href={item.href}
-            />
+            <ClinicCard key={item.id ?? idx} clinic={item} />
           ))}
         </div>
       </div>
