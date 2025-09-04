@@ -4,7 +4,7 @@ import React from 'react'
 import styles from './About.module.css';
 
 
-const AboutPage = () => {
+const NotFoundPage = () => {
   return (
     <div className='container'>
    <div className={styles.inputContainer}>
@@ -18,4 +18,4 @@ const AboutPage = () => {
   )
 }
 
-export default AboutPage
+export default NotFoundPage
