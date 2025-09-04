@@ -17,7 +17,6 @@
 
 .full-list {
   display: flex;
-  align-items: center;
   gap: 4px;
 }
 
@@ -35,6 +34,4 @@
 
 .separator {
   color: gray;
-  display: flex;
-  align-items: center;
 }
