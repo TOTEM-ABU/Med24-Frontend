@@ -47,7 +47,7 @@ const PromotionDetail = (param: { id: string }) => {
             <Breadcrumb
                 items={[
                     { label: "Asosiy", href: "/" },
-                    { label: "Aksiya va chegirmalar", href: "/products" },
+                    { label: "Aksiya va chegirmalar", href: "/promotions" },
                     { label: `${promotion?.title}` },
                 ]}
             />
