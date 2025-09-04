@@ -10,6 +10,7 @@ import {
 } from "./components";
 import Link from "next/link";
 import CommentsList from "./sections/comments";
+import PopularDoctors from "./sections/doctors";
 
 const DoctorsPage = () => {
   const doctorsType = [
@@ -46,6 +47,7 @@ const DoctorsPage = () => {
     "Yangihayot",
     "Yashnobod",
   ];
+
   const popularDoctors = [
     {
       fullName: "Xankeldiyev Nariman Zuxriddinovich",
@@ -772,6 +774,7 @@ const DoctorsPage = () => {
           </li>
         </ul>
       </div>
+      <PopularDoctors />
     </div>
   );
 };
