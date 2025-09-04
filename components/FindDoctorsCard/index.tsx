@@ -23,9 +23,11 @@ const FindDoctorsCard = ({
         <p className={styles.count}>
           {doctorCount} nafar shifokor, {clinicCount} ta klinika
         </p>
-        <button className={styles.searchButton}>
-          Shifokor qidirish <span className={styles.arrow}>›</span>
-        </button>
+        <div className={styles.buttonContainer}>
+          <button className={styles.searchButton}>
+            Shifokor qidirish <span className={styles.arrow}>›</span>
+          </button>
+        </div>
       </div>
     </Link>
   );

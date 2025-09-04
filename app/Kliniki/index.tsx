@@ -184,10 +184,8 @@ const Kliniki: React.FC = () => {
 
         {promotions?.length ? (
           <div style={{ marginTop: 8, marginBottom: 24 }}>
-            <PromotionsSwiper
-              title="Aksiya va chegirmalar"
-              promotions={promotions}
-            />
+            <h2>Aksiya va chegirmalar</h2>
+            <PromotionsSwiper promotions={promotions} />
           </div>
         ) : null}
 

@@ -28,14 +28,9 @@
   border-radius: 20px;
   background-color: #f9fafb;
   max-height: 112px;
-  transition: transform 0.2s;
   position: relative;
   overflow: hidden;
   margin-top: 20px;
-}
-
-.clinicCard:hover {
-  transform: translateY(-2px);
 }
 
 .clinicLogo {

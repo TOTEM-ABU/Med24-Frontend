@@ -8,7 +8,7 @@ import ClinicFilters from "@/components/ClinicFilters";
 import PromotionsSwiper from "@/components/PromotionsSwiper";
 import UsefulArticles from "@/components/UsefulArticles";
 import styles from "@/app/Kliniki/Kliniki.module.css";
-import pageStyles from "./index.module.css"; // Yangi qo'shilgan CSS modul
+import pageStyles from "./index.module.css";
 import { DOCTOR_SPECIALTIES } from "@/lib/constants";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
@@ -318,11 +318,10 @@ const HomePage = () => {
                 padding: "16px",
                 backgroundColor: "#f8f9fa",
                 borderRadius: "12px",
-                height: "110px",
+                maxHeight: "110px",
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
-                justifyContent: "space-between",
                 boxShadow: "none",
               },
             }}
@@ -333,10 +332,8 @@ const HomePage = () => {
 
         {promotions.length > 0 && (
           <div style={{ marginTop: 60, marginBottom: 20 }}>
-            <PromotionsSwiper
-              title="Aksiya va chegirmalar"
-              promotions={promotions}
-            />
+            <h2>Aksiya va chegirmalar</h2>
+            <PromotionsSwiper promotions={promotions} />
           </div>
         )}
 
@@ -544,7 +541,7 @@ const HomePage = () => {
             {doctorSpecialties.map((specialty) => (
               <Link
                 key={specialty.id}
-                href={`/shifokorlar?specialty=${encodeURIComponent(
+                href={`/Doctors?specialty=${encodeURIComponent(
                   specialty.name
                 )}`}
                 style={{
@@ -565,7 +562,6 @@ const HomePage = () => {
           </div>
         </div>
 
-        {/* Shifokorlar mutaxassisliklari section */}
         <div
           style={{
             padding: "16px 0",
@@ -758,13 +754,15 @@ const HomePage = () => {
               <div className={pageStyles.imageContainer}>
                 <img
                   src="https://med24.uz/_ipx/f_webp&q_80/images/ef99a5769f4c3c70c465fd8179b4cf25.webp"
-                  alt="Nervi uje ne te"
+                  alt="Med24.uz - Toshkentdagi eng yaxshi klinikalar va shifokorlar"
                   className={pageStyles.image}
                 />
               </div>
               <div className={pageStyles.content}>
                 <span className={pageStyles.date}>2025-09-04</span>
-                <h3 className={pageStyles.articleTitle}>Nervi uje ne te</h3>
+                <h3 className={pageStyles.articleTitle}>
+                  Med24.uz - Toshkentdagi eng yaxshi klinikalar va shifokorlar
+                </h3>
               </div>
             </a>
 
@@ -777,14 +775,14 @@ const HomePage = () => {
               <div className={pageStyles.imageContainer}>
                 <img
                   src="https://med24.uz/_ipx/f_webp&q_80/images/2679743ce9bb0db2957a2e93dcce7e8b.webp"
-                  alt="Vbiraem gde sdelat mrt v Tashkente"
+                  alt="Toshkentda MRT qayerda qilishni tanlaymiz"
                   className={pageStyles.image}
                 />
               </div>
               <div className={pageStyles.content}>
                 <span className={pageStyles.date}>2025-09-04</span>
                 <h3 className={pageStyles.articleTitle}>
-                  Vbiraem gde sdelat mrt v Tashkente
+                  Toshkentda MRT qayerda qilishni tanlaymiz
                 </h3>
               </div>
             </a>
@@ -798,14 +796,15 @@ const HomePage = () => {
               <div className={pageStyles.imageContainer}>
                 <img
                   src="https://med24.uz/_ipx/f_webp&q_80/images/73b83c83a355fc527bdd3f93692393bc.webp"
-                  alt="Tibbiy xizmat kompyuterlashmoqda"
+                  alt="Tibbiy xizmat kompyuterlashmoqda - zarur shifokorlarni topishning oson va tez usuli"
                   className={pageStyles.image}
                 />
               </div>
               <div className={pageStyles.content}>
                 <span className={pageStyles.date}>2025-09-04</span>
                 <h3 className={pageStyles.articleTitle}>
-                  Tibbiy xizmat kompyuterlashmoqda
+                  Tibbiy xizmat kompyuterlashmoqda - zarur shifokorlarni
+                  topishning oson va tez usuli
                 </h3>
               </div>
             </a>
@@ -819,14 +818,14 @@ const HomePage = () => {
               <div className={pageStyles.imageContainer}>
                 <img
                   src="https://med24.uz/_ipx/f_webp&q_80/images/c8f4c0d5ea0a33a8192be02a5ee73e59.webp"
-                  alt="Udobnyy poisk klinik"
+                  alt="Qulay klinika qidiruvi onlayn - Med24.uz yordamida"
                   className={pageStyles.image}
                 />
               </div>
               <div className={pageStyles.content}>
                 <span className={pageStyles.date}>2025-09-04</span>
                 <h3 className={pageStyles.articleTitle}>
-                  Udobnyy poisk klinik
+                  Qulay klinika qidiruvi onlayn - Med24.uz yordamida
                 </h3>
               </div>
             </a>
