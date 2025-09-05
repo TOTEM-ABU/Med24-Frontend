@@ -4,6 +4,8 @@ const nextConfig: NextConfig = {
   reactStrictMode: true,
   allowedDevOrigins: ["http://45.76.94.219"],
 
+  experimental: {},
+
   images: {
     domains: ["main.med24.uz", "med24.uz", "45.76.94.219"],
   },
