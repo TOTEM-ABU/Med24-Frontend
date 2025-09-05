@@ -20,11 +20,36 @@ interface Clinic {
     id: string;
     name: string;
   };
-  doctors: any[];
-  clinicservices: any[];
-  appointments: any[];
-  reviews: any[];
-  promotions: any[];
+  doctors: Array<{
+    id?: string;
+    first_name?: string;
+    last_name?: string;
+    name?: string;
+    surname?: string;
+    specialty?: string;
+    specialtiesId?: string;
+    image_url?: string;
+    rating?: number;
+    reviews_count?: number;
+    reviews?: Array<{ id: string; rating?: number }>;
+    education?: string;
+    qualification?: string;
+    title?: string;
+    degree?: string;
+    experience_years?: number;
+    experience?: string;
+    bio?: string;
+    Specialties?: { id: string; name?: string } | null;
+  }>;
+  clinicservices: Array<{
+    id: string;
+    price?: string | number;
+    duration_minutes?: number;
+    Services?: { id: string; name: string };
+  }>;
+  appointments: Array<unknown>;
+  reviews: Array<unknown>;
+  promotions: Array<{ id: string; title: string; discount_percent?: number }>;
 }
 
 interface GroupedClinics {
@@ -99,7 +124,7 @@ const RecomendedTypes = () => {
           <div key={type} className={styles.typeColumn}>
             <h4 className={styles.typeHeader}>{getTypeTitle(type)}</h4>
             <div className={styles.clinicsList}>
-              {clinicsList.map((clinic) => (
+              {clinicsList.map((clinic: Clinic) => (
                 <Link
                   key={clinic.id}
                   href={`/Kliniki/${encodeURIComponent(clinic.name)}`}

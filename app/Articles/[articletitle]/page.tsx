@@ -9,6 +9,8 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import DoctorTypeCard from "@/components/DoctorTypeCard";
 import { DOCTOR_SPECIALTIES } from "@/lib/constants";
+import Input from "@/components/SearchBar";
+import { Button } from "@/components";
 
 interface Article {
   id: string;
@@ -23,7 +25,6 @@ interface Article {
   };
 }
 
-// Add Service type
 interface Service {
   id: string;
   name: string;
@@ -43,7 +44,6 @@ const fetchAllArticles = async (): Promise<Article[]> => {
   }
 };
 
-// Add fetchServices function
 const fetchServices = async (): Promise<Service[]> => {
   try {
     const res = await api.get("/services?limit=1000");
@@ -71,13 +71,11 @@ const ArticleDetailPage = ({
     queryFn: fetchAllArticles,
   });
 
-  // Add services query
   const { data: services = [] } = useQuery({
     queryKey: ["all-services-articles"],
     queryFn: fetchServices,
   });
 
-  // Find the article with the matching title
   const article = React.useMemo(() => {
     if (!articles.length) return null;
 
@@ -130,6 +128,14 @@ const ArticleDetailPage = ({
           { label: article.title },
         ]}
       />
+
+      <div className={styles.searchSection}>
+        <Input
+          label="Shifokor ismi, mutaxassislik nomini yoki xizmat turini kiriting"
+          width="100%"
+        />
+        <Button name="Qidirish" variant="primary" padding="0 38px 0 38px" />
+      </div>
 
       <h1 className={styles.articleTitle}>{article.title}</h1>
 
@@ -364,9 +370,8 @@ const ArticleDetailPage = ({
               key={service.id}
               href={`/kliniki/${encodeURIComponent(service.name)}`}
               style={{
-                color: "#0166FF",
-                textDecoration: "none",
-                borderBottom: "1px dashed #0166FF",
+                color: "#1e1e1e",
+                borderBottom: "1px dashed #b2b2b2",
                 width: "fit-content",
                 display: "inline",
               }}

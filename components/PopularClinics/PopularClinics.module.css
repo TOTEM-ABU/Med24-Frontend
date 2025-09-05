@@ -18,25 +18,20 @@
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   width: 100%;
+  gap: 15px;
 }
 
 .clinicCard {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   text-decoration: none;
   padding: 16px;
   border-radius: 20px;
   background-color: #f9fafb;
   max-height: 112px;
-  transition: transform 0.2s;
   position: relative;
   overflow: hidden;
   margin-top: 20px;
-}
-
-.clinicCard:hover {
-  transform: translateY(-2px);
 }
 
 .clinicLogo {

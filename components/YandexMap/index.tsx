@@ -1,24 +1,38 @@
 import React from "react";
-import { Map, Placemark, YMaps } from "react-yandex-maps";
+import { FullscreenControl, GeolocationControl, Map, Placemark, RulerControl, SearchControl, TrafficControl, TypeSelector, YMaps, ZoomControl } from "react-yandex-maps";
 
 interface MapProps {
-    coordinate: [number, number];
-    className: string
+  coordinate: [number, number];
+  className?: string;
+  height?: string;
+  zoom?: number;
 }
 
-const YandexMap = (props: MapProps) => {
-    return (
-        <YMaps>
-            <Map
-                defaultState={{ center: [41.3111, 69.2797], zoom: 12 }}
-                width="100%"
-                height="200px"
-                className={props.className}
-            >
-                <Placemark geometry={props.coordinate} />
-            </Map>
-        </YMaps>
-    );
+const YandexMap = ({ 
+  coordinate, 
+  className, 
+  height = "400px", 
+  zoom = 12 
+}: MapProps) => {
+  return (
+    <YMaps query={{ apikey: process.env.NEXT_PUBLIC_YMAPS_KEY }}>
+      <Map
+        state={{ center: coordinate, zoom }} 
+        width="100%"
+        height={height}
+        className={className}
+      >
+        <Placemark geometry={coordinate} />
+        <SearchControl/>
+        <GeolocationControl/>
+        <ZoomControl/>
+        <FullscreenControl/>
+        <TrafficControl/>
+        <TypeSelector/>
+        <RulerControl/>
+      </Map>
+    </YMaps>
+  );
 };
 
 export default YandexMap;

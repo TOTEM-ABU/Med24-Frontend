@@ -158,18 +158,15 @@ const ArticlesPage: React.FC = () => {
       <div
         style={{
           marginTop: 40,
-          marginBottom: 20,
-          paddingTop: 30,
-          paddingBottom: 30,
         }}
       >
         <h2
           style={{
-            marginTop: 20,
+            margin: 0,
             fontSize: "24px",
             fontWeight: "700",
             color: "#333",
-            marginBottom: "20px",
+            marginBottom: 20,
           }}
         >
           Shifokorlarning keng tarqalgan mutaxassisliklari
@@ -196,23 +193,22 @@ const ArticlesPage: React.FC = () => {
 
       <div
         style={{
-          padding: "16px 0",
           marginTop: "60px",
-          marginBottom: "40px",
         }}
       >
         <h2
           style={{
             fontSize: "24px",
             fontWeight: "700",
-            marginBottom: "20px",
-            marginTop: "30px",
+            margin: 0,
+            marginBottom: 20,
           }}
         >
           Keng tarqalgan tibbiy xizmatlar
         </h2>
         <div
           style={{
+            marginTop: 26,
             display: "grid",
             gridTemplateColumns: "repeat(3, minmax(0, 1fr))",
             gap: "16px 32px",

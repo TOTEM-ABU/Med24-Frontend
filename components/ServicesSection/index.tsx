@@ -15,7 +15,7 @@ const ServicesSection = () => {
     },
     {
       title: "Diagnostika",
-      description: "MRT, KT, UTT, Rentgen, EKG",
+      description: "MRT, KT, UTT, Rentgen, EKG Endoskopik tekshiruv",
       image: "/images/Diagnostika.png",
       link: "/Diagnostika",
       bgColor: "#e6f4ea",

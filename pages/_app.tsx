@@ -6,13 +6,6 @@ import Head from "next/head";
 import Navbar from "@/layout/Navbar";
 import Footer from "@/layout/Footer";
 
-import Router from "next/router";
-import NProgress from "nprogress";
-
-Router.events.on("routeChangeStart", () => NProgress.start());
-Router.events.on("routeChangeComplete", () => NProgress.done());
-Router.events.on("routeChangeError", () => NProgress.done());
-
 export default function App({ Component, pageProps }: AppProps) {
   const [queryClient] = useState(() => new QueryClient());
 
