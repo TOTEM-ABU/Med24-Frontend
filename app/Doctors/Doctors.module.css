@@ -31,53 +31,6 @@
   max-width: 874px;
 }
 
-.catalogStyle {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-}
-
-.catalogListStyle {
-  width: 100%;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
-}
-
-.catalogListStyle div {
-  width: 200px;
-}
-
-.catalogListStyle div .linkStyle {
-  display: flex;
-  flex-direction: column;
-  font-size: 16px;
-  cursor: pointer;
-  gap: 25px;
-}
-
-.catalogListStyle div .linkStyle .link {
-  color: #007aff;
-  display: inline;
-  text-decoration: 1px underline dashed gray;
-  text-underline-offset: 4px;
-  padding-bottom: 20px;
-}
-
-.selectionsStyle {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-}
-
-.selectionsStyle .selections {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-
 .activeButton {
   font-size: 16px;
   opacity: 0.4;

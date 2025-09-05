@@ -1,62 +1,71 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Typography } from "@/app/Doctors/components";
-
 import styles from "./ServicesInTashkent.module.css";
-import Link from "next/link";
+import { getAllServices } from "@/api/services/services.api";
+
+// Interfeyslar API ma'lumotlariga moslashtirildi
+interface ClinicService {
+  id: string;
+  price: string;
+  duration_minutes: number;
+  clinicsId: string;
+  servicesId: string;
+  createdAt: string;
+}
+
+interface Service {
+  id: string;
+  name: string;
+  description: string;
+  category: string;
+  image_url: string;
+  createdAt: string;
+  clinicservices: ClinicService[];
+}
 
 const ServicesInTashkent = () => {
-  const services = [
-    [
-      "Oostiga sperma yuborish",
-      "Sun'iy urug'lantirish",
-      "EKO",
-      "Embrionni qayta ekish",
-      "Lazerli xetching",
-      "IKSI muolajasi",
-      "Homiladorlikni boshqarish",
-      "Embrionlarning kriyoprezervatsiyasi",
-    ],
-    [
-      "ASIT Staloral",
-      "ASIT Alyustal",
-      "ASIT Antipollin",
-      "ASIT (dori narxidan tashqari)",
-      "ASIT Oraleyr",
-    ],
-    [
-      "Hijama",
-      "Igna terapiya",
-      "Galoterapiya",
-      "Apiterapiya",
-      "Gomeopatiya",
-      "Elektroakupunktura",
-      "Zuluk bilan davolash",
-    ],
-  ];
+  const [services, setServices] = useState<Service[]>([]);
 
-  const serviceTitles = [
-    "Akusherlik va Reproduktologiya",
-    "Allergiya-immunologiya",
-    "Alternativ tibbiyot",
-    "Analizlar",
-    "Andrologiya",
-    "Dermotologiya",
-  ];
+  useEffect(() => {
+    // API dan ma'lumotlarni olish
+    getAllServices()
+      .then((res) => {
+        console.log("API dan kelgan:", res);
+        // API massivni `res.data` ichida qaytaradi deb taxmin qilamiz
+        setServices(res.data || []);
+      })
+      .catch((error) => {
+        console.error("Xizmatlarni olishda xatolik:", error);
+      });
+  }, []);
+
+  // Kategoriyalar bo'yicha xizmatlarni guruhlash
+  const groupedServices = services.reduce((acc, service) => {
+    const category = service.category;
+    if (!acc[category]) {
+      acc[category] = [];
+    }
+    acc[category].push(service);
+    return acc;
+  }, {} as Record<string, Service[]>);
+
   return (
     <div className={styles.servicesInTashkent}>
       <Typography size="26" bottom="20">
-        Tibbiy xizmatlar toshkentda
+        Tibbiy xizmatlar Toshkentda
       </Typography>
       <div className={styles.servicesBlock}>
-        {services.map((val, idx) => (
+        {Object.keys(groupedServices).map((category, idx) => (
           <div key={idx} className={styles.oneColumn}>
             <Typography size="18" weight="600">
-              {serviceTitles[idx]}
+              {category}
             </Typography>
-            {val.map((v, i) => (
-              <Link href={"/"} key={i} className={styles.links}>
-                {v}
-              </Link>
+            {groupedServices[category].map((service, serviceIdx) => (
+              <div key={serviceIdx} className={styles.serviceItem}>
+                <Typography size="16" weight="500">
+                  {service.name}
+                </Typography>
+              </div>
             ))}
           </div>
         ))}
