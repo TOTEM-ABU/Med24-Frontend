@@ -1,11 +1,33 @@
 import { Typography } from "@/app/Doctors/components";
-import React from "react";
-
+import React, { useEffect, useState } from "react";
 import styles from "./CommonServices.module.css";
+import { getAllServices } from "@/api/services/services.api";
 import Link from "next/link";
 
+interface Service {
+  id: string;
+  name: string;
+  description: string;
+  category: string;
+  image_url: string;
+  createdAt: string;
+  // clinicservices: ClinicService[];
+}
+
 const CommonServices = () => {
-  const commonServices = ["Hello", "Salom", "What's up"];
+  const [commonServices, setCommonServices] = useState<Service[]>([]);
+
+  useEffect(() => {
+    getAllServices()
+      .then((res) => {
+        console.log("API dan kelgan:", res);
+        setCommonServices(res.data || []);
+      })
+      .catch((error) => {
+        console.error("Xizmatlarni olishda xatolik:", error);
+      });
+  }, []);
+
   return (
     <div className={styles.container}>
       <Typography size="24" top="30" bottom="20">
@@ -14,7 +36,7 @@ const CommonServices = () => {
       <div className={styles.commonServicesLinks}>
         {commonServices.map((val, idx) => (
           <div key={idx} className={styles.linkStyle}>
-            <Link href={`/uslugi/${val}`}>{val}</Link>
+            <Link href={`/uslugi/${val.id}`}>{val.name}</Link>
           </div>
         ))}
       </div>

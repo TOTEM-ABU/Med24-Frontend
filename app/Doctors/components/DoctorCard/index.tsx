@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./DoctorCard.module.css";
 import Image from "next/image";
-import Typography from "../Typography";
+// import Typography from "../Typography";
 import Link from "next/link";
 
 interface DoctorCardProps {
@@ -9,8 +9,8 @@ interface DoctorCardProps {
   fullname?: string;
   type?: string;
   patients?: number;
-  experience?: number; // Years of experience
-  qualification?: string; // Doctor qualification/status
+  experience?: number;
+  qualification?: string;
   priceOne?: number | string;
   priceTwo?: number | string;
   clinicNumber?: number | string;

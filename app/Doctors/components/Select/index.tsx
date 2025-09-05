@@ -1,8 +1,13 @@
 import React, { useState } from "react";
 import styles from "./Select.module.css";
 
+interface SelectOption {
+  value: string;
+  label: string;
+}
+
 interface SelectProps {
-  options: string[];
+  options: SelectOption[];
   label?: string;
   placeholder?: string;
   onChange?: (value: string) => void;
@@ -43,9 +48,9 @@ const Select: React.FC<SelectProps> = ({
         <option value="" disabled>
           {placeholder}
         </option>
-        {options.map((option, index) => (
-          <option key={index} value={option}>
-            {option}
+        {options.map((option) => (
+          <option key={option.value} value={option.value}>
+            {option.label}
           </option>
         ))}
       </select>

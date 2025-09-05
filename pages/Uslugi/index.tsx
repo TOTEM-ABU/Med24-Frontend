@@ -1,8 +1,8 @@
 import UslugiPage from "@/app/Uslugi";
 import React from "react";
 
-const Uslugi = () => {
+const uslugi = () => {
   return <UslugiPage />;
 };
 
-export default Uslugi;
+export default uslugi;

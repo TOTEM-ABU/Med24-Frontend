@@ -1,11 +1,10 @@
 import React from "react";
 import { Button, Input } from "../Doctors/components";
 import ServicesInTashkent from "./ServicesInTashkent";
-
-import styles from "./Uslugi.module.css";
 import CommonServices from "./CommonServices";
 import { PopularClinics } from "@/components";
-import ClinicsPage from "./Backend";
+
+import styles from "./Uslugi.module.css";
 
 const UslugiPage = () => {
   return (
@@ -49,7 +48,6 @@ const UslugiPage = () => {
           },
         ]}
       />
-      <ClinicsPage />
 
       <CommonServices />
     </div>
