@@ -717,9 +717,8 @@
 }
 
 .reviewItem {
-  background-color: #f9fafb;
-  border-radius: 12px;
   padding: 20px;
+  border-bottom: 1px solid #e5e7eb;
 }
 
 .reviewHeader {
@@ -763,6 +762,7 @@
 .reviewRating {
   display: flex;
   gap: 2px;
+  margin-bottom: 5px;
 }
 
 .reviewStar {

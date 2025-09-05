@@ -172,19 +172,21 @@ const Kliniki: React.FC = () => {
               label="Shifokor ismi, mutaxassislik nomini yoki xizmat turini kiriting"
               width="100%"
             />
-            <Button name="Qidirish" variant="primary" padding="0 38px 0 38px" />
+            <Button name="Qidirish" variant="primary" padding="15px 30px" />
           </div>
         </div>
 
         {clinics?.length ? (
-          <div style={{ marginTop: 24, marginBottom: 24 }}>
+          <div>
             <ClinicsSwiper title="Mashhur klinikalar" clinics={clinics} />
           </div>
         ) : null}
 
         {promotions?.length ? (
           <div style={{ marginTop: 8, marginBottom: 24 }}>
-            <h2>Aksiya va chegirmalar</h2>
+            <h2 style={{ margin: 0, marginBottom: 30, marginTop: 30 }}>
+              Aksiya va chegirmalar
+            </h2>
             <PromotionsSwiper promotions={promotions} />
           </div>
         ) : null}

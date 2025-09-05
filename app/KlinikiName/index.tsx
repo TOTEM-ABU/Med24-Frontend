@@ -70,7 +70,6 @@ const ReviewModal = ({
       return;
     }
 
-    // Just show toast and close modal
     toast.success(
       "Sizning sharhingiz muvaffaqiyatli yuborildi. Moderatsiyadan keyin ko'rib chiqamiz."
     );
@@ -643,13 +642,11 @@ const KlinikiNameHeader: React.FC<{ clinic: ClinicHeaderProps }> = ({
               </div>
             </div>
 
-            {/* 2. Klinikaning ixtisoslashuvi - pricing section only */}
             <div className={styles.servicesSection}>
               <h3 className={styles.servicesTitle}>
                 Klinikaning ixtisoslashuvi &quot;{name || "Klinika"}&quot;
               </h3>
 
-              {/* Services from doctors specialties - BEFORE pricing */}
               <div className={styles.servicesList}>
                 {uniqueSpecialties && uniqueSpecialties.length > 0 ? (
                   uniqueSpecialties.map((specialty, index) => (
@@ -1189,20 +1186,20 @@ const KlinikiNameHeader: React.FC<{ clinic: ClinicHeaderProps }> = ({
                         )}
                       </div>
                     </div>
-                    <div className={styles.reviewRating}>
-                      {[1, 2, 3, 4, 5].map((star) => (
-                        <span
-                          key={star}
-                          className={`${styles.reviewStar} ${
-                            star <= (review.rating || 0)
-                              ? styles.reviewStarActive
-                              : ""
-                          }`}
-                        >
-                          ★
-                        </span>
-                      ))}
-                    </div>
+                  </div>
+                  <div className={styles.reviewRating}>
+                    {[1, 2, 3, 4, 5].map((star) => (
+                      <span
+                        key={star}
+                        className={`${styles.reviewStar} ${
+                          star <= (review.rating || 0)
+                            ? styles.reviewStarActive
+                            : ""
+                        }`}
+                      >
+                        ★
+                      </span>
+                    ))}
                   </div>
                   {review.comment && (
                     <p className={styles.reviewComment}>{review.comment}</p>
