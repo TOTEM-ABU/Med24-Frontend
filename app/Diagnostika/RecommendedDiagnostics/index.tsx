@@ -2,7 +2,7 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import Link from "next/link";
-import React, { useState } from "react";
+import React from "react";
 import styles from "./style.module.css";
 
 type Service = {

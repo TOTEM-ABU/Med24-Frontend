@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect, useMemo, useRef, useState } from "react";
+import Image from "next/image";
 import styles from "./styles.module.css";
 
 export type Promotion = {
@@ -27,6 +28,8 @@ const PromotionsSwiper: React.FC<Props> = ({
   const items = useMemo(() => promotions ?? [], [promotions]);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(false);
+
+  console.log(title);
 
   const scrollBy = (delta: number) => {
     const el = containerRef.current;
@@ -93,10 +96,12 @@ const PromotionsSwiper: React.FC<Props> = ({
               onClick={p.onClick}
             >
               <div className={styles.badge}>{`-${p.discount_percent}%`}</div>
-              <img
+              <Image
                 className={styles.banner}
-                src={p.image_url || p?.Clinics?.logo_url}
+                src={p.image_url || p?.Clinics?.logo_url || ""}
                 alt={p.title}
+                width={300}
+                height={200}
               />
               <div className={styles.textWrap}>
                 <div className={styles.cardTitle}>{p.title}</div>

@@ -42,7 +42,8 @@ export default async function ServicePage({ params }: ServicePageProps) {
       <Image
         src={service.image_url}
         alt={service.name}
-        width={400}
+        width={300}
+        height={200}
         style={{ marginTop: "20px", borderRadius: "10px" }}
       />
     </div>

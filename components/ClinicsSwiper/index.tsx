@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import styles from "./styles.module.css";
 
 export type Clinic = {
@@ -98,7 +99,13 @@ const ClinicsSwiper: React.FC<Props> = ({
             return (
               <Link href={href} key={c.id} className={styles.card}>
                 <div className={styles.logoWrap}>
-                  <img className={styles.logo} src={c.logo_url} alt={c.name} />
+                  <Image
+                    className={styles.logo}
+                    src={c.logo_url || ""}
+                    alt={c.name}
+                    width={50}
+                    height={50}
+                  />
                 </div>
                 <div className={styles.textWrap}>
                   <div className={styles.cardName}>{c.name}</div>

@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import styles from "./DoctorTypeCard.module.css";
 
 interface DoctorTypeCardProps {
@@ -6,7 +7,7 @@ interface DoctorTypeCardProps {
   image: string;
   className?: string;
   style?: React.CSSProperties;
-  onClick?: () => void
+  onClick?: () => void;
 }
 
 const DoctorTypeCard = ({
@@ -14,12 +15,22 @@ const DoctorTypeCard = ({
   image,
   className,
   style,
-  onClick
+  onClick,
 }: DoctorTypeCardProps) => {
   return (
-    <div className={`${styles["card"]} ${className || ""}`} style={style} onClick={onClick}>
+    <div
+      className={`${styles["card"]} ${className || ""}`}
+      style={style}
+      onClick={onClick}
+    >
       <p className={styles["name"]}>{name}</p>
-      <img src={image} alt={`${name} icon`} className={styles["image"]} />
+      <Image
+        src={image}
+        alt={`${name} icon`}
+        className={styles["image"]}
+        width={100}
+        height={100}
+      />
     </div>
   );
 };

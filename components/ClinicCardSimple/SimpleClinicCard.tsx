@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import styles from "./ClinicCardSimple.module.css";
 
 interface SimpleClinicCardProps {
@@ -17,10 +18,12 @@ const SimpleClinicCard: React.FC<SimpleClinicCardProps> = ({
     <div className={styles.card}>
       <Link href={href} className={styles.link}>
         <div className={styles.logoContainer}>
-          <img
+          <Image
             src={logoSrc}
             alt={title}
             className={styles.logo}
+            width={50}
+            height={50}
             onError={(e) => {
               const target = e.target as HTMLImageElement;
               target.style.display = "none";

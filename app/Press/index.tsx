@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import Breadcrumb from "@/components/Breadcrumb";
 import SearchBar from "@/components/SearchBar";
 import Button from "@/components/Button";
+import Image from "next/image";
 import styles from "./Press.module.css";
 
 const PressPage = () => {
@@ -86,10 +87,12 @@ const PressPage = () => {
             className={styles.card}
           >
             <div className={styles.imageContainer}>
-              <img
+              <Image
                 src={article.imageUrl}
                 alt={article.title}
                 className={styles.image}
+                width={300}
+                height={200}
                 onError={(e) => {
                   const target = e.target as HTMLImageElement;
                   target.style.display = "none";

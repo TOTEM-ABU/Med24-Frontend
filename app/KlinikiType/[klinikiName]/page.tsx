@@ -218,7 +218,6 @@ const ServiceNamePage: React.FC<ServiceNamePageProps> = ({ params }) => {
                   <option value="all">Tibbiy muassasa turi</option>
                   <option value="PUBLIC">Davlat</option>
                   <option value="PRIVATE">Xususiy</option>
-                  <option value="VETERINARY">Veterinariya</option>
                 </select>
                 <select
                   value={timeFilter}

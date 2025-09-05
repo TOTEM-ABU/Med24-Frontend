@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import Image from "next/image";
 import styles from "./PopularClinics.module.css";
 
 interface PopularClinicsProps {
@@ -81,10 +82,12 @@ const PopularClinics: React.FC<PopularClinicsProps> = ({
               className={styles.clinicCard}
               style={customStyles.card}
             >
-              <img
+              <Image
                 src={clinic.logo_url || "/placeholder-logo.png"}
                 alt={clinic.name}
                 className={styles.clinicLogo}
+                width={50}
+                height={50}
               />
               <p className={styles.clinicName}>{clinic.name}</p>
             </a>

@@ -21,7 +21,7 @@ const KlinikiTypeIndex = () => {
         color: "#6b7280",
       }}
     >
-      Qayta yo'naltirilmoqda...
+      Qayta yo&apos;naltirilmoqda...
     </div>
   );
 };
