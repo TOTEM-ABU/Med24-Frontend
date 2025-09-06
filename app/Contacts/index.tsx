@@ -79,7 +79,7 @@ const ContactsPage = () => {
           </div>
         </section>
         <div>
-          <YandexMap coordinate={[41.23269, 69.193723]} />
+          <YandexMap coordinate={[41.23269, 69.193723]} className={styles['map']}/>
         </div>
       </div>
     </div>
