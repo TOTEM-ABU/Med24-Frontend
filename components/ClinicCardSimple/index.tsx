@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import styles from "./ClinicCardSimple.module.css";
 
 type OpeningHours = Record<string, string>;
@@ -75,9 +76,6 @@ const ClinicCardSimple: React.FC<Props> = ({ clinic }) => {
     return values.some((v) => /24\s*\/\s*7|24x7|24-7/i.test(String(v)));
   }, [opening_hours]);
   const [expanded, setExpanded] = React.useState(false);
-  const [canScrollLeftDoctors, setCanScrollLeftDoctors] = React.useState(false);
-  const [canScrollRightDoctors, setCanScrollRightDoctors] =
-    React.useState(false);
   const reviewsCount = Array.isArray(reviews) ? reviews.length : undefined;
   const slugify = (value: string) =>
     value
@@ -91,26 +89,6 @@ const ClinicCardSimple: React.FC<Props> = ({ clinic }) => {
 
   const doctorsScrollerRef = React.useRef<HTMLDivElement | null>(null);
 
-  const updateDoctorArrows = () => {
-    const el = doctorsScrollerRef.current;
-    if (!el) {
-      setCanScrollLeftDoctors(false);
-      setCanScrollRightDoctors(false);
-      return;
-    }
-    const maxScroll = el.scrollWidth - el.clientWidth;
-    const left = el.scrollLeft;
-    setCanScrollLeftDoctors(left > 2);
-    setCanScrollRightDoctors(left < maxScroll - 2);
-  };
-
-  const scrollDoctors = (delta: number) => {
-    if (doctorsScrollerRef.current) {
-      doctorsScrollerRef.current.scrollBy({ left: delta, behavior: "smooth" });
-      setTimeout(updateDoctorArrows, 200);
-    }
-  };
-
   const specialtiesById = React.useMemo(() => {
     const map: Record<string, string> = {};
     (clinic.doctors ?? []).forEach((doc) => {
@@ -121,17 +99,6 @@ const ClinicCardSimple: React.FC<Props> = ({ clinic }) => {
     return map;
   }, [clinic.doctors]);
 
-  React.useEffect(() => {
-    updateDoctorArrows();
-    const handle = () => updateDoctorArrows();
-    window.addEventListener("resize", handle);
-    const id = setInterval(updateDoctorArrows, 400);
-    return () => {
-      window.removeEventListener("resize", handle);
-      clearInterval(id);
-    };
-  }, []);
-
   return (
     <div className={styles.card}>
       <div className={styles.left}>
@@ -140,11 +107,12 @@ const ClinicCardSimple: React.FC<Props> = ({ clinic }) => {
             href={reviewsUrl?.replace("#review", "") ?? "#"}
             style={{ display: "inline-flex" }}
           >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
+            <Image
               src={clinic.logo_url || "/placeholder-logo.png"}
               alt={name}
               className={styles.logo}
+              width={50}
+              height={50}
             />
           </Link>
           <div className={styles.titleArea}>
@@ -224,14 +192,6 @@ const ClinicCardSimple: React.FC<Props> = ({ clinic }) => {
 
         {Array.isArray(doctors) && doctors.length ? (
           <div className={styles.doctorsWrap}>
-            <button
-              type="button"
-              aria-label="Oldingi"
-              className={styles.navBtn}
-              onClick={() => scrollDoctors(-240)}
-            >
-              ‹
-            </button>
             <div className={styles.doctors} ref={doctorsScrollerRef}>
               {doctors.map((d, idx) => {
                 const docReviewsCount =
@@ -309,14 +269,6 @@ const ClinicCardSimple: React.FC<Props> = ({ clinic }) => {
                 );
               })}
             </div>
-            <button
-              type="button"
-              aria-label="Keyingi"
-              className={styles.navBtn}
-              onClick={() => scrollDoctors(240)}
-            >
-              ›
-            </button>
           </div>
         ) : null}
 

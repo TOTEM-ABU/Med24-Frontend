@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import { useQuery } from "@tanstack/react-query";
+import Image from "next/image";
 import api from "@/lib/api";
 import styles from "./ArticleDetail.module.css";
 import cardStyles from "./ServiceCards.module.css";
@@ -153,10 +154,12 @@ const ArticleDetailPage = ({
 
       {article.image_url && (
         <div className={styles.articleImageContainer}>
-          <img
+          <Image
             src={article.image_url}
             alt={article.title}
             className={styles.articleImage}
+            width={800}
+            height={400}
             onError={(e) => {
               const target = e.target as HTMLImageElement;
               target.parentElement!.style.display = "none";

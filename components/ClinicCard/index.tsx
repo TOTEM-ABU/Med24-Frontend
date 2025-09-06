@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import styles from "./ClinicCard.module.css";
 
 type OpeningHours = Record<string, string>;
@@ -59,11 +60,8 @@ const ClinicCard: React.FC<Props> = ({ clinic, filterService }) => {
     description,
     address,
     phone,
-    // website,
     opening_hours,
-    // logo_url,
     rating,
-    // Region,
     promotions,
     clinicservices,
     doctors,
@@ -144,11 +142,12 @@ const ClinicCard: React.FC<Props> = ({ clinic, filterService }) => {
             href={reviewsUrl?.replace("#review", "") ?? "#"}
             style={{ display: "inline-flex" }}
           >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
+            <Image
               src={clinic.logo_url || "/placeholder-logo.png"}
               alt={name}
               className={styles.logo}
+              width={50}
+              height={50}
             />
           </Link>
           <div className={styles.titleArea}>
@@ -205,14 +204,19 @@ const ClinicCard: React.FC<Props> = ({ clinic, filterService }) => {
         {Array.isArray(clinicservices) && clinicservices.length ? (
           <div className={styles.services}>
             {clinicservices
-              .filter((cs) => 
-                !filterService || 
-                cs?.Services?.name?.toLowerCase().includes(filterService.toLowerCase())
+              .filter(
+                (cs) =>
+                  !filterService ||
+                  cs?.Services?.name
+                    ?.toLowerCase()
+                    .includes(filterService.toLowerCase())
               )
               .slice(0, 3)
               .map((cs) => (
                 <div key={cs.id} className={styles.serviceRow}>
-                  <span className={styles.serviceName}>{cs?.Services?.name}</span>
+                  <span className={styles.serviceName}>
+                    {cs?.Services?.name}
+                  </span>
                   {cs.price ? (
                     <span className={styles.servicePrice}>
                       {Intl.NumberFormat("uz-UZ").format(Number(cs.price))}{" "}
@@ -263,14 +267,13 @@ const ClinicCard: React.FC<Props> = ({ clinic, filterService }) => {
                     key={(d.id as string) ?? String(idx)}
                     className={styles.doctor}
                   >
-                    {/* Image on the left */}
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
+                    <Image
                       src={DEFAULT_DOCTOR_IMG}
                       alt={`${d.first_name || d.name || ""}`}
                       className={styles.doctorAvatar}
+                      width={40}
+                      height={40}
                     />
-                    {/* Text on the right */}
                     <div className={styles.doctorMeta}>
                       <div className={styles.doctorName}>
                         {`${d.first_name || d.name || ""} ${
@@ -376,7 +379,6 @@ const ClinicCard: React.FC<Props> = ({ clinic, filterService }) => {
           >
             Qabulga yozilish
           </a>
-          {/* Website button removed per design */}
         </div>
       </div>
     </div>

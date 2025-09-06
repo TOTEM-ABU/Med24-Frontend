@@ -2,8 +2,12 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
+  allowedDevOrigins: ["http://45.76.94.219"],
+
+  experimental: {},
+
   images: {
-    domains: ["cdn.med24.uz"], // ⚡ ruxsat berilgan remote domen
+    domains: ["main.med24.uz", "med24.uz", "45.76.94.219"],
   },
   async rewrites() {
     return [

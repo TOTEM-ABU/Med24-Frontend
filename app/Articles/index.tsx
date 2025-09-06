@@ -1,6 +1,7 @@
 "use client";
 import React, { useMemo } from "react";
 import { useQuery } from "@tanstack/react-query";
+import Image from "next/image";
 import api from "@/lib/api";
 import axios from "axios";
 import styles from "./Articles.module.css";
@@ -121,10 +122,12 @@ const ArticlesPage: React.FC = () => {
               className={styles.card}
             >
               <div className={styles.imageContainer}>
-                <img
+                <Image
                   src={article.image_url}
                   alt={article.title}
                   className={styles.image}
+                  width={300}
+                  height={200}
                   onError={(e) => {
                     const target = e.target as HTMLImageElement;
                     target.style.display = "none";

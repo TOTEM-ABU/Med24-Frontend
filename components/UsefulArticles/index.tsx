@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import Image from "next/image";
 import { useQuery } from "@tanstack/react-query";
 import api from "@/lib/api";
 import styles from "./UsefulArticles.module.css";
@@ -58,7 +59,7 @@ const UsefulArticles: React.FC = () => {
   if (isError) {
     return (
       <div className={styles.container}>
-        Xatolik yuz berdi. Maqolalarni yuklab bo'lmadi.
+        Xatolik yuz berdi. Maqolalarni yuklab bo&apos;lmadi.
       </div>
     );
   }
@@ -83,10 +84,12 @@ const UsefulArticles: React.FC = () => {
             className={styles.card}
           >
             <div className={styles.imageContainer}>
-              <img
+              <Image
                 src={article.image_url}
                 alt={article.title}
                 className={styles.image}
+                width={300}
+                height={200}
                 onError={(e) => {
                   const target = e.target as HTMLImageElement;
                   target.style.display = "none";
@@ -104,7 +107,7 @@ const UsefulArticles: React.FC = () => {
       </div>
       <div className={styles.viewAllContainer}>
         <Link href="/articles" className={styles.viewAll}>
-          Barchasini ko'rish
+          Barchasini ko&apos;rish
         </Link>
       </div>
     </div>

@@ -13,6 +13,7 @@ import { DOCTOR_SPECIALTIES } from "@/lib/constants";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import Link from "next/link";
+import Image from "next/image";
 
 const getInitials = (name?: string, surname?: string): string => {
   const a = (name || "").trim();
@@ -271,7 +272,7 @@ const HomePage = () => {
       }
     });
     return Object.fromEntries(
-      Object.entries(categories).filter(([_, services]) => services.length > 0)
+      Object.entries(categories).filter(([services]) => services.length > 0)
     );
   }, [diagnosticServices]);
 
@@ -728,10 +729,12 @@ const HomePage = () => {
                   href={`/klinika/${clinicSlug}`}
                   className={pageStyles.clinicLogoItem}
                 >
-                  <img
+                  <Image
                     src={clinic.logo_url || "/placeholder-logo.png"}
                     alt={clinic.name}
                     className={pageStyles.clinicLogo}
+                    width={300}
+                    height={200}
                   />
                 </Link>
               );
@@ -752,10 +755,12 @@ const HomePage = () => {
               className={pageStyles.card}
             >
               <div className={pageStyles.imageContainer}>
-                <img
+                <Image
                   src="https://med24.uz/_ipx/f_webp&q_80/images/ef99a5769f4c3c70c465fd8179b4cf25.webp"
                   alt="Med24.uz - Toshkentdagi eng yaxshi klinikalar va shifokorlar"
                   className={pageStyles.image}
+                  width={300}
+                  height={200}
                 />
               </div>
               <div className={pageStyles.content}>
@@ -773,10 +778,12 @@ const HomePage = () => {
               className={pageStyles.card}
             >
               <div className={pageStyles.imageContainer}>
-                <img
+                <Image
                   src="https://med24.uz/_ipx/f_webp&q_80/images/2679743ce9bb0db2957a2e93dcce7e8b.webp"
                   alt="Toshkentda MRT qayerda qilishni tanlaymiz"
                   className={pageStyles.image}
+                  width={300}
+                  height={200}
                 />
               </div>
               <div className={pageStyles.content}>
@@ -794,10 +801,12 @@ const HomePage = () => {
               className={pageStyles.card}
             >
               <div className={pageStyles.imageContainer}>
-                <img
+                <Image
                   src="https://med24.uz/_ipx/f_webp&q_80/images/73b83c83a355fc527bdd3f93692393bc.webp"
                   alt="Tibbiy xizmat kompyuterlashmoqda - zarur shifokorlarni topishning oson va tez usuli"
                   className={pageStyles.image}
+                  width={300}
+                  height={200}
                 />
               </div>
               <div className={pageStyles.content}>
@@ -816,10 +825,12 @@ const HomePage = () => {
               className={pageStyles.card}
             >
               <div className={pageStyles.imageContainer}>
-                <img
+                <Image
                   src="https://med24.uz/_ipx/f_webp&q_80/images/c8f4c0d5ea0a33a8192be02a5ee73e59.webp"
                   alt="Qulay klinika qidiruvi onlayn - Med24.uz yordamida"
                   className={pageStyles.image}
+                  width={300}
+                  height={200}
                 />
               </div>
               <div className={pageStyles.content}>
