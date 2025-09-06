@@ -9,7 +9,6 @@ const nextConfig: NextConfig = {
   images: {
     domains: ["main.med24.uz", "med24.uz", "45.76.94.219"],
   },
-
   async rewrites() {
     return [
       {
