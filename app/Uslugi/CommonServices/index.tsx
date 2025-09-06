@@ -11,7 +11,6 @@ interface Service {
   category: string;
   image_url: string;
   createdAt: string;
-  // clinicservices: ClinicService[];
 }
 
 const CommonServices = () => {

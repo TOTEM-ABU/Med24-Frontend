@@ -1,8 +1,10 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
   reactStrictMode: true,
+  images: {
+    domains: ["cdn.med24.uz"], // ⚡ ruxsat berilgan remote domen
+  },
   async rewrites() {
     return [
       {

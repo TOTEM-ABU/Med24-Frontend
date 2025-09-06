@@ -2,13 +2,19 @@ import React from "react";
 import { Button, Input } from "../Doctors/components";
 import ServicesInTashkent from "./ServicesInTashkent";
 import CommonServices from "./CommonServices";
-import { PopularClinics } from "@/components";
+import { Breadcrumb, PopularClinics, PromotionsSwiper } from "@/components";
 
 import styles from "./Uslugi.module.css";
 
 const UslugiPage = () => {
   return (
     <div className={styles.Container}>
+      <Breadcrumb
+        items={[
+          { label: "Bosh sahifa", href: "/" },
+          { label: "Uslugi", href: "/uslugi" },
+        ]}
+      />
       <div className={styles.searchSection}>
         <Input inputPlaceholder="Shifokor ismi, mutaxassislik nomini yoki dori-darmon kiriting" />
         <Button>Qidirish</Button>

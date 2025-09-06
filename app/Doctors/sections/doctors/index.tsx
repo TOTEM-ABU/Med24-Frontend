@@ -1,7 +1,8 @@
-import { getAllDoctors } from "@/api/doctors/doctors.api";
-import { getAllRegions } from "@/api/regions/regions.api"; // getAllRegions import qilindi
 import React, { useEffect, useState } from "react";
-import { DoctorCard, Select } from "../../components";
+import { useRouter } from "next/navigation";
+import { getAllDoctors } from "@/api/doctors/doctors.api";
+import { getAllRegions } from "@/api/regions/regions.api";
+import { DoctorCard, Select, Typography } from "../../components";
 import styles from "./doctors.module.css";
 
 interface Speciality {
@@ -10,6 +11,7 @@ interface Speciality {
 }
 
 interface Doctor {
+  id: string;
   name: string;
   surname: string;
   bio: string;
@@ -35,10 +37,21 @@ interface Region {
   clinics: Clinic[];
 }
 
+interface SelectProps {
+  options: { value: string; label: string }[];
+  placeholder: string;
+  name: string;
+  id: string;
+  onChange: (value: string) => void;
+}
+
 const Doctors = () => {
+  const router = useRouter();
   const [doctors, setDoctors] = useState<Doctor[]>([]);
   const [filteredDoctors, setFilteredDoctors] = useState<Doctor[]>([]);
   const [regions, setRegions] = useState<Region[]>([]);
+  const [visibleCount, setVisibleCount] = useState(10);
+  const [totalDoctors, setTotalDoctors] = useState(0);
   const [filters, setFilters] = useState({
     doctorsType: "",
     districts: "",
@@ -59,7 +72,7 @@ const Doctors = () => {
       new Set(
         regions
           .flatMap((region) => region.clinics)
-          .map((clinic) => clinic.address.split(", ")[1]) // Manzil ichidan tuman
+          .map((clinic) => clinic.address.split(", ")[1])
       )
     )
       .filter(Boolean)
@@ -79,36 +92,29 @@ const Doctors = () => {
     { value: "Ayol", label: "Ayol" },
   ];
 
-  // Ma'lumotlarni olish
   useEffect(() => {
-    // Shifokorlarni olish
     getAllDoctors()
       .then((res) => {
-        console.log("API dan kelgan shifokorlar:", res);
         const doctorsData = Array.isArray(res.data) ? res.data : [];
+        setTotalDoctors(res.meta?.total || 0);
         setDoctors(doctorsData);
         setFilteredDoctors(doctorsData);
       })
-      .catch((error) => {
-        console.error("Shifokorlarni olishda xato:", error);
+      .catch(() => {
         setDoctors([]);
         setFilteredDoctors([]);
       });
 
-    // Regionlarni olish
     getAllRegions()
       .then((res) => {
-        console.log("API dan kelgan regionlar:", res);
         const regionsData = Array.isArray(res.data) ? res.data : [];
         setRegions(regionsData);
       })
-      .catch((error) => {
-        console.error("Regionlarni olishda xato:", error);
+      .catch(() => {
         setRegions([]);
       });
   }, []);
 
-  // Filtrlarni yangilash
   useEffect(() => {
     let filtered = doctors;
 
@@ -135,7 +141,6 @@ const Doctors = () => {
 
     if (filters.doctorGender) {
       filtered = filtered.filter((doctor) => {
-        // Jinsni taxminiy aniqlash (ism orqali)
         const firstName = doctor.name.toLowerCase();
         const isMale = [
           "john",
@@ -152,14 +157,25 @@ const Doctors = () => {
     }
 
     setFilteredDoctors(filtered);
+    setVisibleCount(10);
   }, [filters, doctors, regions]);
 
   const handleFilterChange = (name: string, value: string) => {
     setFilters((prev) => ({ ...prev, [name]: value }));
   };
 
+  const handleDoctorClick = (doctorId: string) => {
+    router.push(`/doctors/${doctorId}`);
+  };
+
   return (
     <div className={styles.container}>
+      <div className={styles.titleWrapper}>
+        <Typography size="27" weight="600" bottom="30">
+          Toshkentda shifokorlar mutaxassisligi bo‘yicha
+        </Typography>
+        <p className={styles.totalCount}>{totalDoctors} mutaxassisliklar</p>
+      </div>
       <div className={styles.selections}>
         <Select
           options={doctorsType}
@@ -167,6 +183,7 @@ const Doctors = () => {
           name="doctorsType"
           id="doctorsType"
           onChange={(value: string) => handleFilterChange("doctorsType", value)}
+          aria-label="Mutaxassislik bo'yicha filtr"
         />
         <Select
           options={districts}
@@ -174,15 +191,17 @@ const Doctors = () => {
           name="districts"
           id="districts"
           onChange={(value: string) => handleFilterChange("districts", value)}
+          aria-label="Tuman bo'yicha filtr"
         />
         <Select
           options={medicalCenters}
-          placeholder="Tibbiyot muassas turi"
+          placeholder="Tibbiyot muassasasi turi"
           name="medicalCenter"
           id="medicalCenter"
           onChange={(value: string) =>
             handleFilterChange("medicalCenter", value)
           }
+          aria-label="Tibbiyot muassasasi bo'yicha filtr"
         />
         <Select
           options={doctorGender}
@@ -192,21 +211,51 @@ const Doctors = () => {
           onChange={(value: string) =>
             handleFilterChange("doctorGender", value)
           }
+          aria-label="Shifokor jinsi bo'yicha filtr"
         />
       </div>
+
       {filteredDoctors.length === 0 ? (
         <p>Yuklanmoqda yoki shifokorlar topilmadi...</p>
       ) : (
-        filteredDoctors.map((doctor, index) => (
-          <DoctorCard
-            key={index}
-            fullname={`${doctor.name} ${doctor.surname}`}
-            type={doctor.Specialities?.name || "Mutaxassislik yo'q"}
-            experience={doctor.experience_years}
-            photo={doctor.image_url}
-            clinicPhoto="m-clinic"
-          />
-        ))
+        <>
+          <ul className={styles.doctorsList}>
+            {filteredDoctors.slice(0, visibleCount).map((doctor) => (
+              <li
+                key={doctor.id}
+                onClick={() => handleDoctorClick(doctor.id)}
+                aria-label={`Shifokor ${doctor.name} ${doctor.surname} haqida batafsil`}
+                className={styles.doctorCard}
+              >
+                <DoctorCard
+                  fullname={`${doctor.name} ${doctor.surname}`}
+                  type={doctor.Specialities?.name || "Mutaxassislik yo'q"}
+                  experience={doctor.experience_years}
+                  photo={doctor.image_url}
+                  clinicPhoto="m-clinic"
+                />
+              </li>
+            ))}
+          </ul>
+
+          {totalDoctors > 10 && visibleCount < filteredDoctors.length && (
+            <div style={{ textAlign: "center", marginTop: "20px" }}>
+              <button
+                onClick={() => setVisibleCount((prev) => prev + 10)}
+                style={{
+                  padding: "10px 20px",
+                  borderRadius: "8px",
+                  border: "1px solid #ccc",
+                  background: "#007bff",
+                  color: "#fff",
+                  cursor: "pointer",
+                }}
+              >
+                Yana ko‘rsatish
+              </button>
+            </div>
+          )}
+        </>
       )}
     </div>
   );
