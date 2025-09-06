@@ -78,9 +78,28 @@ const UslugiPage = () => {
             <PromotionsSwiper promotions={promotions} />
           </div>
         ) : null}
-        <div className={styles.sectionContainer}>
-          <PopularClinics clinics={clinics} />
-        </div>
+      </div>
+      {/* Updated PopularClinics to be full width like in homepage */}
+      <div style={{ marginTop: "40px" }}>
+        <PopularClinics
+          clinics={clinics}
+          title="Toshkentdagi mashhur klinikalar va tibbiyot markazlari"
+          customStyles={{
+            grid: { gridTemplateColumns: "repeat(6, 1fr)", gap: "16px" },
+            card: {
+              padding: "16px",
+              backgroundColor: "#f8f9fa",
+              borderRadius: "12px",
+              maxHeight: "110px",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              boxShadow: "none",
+            },
+          }}
+        />
+      </div>
+      <div className={styles.miniContainer}>
         <div className={styles.sectionContainer}>
           <h3
             style={{
