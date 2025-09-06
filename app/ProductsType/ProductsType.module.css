@@ -1,6 +1,8 @@
 .product-type-container {
         display: flex;
         flex-direction: column;
+        max-width: 1200px;
+        margin: 0 auto;
         /* gap: 20px; */
             h2 {
         font-size: 28px;
@@ -158,9 +160,21 @@
     .brand-image-container {
         gap: 25px;
     }
+    
+    .main-text {
+        font-size: 26px;
+    }
+    
+    .product-type-container h2 {
+        font-size: 26px;
+    }
 }
 
 @media (max-width: 992px) {
+    .product-type-container {
+        padding: 0 20px;
+    }
+    
     .main-text {
         font-size: 24px;
     }
@@ -233,9 +247,18 @@
         margin-bottom: 60px;
         margin-top: 60px;
     }
+    
+    .btn {
+        font-size: 13px;
+        padding: 10px 20px;
+    }
 }
 
 @media (max-width: 768px) {
+    .product-type-container {
+        padding: 0 15px;
+    }
+    
     .main-text {
         font-size: 20px;
         margin: 15px 0 15px 0;
@@ -322,9 +345,18 @@
         margin-bottom: 40px;
         margin-top: 40px;
     }
+    
+    .btn {
+        font-size: 12px;
+        padding: 8px 16px;
+    }
 }
 
 @media (max-width: 480px) {
+    .product-type-container {
+        padding: 0 10px;
+    }
+    
     .main-text {
         font-size: 18px;
         margin: 12px 0 12px 0;
@@ -400,5 +432,10 @@
     .alpha-container {
         margin-bottom: 30px;
         margin-top: 30px;
+    }
+    
+    .btn {
+        font-size: 11px;
+        padding: 6px 12px;
     }
 }

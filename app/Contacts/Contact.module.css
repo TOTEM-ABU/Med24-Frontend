@@ -3,6 +3,8 @@
     flex-wrap: nowrap;
     justify-content: space-between;
     gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .header-text {
@@ -92,4 +94,185 @@
 .form-text {
         font-size: 25px;
         font-weight: 500;
+}
+
+.map {
+    height: 100%;
+    width: 100%;
+    z-index: 2500;
+    box-sizing: content-box;
+    height: 300px;
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 40px;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .header-container {
+        gap: 30px;
+    }
+    
+    .header-text {
+        font-size: 24px;
+    }
+    
+    .form-text {
+        font-size: 22px;
+    }
+    
+    .address-container h3 {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 992px) {
+    .header-container {
+        flex-direction: column;
+        gap: 40px;
+        padding: 0 20px;
+    }
+    
+    .header-text {
+        font-size: 22px;
+    }
+    
+    .form-text {
+        font-size: 20px;
+    }
+    
+    .address-container h3 {
+        font-size: 18px;
+    }
+    
+    .logo-container {
+        gap: 30px;
+        padding-bottom: 40px;
+    }
+    
+    .logo {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .first-container {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .input {
+        padding: 12px 15px;
+    }
+    
+    .textarea {
+        padding: 12px 15px;
+        height: 80px;
+    }
+    
+    .map {
+        height: 250px;
+        margin-bottom: 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .header-container {
+        padding: 0 15px;
+    }
+    
+    .header-text {
+        font-size: 20px;
+    }
+    
+    .form-text {
+        font-size: 18px;
+    }
+    
+    .address-container h3 {
+        font-size: 16px;
+    }
+    
+    .logo-container {
+        gap: 25px;
+        padding-bottom: 30px;
+    }
+    
+    .logo {
+        width: 30px;
+        height: 30px;
+    }
+    
+    .input {
+        padding: 10px 12px;
+        font-size: 14px;
+    }
+    
+    .textarea {
+        padding: 10px 12px;
+        height: 70px;
+        font-size: 14px;
+    }
+    
+    .button {
+        padding: 12px 0;
+        font-size: 14px;
+    }
+    
+    .map {
+        height: 200px;
+        margin-bottom: 25px;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-container {
+        padding: 0 10px;
+    }
+    
+    .header-text {
+        font-size: 18px;
+    }
+    
+    .form-text {
+        font-size: 16px;
+    }
+    
+    .address-container h3 {
+        font-size: 14px;
+    }
+    
+    .logo-container {
+        gap: 20px;
+        padding-bottom: 25px;
+    }
+    
+    .logo {
+        width: 25px;
+        height: 25px;
+    }
+    
+    .input {
+        padding: 8px 10px;
+        font-size: 13px;
+    }
+    
+    .textarea {
+        padding: 8px 10px;
+        height: 60px;
+        font-size: 13px;
+    }
+    
+    .button {
+        padding: 10px 0;
+        font-size: 13px;
+    }
+    
+    .map {
+        height: 180px;
+        margin-bottom: 20px;
+    }
 }

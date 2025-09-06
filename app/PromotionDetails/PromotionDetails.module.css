@@ -1,6 +1,7 @@
 .promotion-detail-container {
-        max-width: 874px;
-        margin: auto;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
 }
 
 .header-container {
@@ -221,5 +222,268 @@
             font-size: 16px;
             font-weight: 400;
         }
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .promotion-detail-container {
+        max-width: 100%;
+        padding: 0 20px;
+    }
+    
+    .header-container {
+        gap: 15px;
+    }
+    
+    .image-container {
+        width: 500px;
+    }
+    
+    .map-container {
+        min-width: 300px;
+        max-width: 320px;
+    }
+    
+    .certificate {
+        gap: 30px;
+        padding: 14px 20px;
+    }
+    
+    .text-container {
+        padding: 14px 20px;
+    }
+    
+    .use-certificate {
+        padding: 6px 20px;
+    }
+}
+
+@media (max-width: 992px) {
+    .header-container {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .image-container {
+        width: 100%;
+        max-width: 600px;
+    }
+    
+    .map-container {
+        min-width: 100%;
+        max-width: 100%;
+    }
+    
+    .certificate {
+        flex-direction: column;
+        gap: 20px;
+        padding: 12px 16px;
+    }
+    
+    .text-container {
+        padding: 12px 16px;
+    }
+    
+    .use-certificate {
+        padding: 6px 16px;
+    }
+    
+    .doctor-types {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+    }
+    
+    .wide {
+        grid-column: span 1;
+    }
+    
+    .grid-links-black {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+}
+
+@media (max-width: 768px) {
+    .promotion-detail-container {
+        padding: 0 15px;
+    }
+    
+    .image-container {
+        max-width: 100%;
+    }
+    
+    .image {
+        min-height: 200px;
+        max-height: 220px;
+    }
+    
+    .detail {
+        bottom: 10px;
+        left: 15px;
+    }
+    
+    .logo {
+        width: 60px;
+        height: 60px;
+        margin-bottom: 6px;
+    }
+    
+    .h1 {
+        font-size: 18px;
+    }
+    
+    .in-detail {
+        gap: 8px;
+        margin-top: 3px;
+    }
+    
+    .certificate {
+        padding: 10px 12px;
+        margin-top: 1rem;
+        margin-bottom: 6px;
+    }
+    
+    .certificate h3 {
+        font-size: 16px;
+    }
+    
+    .text-container {
+        padding: 10px 12px;
+        margin-top: 8px;
+        margin-bottom: 6px;
+    }
+    
+    .text-container h3 {
+        font-size: 16px;
+        margin-bottom: 20px;
+    }
+    
+    .use-certificate {
+        padding: 6px 12px;
+        margin-top: 1rem;
+        margin-bottom: 40px;
+    }
+    
+    .use-certificate h3 {
+        font-size: 16px;
+    }
+    
+    .swiper-container {
+        margin: 60px 0 60px 0;
+    }
+    
+    .swiper-container h2 {
+        font-size: 24px;
+        margin-bottom: 25px;
+    }
+    
+    .doctor-types {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+        margin-top: 30px;
+    }
+    
+    .grid-links-black {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+    
+    .links-container {
+        margin-bottom: 40px;
+    }
+}
+
+@media (max-width: 480px) {
+    .promotion-detail-container {
+        padding: 0 10px;
+    }
+    
+    .image {
+        min-height: 180px;
+        max-height: 200px;
+    }
+    
+    .detail {
+        bottom: 8px;
+        left: 12px;
+    }
+    
+    .logo {
+        width: 50px;
+        height: 50px;
+        margin-bottom: 4px;
+    }
+    
+    .h1 {
+        font-size: 16px;
+    }
+    
+    .in-detail {
+        gap: 6px;
+        margin-top: 2px;
+    }
+    
+    .star {
+        height: 12px;
+        width: 12px;
+    }
+    
+    .arrow {
+        width: 16px;
+        height: 16px;
+    }
+    
+    .certificate {
+        padding: 8px 10px;
+    }
+    
+    .certificate h3 {
+        font-size: 14px;
+    }
+    
+    .text-container {
+        padding: 8px 10px;
+    }
+    
+    .text-container h3 {
+        font-size: 14px;
+        margin-bottom: 15px;
+    }
+    
+    .text-container p {
+        font-size: 13px;
+    }
+    
+    .use-certificate {
+        padding: 6px 10px;
+        margin-bottom: 30px;
+    }
+    
+    .use-certificate h3 {
+        font-size: 14px;
+    }
+    
+    .swiper-container {
+        margin: 40px 0 40px 0;
+    }
+    
+    .swiper-container h2 {
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
+    
+    .doctor-types {
+        grid-template-columns: 1fr;
+        gap: 6px;
+        margin-top: 25px;
+    }
+    
+    .links-container h2 {
+        font-size: 18px;
+    }
+    
+    .grid-links-black ul a {
+        font-size: 14px;
     }
 }

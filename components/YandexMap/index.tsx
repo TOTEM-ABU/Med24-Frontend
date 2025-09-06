@@ -1,5 +1,15 @@
 import React from "react";
-import { FullscreenControl, GeolocationControl, Map, Placemark, RulerControl, SearchControl, TrafficControl, TypeSelector, YMaps, ZoomControl } from "react-yandex-maps";
+import { 
+  FullscreenControl, 
+  GeolocationControl, 
+  Map, 
+  Placemark, 
+  SearchControl, 
+  TrafficControl, 
+  TypeSelector, 
+  YMaps, 
+  ZoomControl 
+} from "react-yandex-maps";
 
 interface MapProps {
   coordinate: [number, number];
@@ -12,7 +22,7 @@ const YandexMap = ({
   coordinate, 
   className, 
   height = "400px", 
-  zoom = 12 
+  zoom = 16 
 }: MapProps) => {
   return (
     <YMaps query={{ apikey: process.env.NEXT_PUBLIC_YMAPS_KEY }}>
@@ -21,15 +31,16 @@ const YandexMap = ({
         width="100%"
         height={height}
         className={className}
+        defaultControls={[]} 
+        options={{ suppressMapOpenBlock: true }}
       >
         <Placemark geometry={coordinate} />
-        <SearchControl/>
-        <GeolocationControl/>
-        <ZoomControl/>
-        <FullscreenControl/>
-        <TrafficControl/>
-        <TypeSelector/>
-        <RulerControl/>
+        <SearchControl options={{ float: "right" }} />
+        <ZoomControl options={{ float: "left" }} />
+        <FullscreenControl />
+        <TrafficControl options={{ float: "right" }} />
+        <TypeSelector options={{ float: "right" }} />
+        <GeolocationControl options={{ float: "left" }} />
       </Map>
     </YMaps>
   );
