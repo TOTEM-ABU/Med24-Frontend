@@ -52,8 +52,8 @@
 .articleContent {
   font-size: 14px;
   font-weight: 400;
-  line-height: 1.6;
-  color: #333;
+  line-height: 2.4;
+  color: #1e1e1e;
 }
 
 .warningBox {
@@ -61,8 +61,8 @@
   align-items: flex-start;
   gap: 12px;
   margin: 24px 0;
-  padding: 16px;
-  border: 1px solid #f0f0f0;
+  padding: 12px 36px;
+  border: 2px solid rgb(255 149 0/1);
   border-radius: 8px;
   background-color: #fffffe;
 }

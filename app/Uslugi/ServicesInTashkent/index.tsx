@@ -1,62 +1,69 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Typography } from "@/app/Doctors/components";
-
 import styles from "./ServicesInTashkent.module.css";
+import { getAllServices } from "@/api/services/services.api";
 import Link from "next/link";
 
-const ServicesInTashkent = () => {
-  const services = [
-    [
-      "Oostiga sperma yuborish",
-      "Sun'iy urug'lantirish",
-      "EKO",
-      "Embrionni qayta ekish",
-      "Lazerli xetching",
-      "IKSI muolajasi",
-      "Homiladorlikni boshqarish",
-      "Embrionlarning kriyoprezervatsiyasi",
-    ],
-    [
-      "ASIT Staloral",
-      "ASIT Alyustal",
-      "ASIT Antipollin",
-      "ASIT (dori narxidan tashqari)",
-      "ASIT Oraleyr",
-    ],
-    [
-      "Hijama",
-      "Igna terapiya",
-      "Galoterapiya",
-      "Apiterapiya",
-      "Gomeopatiya",
-      "Elektroakupunktura",
-      "Zuluk bilan davolash",
-    ],
-  ];
+// Interfeyslar API ma'lumotlariga moslashtirildi
+interface ClinicService {
+  id: string;
+  price: string;
+  duration_minutes: number;
+  clinicsId: string;
+  servicesId: string;
+  createdAt: string;
+}
 
-  const serviceTitles = [
-    "Akusherlik va Reproduktologiya",
-    "Allergiya-immunologiya",
-    "Alternativ tibbiyot",
-    "Analizlar",
-    "Andrologiya",
-    "Dermotologiya",
-  ];
+interface Service {
+  id: string;
+  name: string;
+  description: string;
+  category: string;
+  image_url: string;
+  createdAt: string;
+  clinicservices: ClinicService[];
+}
+
+const ServicesInTashkent = () => {
+  const [services, setServices] = useState<Service[]>([]);
+
+  useEffect(() => {
+    getAllServices()
+      .then((res) => {
+        console.log("API dan kelgan:", res);
+        setServices(res.data || []);
+      })
+      .catch((error) => {
+        console.error("Xizmatlarni olishda xatolik:", error);
+      });
+  }, []);
+
+  const groupedServices = services.reduce((acc, service) => {
+    const category = service.category;
+    if (!acc[category]) {
+      acc[category] = [];
+    }
+    acc[category].push(service);
+    return acc;
+  }, {} as Record<string, Service[]>);
+
   return (
     <div className={styles.servicesInTashkent}>
-      <Typography size="26" bottom="20">
-        Tibbiy xizmatlar toshkentda
+      <Typography size="26" bottom="20" weight="600">
+        Tibbiy xizmatlar Toshkentda
       </Typography>
       <div className={styles.servicesBlock}>
-        {services.map((val, idx) => (
+        {Object.keys(groupedServices).map((category, idx) => (
           <div key={idx} className={styles.oneColumn}>
-            <Typography size="18" weight="600">
-              {serviceTitles[idx]}
+            <Typography size="18" weight="600" bottom="24">
+              {category}
             </Typography>
-            {val.map((v, i) => (
-              <Link href={"/"} key={i} className={styles.links}>
-                {v}
-              </Link>
+            {groupedServices[category].map((service, serviceIdx) => (
+              <div key={serviceIdx} className={styles.serviceItem}>
+                <Link href={`/uslugi/${service.id}`} className={styles.link}>
+                  {service.name}
+                </Link>
+              </div>
             ))}
           </div>
         ))}

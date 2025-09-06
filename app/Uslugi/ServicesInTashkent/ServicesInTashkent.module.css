@@ -16,11 +16,18 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  gap: 20px;
 }
 
-.servicesBlock .oneColumn .links {
+.link {
+  margin-top: 2px;
+  font-size: 16px;
   color: #007aff;
   text-decoration: 1.8px underline dotted gray;
   text-underline-offset: 2px;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+}
+
+.servicesBlock .oneColumn .serviceItem {
+  margin-bottom: 12px;
 }

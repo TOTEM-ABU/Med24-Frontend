@@ -8,8 +8,8 @@ import brand1 from "./images/brand1.svg";
 import ProductDetailsCard from "@/components/ProductDetailsCard";
 import medImg from "./images/medicineImg.png";
 import DoctorTypeCard from "@/components/DoctorTypeCard";
-import heart from "./../ProductsPage/images/heart.png";
 import { DOCTOR_SPECIALTIES } from "@/lib/constants";
+import Image from "next/image";
 
 const ProductsType = () => {
   const products = [
@@ -98,10 +98,12 @@ const ProductsType = () => {
           ]}
         />
         <a href="#" className={styles["main-link"]}>
-          <img
+          <Image
             src={imgMain.src}
             alt="rek-image"
             className={styles["main-image"]}
+            width={300}
+            height={200}
           />
         </a>
 
@@ -121,16 +123,36 @@ const ProductsType = () => {
           <h2 className={styles["brands"]}>Brendlar</h2>
           <div className={styles["brand-image-container"]}>
             <a href="#">
-              <img src={brand1.src} alt="brand-image" />
+              <Image
+                src={brand1.src}
+                alt="brand-image"
+                width={100}
+                height={100}
+              />
             </a>
             <a href="#">
-              <img src={brand1.src} alt="brand-image" />
+              <Image
+                src={brand1.src}
+                alt="brand-image"
+                width={100}
+                height={100}
+              />
             </a>
             <a href="#">
-              <img src={brand1.src} alt="brand-image" />
+              <Image
+                src={brand1.src}
+                alt="brand-image"
+                width={100}
+                height={100}
+              />
             </a>
             <a href="#">
-              <img src={brand1.src} alt="brand-image" />
+              <Image
+                src={brand1.src}
+                alt="brand-image"
+                width={100}
+                height={100}
+              />
             </a>
           </div>
         </div>
@@ -306,13 +328,6 @@ const ProductsType = () => {
                 </li>
               </ul>
             </div>
-            <div>
-              <ul className={styles["table-links"]}>
-                <li>
-                  <a href="#">Anestetik vositalar</a>
-                </li>
-              </ul>
-            </div>
 
             <div>
               <ul className={styles["table-links"]}>
@@ -366,6 +381,96 @@ const ProductsType = () => {
               </ul>
             </div>
 
+            <div>
+              <ul className={styles["table-links"]}>
+                <li>
+                  <a href="#">Anestetik vositalar</a>
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <ul className={styles["table-links"]}>
+                <li>
+                  <a href="#">Anestetik vositalar</a>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <ul className={styles["table-links"]}>
+                <li>
+                  <a href="#">Anestetik vositalar</a>
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <ul className={styles["table-links"]}>
+                <li>
+                  <a href="#">Anestetik vositalar</a>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <ul className={styles["table-links"]}>
+                <li>
+                  <a href="#">Anestetik vositalar</a>
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <ul className={styles["table-links"]}>
+                <li>
+                  <a href="#">Anestetik vositalar</a>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <ul className={styles["table-links"]}>
+                <li>
+                  <a href="#">Anestetik vositalar</a>
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <ul className={styles["table-links"]}>
+                <li>
+                  <a href="#">Anestetik vositalar</a>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <ul className={styles["table-links"]}>
+                <li>
+                  <a href="#">Anestetik vositalar</a>
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <ul className={styles["table-links"]}>
+                <li>
+                  <a href="#">Anestetik vositalar</a>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <ul className={styles["table-links"]}>
+                <li>
+                  <a href="#">Anestetik vositalar</a>
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <ul className={styles["table-links"]}>
+                <li>
+                  <a href="#">Anestetik vositalar</a>
+                </li>
+              </ul>
+            </div>
             <div>
               <ul className={styles["table-links"]}>
                 <li>
@@ -467,7 +572,7 @@ const ProductsType = () => {
         </div>
 
         <div className={styles["alpha-container"]}>
-          <h2>Dori vositalari alifbo ko'rsatkichi</h2>
+          <h2>Dori vositalari alifbo ko&rsquo;rsatkichi</h2>
           <div className={styles["alphabet"]}>
             <span>A</span>
             <span>B</span>

@@ -4,7 +4,7 @@
 }
 
 .title {
-  font-size: 24px;
+  font-size: 30px;
   font-weight: 700;
   color: #111827;
   margin-bottom: 24px;
@@ -20,7 +20,7 @@
 .card {
   border-radius: 16px;
   padding: 20px;
-  min-height: 246px;
+  max-height: 246px;
   position: relative;
   overflow: hidden;
   display: flex;
@@ -31,27 +31,26 @@
 .contentWrapper {
   display: flex;
   flex-direction: column;
-  height: 100%;
-  z-index: 1;
 }
 
 .cardTitle {
+  margin: 0;
   font-size: 20px;
   font-weight: 600;
   color: #111827;
-  margin: 0 0 10px 0;
 }
 
 .description {
-  font-size: 15px;
+  margin: 0;
+  margin-top: 5px;
+  margin-bottom: 118px;
+  font-size: 12px;
   color: #4b5563;
-  margin: 0 0 auto 0;
   line-height: 1.5;
   max-width: 70%;
 }
 
 .link {
-  margin-top: 16px;
   display: inline-flex;
   align-items: center;
   font-size: 15px;
@@ -63,10 +62,6 @@
   background-color: white;
   padding: 10px 16px;
   border-radius: 100px;
-}
-
-.link:hover {
-  text-decoration: underline;
 }
 
 .arrow {

@@ -1,8 +1,14 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
   reactStrictMode: true,
+  allowedDevOrigins: ["http://45.76.94.219"],
+
+  experimental: {},
+
+  images: {
+    domains: ["main.med24.uz", "med24.uz", "45.76.94.219"],
+  },
   async rewrites() {
     return [
       {

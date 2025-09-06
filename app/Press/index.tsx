@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import Breadcrumb from "@/components/Breadcrumb";
 import SearchBar from "@/components/SearchBar";
 import Button from "@/components/Button";
+import Image from "next/image";
 import styles from "./Press.module.css";
 
 const PressPage = () => {
@@ -11,7 +12,7 @@ const PressPage = () => {
   const pressArticles = [
     {
       id: "1",
-      title: "Nervi uje ne te",
+      title: "Med24.uz - Toshkentdagi eng yaxshi klinikalar va shifokorlar",
       url: "https://repost.uz/health/nervi-uje-ne-te",
       imageUrl:
         "https://med24.uz/_ipx/f_webp&q_80/images/ef99a5769f4c3c70c465fd8179b4cf25.webp",
@@ -20,7 +21,7 @@ const PressPage = () => {
     },
     {
       id: "2",
-      title: "Vbiraem gde sdelat mrt v Tashkente",
+      title: "Toshkentda MRT qayerda qilishni tanlaymiz",
       url: "https://review.uz/post/vbiraem-gde-sdelat-mrt-v-tashkente",
       imageUrl:
         "https://med24.uz/_ipx/f_webp&q_80/images/2679743ce9bb0db2957a2e93dcce7e8b.webp",
@@ -29,7 +30,8 @@ const PressPage = () => {
     },
     {
       id: "3",
-      title: "Tibbiy xizmat kompyuterlashmoqda",
+      title:
+        "Tibbiy xizmat kompyuterlashmoqda - zarur shifokorlarni topishning oson va tez usuli",
       url: "https://zarnews.uz/post/tibbiy-xizmat-kompyuterlashmoqda-zarur-shifokorlarni-topishning-oson-va-tez-usuli",
       imageUrl:
         "https://med24.uz/_ipx/f_webp&q_80/images/73b83c83a355fc527bdd3f93692393bc.webp",
@@ -38,21 +40,12 @@ const PressPage = () => {
     },
     {
       id: "4",
-      title: "Udobnyy poisk klinik",
+      title: "Qulay klinika qidiruvi onlayn - Med24.uz yordamida",
       url: "https://www.thevista.ru/page30489-udobnyy_poisk_klinik_onlayn_s_pomoshchyu_kliniki24uz",
       imageUrl:
         "https://med24.uz/_ipx/f_webp&q_80/images/c8f4c0d5ea0a33a8192be02a5ee73e59.webp",
       date: "2025-09-04",
       source: "Thevista.ru",
-    },
-    {
-      id: "5",
-      title: "Shifokor topish endi tez va oson ",
-      url: "https://xs.uz/uz/post/shifokor-topish-endi-tez-va-oson",
-      imageUrl:
-        "https://med24.uz/_ipx/f_webp&q_80/images/f1c7b5c5c7c0a0f4b7a5c5c5c5c5c5c5.webp",
-      date: "2025-09-04",
-      source: "Xalq So'zi",
     },
   ];
 
@@ -67,7 +60,10 @@ const PressPage = () => {
   return (
     <div className={styles.container}>
       <Breadcrumb
-        items={[{ label: "Asosiy", href: "/" }, { label: "Biz haqimizda" }]}
+        items={[
+          { label: "Asosiy", href: "/" },
+          { label: "Biz haqimizda matbuot" },
+        ]}
       />
 
       <div className={styles.searchSection}>
@@ -80,11 +76,8 @@ const PressPage = () => {
         <Button name="Qidirish" onClick={handleSearchClick} variant="primary" />
       </div>
 
-      <div className={styles.header}>
-        <h1 className={styles.title}>Yangiliklar</h1>
-      </div>
-
       <div className={styles.grid}>
+        <h2 className={styles.title}>Biz haqimizda matbuot</h2>
         {pressArticles.map((article) => (
           <a
             key={article.id}
@@ -94,10 +87,12 @@ const PressPage = () => {
             className={styles.card}
           >
             <div className={styles.imageContainer}>
-              <img
+              <Image
                 src={article.imageUrl}
                 alt={article.title}
                 className={styles.image}
+                width={300}
+                height={200}
                 onError={(e) => {
                   const target = e.target as HTMLImageElement;
                   target.style.display = "none";

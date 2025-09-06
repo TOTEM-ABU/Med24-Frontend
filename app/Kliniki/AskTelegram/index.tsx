@@ -8,7 +8,7 @@ const AskTelegram = () => {
     <div className={styles.wrapper}>
       <div className={styles.card}>
         <div className={styles.texts}>
-          <h3>Kerakli ma'lumot topmadingizmi?</h3>
+          <h3>Kerakli ma&apos;lumot topmadingizmi?</h3>
           <p>
             Bizga Telegramda yozing, biz sizga shifokor topib, qabuliga yozib
             beramiz

@@ -10,3 +10,8 @@ export async function getPromotionById (id: string) {
         const res = await api.get(`/promotions/${id}`)
         return res.data
 }
+
+export async function getAllServices () {
+        const res = await api.get(`/services`)
+        return res.data
+}

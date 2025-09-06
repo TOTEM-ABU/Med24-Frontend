@@ -89,7 +89,7 @@ const LatestReviews: React.FC = () => {
 
   return (
     <div className={styles.wrapper}>
-      <h3 className={styles.title}>Klinikalarning so'nggi sharhlari</h3>
+      <h3 className={styles.title}>Klinikalarning songgi sharhlari</h3>
       {isLoading && <p>Yuklanmoqda...</p>}
       {isError && <p>Xatolik yuz berdi</p>}
       <div className={styles.grid}>

@@ -53,16 +53,16 @@ const fetchClinicBySlug = async (slug: string) => {
     "promotions",
   ].join(",");
 
-  // 1) Try dedicated by-slug endpoint if backend supports it
   try {
     const { data } = await api.get(
       `/clinics/by-slug/${slug}?include=${include}`
     );
     const direct = data?.data ?? data;
     if (direct && typeof direct === "object" && direct.id) return direct;
-  } catch (e) {}
+  } catch (e) {
+    console.log(e);
+  }
 
-  // 2) Fetch a list and match using the same slug strategy used in cards
   try {
     const { data } = await api.get(`/clinics`, {
       params: { include, limit: 1000 },
@@ -72,9 +72,10 @@ const fetchClinicBySlug = async (slug: string) => {
       (c) => c?.name && slugify(String(c.name)) === slug
     );
     if (matched) return matched;
-  } catch (e) {}
+  } catch (e) {
+    console.log(e);
+  }
 
-  // 3) Last resort: search by decoded name token
   try {
     const token = decodeURIComponent(String(slug).replace(/-/g, " "));
     const { data } = await api.get(`/clinics`, {
@@ -82,7 +83,9 @@ const fetchClinicBySlug = async (slug: string) => {
     });
     const list: BasicClinic[] = data?.data ?? [];
     if (Array.isArray(list) && list.length) return list[0];
-  } catch (e) {}
+  } catch (e) {
+    console.log(e);
+  }
 
   return null;
 };
@@ -91,17 +94,14 @@ const ClinicDetailPage: React.FC = () => {
   const router = useRouter();
   const { slug } = router.query as { slug?: string };
 
-  const {
-    data: clinic,
-    isLoading,
-    isError,
-  } = useQuery({
+  const { data: clinic } = useQuery({
     queryKey: ["clinic", slug],
     queryFn: () => fetchClinicBySlug(slug as string),
     enabled: Boolean(slug),
   });
 
   const clinicId = useMemo(() => clinic?.id as string | undefined, [clinic]);
+  console.log("Clinic ID:", clinicId);
 
   useEffect(() => {
     if (clinic) {

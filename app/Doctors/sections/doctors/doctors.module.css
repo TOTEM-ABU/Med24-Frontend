@@ -1,0 +1,29 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 8px;
+  margin: 0 auto;
+  width: 894px;
+}
+
+.selections {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.titleWrapper {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+}
+
+.totalCount {
+  font-size: 16px;
+  color: #757575;
+  position: relative;
+  top: 3px;
+}

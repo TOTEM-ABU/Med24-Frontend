@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 import { PopularClinics } from "@/components";
 import styles from "./KlinikiName.module.css";
 import Breadcrumb from "@/components/Breadcrumb";
@@ -70,7 +71,6 @@ const ReviewModal = ({
       return;
     }
 
-    // Just show toast and close modal
     toast.success(
       "Sizning sharhingiz muvaffaqiyatli yuborildi. Moderatsiyadan keyin ko'rib chiqamiz."
     );
@@ -321,8 +321,8 @@ const KlinikiNameHeader: React.FC<{ clinic: ClinicHeaderProps }> = ({
     return grouped;
   }, [clinicservices]);
 
-  const [allReviews, setAllReviews] = useState(reviews || []);
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [allReviews] = useState(reviews || []);
+  const [isSubmitting] = useState(false);
 
   const handleSubmitReview = () => {
     console.log("Review submitted (not saved to database)");
@@ -375,19 +375,23 @@ const KlinikiNameHeader: React.FC<{ clinic: ClinicHeaderProps }> = ({
         <div className={styles.mainLayout}>
           <div className={styles.leftContainer}>
             <div className={styles.backgroundImageSection}>
-              <img
+              <Image
                 className={styles.backgroundImage}
                 src="https://main.med24.uz/uploads/clinic_images/group0/part0/591/1000x500.webp"
                 alt={name || "Clinic Background"}
+                width={1000}
+                height={500}
               />
               <div className={styles.clinicInfoOverlay}>
-                <img
+                <Image
                   className={styles.clinicLogo}
                   src={
                     logo_url ||
                     "https://main.med24.uz/uploads/clinics/group0/part3/3863/200x.webp"
                   }
                   alt={name || "Clinic Logo"}
+                  width={200}
+                  height={200}
                 />
                 <div className={styles.clinicInfo}>
                   <h1 className={styles.clinicName}>{name}</h1>
@@ -643,13 +647,11 @@ const KlinikiNameHeader: React.FC<{ clinic: ClinicHeaderProps }> = ({
               </div>
             </div>
 
-            {/* 2. Klinikaning ixtisoslashuvi - pricing section only */}
             <div className={styles.servicesSection}>
               <h3 className={styles.servicesTitle}>
                 Klinikaning ixtisoslashuvi &quot;{name || "Klinika"}&quot;
               </h3>
 
-              {/* Services from doctors specialties - BEFORE pricing */}
               <div className={styles.servicesList}>
                 {uniqueSpecialties && uniqueSpecialties.length > 0 ? (
                   uniqueSpecialties.map((specialty, index) => (
@@ -1189,20 +1191,20 @@ const KlinikiNameHeader: React.FC<{ clinic: ClinicHeaderProps }> = ({
                         )}
                       </div>
                     </div>
-                    <div className={styles.reviewRating}>
-                      {[1, 2, 3, 4, 5].map((star) => (
-                        <span
-                          key={star}
-                          className={`${styles.reviewStar} ${
-                            star <= (review.rating || 0)
-                              ? styles.reviewStarActive
-                              : ""
-                          }`}
-                        >
-                          ★
-                        </span>
-                      ))}
-                    </div>
+                  </div>
+                  <div className={styles.reviewRating}>
+                    {[1, 2, 3, 4, 5].map((star) => (
+                      <span
+                        key={star}
+                        className={`${styles.reviewStar} ${
+                          star <= (review.rating || 0)
+                            ? styles.reviewStarActive
+                            : ""
+                        }`}
+                      >
+                        ★
+                      </span>
+                    ))}
                   </div>
                   {review.comment && (
                     <p className={styles.reviewComment}>{review.comment}</p>
@@ -1229,10 +1231,12 @@ const KlinikiNameHeader: React.FC<{ clinic: ClinicHeaderProps }> = ({
                 style={index === 0 ? { gridColumn: "span 2" } : undefined}
               >
                 <p className={styles.doctorTypeName}>{item.name}</p>
-                <img
+                <Image
                   src={item.image}
                   alt={`${item.name} icon`}
                   className={styles.doctorTypeImage}
+                  width={100}
+                  height={100}
                 />
               </div>
             ))}

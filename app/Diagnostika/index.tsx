@@ -156,10 +156,8 @@ const Diagnostika = () => {
 
         {promotions?.length ? (
           <div style={{ marginTop: 84, marginBottom: 20 }}>
-            <PromotionsSwiper
-              title="Aksiya va chegirmalar"
-              promotions={promotions}
-            />
+            <h2>Aksiya va chegirmalar</h2>
+            <PromotionsSwiper promotions={promotions} />
           </div>
         ) : null}
 
@@ -177,17 +175,20 @@ const Diagnostika = () => {
           style={{
             marginTop: 80,
             marginBottom: 20,
-            borderTop: "1px solid rgb(117, 117, 117)",
-            borderBottom: "1px solid rgb(117, 117, 117)",
+            borderTop: "1px solid #e5e7eb",
+            borderBottom: "1px solid #e5e7eb",
           }}
         >
           <h2
             style={{
-              marginTop: 80,
-              fontSize: "24px",
-              fontWeight: "700",
+              padding: 0,
+              margin: 0,
+              paddingTop: 30,
+              marginTop: 30,
+              marginBottom: 20,
+              fontSize: 24,
+              fontWeight: 700,
               color: "#333",
-              marginBottom: "20px",
             }}
           >
             Shifokorlarning keng tarqalgan mutaxassisliklari
@@ -222,9 +223,13 @@ const Diagnostika = () => {
           >
             <h2
               style={{
-                fontSize: "24px",
-                fontWeight: "700",
-                marginBottom: "20px",
+                padding: 0,
+                margin: 0,
+                paddingTop: 30,
+                marginTop: 30,
+                marginBottom: 20,
+                fontSize: 24,
+                fontWeight: 600,
               }}
             >
               Keng tarqalgan tibbiy xizmatlar

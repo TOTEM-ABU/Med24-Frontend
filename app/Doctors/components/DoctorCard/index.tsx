@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./DoctorCard.module.css";
 import Image from "next/image";
-import Typography from "../Typography";
+// import Typography from "../Typography";
 import Link from "next/link";
 
 interface DoctorCardProps {
@@ -9,8 +9,8 @@ interface DoctorCardProps {
   fullname?: string;
   type?: string;
   patients?: number;
-  experience?: number; // Years of experience
-  qualification?: string; // Doctor qualification/status
+  experience?: number;
+  qualification?: string;
   priceOne?: number | string;
   priceTwo?: number | string;
   clinicNumber?: number | string;
@@ -40,7 +40,11 @@ const DoctorCard: React.FC<DoctorCardProps> = ({
       <div className={styles.leftSide}>
         <div className={styles.doctorImage}>
           <Image
-            src={photo ? `/Images/doctors/${photo}.webp` : "/doctor.jpg"}
+            src={
+              photo
+                ? `/Images/doctors/${photo}.webp`
+                : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqO3c5NjJzSAd5N1GM-UNQyjxojD3z7M9yhQ&s"
+            }
             alt={fullname || "Doctor"}
             width={72}
             height={72}

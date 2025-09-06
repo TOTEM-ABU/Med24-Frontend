@@ -9,8 +9,8 @@ import { FaFile } from "react-icons/fa6";
 import isVerified from "./images/uzb.webp";
 import { MdOutlineKeyboardArrowDown } from "react-icons/md";
 import DoctorTypeCard from "@/components/DoctorTypeCard";
-import heart from "../ProductsPage/images/heart.png";
 import { DOCTOR_SPECIALTIES } from "@/lib/constants";
+import Image from "next/image";
 
 const Product = () => {
   const [activeTab, setActiveTab] = useState(0);
@@ -75,15 +75,15 @@ const Product = () => {
             </div>
           </div>
         );
-      case 1: // Qo'llanma
+      case 1: // Qo'll
         return (
           <div className={styles["tab-content"]}>
             <h2 className={styles["tab-heading"]}>
-              Ko'rsatmalar ENDOMASTIN kapsulalar kukuni
+              Ko&apos;rsatmalar ENDOMASTIN kapsulalar kukuni
             </h2>
 
             <div className={styles["instruction-section"]}>
-              <h3>Qo'llanma</h3>
+              <h3>Qo&apos;llanma</h3>\r
               <p>
                 Рекомендуется при лечении и профилактике: Мастопатии,
                 Эндометриоза и аденомиоза, Миомы матки, Гиперплазии, эндометрия
@@ -93,7 +93,7 @@ const Product = () => {
             </div>
 
             <div className={styles["instruction-section"]}>
-              <h3>Foydalanish uchun ko'rsatmalar</h3>
+              <h3>Foydalanish uchun ko&apos;rsatmalar</h3>
               <p>
                 Эндомастин рекомендуется при лечении следующих заболеваний: -
                 мастопатия - эндометриоз - аденомиоз - миомы матки - гиперплазия
@@ -114,7 +114,7 @@ const Product = () => {
             </div>
 
             <div className={styles["instruction-section"]}>
-              <h3>Farmakologik ta'sir</h3>
+              <h3>Farmakologik ta&apos;sir</h3>
               <p>
                 Индол - является универсальным корректором гиперпластических
                 патологических процессов в органах и тканях женской
@@ -145,7 +145,7 @@ const Product = () => {
             </div>
 
             <div className={styles["instruction-section"]}>
-              <h3>Yon ta'siri</h3>
+              <h3>Yon ta&apos;siri</h3>
               <p>
                 Возможно в редких случаях аллергические реакции при повышенной
                 чувствительности к отдельным ингредиентам препарата. При
@@ -199,12 +199,10 @@ const Product = () => {
             </div>
           </div>
         );
-      case 3: // Sharhlar
+      case 3:
         return (
           <div className={styles["tab-content"]}>
-            <div className={styles["empty-reviews"]}>
-              {/* Empty content for reviews tab */}
-            </div>
+            <div className={styles["empty-reviews"]}></div>
           </div>
         );
       default:
@@ -235,12 +233,22 @@ const Product = () => {
           <h2 className={styles["main-text"]}>ENDOMASTIN kapsulalar</h2>
           <div className={styles["details-container"]}>
             <div className={styles["image-container"]}>
-              <img src={medImg1.src} alt="product-image" />
+              <Image
+                src={medImg1.src}
+                alt="product-image"
+                width={200}
+                height={200}
+              />
             </div>
             <div className={styles["imgs-container"]}>
               <ul>
                 <li>
-                  <img src={medImg1.src} alt="product-image" />
+                  <Image
+                    src={medImg1.src}
+                    alt="product-image"
+                    width={200}
+                    height={200}
+                  />
                 </li>
               </ul>
             </div>
@@ -256,13 +264,18 @@ const Product = () => {
                 </div>
                 <div className={styles["card-header"]}>
                   <FaFile />
-                  <span>Ro'yxatda mavjud</span>
+                  <span>Ro&apos;yxatda mavjud</span>
                 </div>
               </div>
               <div className={styles["second-container"]}>
-                <h2>Mahsulot haqida ma'lumot</h2>
+                <h2>Mahsulot haqida ma&apos;lumot</h2>
                 <a href="#">
-                  <img src={isVerified.src} alt="isverBtn" />
+                  <Image
+                    src={isVerified.src}
+                    alt="isverBtn"
+                    width={200}
+                    height={200}
+                  />
                 </a>
               </div>
 
@@ -274,7 +287,7 @@ const Product = () => {
                   </strong>
                 </p>
                 <p className={styles["desc-text"]}>
-                  Ishlab chiqaruvchi: <span>DAMAR (O'zbekiston)</span>
+                  Ishlab chiqaruvchi: <span>DAMAR (O&apos;zbekiston)</span>
                 </p>
                 <p className={styles["desc-text"]}>
                   Saqlash sharoitlari:{" "}
@@ -293,7 +306,7 @@ const Product = () => {
                   </span>
                 </p>
                 <p className={styles["price"]}>
-                  Narx: <span>566 000 so'm</span>
+                  Narx: <span>566 000 so&apos;m</span>
                 </p>
               </div>
             </div>

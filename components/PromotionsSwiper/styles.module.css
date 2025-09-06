@@ -47,22 +47,23 @@
   position: relative;
   scroll-snap-align: start;
   cursor: pointer;
+  overflow: hidden;
 }
 
 .badge {
   position: absolute;
-  top: -28px;
-  right: -10px;
-  width: 80px;
-  height: 80px;
+  top: 0;
+  right: 0;
+  width: 65px;
+  height: 65px;
   background: #ef4444;
   color: #fff;
-  border-radius: 9999px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: 700;
   font-size: 14px;
+  border-bottom-left-radius: 60px;
 }
 
 .banner {
