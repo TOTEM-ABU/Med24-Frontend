@@ -97,6 +97,7 @@ const Footer = () => {
       </div>
 
       {/* Bottom Footer */}
+      <div className='container'>
       <div className={styles.bottomFooter}>
         <div className={styles.bottomContent}>
           <div className={styles.copyright}>
@@ -112,6 +113,8 @@ const Footer = () => {
           </div>
         </div>
       </div>
+      </div>
+
     </footer>
   );
 };
