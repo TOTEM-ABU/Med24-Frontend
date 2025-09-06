@@ -1,5 +1,5 @@
 .footer {
-  background-color: #f9fafb;
+  background-color: #ffffff;
   color: #4b5563;
   border-top: 1px solid #e5e7eb;
 }
@@ -21,13 +21,23 @@
 @media (min-width: 768px) {
   .footerGrid {
     grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
   }
 }
 
 @media (min-width: 1024px) {
   .footerGrid {
     grid-template-columns: 2fr 1.5fr 1.5fr 1.5fr;
+    gap: 3rem;
   }
+  
+  .footerContent {
+    padding: 4rem 1rem;
+  }
+}
+
+.logoSection {
+  margin-bottom: 1rem;
 }
 
 .logoText {
@@ -62,6 +72,7 @@
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  margin-top: 1rem;
 }
 
 .address p, .address a {
@@ -150,18 +161,18 @@
 
 .qrCode p {
   font-size: 0.875rem;
-  color: #fff;
+  color: #6b7280;
   max-width: 250px;
 }
 
 /* Bottom Footer */
 .bottomFooter {
-  background-color: #fff;
+  background-color: #f8f9fa;
   border-top: 1px solid #e5e7eb;
 }
 
 .bottomContent {
-  max-width: 1052px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 1.5rem 1rem;
   display: flex;
@@ -181,15 +192,23 @@
   text-align: center;
 }
 
+@media (min-width: 1024px) {
+  .copyright {
+    text-align: left;
+  }
+}
+
 .copyright p {
-  color: #fff;
+  color: #6b7280;
   font-size: 0.875rem;
   margin-bottom: 0.25rem;
 }
 
 .disclaimer {
-  color: #fff;
+  color: #9ca3af;
   font-size: 0.75rem;
+  max-width: 600px;
+  line-height: 1.4;
 }
 
 .bottomLinks {
