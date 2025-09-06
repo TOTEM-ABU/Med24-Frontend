@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Typography } from "@/app/Doctors/components";
 import styles from "./ServicesInTashkent.module.css";
 import { getAllServices } from "@/api/services/services.api";
+import Link from "next/link";
 
 // Interfeyslar API ma'lumotlariga moslashtirildi
 interface ClinicService {
@@ -27,11 +28,9 @@ const ServicesInTashkent = () => {
   const [services, setServices] = useState<Service[]>([]);
 
   useEffect(() => {
-    // API dan ma'lumotlarni olish
     getAllServices()
       .then((res) => {
         console.log("API dan kelgan:", res);
-        // API massivni `res.data` ichida qaytaradi deb taxmin qilamiz
         setServices(res.data || []);
       })
       .catch((error) => {
@@ -39,7 +38,6 @@ const ServicesInTashkent = () => {
       });
   }, []);
 
-  // Kategoriyalar bo'yicha xizmatlarni guruhlash
   const groupedServices = services.reduce((acc, service) => {
     const category = service.category;
     if (!acc[category]) {
@@ -51,20 +49,20 @@ const ServicesInTashkent = () => {
 
   return (
     <div className={styles.servicesInTashkent}>
-      <Typography size="26" bottom="20">
+      <Typography size="26" bottom="20" weight="600">
         Tibbiy xizmatlar Toshkentda
       </Typography>
       <div className={styles.servicesBlock}>
         {Object.keys(groupedServices).map((category, idx) => (
           <div key={idx} className={styles.oneColumn}>
-            <Typography size="18" weight="600">
+            <Typography size="18" weight="600" bottom="24">
               {category}
             </Typography>
             {groupedServices[category].map((service, serviceIdx) => (
               <div key={serviceIdx} className={styles.serviceItem}>
-                <Typography size="16" weight="500">
+                <Link href={`/uslugi/${service.id}`} className={styles.link}>
                   {service.name}
-                </Typography>
+                </Link>
               </div>
             ))}
           </div>

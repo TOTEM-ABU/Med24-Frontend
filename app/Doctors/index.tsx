@@ -5,6 +5,8 @@ import Link from "next/link";
 import CommentsList from "./sections/comments";
 import Doctors from "./sections/doctors";
 import Catalog from "./sections/catalog";
+import { Breadcrumb, PopularClinics } from "@/components";
+import CommonlyServices from "./sections/commonServices";
 
 const DoctorsPage = () => {
   const doctorsType = [
@@ -47,6 +49,14 @@ const DoctorsPage = () => {
 
   return (
     <div className={styles.miniContainer}>
+      <div className={styles.breadContainer}>
+        <Breadcrumb
+          items={[
+            { label: "Bosh sahifa", href: "/" },
+            { label: "Shifokorlar", href: "/doctors" },
+          ]}
+        />
+      </div>
       <div className={styles.searchSection}>
         <Input inputPlaceholder="Shifokor ismi, mutaxassislik nomini yoki dori-darmon kiriting" />
         <Button>Qidirish</Button>
@@ -77,9 +87,6 @@ const DoctorsPage = () => {
         </ul>
       </div>
       <Catalog />
-      <Typography size="28" weight="600" bottom="30">
-        Toshkentda shifokolar mutaxassisligi bo`yicha
-      </Typography>
       <div className={styles.popularDoctors}>
         <Doctors />
         <div className={styles.throwTelegram}>
@@ -97,6 +104,7 @@ const DoctorsPage = () => {
           </button>
         </div>
       </div>
+      <PopularClinics />
       <div className={styles.commentSection}>
         <Typography size="24" weight="500" bottom="20">
           So`nggi sharhlar
@@ -105,40 +113,7 @@ const DoctorsPage = () => {
           <CommentsList />
         </div>
       </div>
-      <div className={styles.commonServices}>
-        <Typography size="22" bottom="24" weight="600">
-          Keng tarqalgan tibbiy xizmatlar
-        </Typography>
-        <div className={styles.commonServicesLinks}>
-          <Link href="/" className={styles.navLink}>
-            Breket o`rnatish
-          </Link>
-          <Link href="/" className={styles.navLink}>
-            Buyrakdagi toshlarni olib tashlash
-          </Link>
-          <Link href="/" className={styles.navLink}>
-            Doppler (ultratovushli doppler)
-          </Link>
-          <Link href="/" className={styles.navLink}>
-            Elektroansefalografika (EEG)
-          </Link>
-          <Link href="/" className={styles.navLink}>
-            Exokardiyografiya (EXOKG)
-          </Link>
-          <Link href="/" className={styles.navLink}>
-            Gastroskopiya
-          </Link>
-          <Link href="/" className={styles.navLink}>
-            Gemoroyni lazer yordamida olib tashlash
-          </Link>
-          <Link href="/" className={styles.navLink}>
-            Hollarni olib tashlash
-          </Link>
-          <Link href="/" className={styles.navLink}>
-            Ko`z lazer operatsiyasi
-          </Link>
-        </div>
-      </div>
+      <CommonlyServices />
       <div className={styles.details}>
         <Typography size="28" bottom="20">
           Shifokor qabuliga onlayn yozilish
