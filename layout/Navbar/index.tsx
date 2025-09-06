@@ -22,9 +22,9 @@ const Navbar = () => {
         <div className={styles.topBar}>
           <div className={styles.topBarContent}>
             <div className={styles.topBarLeft}>
-              <span className={styles.addClinicText}>
+              <Link href={"https://t.me/kliniki24uz_bot"} className={styles.addClinicText}>
                 Klinika qo&apos;shish
-              </span>
+              </Link>
             </div>
             <div className={styles.topBarRight}>
               {/* Language Selector */}
@@ -139,9 +139,6 @@ const Navbar = () => {
               </Link>
               <Link href="/articles" className={styles.navLink}>
                 Maqolalar
-              </Link>
-              <Link href="/News" className={styles.navLink}>
-                News
               </Link>
               <Link href="/products" className={styles.navLink}>
                 Dorilar
