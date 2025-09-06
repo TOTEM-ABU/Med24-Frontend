@@ -66,7 +66,7 @@ const Footer = () => {
             <h3>Xizmatlar</h3>
             <ul className={styles.linksList}>
               <li><Link href="/Kliniki">Klinikalar</Link></li>
-              <li><Link href="/News">Yangiliklar</Link></li>
+              <li><Link href="/press">Yangiliklar</Link></li>
               <li><Link href="/#articles">Maqolalar</Link></li>
               <li><Link href="/products">Apteka.uz</Link></li>
               <li><Link href="/#avitsenna">Avitsenna.uz</Link></li>
