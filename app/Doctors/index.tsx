@@ -12,6 +12,16 @@ import { useGetAllClinics } from "@/hooks/useClinics";
 const DoctorsPage = () => {
   const { data: clinics = [] } = useGetAllClinics();
 
+  const toSlug = (value: string) =>
+    (value || "")
+      .trim()
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/\p{Diacritic}/gu, "")
+      .replace(/\s+/g, "-")
+      .replace(/[^a-z0-9-]/g, "-")
+      .replace(/-+/g, "-");
+
   const doctorsType = [
     "Akusher",
     "Allergolog",
@@ -56,7 +66,7 @@ const DoctorsPage = () => {
         <Breadcrumb
           items={[
             { label: "Bosh sahifa", href: "/" },
-            { label: "Shifokorlar", href: "/doctors" },
+            { label: "Shifokorlar", href: "/Doctors" },
           ]}
         />
       </div>
@@ -70,22 +80,34 @@ const DoctorsPage = () => {
         </Typography>
         <ul>
           <li>
-            <CatalogCard title="kardiolog">Kardiolog</CatalogCard>
+            <Link href={`/Doctors/${toSlug("Kardiolog")}`} aria-label="Kardiolog mutaxassislarini ko'rish">
+              <CatalogCard title="kardiolog">Kardiolog</CatalogCard>
+            </Link>
           </li>
           <li>
-            <CatalogCard title="ortoped">Ortoped</CatalogCard>
+            <Link href={`/Doctors/${toSlug("Ortoped")}`} aria-label="Ortoped mutaxassislarini ko'rish">
+              <CatalogCard title="ortoped">Ortoped</CatalogCard>
+            </Link>
           </li>
           <li>
-            <CatalogCard title="pulmonolog">Pulmonolog</CatalogCard>
+            <Link href={`/Doctors/${toSlug("Pulmonolog")}`} aria-label="Pulmonolog mutaxassislarini ko'rish">
+              <CatalogCard title="pulmonolog">Pulmonolog</CatalogCard>
+            </Link>
           </li>
           <li>
-            <CatalogCard title="stomotolog">Stomotolog</CatalogCard>
+            <Link href={`/Doctors/${toSlug("Stomotolog")}`} aria-label="Stomotolog mutaxassislarini ko'rish">
+              <CatalogCard title="stomotolog">Stomotolog</CatalogCard>
+            </Link>
           </li>
           <li>
-            <CatalogCard title="terapevt">Terapevt</CatalogCard>
+            <Link href={`/Doctors/${toSlug("Terapevt")}`} aria-label="Terapevt mutaxassislarini ko'rish">
+              <CatalogCard title="terapevt">Terapevt</CatalogCard>
+            </Link>
           </li>
           <li>
-            <CatalogCard title="travmatolog">Travmatolog</CatalogCard>
+            <Link href={`/Doctors/${toSlug("Travmatolog")}`} aria-label="Travmatolog mutaxassislarini ko'rish">
+              <CatalogCard title="travmatolog">Travmatolog</CatalogCard>
+            </Link>
           </li>
         </ul>
       </div>

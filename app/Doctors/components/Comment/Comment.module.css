@@ -49,3 +49,9 @@
   color: #ccc; /* Kulrang yulduz rangi */
   font-size: 24px; /* Yulduz o'lchami */
 }
+
+@media (max-width: 640px) {
+  .commentContainer {
+    max-width: 100%;
+  }
+}

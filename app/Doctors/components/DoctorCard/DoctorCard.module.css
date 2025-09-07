@@ -134,6 +134,21 @@
   gap: 8px;
 }
 
+@media (max-width: 640px) {
+  .doctorCardContainer {
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .rightSide {
+    width: 100%;
+  }
+
+  .experienceSection {
+    flex-wrap: wrap;
+  }
+}
+
 .callToClinic {
   display: flex;
   justify-content: center;
