@@ -4,7 +4,7 @@ import Image from "next/image";
 import styles from "./PopularClinics.module.css";
 
 interface PopularClinicsProps {
-  clinics: Array<{
+  clinics?: Array<{
     id: string;
     name: string;
     logo_url?: string;

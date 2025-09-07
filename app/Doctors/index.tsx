@@ -53,7 +53,7 @@ const DoctorsPage = () => {
         <Breadcrumb
           items={[
             { label: "Bosh sahifa", href: "/" },
-            { label: "Shifokorlar", href: "/doctors" },
+            { label: "Shifokorlar", href: "/Doctors" },
           ]}
         />
       </div>
@@ -104,7 +104,7 @@ const DoctorsPage = () => {
           </button>
         </div>
       </div>
-      <PopularClinics />
+      <PopularClinics clinics={[]} />
       <div className={styles.commentSection}>
         <Typography size="24" weight="500" bottom="20">
           So`nggi sharhlar

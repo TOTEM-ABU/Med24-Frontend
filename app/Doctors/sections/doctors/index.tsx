@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
 import { getAllDoctors } from "@/api/doctors/doctors.api";
 import { getAllRegions } from "@/api/regions/regions.api";
 import { DoctorCard, Select, Typography } from "../../components";
@@ -46,7 +46,6 @@ interface SelectProps {
 }
 
 const Doctors = () => {
-  const router = useRouter();
   const [doctors, setDoctors] = useState<Doctor[]>([]);
   const [filteredDoctors, setFilteredDoctors] = useState<Doctor[]>([]);
   const [regions, setRegions] = useState<Region[]>([]);
@@ -164,10 +163,6 @@ const Doctors = () => {
     setFilters((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleDoctorClick = (doctorId: string) => {
-    router.push(`/doctors/${doctorId}`);
-  };
-
   return (
     <div className={styles.container}>
       <div className={styles.titleWrapper}>
@@ -221,19 +216,19 @@ const Doctors = () => {
         <>
           <ul className={styles.doctorsList}>
             {filteredDoctors.slice(0, visibleCount).map((doctor) => (
-              <li
-                key={doctor.id}
-                onClick={() => handleDoctorClick(doctor.id)}
-                aria-label={`Shifokor ${doctor.name} ${doctor.surname} haqida batafsil`}
-                className={styles.doctorCard}
-              >
-                <DoctorCard
-                  fullname={`${doctor.name} ${doctor.surname}`}
-                  type={doctor.Specialities?.name || "Mutaxassislik yo'q"}
-                  experience={doctor.experience_years}
-                  photo={doctor.image_url}
-                  clinicPhoto="m-clinic"
-                />
+              <li key={doctor.id} className={styles.doctorCard}>
+                <Link
+                  href={`/Doctors/${doctor.id}`}
+                  aria-label={`Shifokor ${doctor.name} ${doctor.surname} haqida batafsil`}
+                >
+                  <DoctorCard
+                    fullname={`${doctor.name} ${doctor.surname}`}
+                    type={doctor.Specialities?.name || "Mutaxassislik yo'q"}
+                    experience={doctor.experience_years}
+                    photo={doctor.image_url}
+                    clinicPhoto="m-clinic"
+                  />
+                </Link>
               </li>
             ))}
           </ul>
