@@ -24,3 +24,24 @@
   width: 100%;
   margin: 24px 0;
 }
+
+@media (max-width: 640px) {
+  .Container {
+    margin: 60px auto 20px auto;
+    padding: 0 16px;
+  }
+
+  .miniContainer {
+    padding: 0;
+  }
+
+  .searchSection {
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+
+  .sectionContainer {
+    margin: 16px 0;
+  }
+}

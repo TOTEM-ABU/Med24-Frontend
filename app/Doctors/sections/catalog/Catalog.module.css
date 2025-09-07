@@ -55,3 +55,24 @@
   align-items: flex-start;
   gap: 10px;
 }
+
+@media (max-width: 640px) {
+  .catalogListStyle {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+
+  .catalogListStyle div {
+    width: 100%;
+  }
+
+  .catalogListStyle div .linkStyle {
+    right: 0;
+    font-size: 14px;
+    gap: 14px;
+  }
+
+  .showButton {
+    width: 100%;
+  }
+}

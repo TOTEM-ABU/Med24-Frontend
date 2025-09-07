@@ -13,3 +13,15 @@
   position: relative;
   left: 30%;
 }
+
+@media (max-width: 640px) {
+  .catalogCardStyle {
+    width: 100px;
+    height: 72px;
+    padding: 14px;
+  }
+
+  .catalogCardStyle img {
+    left: 20%;
+  }
+}

@@ -23,6 +23,10 @@ const nextConfig: NextConfig = {
         source: "/kliniki/:klinikiname*",
         destination: "/Kliniki/:klinikiname*",
       },
+      {
+        source: "/Doctors/:name*",
+        destination: "/specialties/:name*",
+      },
     ];
   },
 };

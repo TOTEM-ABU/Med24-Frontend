@@ -19,3 +19,9 @@
   text-decoration: 1.5px underline dotted black;
   text-underline-offset: 2px;
 }
+
+@media (max-width: 640px) {
+  .commonServices .commonServicesLinks {
+    grid-template-columns: 1fr;
+  }
+}
