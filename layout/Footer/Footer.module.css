@@ -7,21 +7,52 @@
 .footerContent {
   max-width: 1052px;
   margin: 0 auto;
-  padding: 3rem 1rem;
+  padding: 2rem 1rem;
 }
 
 .footerGrid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 2rem;
-  padding-bottom: 2rem;
+  gap: 1.5rem;
+  padding-bottom: 1.5rem;
   border-bottom: 1px solid #e5e7eb;
+}
+
+/* Mobile First Approach */
+@media (min-width: 480px) {
+  .footerContent {
+    padding: 2.5rem 1rem;
+  }
+  
+  .footerGrid {
+    gap: 1.75rem;
+    padding-bottom: 1.75rem;
+  }
+}
+
+@media (min-width: 640px) {
+  .footerGrid {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+  
+  .logoSection {
+    grid-column: 1 / -1;
+  }
 }
 
 @media (min-width: 768px) {
   .footerGrid {
     grid-template-columns: 1fr 1fr;
     gap: 2.5rem;
+  }
+  
+  .logoSection {
+    grid-column: 1;
+  }
+  
+  .footerContent {
+    padding: 3rem 1rem;
   }
 }
 
@@ -31,8 +62,18 @@
     gap: 3rem;
   }
   
+  .logoSection {
+    grid-column: 1;
+  }
+  
   .footerContent {
     padding: 4rem 1rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .footerContent {
+    padding: 4rem 2rem;
   }
 }
 
@@ -115,12 +156,12 @@
 
 /* Download App Section */
 .downloadAppSection {
-  padding: 2rem 0;
+  padding: 1.5rem 0;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1.5rem;
 }
 
 .downloadAppContent {
@@ -128,41 +169,101 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  gap: 1.5rem;
+  gap: 1rem;
 }
 
 .downloadTitle {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   font-weight: 600;
   color: #1f2937;
 }
 
 .downloadButtons {
   display: flex;
-  gap: 1rem;
+  flex-direction: column;
+  gap: 0.75rem;
+  align-items: center;
 }
 
 .downloadButtons img {
   width: auto;
-  height: 40px;
+  height: 35px;
+  max-width: 140px;
 }
 
 .qrCode {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.5rem;
+  display: none;
 }
 
-.qrCode img {
-  width: 100px;
-  height: 100px;
+/* Responsive Download Section */
+@media (min-width: 640px) {
+  .downloadAppSection {
+    padding: 2rem 0;
+    gap: 2rem;
+  }
+  
+  .downloadAppContent {
+    gap: 1.5rem;
+  }
+  
+  .downloadTitle {
+    font-size: 1.375rem;
+  }
+  
+  .downloadButtons {
+    flex-direction: row;
+    gap: 1rem;
+  }
+  
+  .downloadButtons img {
+    height: 40px;
+  }
 }
 
-.qrCode p {
-  font-size: 0.875rem;
-  color: #6b7280;
-  max-width: 250px;
+@media (min-width: 768px) {
+  .downloadAppContent {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+    max-width: 800px;
+    width: 100%;
+  }
+  
+  .downloadTitle {
+    font-size: 1.5rem;
+  }
+  
+  .qrCode {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .qrCode img {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .qrCode p {
+    font-size: 0.75rem;
+    color: #6b7280;
+    max-width: 200px;
+    text-align: center;
+  }
+}
+
+@media (min-width: 1024px) {
+  .qrCode img {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .qrCode p {
+    font-size: 0.875rem;
+    max-width: 250px;
+  }
 }
 
 /* Bottom Footer */
@@ -179,22 +280,87 @@
   flex-direction: column;
   align-items: center;
   gap: 1rem;
-}
-
-@media (min-width: 1024px) {
-  .bottomContent {
-    flex-direction: row;
-    justify-content: space-between;
-  }
+  text-align: center;
 }
 
 .copyright {
   text-align: center;
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+/* Bottom Footer Responsive */
+@media (min-width: 640px) {
+  .bottomContent {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+  }
+  
+  .copyright {
+    text-align: left;
+  }
 }
 
 @media (min-width: 1024px) {
+  .bottomContent {
+    padding: 1.5rem 2rem;
+  }
+}
+
+/* Additional Mobile Optimizations */
+@media (max-width: 480px) {
+  .footerContent {
+    padding: 1.5rem 0.75rem;
+  }
+  
+  .footerGrid {
+    gap: 1.25rem;
+    padding-bottom: 1.25rem;
+  }
+  
+  .logoText {
+    font-size: 16px;
+  }
+  
+  .description {
+    font-size: 0.8rem;
+    line-height: 1.5;
+  }
+  
+  .footerSection h3 {
+    font-size: 1rem;
+    margin-bottom: 0.75rem;
+  }
+  
+  .linksList a {
+    font-size: 0.8rem;
+  }
+  
+  .address p, .address a {
+    font-size: 0.8rem;
+  }
+  
+  .downloadAppSection {
+    padding: 1rem 0;
+  }
+  
+  .downloadTitle {
+    font-size: 1.125rem;
+  }
+  
+  .downloadButtons img {
+    height: 32px;
+    max-width: 120px;
+  }
+  
+  .bottomContent {
+    padding: 1rem 0.75rem;
+  }
+  
   .copyright {
-    text-align: left;
+    font-size: 0.8rem;
   }
 }
 
