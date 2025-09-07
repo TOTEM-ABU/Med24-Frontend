@@ -40,7 +40,6 @@ const ServiceNamePage: React.FC<ServiceNamePageProps> = ({ params }) => {
         `${process.env.NEXT_PUBLIC_API_URL}/clinics?include=${include}&limit=1000`
       );
 
-      // Filter clinics that have the specific service
       const clinics = res.data?.data ?? [];
       return clinics.filter((clinic: Clinic) => {
         return clinic.clinicservices?.some((service) =>

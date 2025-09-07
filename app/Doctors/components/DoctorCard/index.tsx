@@ -40,7 +40,11 @@ const DoctorCard: React.FC<DoctorCardProps> = ({
       <div className={styles.leftSide}>
         <div className={styles.doctorImage}>
           <Image
-            src={photo ? `/Images/doctors/${photo}.webp` : "/doctor.jpg"}
+            src={
+              photo
+                ? `/Images/doctors/${photo}.webp`
+                : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqO3c5NjJzSAd5N1GM-UNQyjxojD3z7M9yhQ&s"
+            }
             alt={fullname || "Doctor"}
             width={72}
             height={72}

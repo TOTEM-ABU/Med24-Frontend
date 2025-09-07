@@ -7,8 +7,11 @@ import Doctors from "./sections/doctors";
 import Catalog from "./sections/catalog";
 import { Breadcrumb, PopularClinics } from "@/components";
 import CommonlyServices from "./sections/commonServices";
+import { useGetAllClinics } from "@/hooks/useClinics";
 
 const DoctorsPage = () => {
+  const { data: clinics = [] } = useGetAllClinics();
+
   const doctorsType = [
     "Akusher",
     "Allergolog",
@@ -104,7 +107,7 @@ const DoctorsPage = () => {
           </button>
         </div>
       </div>
-      <PopularClinics clinics={[]} />
+      <PopularClinics clinics={clinics?.data || clinics} />
       <div className={styles.commentSection}>
         <Typography size="24" weight="500" bottom="20">
           So`nggi sharhlar

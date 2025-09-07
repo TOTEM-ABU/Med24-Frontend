@@ -1,0 +1,55 @@
+.container {
+  width: 874px;
+  margin-top: 24px;
+  margin-bottom: 24px;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 16px;
+}
+
+.clinicsGrid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 15px;
+  width: 100%;
+}
+
+.clinicCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  padding: 16px;
+  border-radius: 20px;
+  background-color: rgb(246 248 249);
+  height: 120px;
+  position: relative;
+  overflow: hidden;
+}
+
+.logoContainer {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.clinicName {
+  font-size: 14px;
+  color: #0f172a;
+  margin-top: 12px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
+  text-align: center;
+  margin: 8px 0 0 0;
+}

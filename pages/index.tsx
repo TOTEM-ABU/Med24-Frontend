@@ -326,6 +326,11 @@ const HomePage = () => {
                 boxShadow: "none",
               },
             }}
+            customSectionStyle={{
+              maxWidth: "1052px",
+              marginLeft: "auto",
+              marginRight: "auto",
+            }}
           />
         </div>
 
