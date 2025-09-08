@@ -5,7 +5,9 @@
   align-items: flex-start;
   gap: 8px;
   margin: 0 auto;
-  width: 894px;
+  width: 100%;
+  max-width: 894px;
+  padding: 0 16px;
 }
 
 .selections {

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
 import { getAllDoctors } from "@/api/doctors/doctors.api";
 import { getAllRegions } from "@/api/regions/regions.api";
 import { DoctorCard, Select, Typography } from "../../components";
@@ -19,7 +19,8 @@ interface Doctor {
   rating: string;
   image_url: string;
   clinicsId: string;
-  Specialities: Speciality;
+  Specialities?: Speciality; // legacy spelling
+  Specialties?: Speciality;  // current API spelling
   reviews: string[];
   appointments: string[];
 }
@@ -46,7 +47,6 @@ interface SelectProps {
 }
 
 const Doctors = () => {
-  const router = useRouter();
   const [doctors, setDoctors] = useState<Doctor[]>([]);
   const [filteredDoctors, setFilteredDoctors] = useState<Doctor[]>([]);
   const [regions, setRegions] = useState<Region[]>([]);
@@ -59,9 +59,12 @@ const Doctors = () => {
     doctorGender: "",
   });
 
+  const getDoctorSpecialtyName = (doctor: Doctor): string =>
+    doctor?.Specialties?.name || doctor?.Specialities?.name || "";
+
   const doctorsType = [
     { value: "", label: "Barcha mutaxassisliklar" },
-    ...Array.from(new Set(doctors.map((doctor) => doctor.Specialities?.name)))
+    ...Array.from(new Set(doctors.map((doctor) => getDoctorSpecialtyName(doctor))))
       .filter(Boolean)
       .map((name) => ({ value: name, label: name })),
   ];
@@ -96,6 +99,8 @@ const Doctors = () => {
     getAllDoctors()
       .then((res) => {
         const doctorsData = Array.isArray(res.data) ? res.data : [];
+        console.log("[DoctorsList] fetched doctors:", doctorsData.length);
+        console.log("[DoctorsList] sample first 10:", doctorsData.slice(0, 10).map((d) => ({ id: d.id, name: d.name, Specialties: d.Specialties, Specialities: d.Specialities })));
         setTotalDoctors(res.meta?.total || 0);
         setDoctors(doctorsData);
         setFilteredDoctors(doctorsData);
@@ -119,9 +124,7 @@ const Doctors = () => {
     let filtered = doctors;
 
     if (filters.doctorsType) {
-      filtered = filtered.filter(
-        (doctor) => doctor.Specialities?.name === filters.doctorsType
-      );
+      filtered = filtered.filter((doctor) => getDoctorSpecialtyName(doctor) === filters.doctorsType);
     }
 
     if (filters.districts) {
@@ -156,16 +159,18 @@ const Doctors = () => {
       });
     }
 
+    console.log("[DoctorsList] after filters count:", filtered.length, {
+      doctorsType: filters.doctorsType,
+      districts: filters.districts,
+      medicalCenter: filters.medicalCenter,
+      doctorGender: filters.doctorGender,
+    });
     setFilteredDoctors(filtered);
     setVisibleCount(10);
   }, [filters, doctors, regions]);
 
   const handleFilterChange = (name: string, value: string) => {
     setFilters((prev) => ({ ...prev, [name]: value }));
-  };
-
-  const handleDoctorClick = (doctorId: string) => {
-    router.push(`/doctors/${doctorId}`);
   };
 
   return (
@@ -221,19 +226,19 @@ const Doctors = () => {
         <>
           <ul className={styles.doctorsList}>
             {filteredDoctors.slice(0, visibleCount).map((doctor) => (
-              <li
-                key={doctor.id}
-                onClick={() => handleDoctorClick(doctor.id)}
-                aria-label={`Shifokor ${doctor.name} ${doctor.surname} haqida batafsil`}
-                className={styles.doctorCard}
-              >
-                <DoctorCard
-                  fullname={`${doctor.name} ${doctor.surname}`}
-                  type={doctor.Specialities?.name || "Mutaxassislik yo'q"}
-                  experience={doctor.experience_years}
-                  photo={doctor.image_url}
-                  clinicPhoto="m-clinic"
-                />
+              <li key={doctor.id} className={styles.doctorCard}>
+                <Link
+                  href={`/Doctors/${doctor.id}`}
+                  aria-label={`Shifokor ${doctor.name} ${doctor.surname} haqida batafsil`}
+                >
+                  <DoctorCard
+                    fullname={`${doctor.name} ${doctor.surname}`}
+                    type={getDoctorSpecialtyName(doctor) || "Mutaxassislik yo'q"}
+                    experience={doctor.experience_years}
+                    photo={doctor.image_url}
+                    clinicPhoto="m-clinic"
+                  />
+                </Link>
               </li>
             ))}
           </ul>

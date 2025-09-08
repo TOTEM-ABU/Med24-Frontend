@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "next/navigation";
+import { useRouter } from "next/router";
 // import Image from "next/image";
 import { getServiceById } from "@/api/services/services.api";
 import { getAllClinics } from "@/api/clinics/clinics.api";
@@ -8,7 +8,7 @@ import styles from "./id.module.css";
 import { Breadcrumb, ClinicCard } from "@/components";
 import Link from "next/link";
 import CommentsList from "@/app/Doctors/sections/comments";
-import { href } from "react-router";
+// removed invalid import from react-router
 
 interface ClinicService {
   id: string;
@@ -73,8 +73,10 @@ interface Service {
 }
 
 const ServiceDetail: React.FC = () => {
-  const params = useParams();
-  const id = Array.isArray(params?.id) ? params.id[0] : params?.id;
+  const router = useRouter();
+  const id = Array.isArray(router.query.id)
+    ? router.query.id[0]
+    : (router.query.id as string | undefined);
 
   const [service, setService] = useState<Service | null>(null);
   const [clinics, setClinics] = useState<Clinic[]>([]);
@@ -247,7 +249,7 @@ const ServiceDetail: React.FC = () => {
         items={[
           { label: "Bosh sahifa", href: "/" },
           { label: "Uslugi", href: "/uslugi" },
-          { label: `${service.name}`, href: `/${service.id}` },
+          { label: `${service.name}` },
         ]}
       />
       <div className={styles.searchSection}>
@@ -329,7 +331,7 @@ const ServiceDetail: React.FC = () => {
         <div className={styles.districtsBlock}>
           {districts.map((district) => (
             <Link
-              href={`/${service.id}/${district.label}`}
+              href={`/uslugi/${service.id}?district=${encodeURIComponent(district.value)}`}
               key={district.value}
               className={styles.link}
             >
