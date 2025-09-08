@@ -4,8 +4,8 @@
 }
 
 .card {
-  min-width: 250px;
-  max-height: 190px;
+  min-width: 210px;
+  min-height: 150px;
   background-color: rgb(240 242 249/1);
   border-radius: 20px;
   padding: 20px;
