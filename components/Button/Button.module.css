@@ -83,21 +83,6 @@
 
 @media (max-width: 768px) {
   .button {
-    width: 100%;
-  }
-
-  .large {
-    padding: 14px 24px;
-    font-size: 16px;
-  }
-
-  .medium {
-    padding: 10px 20px;
-    font-size: 15px;
-  }
-
-  .small {
-    padding: 6px 14px;
-    font-size: 13px;
+    display: none;
   }
 }

@@ -11,9 +11,13 @@ body {
 .container {
   max-width: 1052px;
   margin: 0 auto;
-
 }
-a{
+@media (max-width: 768px) {
+  .container {
+    padding: 0 15px;
+  }
+}
+a {
   text-decoration: none;
 }
 
@@ -22,7 +26,7 @@ a{
 }
 
 #nprogress .bar {
-  background: rgb(28, 128, 185); 
+  background: rgb(28, 128, 185);
   position: fixed;
   z-index: 9999;
   top: 0;
@@ -30,4 +34,3 @@ a{
   width: 100%;
   height: 3px;
 }
-
