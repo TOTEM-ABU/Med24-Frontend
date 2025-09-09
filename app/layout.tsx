@@ -1,37 +1,27 @@
-"use client";
+import React from "react";
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
+import "../styles/globals.css";
 
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { useState } from "react";
-import Navbar from "@/layout/Navbar";
-import Footer from "@/layout/Footer";
-import "@/styles/globals.css";
+const inter = Inter({ subsets: ["latin"] });
+
+export const metadata: Metadata = {
+  title: "Med24.uz | Shifokor qabuli va klinikalar",
+  description:
+    "Med24.uz — Toshkent shahridagi eng yaxshi klinikalar va shifokorlar haqida ma'lumot. Shifokor qabuliga onlayn yoziling.",
+};
 
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const [queryClient] = useState(
-    () =>
-      new QueryClient({
-        defaultOptions: {
-          queries: {
-            staleTime: 60 * 1000,
-          },
-        },
-      })
-  );
-
   return (
     <html lang="en">
-      <body>
-        <QueryClientProvider client={queryClient}>
-          <div className="min-h-screen flex flex-col">
-            <Navbar />
-            <main className="flex-1">{children}</main>
-            <Footer />
-          </div>
-        </QueryClientProvider>
+      <body className={inter.className}>
+        <div className="min-h-screen flex flex-col">
+          <main className="flex-1">{children}</main>
+        </div>
       </body>
     </html>
   );

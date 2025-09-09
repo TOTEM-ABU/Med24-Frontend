@@ -12,7 +12,10 @@ const ArticleDetail = () => {
     return <div>Loading...</div>;
   }
 
-  return <ArticleDetailPage params={{ articletitle }} />;
+  // Create a Promise for the params to match the App Router component's expectation
+  const paramsPromise = Promise.resolve({ articletitle });
+
+  return <ArticleDetailPage params={paramsPromise} />;
 };
 
 export default ArticleDetail;

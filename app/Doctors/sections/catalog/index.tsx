@@ -21,14 +21,15 @@ const Catalog = () => {
     api
       .get("/specialties")
       .then((res) => {
-        console.log("API dan kelgan mutaxassisliklar:", res.data);
+        console.log("[Catalog] specialties api raw:", res.data);
         const specialtiesData = Array.isArray(res.data.data)
           ? res.data.data
           : [];
+        console.log("[Catalog] specialties parsed count:", specialtiesData.length);
         setSpecialties(specialtiesData);
       })
       .catch((error) => {
-        console.error("Mutaxassisliklarni olishda xato:", error);
+        console.error("[Catalog] specialties fetch error:", error);
         setSpecialties([]);
       });
   }, []);
@@ -58,6 +59,16 @@ const Catalog = () => {
     }));
   };
 
+  const toSlug = (value: string) =>
+    (value || "")
+      .trim()
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/\p{Diacritic}/gu, "")
+      .replace(/\s+/g, "-")
+      .replace(/[^a-z0-9-]/g, "-")
+      .replace(/-+/g, "-");
+
   return (
     <div className={styles.catalogStyle}>
       <Typography size="26" weight="600">
@@ -85,7 +96,7 @@ const Catalog = () => {
                     .map((specialty, index) => (
                       <li key={index} className={styles.linkStyle}>
                         <Link
-                          href={`/specialties/${specialty.name}`}
+                          href={`/Doctors/${toSlug(specialty.name)}`}
                           className={styles.linkWrapper}
                         >
                           <p className={styles.link}>{specialty.name}</p>

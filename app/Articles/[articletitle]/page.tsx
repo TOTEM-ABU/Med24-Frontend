@@ -58,10 +58,11 @@ const fetchServices = async (): Promise<Service[]> => {
 const ArticleDetailPage = ({
   params,
 }: {
-  params: { articletitle: string };
+  params: Promise<{ articletitle: string }>;
 }) => {
   const router = useRouter();
-  const decodedTitle = decodeURIComponent(params.articletitle);
+  const resolvedParams = React.use(params);
+  const decodedTitle = decodeURIComponent(resolvedParams.articletitle);
 
   const {
     data: articles = [],

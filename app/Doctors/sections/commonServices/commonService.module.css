@@ -1,0 +1,27 @@
+.commonServices {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-block: 40px;
+}
+
+.commonServices .commonServicesLinks {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.navLink {
+  color: black;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  text-decoration: 1.5px underline dotted black;
+  text-underline-offset: 2px;
+}
+
+@media (max-width: 640px) {
+  .commonServices .commonServicesLinks {
+    grid-template-columns: 1fr;
+  }
+}

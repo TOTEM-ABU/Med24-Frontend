@@ -18,7 +18,6 @@ const Navbar = () => {
   return (
     <div className="container">
       <header className={styles.navbar}>
-        {/* Top Info Bar */}
         <div className={styles.topBar}>
           <div className={styles.topBarContent}>
             <div className={styles.topBarLeft}>
@@ -95,108 +94,62 @@ const Navbar = () => {
             </div>
           </div>
         </div>
-
-        <div>
+        <div className={styles.navContainer}>
           <div className={styles.flex}>
             <Link href="/">
-              <div>
-                <div className={styles["logo-med"]}>
-                  <img
-                    className={styles["logo-img"]}
-                    src="/Images/clinics/med24.webp"
-                    alt="Med24 Logo"
-                  />
-                  <p className={styles["logoText"]}>med24</p>
-                </div>
+              <div className={styles["logo-med"]}>
+                <img
+                  className={styles["logo-img"]}
+                  src="/Images/clinics/med24.webp"
+                  alt="Med24 Logo"
+                />
+                <p className={styles["logoText"]}>med24</p>
               </div>
             </Link>
 
+            {/* Desktop Right Section */}
             <div className={styles.rightSection}>
               <Link href="/#download-app" className={styles.ctaButton}>
-                <span className={styles.downloadText}>
-                  Ilovani yuklab olish &gt;
-                </span>
+                Ilovani yuklab olish &gt;
               </Link>
             </div>
-          </div>
-          <div className={styles.navContent}>
-            {/* Desktop Navigation */}
-            <nav className={styles.desktopNav}>
-              <Link href="/Doctors" className={styles.navLink}>
-                Shifokor qabuli
-              </Link>
-              <Link href="/uslugi" className={styles.navLink}>
-                Analizlar
-              </Link>
-              <Link href="/Diagnostika" className={styles.navLink}>
-                Diagnostika
-              </Link>
-              <Link href="/uslugi" className={styles.navLink}>
-                Tibbiy xizmatlar
-              </Link>
-              <Link href="/Kliniki" className={styles.navLink}>
-                Klinikalar
-              </Link>
-              <Link href="/articles" className={styles.navLink}>
-                Maqolalar
-              </Link>
-              <Link href="/News" className={styles.navLink}>
-                News
-              </Link>
-              <Link href="/products" className={styles.navLink}>
-                Dorilar
-              </Link>
-              <Link href="/Promotions" className={styles.navLink}>
-                Aksiya
-              </Link>
-            </nav>
 
-            {/* Right Section */}
-
-            {/* Mobile menu button */}
+            {/* Mobile Menu Button */}
             <button
               onClick={toggleMenu}
               className={styles.mobileMenuButton}
               aria-label="Menu"
             >
-              {isMenuOpen ? (
-                <X className={styles.menuIcon} />
-              ) : (
-                <Menu className={styles.menuIcon} />
-              )}
+              {isMenuOpen ? <X className={styles.menuIcon} /> : <Menu className={styles.menuIcon} />}
             </button>
           </div>
 
+          {/* Desktop Navigation */}
+          <nav className={styles.desktopNav}>
+            <Link href="/Doctors" className={styles.navLink}>Shifokor qabuli</Link>
+            <Link href="/uslugi" className={styles.navLink}>Analizlar</Link>
+            <Link href="/Diagnostika" className={styles.navLink}>Diagnostika</Link>
+            <Link href="/uslugi" className={styles.navLink}>Tibbiy xizmatlar</Link>
+            <Link href="/Kliniki" className={styles.navLink}>Klinikalar</Link>
+            <Link href="/articles" className={styles.navLink}>Maqolalar</Link>
+            <Link href="/News" className={styles.navLink}>News</Link>
+            <Link href="/products" className={styles.navLink}>Dorilar</Link>
+            <Link href="/Promotions" className={styles.navLink}>Aksiya</Link>
+          </nav>
+
+          {/* Mobile Navigation */}
           {isMenuOpen && (
             <div className={styles.mobileNav}>
               <div className={styles.mobileNavContent}>
-                <Link href="/Doctors" className={styles.mobileNavLink}>
-                  Shifokor qabuli
-                </Link>
-                <Link href="/uslugi" className={styles.mobileNavLink}>
-                  Analizlar
-                </Link>
-                <Link href="/Diagnostika" className={styles.mobileNavLink}>
-                  Diagnostika
-                </Link>
-                <Link href="/uslugi" className={styles.mobileNavLink}>
-                  Tibbiy xizmatlar
-                </Link>
-                <Link href="/Kliniki" className={styles.mobileNavLink}>
-                  Klinikalar
-                </Link>
-                <Link href="/articles" className={styles.mobileNavLink}>
-                  Maqolalar
-                </Link>
-                <Link href="/News" className={styles.mobileNavLink}>
-                  News
-                </Link>
-                <Link href="/products" className={styles.mobileNavLink}>
-                  Dorilar
-                </Link>
-                <Link href="/Promotions" className={styles.mobileNavLink}>
-                  Aksiya
-                </Link>
+                <Link href="/Doctors" className={styles.mobileNavLink}>Shifokor qabuli</Link>
+                <Link href="/uslugi" className={styles.mobileNavLink}>Analizlar</Link>
+                <Link href="/Diagnostika" className={styles.mobileNavLink}>Diagnostika</Link>
+                <Link href="/uslugi" className={styles.mobileNavLink}>Tibbiy xizmatlar</Link>
+                <Link href="/Kliniki" className={styles.mobileNavLink}>Klinikalar</Link>
+                <Link href="/articles" className={styles.mobileNavLink}>Maqolalar</Link>
+                <Link href="/News" className={styles.mobileNavLink}>News</Link>
+                <Link href="/products" className={styles.mobileNavLink}>Dorilar</Link>
+                <Link href="/Promotions" className={styles.mobileNavLink}>Aksiya</Link>
               </div>
             </div>
           )}

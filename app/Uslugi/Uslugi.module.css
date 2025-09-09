@@ -1,11 +1,14 @@
 .Container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 874px;
-  margin: 100px auto;
+  width: 100%;
+  max-width: 1052px;
+  margin: 100px auto 30px auto;
   background-color: #ffffff;
+}
+
+.miniContainer {
+  width: 100%;
+  max-width: 874px;
+  margin: 0 auto;
 }
 
 .searchSection {
@@ -14,4 +17,31 @@
   align-items: center;
   max-width: 100%;
   gap: 20px;
+  margin-bottom: 40px;
+}
+
+.sectionContainer {
+  width: 100%;
+  margin: 24px 0;
+}
+
+@media (max-width: 640px) {
+  .Container {
+    margin: 60px auto 20px auto;
+    padding: 0 16px;
+  }
+
+  .miniContainer {
+    padding: 0;
+  }
+
+  .searchSection {
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+
+  .sectionContainer {
+    margin: 16px 0;
+  }
 }

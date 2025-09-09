@@ -8,6 +8,13 @@
   background-color: #ffffff;
 }
 
+.breadContainer {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
 .searchSection {
   display: flex;
   justify-content: center;
@@ -113,4 +120,46 @@
 
 .details ul li {
   margin-bottom: 20px;
+}
+
+@media (max-width: 640px) {
+  .miniContainer {
+    width: 100%;
+    margin: 60px auto 40px auto;
+    padding: 0 16px;
+  }
+
+  .searchSection {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .commonCatalogStyle {
+    margin: 40px auto;
+  }
+
+  .commonCatalogStyle ul {
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 0 0;
+  }
+
+  .popularDoctors {
+    width: 100%;
+    margin: 24px 0;
+  }
+
+  .throwTelegram {
+    width: 100%;
+    padding: 16px;
+    margin: 24px 0;
+  }
+
+  .commonServices .commonServicesLinks {
+    grid-template-columns: 1fr;
+  }
+
+  .commentSection .commentBlocks {
+    grid-template-columns: 1fr;
+  }
 }

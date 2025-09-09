@@ -1,8 +1,8 @@
 "use client";
 import React, { useEffect, useMemo, useRef, useState } from "react";
-import DoctorTypeCard from "@/components/DoctorTypeCard";
 import FindDoctorsCard from "@/components/FindDoctorsCard";
 import styles from "./styles.module.css";
+import Image from "next/image";
 
 type DoctorType = {
   name: string;
@@ -65,6 +65,27 @@ const DoctorTypeSwiper: React.FC<Props> = ({
     };
   }, []);
 
+  const DoctorTypeSwiperCard = ({
+    name,
+    image,
+  }: {
+    name: string;
+    image: string;
+  }) => {
+    return (
+      <div className={styles.doctorTypeCard}>
+        <p className={styles.doctorTypeName}>{name}</p>
+        <Image
+          src={image}
+          alt={`${name} icon`}
+          className={styles.doctorTypeImage}
+          width={100}
+          height={100}
+        />
+      </div>
+    );
+  };
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.headerRow}>
@@ -96,7 +117,10 @@ const DoctorTypeSwiper: React.FC<Props> = ({
           </div>
           {items.map((doctorType, idx) => (
             <div className={styles.card} key={`${doctorType.name}-${idx}`}>
-              <DoctorTypeCard name={doctorType.name} image={doctorType.image} />
+              <DoctorTypeSwiperCard
+                name={doctorType.name}
+                image={doctorType.image}
+              />
             </div>
           ))}
         </div>

@@ -1,55 +1,137 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Input } from "../Doctors/components";
 import ServicesInTashkent from "./ServicesInTashkent";
 import CommonServices from "./CommonServices";
-import { PopularClinics } from "@/components";
+import {
+  Breadcrumb,
+  PopularClinics,
+  DoctorTypeCard,
+  PromotionsSwiper,
+} from "@/components";
+import { getAllClinics } from "@/api/clinics/clinics.api";
+import { DOCTOR_SPECIALTIES } from "@/lib/constants";
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
 
 import styles from "./Uslugi.module.css";
+import UslugiClinics from "./UslugiClinics/UslugiClinics";
+
+interface Clinic {
+  id: string;
+  name: string;
+  logo_url?: string;
+}
 
 const UslugiPage = () => {
+  const [clinics, setClinics] = useState<Clinic[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  const { data: promotions } = useQuery({
+    queryKey: ["promotions-list"],
+    queryFn: async () => {
+      const res = await axios.get(
+        `${process.env.NEXT_PUBLIC_API_URL}/promotions?limit=12`
+      );
+      return res.data?.data ?? [];
+    },
+  });
+
+  useEffect(() => {
+    const fetchClinics = async () => {
+      try {
+        const response = await getAllClinics();
+        setClinics(response.data || []);
+      } catch (error) {
+        console.error("Failed to fetch clinics:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchClinics();
+  }, []);
+
+  if (loading) {
+    return <div>Loading clinics...</div>;
+  }
+
   return (
     <div className={styles.Container}>
-      <div className={styles.searchSection}>
-        <Input inputPlaceholder="Shifokor ismi, mutaxassislik nomini yoki dori-darmon kiriting" />
-        <Button>Qidirish</Button>
-      </div>
-      <ServicesInTashkent />
-      <PopularClinics
-        clinics={[
-          {
-            id: "1",
-            name: "MDS Servis",
-            logo_url:
-              "https://main.med24.uz/uploads/clinics/group0/part3/3863/200x.webp",
-          },
-          {
-            id: "2",
-            name: "Shox Med Center",
-            logo_url:
-              "https://main.med24.uz/uploads/clinics/group0/part3/3863/200x.webp",
-          },
-          {
-            id: "3",
-            name: "Doctor D",
-            logo_url:
-              "https://main.med24.uz/uploads/clinics/group0/part3/3863/200x.webp",
-          },
-          {
-            id: "4",
-            name: "Horev Medical",
-            logo_url:
-              "https://main.med24.uz/uploads/clinics/group0/part3/3863/200x.webp",
-          },
-          {
-            id: "5",
-            name: "M-Clinic",
-            logo_url:
-              "https://main.med24.uz/uploads/clinics/group0/part3/3863/200x.webp",
-          },
+      <Breadcrumb
+        items={[
+          { label: "Bosh sahifa", href: "/" },
+          { label: "Uslugi", href: "/uslugi" },
         ]}
       />
-
-      <CommonServices />
+      <div className={styles.miniContainer}>
+        <div className={styles.searchSection}>
+          <Input inputPlaceholder="Shifokor ismi, mutaxassislik nomini yoki dori-darmon kiriting" />
+          <Button>Qidirish</Button>
+        </div>
+        <ServicesInTashkent />
+        <UslugiClinics clinics={clinics} />
+        {promotions?.length ? (
+          <div className={styles.sectionContainer}>
+            <h2 style={{ margin: 0, marginBottom: 30, marginTop: 30 }}>
+              Aksiya va chegirmalar
+            </h2>
+            <PromotionsSwiper promotions={promotions} />
+          </div>
+        ) : null}
+      </div>
+      {/* Updated PopularClinics to be full width like in homepage */}
+      <div style={{ marginTop: "40px" }}>
+        <PopularClinics
+          clinics={clinics}
+          title="Toshkentdagi mashhur klinikalar va tibbiyot markazlari"
+          customStyles={{
+            grid: { gridTemplateColumns: "repeat(6, 1fr)", gap: "16px" },
+            card: {
+              padding: "16px",
+              backgroundColor: "#f8f9fa",
+              borderRadius: "12px",
+              maxHeight: "110px",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              boxShadow: "none",
+            },
+          }}
+        />
+      </div>
+      <div className={styles.miniContainer}>
+        <div className={styles.sectionContainer}>
+          <h3
+            style={{
+              fontSize: "24px",
+              fontWeight: "700",
+              color: "#333",
+              marginBottom: "20px",
+            }}
+          >
+            Shifokorlarning keng tarqalgan mutaxassisliklari
+          </h3>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))",
+              gap: "20px",
+              alignItems: "stretch",
+              maxWidth: "100%",
+            }}
+          >
+            {DOCTOR_SPECIALTIES.slice(0, 6).map((item, index) => (
+              <DoctorTypeCard
+                key={item.name}
+                name={item.name}
+                image={item.image}
+                style={index === 0 ? { gridColumn: "span 2" } : undefined}
+              />
+            ))}
+          </div>
+        </div>
+        <CommonServices />
+      </div>
     </div>
   );
 };

@@ -13,3 +13,10 @@
   padding: 10px;
   cursor: pointer;
 }
+
+@media (max-width: 640px) {
+  .selectContainer .select {
+    width: 100%;
+    padding: 12px;
+  }
+}

@@ -1,0 +1,84 @@
+.Container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  width: 874px;
+  margin: 100px auto;
+  background-color: #ffffff;
+}
+
+.searchSection {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 100%;
+  gap: 20px;
+}
+
+.headerSection {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  margin-top: 50px;
+  gap: 10px;
+}
+
+.headerSection .headerText {
+  padding: 0;
+  margin: 0;
+  position: relative;
+  bottom: 3px;
+}
+
+.selectionsContainer {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-block: 30px;
+  gap: 10px;
+}
+
+.selectOptions {
+  padding: 10px;
+  background-color: #f3f5f6;
+  cursor: pointer;
+  border: none;
+  border-radius: 10px;
+  outline: none;
+}
+
+.clinicsContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #f3f5f6;
+  position: relative;
+  width: 1487px;
+  right: 330px;
+  gap: 16px;
+  padding-top: 20px;
+  padding-bottom: 30px;
+}
+
+.districtsBlock {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+
+  width: 874px;
+  padding: 0;
+  margin: 0;
+}
+
+.districtsBlock .link {
+  font-size: 14px;
+  color: black;
+  text-decoration-line: underline;
+  text-decoration-style: dotted;
+  text-decoration-color: black;
+  text-decoration-thickness: 1.4px;
+  text-underline-offset: 2px;
+  padding: 0;
+  margin: 0 0 6px 0;
+}

@@ -7,9 +7,8 @@ const nextConfig: NextConfig = {
   experimental: {},
 
   images: {
-    domains: ["main.med24.uz", "med24.uz", "45.76.94.219"],
+    domains: ["main.med24.uz", "med24.uz", "45.76.94.219", "example.com"],
   },
-
   async rewrites() {
     return [
       {
@@ -23,6 +22,10 @@ const nextConfig: NextConfig = {
       {
         source: "/kliniki/:klinikiname*",
         destination: "/Kliniki/:klinikiname*",
+      },
+      {
+        source: "/Doctors/:name*",
+        destination: "/specialties/:name*",
       },
     ];
   },

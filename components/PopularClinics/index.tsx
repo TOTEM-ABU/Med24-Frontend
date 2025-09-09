@@ -4,7 +4,7 @@ import Image from "next/image";
 import styles from "./PopularClinics.module.css";
 
 interface PopularClinicsProps {
-  clinics: Array<{
+  clinics?: Array<{
     id: string;
     name: string;
     logo_url?: string;
@@ -14,12 +14,14 @@ interface PopularClinicsProps {
     grid?: React.CSSProperties;
     card?: React.CSSProperties;
   };
+  customSectionStyle?: React.CSSProperties;
 }
 
 const PopularClinics: React.FC<PopularClinicsProps> = ({
   clinics = [],
   title = "Toshkentdagi mashhur klinikalar va tibbiyot markazlari",
   customStyles = {},
+  customSectionStyle = {},
 }) => {
   const createClinicSlug = (name: string) => {
     return name
@@ -70,7 +72,7 @@ const PopularClinics: React.FC<PopularClinicsProps> = ({
     clinics.length > 0 ? clinics.slice(0, 10) : defaultClinics;
 
   return (
-    <div className={styles.popularClinicsSection}>
+    <div className={styles.popularClinicsSection} style={customSectionStyle}>
       <h3 className={styles.sectionTitle}>{title}</h3>
       <div className={styles.popularClinicsGrid} style={customStyles.grid}>
         {clinicsToShow.map((clinic) => {

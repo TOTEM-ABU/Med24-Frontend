@@ -5,8 +5,23 @@ import Link from "next/link";
 import CommentsList from "./sections/comments";
 import Doctors from "./sections/doctors";
 import Catalog from "./sections/catalog";
+import { Breadcrumb, PopularClinics } from "@/components";
+import CommonlyServices from "./sections/commonServices";
+import { useGetAllClinics } from "@/hooks/useClinics";
 
 const DoctorsPage = () => {
+  const { data: clinics = [] } = useGetAllClinics();
+
+  const toSlug = (value: string) =>
+    (value || "")
+      .trim()
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/\p{Diacritic}/gu, "")
+      .replace(/\s+/g, "-")
+      .replace(/[^a-z0-9-]/g, "-")
+      .replace(/-+/g, "-");
+
   const doctorsType = [
     "Akusher",
     "Allergolog",
@@ -47,6 +62,14 @@ const DoctorsPage = () => {
 
   return (
     <div className={styles.miniContainer}>
+      <div className={styles.breadContainer}>
+        <Breadcrumb
+          items={[
+            { label: "Bosh sahifa", href: "/" },
+            { label: "Shifokorlar", href: "/Doctors" },
+          ]}
+        />
+      </div>
       <div className={styles.searchSection}>
         <Input inputPlaceholder="Shifokor ismi, mutaxassislik nomini yoki dori-darmon kiriting" />
         <Button>Qidirish</Button>
@@ -57,29 +80,38 @@ const DoctorsPage = () => {
         </Typography>
         <ul>
           <li>
-            <CatalogCard title="kardiolog">Kardiolog</CatalogCard>
+            <Link href={`/Doctors/${toSlug("Kardiolog")}`} aria-label="Kardiolog mutaxassislarini ko'rish">
+              <CatalogCard title="kardiolog">Kardiolog</CatalogCard>
+            </Link>
           </li>
           <li>
-            <CatalogCard title="ortoped">Ortoped</CatalogCard>
+            <Link href={`/Doctors/${toSlug("Ortoped")}`} aria-label="Ortoped mutaxassislarini ko'rish">
+              <CatalogCard title="ortoped">Ortoped</CatalogCard>
+            </Link>
           </li>
           <li>
-            <CatalogCard title="pulmonolog">Pulmonolog</CatalogCard>
+            <Link href={`/Doctors/${toSlug("Pulmonolog")}`} aria-label="Pulmonolog mutaxassislarini ko'rish">
+              <CatalogCard title="pulmonolog">Pulmonolog</CatalogCard>
+            </Link>
           </li>
           <li>
-            <CatalogCard title="stomotolog">Stomotolog</CatalogCard>
+            <Link href={`/Doctors/${toSlug("Stomotolog")}`} aria-label="Stomotolog mutaxassislarini ko'rish">
+              <CatalogCard title="stomotolog">Stomotolog</CatalogCard>
+            </Link>
           </li>
           <li>
-            <CatalogCard title="terapevt">Terapevt</CatalogCard>
+            <Link href={`/Doctors/${toSlug("Terapevt")}`} aria-label="Terapevt mutaxassislarini ko'rish">
+              <CatalogCard title="terapevt">Terapevt</CatalogCard>
+            </Link>
           </li>
           <li>
-            <CatalogCard title="travmatolog">Travmatolog</CatalogCard>
+            <Link href={`/Doctors/${toSlug("Travmatolog")}`} aria-label="Travmatolog mutaxassislarini ko'rish">
+              <CatalogCard title="travmatolog">Travmatolog</CatalogCard>
+            </Link>
           </li>
         </ul>
       </div>
       <Catalog />
-      <Typography size="28" weight="600" bottom="30">
-        Toshkentda shifokolar mutaxassisligi bo`yicha
-      </Typography>
       <div className={styles.popularDoctors}>
         <Doctors />
         <div className={styles.throwTelegram}>
@@ -97,6 +129,7 @@ const DoctorsPage = () => {
           </button>
         </div>
       </div>
+      <PopularClinics clinics={clinics?.data || clinics} />
       <div className={styles.commentSection}>
         <Typography size="24" weight="500" bottom="20">
           So`nggi sharhlar
@@ -105,40 +138,7 @@ const DoctorsPage = () => {
           <CommentsList />
         </div>
       </div>
-      <div className={styles.commonServices}>
-        <Typography size="22" bottom="24" weight="600">
-          Keng tarqalgan tibbiy xizmatlar
-        </Typography>
-        <div className={styles.commonServicesLinks}>
-          <Link href="/" className={styles.navLink}>
-            Breket o`rnatish
-          </Link>
-          <Link href="/" className={styles.navLink}>
-            Buyrakdagi toshlarni olib tashlash
-          </Link>
-          <Link href="/" className={styles.navLink}>
-            Doppler (ultratovushli doppler)
-          </Link>
-          <Link href="/" className={styles.navLink}>
-            Elektroansefalografika (EEG)
-          </Link>
-          <Link href="/" className={styles.navLink}>
-            Exokardiyografiya (EXOKG)
-          </Link>
-          <Link href="/" className={styles.navLink}>
-            Gastroskopiya
-          </Link>
-          <Link href="/" className={styles.navLink}>
-            Gemoroyni lazer yordamida olib tashlash
-          </Link>
-          <Link href="/" className={styles.navLink}>
-            Hollarni olib tashlash
-          </Link>
-          <Link href="/" className={styles.navLink}>
-            Ko`z lazer operatsiyasi
-          </Link>
-        </div>
-      </div>
+      <CommonlyServices />
       <div className={styles.details}>
         <Typography size="28" bottom="20">
           Shifokor qabuliga onlayn yozilish
