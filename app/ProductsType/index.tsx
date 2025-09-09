@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./ProductsType.module.css";
 import Breadcrumb from "@/components/Breadcrumb";
 import imgMain from "./images/main-image.webp";
@@ -10,8 +10,15 @@ import medImg from "./images/medicineImg.png";
 import DoctorTypeCard from "@/components/DoctorTypeCard";
 import { DOCTOR_SPECIALTIES } from "@/lib/constants";
 import Image from "next/image";
+import { useGetAllMedicine } from "@/hooks/useMedicine";
 
 const ProductsType = () => {
+  const [visibleCard, setVisibleCard] = useState(8)
+  const {data} = useGetAllMedicine()
+  const medicines = data?.data
+  console.log(medicines);
+  
+
   const products = [
     {
       image: medImg.src,
@@ -87,6 +94,10 @@ const ProductsType = () => {
     },
   ];
 
+  const handleClick = () => {
+    setVisibleCard(visibleCard + 4)
+  }
+
   return (
     <div className="container">
       <div className={styles["product-type-container"]}>
@@ -160,14 +171,14 @@ const ProductsType = () => {
         <div>
           <h2>Ommabop mahsulotlar</h2>
           <div className={styles["products-container"]}>
-            {products.map((product, index) => {
+            {medicines?.slice(0, visibleCard).map((product: { image_url: string; name: string; owner: string; price: string; }, index: React.Key | null | undefined) => {
               return (
                 <div key={index}>
                   <ProductDetailsCard
-                    image={product.image}
+                    image={product.image_url}
                     name={product.name}
                     owner={product.owner}
-                    price={product.price}
+                    price={"50 000"}
                   />
                 </div>
               );
@@ -175,7 +186,7 @@ const ProductsType = () => {
           </div>
         </div>
         <div className={styles["button-container"]}>
-          <Button name="Yana ko'rsatish" className={styles["btn"]} />
+          <Button name="Yana ko'rsatish" className={styles["btn"]}  onClick={handleClick}/>
         </div>
 
         <div className={styles["links-container"]}>
