@@ -15,6 +15,7 @@ import Image from "next/image";
 import { useGetMedicationPriceById } from "@/hooks/useMedicinePrices";
 import { useGetAllServices } from "@/hooks/useService";
 import { useGetAllMedicineCategories } from "@/hooks/useMedicineCategories";
+import { useRouter } from "next/router";
 
 const ProductsPage = () => {
     const [visibleCard, setVisibleCard] = useState(5);
@@ -22,6 +23,7 @@ const ProductsPage = () => {
     const { data: pr } = useGetMedicationPriceById("");
     const { data: cat } = useGetAllMedicineCategories();
     const {data: ser} = useGetAllServices()
+    const router = useRouter()
 
     const medicines = med?.data;
 
@@ -31,7 +33,10 @@ const ProductsPage = () => {
 
     const price = pr?.data;
 
-    console.log(medicineCategories);
+    const handleLink = (name: string) => {
+        router.push(`/products/${name}`)
+    }
+
 
     return (
         <div className="container">
@@ -128,7 +133,7 @@ const ProductsPage = () => {
                                     <div key={index}>
                                         <ul className={styles["table-links"]}>
                                             <li>
-                                                <a href="/products/type">{category.name}</a>
+                                                <a href="" onClick={() => handleLink(category.name)}>{category.name}</a>
                                             </li>
                                         </ul>
                                     </div>
@@ -197,7 +202,7 @@ const ProductsPage = () => {
                                     <div key={index}>
                                         <ul className={styles["table-links"]}>
                                             <li>
-                                                <a href="/products/type">{category.name}</a>
+                                                <a href="">{category.name}</a>
                                             </li>
                                         </ul>
                                     </div>
@@ -216,7 +221,7 @@ const ProductsPage = () => {
                                     <div key={index}>
                                         <ul className={styles["table-links"]}>
                                             <li>
-                                                <a href="/products/type">{category.name}</a>
+                                                <a href="">{category.name}</a>
                                             </li>
                                         </ul>
                                     </div>
@@ -251,7 +256,7 @@ const ProductsPage = () => {
                                     <div key={index}>
                                         <ul className={styles["table-links"]}>
                                             <li>
-                                                <a href="/products/type">{category.name}</a>
+                                                <a href="">{category.name}</a>
                                             </li>
                                         </ul>
                                     </div>
