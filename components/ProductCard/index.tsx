@@ -11,7 +11,7 @@ interface ProductCardProps {
 const ProductCard = ({ image, price, name }: ProductCardProps) => {
   return (
     <div className={styles["product-card-container"]}>
-      <a href="#" className={styles["link"]}>
+      <a href="https://t.me/med24uz_bot" className={styles["link"]}>
         <Image
           src={image}
           alt={name}

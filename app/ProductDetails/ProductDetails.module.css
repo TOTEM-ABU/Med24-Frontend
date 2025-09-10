@@ -1,6 +1,8 @@
 .product-details-container {
     display: flex;
     flex-direction: column;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .main-text {
@@ -319,9 +321,32 @@
     .card-container {
         max-width: 350px;
     }
+    
+    .details-container {
+        gap: 15px;
+    }
+    
+    .image-container {
+        padding-left: 40px;
+        padding-right: 40px;
+        max-width: 300px;
+        min-height: 380px;
+        
+        img {
+            width: 220px;
+        }
+    }
+    
+    .text-container {
+        margin-left: 15px;
+    }
 }
 
 @media (max-width: 992px) {
+    .product-details-container {
+        padding: 0 20px;
+    }
+    
     .main-text {
         font-size: 24px;
     }
@@ -359,6 +384,22 @@
         font-size: 20px;
     }
     
+    .instruction-section h3 {
+        font-size: 16px;
+    }
+    
+    .instruction-section p {
+        font-size: 13px;
+    }
+    
+    .faq-text {
+        font-size: 13px;
+    }
+    
+    .faq-answer p {
+        font-size: 13px;
+    }
+    
     .doctor-types {
         grid-template-columns: repeat(3, 1fr);
         gap: 15px;
@@ -375,6 +416,10 @@
 }
 
 @media (max-width: 768px) {
+    .product-details-container {
+        padding: 0 15px;
+    }
+    
     .main-text {
         font-size: 20px;
         margin-bottom: 20px;
@@ -451,6 +496,18 @@
         font-size: 13px;
     }
     
+    .instruction-section h3 {
+        font-size: 15px;
+    }
+    
+    .instruction-section p {
+        font-size: 12px;
+    }
+    
+    .faq-answer p {
+        font-size: 12px;
+    }
+    
     .doctor-types {
         grid-template-columns: repeat(2, 1fr);
         gap: 12px;
@@ -468,6 +525,10 @@
 }
 
 @media (max-width: 480px) {
+    .product-details-container {
+        padding: 0 10px;
+    }
+    
     .main-text {
         font-size: 18px;
     }
@@ -511,6 +572,14 @@
     .faq-answer p {
         font-size: 12px;
         padding: 10px 0 0 0;
+    }
+    
+    .instruction-section h3 {
+        font-size: 14px;
+    }
+    
+    .instruction-section p {
+        font-size: 11px;
     }
     
     .doctor-types {
