@@ -1,499 +1,496 @@
 .products-container {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    max-width: 1200px;
-    margin: 0 auto;
-    h2 {
-        font-size: 28px;
-        font-weight: 600;
-    }
-}
-
-
-.main-text {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  h2 {
     font-size: 28px;
     font-weight: 600;
-    margin: 20px 0 20px 0;
+  }
+}
+
+.main-text {
+  font-size: 28px;
+  font-weight: 600;
+  margin: 20px 0 20px 0;
 }
 
 .input-container {
-    display: flex;
-    gap: 20px;
+  display: flex;
+  gap: 20px;
 }
 
 .promotion-banner {
-    margin-top: 10px;
-    margin-bottom: 50px;
+  margin-top: 10px;
+  margin-bottom: 50px;
 }
 
 .promotion-banner-content {
-    background-color: #F6F8F9;
-    cursor: pointer;
-    gap: 20px;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    margin: 2px auto;
-    padding: 39px 0 30px 50px;
-    border-radius: 24px;
-    max-width: 1200px;
+  background-color: #f6f8f9;
+  cursor: pointer;
+  gap: 20px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  margin: 2px auto;
+  padding: 39px 0 30px 50px;
+  border-radius: 24px;
+  max-width: 1200px;
 }
 
 .promotion-banner-text {
-    flex: 1;
+  flex: 1;
 }
 
 .promotion-banner-title {
-    font-weight: 700;
-    font-size: 34px;
-    line-height: 1.2;
-    margin: 0;
+  font-weight: 700;
+  font-size: 34px;
+  line-height: 1.2;
+  margin: 0;
 }
 
 .promotion-banner-description {
-    margin: 14px 0 19px 0;
-    font-weight: 600;
-    font-size: 16px;
-    line-height: 1.4;
+  margin: 14px 0 19px 0;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.4;
 }
 
 .promotion-banner-button {
-    background-color: #007AFF;
-    color: #fff;
-    font-size: 16px;
-    padding: 14px 0;
-    border-radius: 14px;
-    min-width: 220px;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
+  background-color: #007aff;
+  color: #fff;
+  font-size: 16px;
+  padding: 14px 0;
+  border-radius: 14px;
+  min-width: 220px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
 }
 
 .promotion-banner-button:hover {
-    background-color: #0056CC;
+  background-color: #0056cc;
 }
 
 .promotion-banner-image {
-    transform: translateY(0);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    max-width: 350px;
+  transform: translateY(0);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 350px;
 }
 
 .promotion-banner-image img {
-    max-width: 100%;
-    height: auto;
+  max-width: 100%;
+  height: auto;
 }
 
-/* Responsive styles for promotion banner */
 @media (min-width: 640px) {
-    .promotion-banner-content {
-        flex-direction: row;
-        gap: 64px;
-        padding-left: 55px;
-    }
-    
-    .promotion-banner-image {
-        transform: translateY(-40px);
-    }
+  .promotion-banner-content {
+    flex-direction: row;
+    gap: 64px;
+    padding-left: 55px;
+  }
+
+  .promotion-banner-image {
+    transform: translateY(-40px);
+  }
 }
 
 .seasonal-products {
-    margin-bottom: 50px;
+  margin-bottom: 50px;
 }
 
 .links-container {
-    margin-bottom: 50px;
+  margin-bottom: 50px;
 }
 
 .advertising {
-    background-color: rgb(246 248 249);
-    border-radius: 24px;
+  background-color: rgb(246 248 249);
+  border-radius: 24px;
 }
 
 .product-cards {
-    display: flex;
-    gap: 20px;
+  display: flex;
+  gap: 20px;
 }
 
 .grid-links {
-    display: grid;
-    grid-template-columns: repeat(5, minmax(0, 1fr));
-    gap: 16px;
-    margin-top: 40px;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 40px;
+  list-style-type: none;
+
+  ul {
     list-style-type: none;
 
-    ul {
-        list-style-type: none;
-
-        a {
-            text-decoration-style: dotted;
-            text-decoration-color: gray;
-            color: #007aff;
-            font-size: 16px;
-            font-weight: 400;
-        }
+    a {
+      text-decoration-style: dotted;
+      text-decoration-color: gray;
+      color: #007aff;
+      font-size: 16px;
+      font-weight: 400;
     }
+  }
 }
 
 .beauty {
-    display: flex;
-    gap: 20px;
+  display: flex;
+  gap: 20px;
 }
 
 .doctor-types {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
-    margin-top: 40px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-top: 40px;
 }
 
 .wide {
-    grid-column: span 2;
+  grid-column: span 2;
 }
 
 .grid-links-black {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 16px;
-    margin-top: 40px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 40px;
+  list-style-type: none;
+
+  ul {
     list-style-type: none;
 
-    ul {
-        list-style-type: none;
-
-        a {
-            text-decoration-style: dotted;
-            text-decoration-color: gray;
-            color: #000;
-            font-size: 16px;
-            font-weight: 400;
-        }
+    a {
+      text-decoration-style: dotted;
+      text-decoration-color: gray;
+      color: #000;
+      font-size: 16px;
+      font-weight: 400;
     }
+  }
 }
 
 .alphabet {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-top: 20px;
-    font-size: 14px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 20px;
+  font-size: 14px;
 
-    span {
-        cursor: pointer;
-        padding-left: 12px;
-        padding-right: 12px;
-        padding-top: 4px;
-        padding-bottom: 4px;
-          color: #4B5563;
-          border-radius: 6px;
-    }
+  span {
+    cursor: pointer;
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    color: #4b5563;
+    border-radius: 6px;
+  }
 }
 
 .alpha-container {
-    margin-bottom: 90px;
-    margin-top: 90px;
+  margin-bottom: 90px;
+  margin-top: 90px;
 }
 
-/* Responsive Design */
 @media (max-width: 1200px) {
-    .product-cards {
-        gap: 15px;
-    }
-    
-    .grid-links {
-        grid-template-columns: repeat(4, 1fr);
-        gap: 14px;
-    }
-    
-    .beauty {
-        gap: 15px;
-    }
-    
-    .promotion-banner-content {
-        padding: 35px 0 25px 45px;
-    }
-    
-    .promotion-banner-title {
-        font-size: 30px;
-    }
-    
-    .promotion-banner-description {
-        font-size: 15px;
-    }
+  .product-cards {
+    gap: 15px;
+  }
+
+  .grid-links {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+  }
+
+  .beauty {
+    gap: 15px;
+  }
+
+  .promotion-banner-content {
+    padding: 35px 0 25px 45px;
+  }
+
+  .promotion-banner-title {
+    font-size: 30px;
+  }
+
+  .promotion-banner-description {
+    font-size: 15px;
+  }
 }
 
 @media (max-width: 992px) {
-    .products-container {
-        padding: 0 20px;
-    }
-    
-    .main-text {
-        font-size: 24px;
-    }
-    
-    .products-container h2 {
-        font-size: 24px;
-    }
-    
-    .input-container {
-        gap: 15px;
-    }
-    
-    .product-cards {
-        gap: 12px;
-    }
-    
-    .grid-links {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 12px;
-        margin-top: 30px;
-    }
-    
-    .beauty {
-        gap: 12px;
-    }
-    
-    .doctor-types {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 15px;
-    }
-    
-    .wide {
-        grid-column: span 1;
-    }
-    
-    .grid-links-black {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 12px;
-    }
-    
-    .promotion-banner {
-        margin-bottom: 40px;
-    }
-    
-    .promotion-banner-content {
-        padding: 30px 0 20px 40px;
-    }
-    
-    .promotion-banner-title {
-        font-size: 28px;
-    }
-    
-    .promotion-banner-description {
-        font-size: 14px;
-    }
-    
-    .promotion-banner-button {
-        min-width: 200px;
-        padding: 12px 0;
-    }
-    
-    .seasonal-products {
-        margin-bottom: 40px;
-    }
-    
-    .links-container {
-        margin-bottom: 40px;
-    }
-    
-    .alpha-container {
-        margin-bottom: 60px;
-        margin-top: 60px;
-    }
+  .products-container {
+    padding: 0 20px;
+  }
+
+  .main-text {
+    font-size: 24px;
+  }
+
+  .products-container h2 {
+    font-size: 24px;
+  }
+
+  .input-container {
+    gap: 15px;
+  }
+
+  .product-cards {
+    gap: 12px;
+  }
+
+  .grid-links {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-top: 30px;
+  }
+
+  .beauty {
+    gap: 12px;
+  }
+
+  .doctor-types {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+  }
+
+  .wide {
+    grid-column: span 1;
+  }
+
+  .grid-links-black {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .promotion-banner {
+    margin-bottom: 40px;
+  }
+
+  .promotion-banner-content {
+    padding: 30px 0 20px 40px;
+  }
+
+  .promotion-banner-title {
+    font-size: 28px;
+  }
+
+  .promotion-banner-description {
+    font-size: 14px;
+  }
+
+  .promotion-banner-button {
+    min-width: 200px;
+    padding: 12px 0;
+  }
+
+  .seasonal-products {
+    margin-bottom: 40px;
+  }
+
+  .links-container {
+    margin-bottom: 40px;
+  }
+
+  .alpha-container {
+    margin-bottom: 60px;
+    margin-top: 60px;
+  }
 }
 
 @media (max-width: 768px) {
-    .products-container {
-        padding: 0 15px;
+  .products-container {
+    padding: 0 15px;
+  }
+
+  .main-text {
+    font-size: 20px;
+    margin: 15px 0 15px 0;
+  }
+
+  .products-container h2 {
+    font-size: 20px;
+  }
+
+  .input-container {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .product-cards {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .grid-links {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-top: 25px;
+  }
+
+  .beauty {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .doctor-types {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-top: 30px;
+  }
+
+  .grid-links-black {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .alphabet {
+    gap: 6px;
+    margin-top: 15px;
+    font-size: 13px;
+
+    span {
+      padding-left: 10px;
+      padding-right: 10px;
+      padding-top: 3px;
+      padding-bottom: 3px;
     }
-    
-    .main-text {
-        font-size: 20px;
-        margin: 15px 0 15px 0;
-    }
-    
-    .products-container h2 {
-        font-size: 20px;
-    }
-    
-    .input-container {
-        flex-direction: column;
-        gap: 15px;
-    }
-    
-    .product-cards {
-        flex-direction: column;
-        gap: 15px;
-    }
-    
-    .grid-links {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
-        margin-top: 25px;
-    }
-    
-    .beauty {
-        flex-direction: column;
-        gap: 15px;
-    }
-    
-    .doctor-types {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 12px;
-        margin-top: 30px;
-    }
-    
-    .grid-links-black {
-        grid-template-columns: 1fr;
-        gap: 10px;
-    }
-    
-    .alphabet {
-        gap: 6px;
-        margin-top: 15px;
-        font-size: 13px;
-        
-        span {
-            padding-left: 10px;
-            padding-right: 10px;
-            padding-top: 3px;
-            padding-bottom: 3px;
-        }
-    }
-    
-    .promotion-banner {
-        margin-bottom: 30px;
-    }
-    
-    .promotion-banner-content {
-        padding: 25px 0 15px 30px;
-        flex-direction: column;
-        gap: 20px;
-    }
-    
-    .promotion-banner-title {
-        font-size: 24px;
-    }
-    
-    .promotion-banner-description {
-        font-size: 13px;
-    }
-    
-    .promotion-banner-button {
-        min-width: 180px;
-        padding: 10px 0;
-        font-size: 14px;
-    }
-    
-    .promotion-banner-image {
-        transform: translateY(0);
-        max-width: 250px;
-    }
-    
-    .seasonal-products {
-        margin-bottom: 30px;
-    }
-    
-    .links-container {
-        margin-bottom: 30px;
-    }
-    
-    .alpha-container {
-        margin-bottom: 40px;
-        margin-top: 40px;
-    }
+  }
+
+  .promotion-banner {
+    margin-bottom: 30px;
+  }
+
+  .promotion-banner-content {
+    padding: 25px 0 15px 30px;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .promotion-banner-title {
+    font-size: 24px;
+  }
+
+  .promotion-banner-description {
+    font-size: 13px;
+  }
+
+  .promotion-banner-button {
+    min-width: 180px;
+    padding: 10px 0;
+    font-size: 14px;
+  }
+
+  .promotion-banner-image {
+    transform: translateY(0);
+    max-width: 250px;
+  }
+
+  .seasonal-products {
+    margin-bottom: 30px;
+  }
+
+  .links-container {
+    margin-bottom: 30px;
+  }
+
+  .alpha-container {
+    margin-bottom: 40px;
+    margin-top: 40px;
+  }
 }
 
 @media (max-width: 480px) {
-    .products-container {
-        padding: 0 10px;
+  .products-container {
+    padding: 0 10px;
+  }
+
+  .main-text {
+    font-size: 18px;
+    margin: 12px 0 12px 0;
+  }
+
+  .products-container h2 {
+    font-size: 18px;
+  }
+
+  .input-container {
+    gap: 12px;
+  }
+
+  .product-cards {
+    gap: 12px;
+  }
+
+  .grid-links {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    margin-top: 20px;
+  }
+
+  .beauty {
+    gap: 12px;
+  }
+
+  .doctor-types {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-top: 25px;
+  }
+
+  .alphabet {
+    gap: 5px;
+    margin-top: 12px;
+    font-size: 12px;
+
+    span {
+      padding-left: 8px;
+      padding-right: 8px;
+      padding-top: 2px;
+      padding-bottom: 2px;
     }
-    
-    .main-text {
-        font-size: 18px;
-        margin: 12px 0 12px 0;
-    }
-    
-    .products-container h2 {
-        font-size: 18px;
-    }
-    
-    .input-container {
-        gap: 12px;
-    }
-    
-    .product-cards {
-        gap: 12px;
-    }
-    
-    .grid-links {
-        grid-template-columns: 1fr;
-        gap: 8px;
-        margin-top: 20px;
-    }
-    
-    .beauty {
-        gap: 12px;
-    }
-    
-    .doctor-types {
-        grid-template-columns: 1fr;
-        gap: 10px;
-        margin-top: 25px;
-    }
-    
-    .alphabet {
-        gap: 5px;
-        margin-top: 12px;
-        font-size: 12px;
-        
-        span {
-            padding-left: 8px;
-            padding-right: 8px;
-            padding-top: 2px;
-            padding-bottom: 2px;
-        }
-    }
-    
-    .promotion-banner {
-        margin-bottom: 25px;
-    }
-    
-    .promotion-banner-content {
-        padding: 20px 0 10px 20px;
-    }
-    
-    .promotion-banner-title {
-        font-size: 20px;
-    }
-    
-    .promotion-banner-description {
-        font-size: 12px;
-    }
-    
-    .promotion-banner-button {
-        min-width: 160px;
-        padding: 8px 0;
-        font-size: 13px;
-    }
-    
-    .promotion-banner-image {
-        max-width: 200px;
-    }
-    
-    .seasonal-products {
-        margin-bottom: 25px;
-    }
-    
-    .links-container {
-        margin-bottom: 25px;
-    }
-    
-    .alpha-container {
-        margin-bottom: 30px;
-        margin-top: 30px;
-    }
+  }
+
+  .promotion-banner {
+    margin-bottom: 25px;
+  }
+
+  .promotion-banner-content {
+    padding: 20px 0 10px 20px;
+  }
+
+  .promotion-banner-title {
+    font-size: 20px;
+  }
+
+  .promotion-banner-description {
+    font-size: 12px;
+  }
+
+  .promotion-banner-button {
+    min-width: 160px;
+    padding: 8px 0;
+    font-size: 13px;
+  }
+
+  .promotion-banner-image {
+    max-width: 200px;
+  }
+
+  .seasonal-products {
+    margin-bottom: 25px;
+  }
+
+  .links-container {
+    margin-bottom: 25px;
+  }
+
+  .alpha-container {
+    margin-bottom: 30px;
+    margin-top: 30px;
+  }
 }
